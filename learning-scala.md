@@ -115,7 +115,7 @@ scala coding convention
     No _ or $ ever as part of identifier names (the syntax allows it!). These can be be implicitly inserted by the compiler for internal names.
     For example operator names get substituted: :-> as operator will be substituted by $colon$minus$greater by the compiler.
 
-    For getters and setters they got this convention
+    For getters and setters they got this convention (don't wory, these are very very rare)
 
         class Company {
           // leading underscore for private! (by default every decl is public!)
@@ -188,6 +188,59 @@ each var/val is local to it's scope; you can redefine a variable in a nested sco
     }
     // a is not defined
 
+
+implicitly generated code for class with mutable field.
+
+    class Foo {
+      var d = 42 //  modifiable public field d of class Foo
+    }
+
+    // The following code gets implicitly generated (syntactic sugar!)
+    // scalac -print shows the scala code after every kind of expansion
+    // this means that accessor d() and setter d_ functions can be explicitly overridden so you can add your validations (for example)
+    // the data field itself is declared private!
+
+    scalac s1.scala -print
+
+    [[syntax trees at end of                   cleanup]] // s1.scala
+    package <empty> {
+      class Foo extends Object {
+        private[this] var d: Int = _;
+        <accessor> def d(): Int = Foo.this.d;
+        <accessor> def d_=(x$1: Int): Unit = Foo.this.d = x$1;
+        def <init>(): Foo = {
+          Foo.super.<init>();
+          Foo.this.d = 42;
+          ()
+        }
+      }
+    }
+    
+   Note: private[this] :: private this: accessible only in the same object (not in another object of the same type) 
+
+Implicitly generated code for class with immutable field
+
+    class Foo {
+      val d = 42
+    }
+
+    scalac s1.scala -print
+
+    [[syntax trees at end of                   cleanup]] // s1.scala
+    package <empty> {
+      class Foo extends Object {
+        private[this] val d: Int = _;
+        <stable> <accessor> def d(): Int = Foo.this.d;
+        def <init>(): Foo = {
+          Foo.super.<init>();
+          Foo.this.d = 42;
+          ()
+        }
+      }
+    }
+
+    // you can give your own accesso explictly; if you need to do custom stuff in the accessor!
+
 implicitly generated code for class with lazy value (lazy value is compute upon first access
 
     class LazyClass {
@@ -227,38 +280,6 @@ implicitly generated code for class with lazy value (lazy value is compute upon 
         }
       }
     }
-
-
-implicitly generated code for class with mutable field.
-
-    class Foo {
-      var d = 42 //  modifiable public field d of class Foo
-    }
-
-    // The following code gets implicitly generated (syntactic sugar!)
-    // scalac -print shows the scala code after every kind of expansion
-    // this means that accessor d() and setter d_ functions can be explicitly overridden so you can add your validations (for example)
-    // the data field itself is declared private!
-
-    scalac s1.scala -print
-
-    [[syntax trees at end of                   cleanup]] // s1.scala
-    package <empty> {
-      class Foo extends Object {
-        private[this] var d: Int = _;
-        <accessor> def d(): Int = Foo.this.d;
-        <accessor> def d_=(x$1: Int): Unit = Foo.this.d = x$1;
-        def <init>(): Foo = {
-          Foo.super.<init>();
-          Foo.this.d = 42;
-          ()
-        }
-      }
-    }
-    
-   Note: priavte[this] :: private this: accessible only in the same object (not in another object of the same type) 
-
-
 
 
 return value of blocks.
