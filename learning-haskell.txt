@@ -1,0 +1,487 @@
+
+```
+Sources: 
+ "Real world haskell" book. 
+ "Learn you a Haskell for great good!" http://learnyouahaskell.com/chapters  // much clearer! doesn't skip over stuff and leave it as an exercise.
+
+
+Haskell has a strong type system - it doesn't do implicit type conversion; each type conversion has to be explicit (implies some copying in the process)
+
+ - ghc installation doesn't bring in the prelude source code (libraries are all in binary compiled form .dyn_hi files; here is the source https://github.com/ghc/ghc/tree/master/libraries/base ) 
+
+ - how to work with ghci: need to write functions in a file and load/reload the file :load <file>
+
+Functional languages like lists + recursion (but these are slow because of cache misses). You can do some list packing, but that doesn't change the picture....
+
+Funny slogan: Haskell - freedom from state ( https://wiki.haskell.org/Haskell_logos/New_logo_ideas )
+
+- - - - - -
+
+observations:
+    - haskell isn't very well suited for IDE's with type completion. (in OO languages you have <object> . <member function> - i don't see a similar syntactic 'hook' for completion in Haskell.
+
+    - many features in scala or rust seem to have been inspired by haskell (like pattern matching for field extraction and polymorphic union types)
+
+    - both scala and rust like syntactic sugar!
+
+- - - -- - 
+
+ghci - the haskell repl environment. (they got it online: https://repl.it/languages/haskell )
+
+    set +t -- show type of evaluation results.
+    -- ghci has implicit variable it (result of last evaluation)   
+    :type it  -- also shows the type of the last evaluated expression
+    :type print -- shows the type signature of a function (input/output types)
+
+    :load file.hs -- loads a haskell file into the interpreter (defining functions within ghci behaves so much different then loading them from file...)
+
+-- can do arithmetic expressions:
+2 + 2
+
+-- can do it in prefix form.
+(+) 2 2
+
+-- functions are called prefix
+add a b = a + b
+
+add 2 3
+
+-- but can be called infix with backticks (binary function)
+2 `add` 3
+
+
+-- unary operators must be enclosed in parenthesis (otherwise it can't get the precedence)
+2 * (- 3)
+
+-- type Integer :: integers of arbitrary precision - no overflow (see the exponentation)
+2 ^ 1024
+
+-- type Int :: integer of native machine type.
+-- type Char :: unicode char
+-- type Boolean: True False && || Comparison: == (is equal to) /= (not equal to (surprise)
+-- type Float, type Double
+
+-- No automatic type conversions between Double and Int! All type conversions must be explicit!
+
+
+-- Operators: have numeric value for operator precedence (1..9 - 9 - highest pre)
+-- info (^) - tells kind operator (infixr - right associative, infixl - left associative) and numeric precedence value (infixr 6) 
+
+--lists: all entries must be of the sametype
+[1..100]
+
+-- can provide a step (by having two values before ... 
+
+[1.0,1.25..2] -- step of 0.25
+
+-- generates an infinite list 1 and upward.
+[1..]
+
+-- consing (append element to front of list) (a -> [a] -> [a])
+1 : [1,3]
+> [1,2,3]
+
+-- append one list to another
+[1,2] ++ [3,4]
+> [1,2,3,4]
+
+length [1,2,3]
+> 3
+
+-- check for empty list
+null []
+>True
+
+null [1]
+>False
+
+-- first element (danger! head fails on empty list)
+head [1,2,3]
+> 1
+
+-- de-cons (danger! tail fails on empty list)
+tail [1,2,3]
+> [2,3]
+
+-- Other functions (danger! don't check for short lists)
+
+take 2 [1,2,3]
+> [1,2]
+
+drop 2 [1,2,3]
+> [3]
+
+splitAt 3 [1,2,3,4,5]
+> ([1,2,3],[4,5])
+
+concat [[1,2,3],[4,5,6]]
+> [1,2,3,4,5,6]
+
+-- strings "abc" are syntactic sugar for character arrays ['a','b','c']
+
+            
+-- tuples: each element can have a different type
+    
+    me=("Michael Moser", 1970)
+
+-- functions (the whole point of haskell)       
+    
+isOdd n = mod n 2 == 1
+
+-- when calling the function: the argument (3+1) is only computed when the argument n is accessed! (that's called lazy valuation - non strict evaluation)
+-- first a 'thunk' to the expression (3+1) is created, then isOdd called, when the argument is accessed the 'thunk' is evaluated so that the value is computed when used (thunks take up memory!)
+
+isOdd (3+1)
+
+-- generic functions; the last function returns last element in a list, it works on any type of lists. so it has the following signature
+-- (lower case type name - generic (template) type name. A concrete type name (like Char or Double) start with upper case character.
+
+:type last
+[a] -> a
+
+-- take returns a list consisting of the first  n element of a list.
+:type take
+Int -> [a] -> [a]
+
+-- repeated arrow (right associative) means that you can curry a function! :: (that means fix one or more arguments returns a function on the rest of the arguments)
+
+take2nd = take 2
+
+-- that's a curried function too! (but for whatever reasons a partial application of an infix operator is called a 'Section')
+:type (3*)
+> (3*) :: Num a => a -> a
+
+
+-- all functions in haskell take one parameter and return a function (that's why you can curry all functions)
+-- that becomes clear then you consider the syntax for anonymous functions (\x y -> x + y) :: anonymous function that takes two arguments and adds them) ; the -> means just the delimiter between function prototype and function implementation.
+
+-- searching
+
+1 `elem` [1, 2, 3, 4]
+> True
+
+-- same as
+elem 1 [1, 2, 3, 4]
+True
+
+5 `notElem` [1, 2, 3, 4]
+> True
+
+[1, 2] `isPrefixOf` [1, 2, 3, 4]
+> True
+
+[3, 4] `isSuffixOf` [1, 2, 3, 4]
+> True
+
+-- combining lists
+
+zip [1, 2, 3] "abc"
+>[ (1, 'a'), (2, 'b'), (3, 'c') )
+
+zip3 [1,2,3] "abc" "efg"
+> [(1,'a','e'),(2,'b','f'),(3,'c','g')]
+
+
+
+zipWith + [1,3,5] [2,4,6]
+>[3. 7, 11]
+
+--- Higher order functions (functions that take functions as arguments)
+
+--- does argument function return True for all elements of the list? 
+all odd [1, 2, 3]
+> True
+
+-- does argument function return true for any of the elementsi n the list?
+any odd [2, 4, 6]
+> False
+
+takeWhile odd [1, 2, 3, 4, 5]
+>[1,2,3]
+
+span odd [1, 2, 3, 4, 5]
+>([1,2,3], [4,5])
+
+dropWhile odd [1, 2, 3, 4, 5]
+>[4, 5]
+
+break even [1 2, 3, 4, 5]
+>([1, 2, 3], [4, 5])
+
+filter even [1, 2, 3, 4, 5, 6]
+>[2, 4, 6]
+
+map negate [1,2,3]
+> [-1, -2, -3]
+
+-- ((0 + 1) + 2) + 3
+-- problem with foldl: space leak : function argument in haskel are only evaluated when used; so each argument results in a internal thunk object (on heap) that is needed to do the delayed evaluation.
+
+foldl + 0 [1, 2, 3]
+>  6
+
+-- 1 + (2 + (3 + 0) )
+foldr + 0 [1, 2, 3]
+
+--  you can do filter as foldr - because cons : is right associative
+myMap f xs = foldr step [] xs
+             where 
+                step x ys = f x : ys -- note that f is from the enclosing function! (capture)
+
+
+-- they like to use anonymous functions with fold/map/filter
+-- (\x y -> x + y) is anonymous function that adds its arguments
+
+foldl (\x y -> x + y) 0  [1, 2, 3]
+
+-- get all numbers bigger than four
+filter (\x -> x > 4) [0, 2, 3, 5, 6]
+
+-- limitation: you can't have pattern matching with anonymous functions (there is only one clause)
+
+
+--- doing pipelines: you can combine these functions as follows:
+
+sqeven xs = map (2^) (filter even xs)
+
+sqeven [1,2,3,4]
+> [4, 16]
+
+
+-- or you can do that more in point-free style (omitting the explicit argument) - that's considered cleaner (looks more like a pipeline) https://wiki.haskell.org/Pointfree 
+-- (why is it called pointfree if it adds a point ?)
+
+sqeven = map (2^) . filter even
+
+sqeven [1,2,3,4]
+> [4, 16]
+
+
+
+-- compound data types in H.
+
+-- better than just a tuple, each one has it's identity (can't mix up polar and cartesian types, no implicit conversion!)
+
+data Polar2d = Polar2d Double Double
+data Cartesia2d = Cartesian2d Double Double
+
+let point = Polar2d 1.0 2.0
+
+-- type aliases: use them to define types for record fields!
+type BookTitle = String
+type ISBN = Int
+type AuthorName = String
+
+data BookRec =  BookTitle AuthorName ISBN 
+                deriving (Eq, Show) -- throws in 'traits' like ability to print a value and compare it for equality) (but it's optional)
+
+--- also can use as enumeration!
+
+data Color = Red | Yellow | Green
+             deriving(show)
+
+let a = Red
+:type a
+a :: Color
+
+-- alternative can be between more complicated types too! each alternative can be a different type constructor!
+
+data  Shape = Circle Point double | Polygon [Point]
+              deriving(show)
+
+-- data type definitions can be recursive!
+
+-- this is a list! (like the built-in list)
+data List = Cons a (List a) | Nil
+            deriving (Show)
+
+-- this is a tree!
+data Tree a = Node a (Tree a) (Tree a) | Empty 
+              deriving (Show)
+
+-- record syntax: in addition to data it generates getter functions.
+
+data Customer = Customer {      
+        customerID      :: CustomerID, 
+        customerName    :: String, 
+        customerAddress :: Address    } 
+        deriving (Show)
+
+-- you don't have to write get functions like the folloging
+
+-- customerID :: Customer -> Int
+-- customerID(Customer id _ _) = id -- i don't care is the underscore value.
+
+
+
+-- you can defined a function by listing its cases!
+
+myNot False = True
+
+-- beware: if you didn't list the second case then calling myNot False results in runtime exception "Non-exhaustive pattern"
+myNot True = False
+
+(why don't they enforce exhaustive pattern matching at compile time? not always reasonable -
+  not always possible (guard expressions can be complex); also functions are not always defined for all domains - like factorial only for positive ints) https://stackoverflow.com/questions/3804484/in-haskell-why-non-exhaustive-patterns-are-not-compile-time-errors ) 
+
+
+:type myNot
+Bool -> Bool
+
+-- can also do each case of recursive function! (problem: this is not tail recursive)
+sumList (x:xs) = 1 + sumList xs
+sumList [] = 0
+
+--- this is tail recursive
+
+sumListTail(s, x:xs)  = sumListTail(s+x, xs)
+sumListTail(s, [])    = s
+
+sumList2(x) = sumListTail(0, x)
+
+-- more in style, with local function that are hidden (sumListTail can only be used within sumList3)
+
+sumList3(x) = sumListTail(0, x)
+              where
+                sumListTail(s, x:xs)  = sumListTail(s+x, xs)
+                sumListTail(s, [])    = s
+
+
+-- use a fold!
+sumList4(x) = foldl + 0 x
+
+-- can also limit each case (second guard clause matches positive numbers only - that's a 'guard')
+fac 0 = 1
+fac n | n > 0 = n * fac (n-1)
+
+
+-- beware! each alternative is matched in the order that they are declared!!!
+
+-- a function with error handling (error function is built-in: prints error and exits program; better than run-time error!)
+myHead [] = error "list to short'
+myHead (x:xs) =  x
+
+-- for function that can return failure use the Maybe type
+-- maybe is declared as 
+-- data Maybe a = Just a | Nothing
+
+myHead2 [] = Nothing
+myHead2 (x:xs) = Just x
+
+-- instead of pattern matching you can do that as if expression (if is expression that returns value - therefore it always has an else clause!)
+
+myHeaad3 x = if null x then Nothing else (Just (head x))
+
+-- let defines bindings that are visible for expression after in keyword.
+-- also value of squarex is computed only when used within expression that comes after in
+
+-- beware! indentation/whitespace is significant! (therefore expand tabs to spaces in the editor)
+
+pythagoras x y = let squarex = x * x
+                     squarey = y * y
+                 in  sqrt( squarex + squarey )
+
+
+-- different stile of narrative - supposed to put the main thing first and the details last.
+
+-- beware! indentation/whitespace is significant! (therefore expand tabs to spaces in the editor)
+
+pythagoras2 x y =  sqrt( squarex + squarey )
+                   where
+                     squarex = x * x
+                     squarey = y * y
+
+-- all these where and let clauses allow to define functions that are local to the where clause
+
+localfunc x y =  fact(x) + fact(y)
+                   where
+                     fact 1 = 1
+                     fact n = n * fact(n-1)
+
+
+-- as expression
+
+-- function that doubles the first element of a list
+doub (x:xs) = x:x:xs
+
+-- the same shorter: s is the 'as expression' - it becomes an alias for x:xs (so x:s substitutes for x:x:xs)
+doub2 s@(x:xs) = x:s
+
+
+--- haskell modules (if you write libraries); a file in a library must start with module declaration
+
+module SimpleJSON   -- module name must be like the basename of the file
+    (               -- list of exported functions come here
+        JValue(..)  -- the brackets say that both the type and all of its constructors are exported!
+        getArray,   -- export a function from the module
+        
+    ) where         -- the code of the module follows.
+
+import Numeric (showHex) 
+
+-- import showHex -- import function showHex from Numeric module
+-- (when declaring only the module you import all exported functions from that module)
+-- guideline is to state the list of imports explicitly (for readability, also if the import breaks the error is easier to identify)
+
+
+-- compile a library with ghc -c SimpleJSON.hs -- no main function in this source file! make library binaries. 
+--      SimpleJSON.hi -  interface file that lists exported functions/types.
+--      SimpleJSON.o  -  object file   `
+
+
+-- using the module
+
+module Main() where  -- module main: has a main function! (again: module name is base name of the file)
+
+import SimpleJSON    -- list of imported modules 
+
+main = print JValue( "str" ) -- can use symbols from imported modules
+
+-- compile the main module:  ghc -o simple Main.hs  SimpleJSON.o -- must list included libraries for linker.
+
+
+
+-- haskell trick for top-down development.
+-- you can write a function prototype (signature) but leave it without an implementation - if it returns the undefined value; 
+-- it compiles, but if you call it then it will result in runtime error.
+-- the undefined value is of 'any type'
+-- :type undefined
+-- (says type signatures are you friend (even though they are optional) - without them it is easier to mix things up and misunderstandings accumulate)
+
+newf :: String -> String
+newf str = undefined
+
+
+-- haskell package management: they have the cabal packet manager for softw. distribution. (a distributed package includes a set of modules)
+-- (cabal doesn't come with ghci: 
+
+-- top level of the package has a .cabal file that lists meta info (also must list dependent packages)
+-- also has Setup.hs file
+-- user of a package has to 
+     -- configure the package 
+     -- compile it from source in order to install it with cabal.  (runghc Setup build) 
+     -- install the compiled result with cabal 
+
+-- locally installed packages are managed with ghc-pkg command line took. (there is system wide install path and local user install path)
+
+
+---
+--- type classes: list an interface consisting of a set of functions that must be implemented (analogous to an interface / pure virtual functions)
+
+--- the prelude defines the following type class for comparing stuff:
+
+class  Eq a  where
+    (==), (/=) :: a -> a -> Bool
+    
+    -- that's the default implementation; by providing the default you give he implementing class the choice to implement the other alternative choice.
+    x /= y     =  not (x == y)
+    x == y     =  not (x /= y)
+
+-- the type class Ord defines the interface for ordering relationship (it extends Eq -so a type that implements Ord must also implement Eq)
+
+class  (Eq a) => Ord a  where
+  (<), (<=), (>=), (>)  :: a -> a -> Bool
+  max, min              :: a -> a -> a
+
+
+
