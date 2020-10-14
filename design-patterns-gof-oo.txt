@@ -1,0 +1,324 @@
+
+Catalogue of design patterns (includes design patterns that are not in the GOF book (GOF - gang of four)
+    https://en.wikipedia.org/wiki/Software_design_pattern#Classification_and_list
+
+
+Main catalogue in GOF book:
+
+
+                    Purpose:
+
+                    Creational;         Structural;         Behaviroal;
+
+Scope: Class:       FactoryMethod       Adapter             Interpreter
+                                                            Template method
+
+       Object:      AbstractFactory:    Adapter:            ChainOfResponsibility:
+                    Builder:            Bridge:             Command:
+                    Prototype:          Composite:          Iterator:
+                    Singleton:          Decorator:          Mediator:
+                                        Facade:             Memento:
+                                        Flyweight:          Observer:
+                                        Proxy:              State:
+                                                                Strategy:
+                                                            Visitor:
+
+(most of the design patterns have a standard exposition template (Motivation, Applicability, etc. etc) i skip that in these notes for brevity, just put in a example to get the context through)
+
+Creational patterns :: purpose; create object instances
+=======================================================
+                                                        
+FactoryMethod:/Virtual ctor. 
+----------------------------
+
+    framework: virtual CDocument *CFrameWnd::createDocument();
+    application: derived class CAppFrameWnd : public CFrameWnd; overrides createDocument() method to create the application CAppDocument derived fro CDocument.
+                
+
+Framework:        CDocument               CFrameWnd
+                     |                      virtual CDocument createDocument() = 0
+                     |                        |
+                     ^                        ^
+                     |                        |
+App:             CMyAppDocument          CMyAppFrameWnd
+                                             virtual CDocument createDocument() { return new CMyAppDocument() }
+
+
+
+AbstractFactory := interface with pure virtual functions (each to create a different type of object)
+                    concrete factory implementation (per concrete platform/configuration/condition)
+-----------------------------------------------------------------------------------------------------
+
+
+    AbstractWindowFactory
+        virtual CButton *createButton();
+        virtual CDialog *createDialog();
+        virtual CFont   *createFont();
+                    |
+                    ^
+                    |
+            ---------------------
+            |                   |
+            |                   |
+            ^                   ^
+            |                   |
+
+    MSWindowsWindowFactory  MacWindowFactory
+
+
+
+
+Builder:
+--------
+
+    ParsJson <>-----> AbstractJsonParsingEvent
+                        virtual void onTag(const char *tag_name) = 0;
+                        virtual void onAttribute(const char *name, const char *value) = 0;
+                        virtual void onEndOfTag(const char *tag_name) = 0;
+
+                              |
+                              ^
+                              |
+                     --------------------
+                     |                  |
+                ConvertToYaml       ConvertToXml
+            
+
+
+
+    Different from factory method: factory method creates new objects; builder one reacts to/consumes events.
+ 
+
+
+Prototype ::= client creates an object by calling Clone virtual method of base class; the derived class implements Clone to create a copy of the derived class.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/more flexibility and less classes: create a set of instances of type Client that points to Prototype derived class; instead of creating parallel hierarchy of Client classes that mirrors the Prototype hierarchy/ 
+
+
+
+    Client                                    class Prototype
+        Client::Do()                            virtual Prototype *Clone() = 0;
+        Prototype *prototype_;      ------>          |
+                                                     ^
+                                                     |
+                                              ------------------------------------------
+                                              |                                         |                                    
+                                        class Derived                               class Derived2
+                                       virtual Prototype * Derived::Clone() {
+                                          Prototype * copy = new Prototype(*this);
+                                          return copy;
+                                       }
+
+
+Singleton :: make sure there is exactly one instance of a particular class. (either always or created on first call)
+--------------------------------------------------------------------------------------------------------------------
+
+-
+
+
+Structural :: purpose is class and object composition
+=====================================================
+
+
+Adapter :: client expects specific generalized interface, however an implementation classes don't do this interface;
+---------------------------------------------------------------------------------------------------------------------
+
+    Client ---> Target
+                  virtual void Request() = 0;
+                 |
+                 ^
+                 |
+                Adapter  ----------------------------------------> Adaptee (the implementation class for concrete Target derived class)
+                  virtual void Request() {                           void doIt();
+                     Adaptee imp;
+                     imp.doIt();
+                   }
+
+    // Adapter can also inherit from Adaptee (another implementation option for a specific case)
+
+
+
+Bridge := client base class points to implementation class; where implementation class is interface with multiple possible implementations
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+    ClientAbstraction <>---------------> Implementor
+          |                                  virtual void operation();
+          |                                     |
+          ^                                     ^
+          |                         ----------------------
+    ExtendedAbstraction             |                     |
+                                ImplementOnPlatformA    ImplementOnPlatformOrSituationB
+                                    void operation(){       void operation() {
+                                    }                       }
+
+
+
+Composite - make tree structure of objects; 
+--------------------------------------------
+
+    Client ------------>  Component
+                             virtual void operation();
+                             virtual register(Component *);        <-------------------\
+                             virtual unregister(Component *);                          |
+                             virtual get_child(int child_no);                          |
+                            |                                                          | (1-n)
+                            ^                                                          |                                                  
+                  ----------------------------------------                             |
+                  |                                      |                             |
+                Leave                                 Composite  <>--------------------/
+    /can't be composed, empty register/uregister/    /this one can form a tree of objects/    
+
+
+
+
+Decorator - make a pipeline of processing stages (like stream types) with terminal nodes and intermediate stream (composables)
+-------------------------------------------------------------------------------------------------------------------------------
+
+Example case:
+
+        Client ----------> AbstractStream (aka. component)     <----------------------------------------\
+                                |                                                                       |
+                                ^                                                                       |
+                                |                                                                       |
+                    -------------------------------                                                     |
+                    |                             |                                                     |
+              ConcreteStream                 Decorator  /processing stream, can have a next stream/     |
+          /io stream has no next stage/           AbstractStream *next_;  -------------------------------
+
+                                            -------------------
+                                            |                 |
+                                   StreamWithChecksum     EncryptingStream
+
+
+
+Facade: class to provide a interface to a whole module/layer/(something big and complicated)
+--------------------------------------------------------------------------------------------
+
+use it if you need to provide a 'higher layer abstraction' to an external client (may be a different team/department or different company)
+
+
+Flyweight - separate object state into intrinsic (have to keep it with every instance) and extrinsic (don't need to duplicate with every object instance)
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+put extrinsic state into separate object instances (state that can be shared - that does not need to be kept with every object instance)
+
+example: character instances vs font glyph (keep a font glyph object for each letter type, don't need to duplicate the glyph with each character instance)
+
+Proxy/Surrogate - forward calls to another object instance (that is not always there)
+-------------------------------------------------------------------------------------
+
+
+utility: can create a RealSubject on demand; or make a copy on modification; (or  transport the call to a remote object server, whatever); 
+
+
+        Subject
+            virtual void request()
+            |
+            ^
+    ----------------
+    |               |
+  RealSubject     Proxy 
+                    Subject *imp_; // or point to the RealSubject instead of the baseclas.
+                    void request() {
+                      imp_->request();
+                    }
+
+Behavioral patterns :: concern is object communication/collaboration
+=====================================================================
+    
+
+Chain of responsibility :: 
+--------------------------
+
+- very similar with /decorator pattern/ has the same object/class structure but has different intent:
+
+- chain of responsiblity: each stage can optionally service the request, if it doesn't then it passes the call to the next object in line. If it does than it handles it and stops calling the next guy. Example: exception handler chain; if a chain element handles it then it doesn't call the next in line handler; if it doesn't then it calls the next in line handler.
+
+
+
+Command pattern ::
+------------------
+
+- very similar to Adapter pattern but has different intent:
+    - Adapter: adjust to a different interface.
+    - Command: implement multiple different command instances by creating ConcreteCommand instances with different implementation objects.
+                    (maybe would be less ambiguous if Receive were a separate hierarchy ?)
+
+    Invoker <>-------> Command  
+                        void run();
+                         |
+                         ^
+                         |
+                      ConcreteCommand             Receiver
+                                    ------------>  void doIt();
+                        Receiver *imp_;
+                        void run() {
+                            imp_->doIt();
+                        }
+
+Interpreter pattern :: 
+----------------------
+
+- very similar to composite pattern, but with different intent.
+    (lots of handwaving, don't quite know).
+
+
+
+Iterator pattern : implement an interface for iterating over a kind of collection (implement by inheriting from interface or by doing a kind of template)
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The intent is to separate the iteration interface into a separate object from the collection object.
+
+
+
+
+
+Mediator pattern : an object that is the director and handles interaction between component objects.
+----------------------------------------------------------------------------------------------------
+
+Mediator example: a dialogue that works with a set of controls; controls can call back to the mediator when someone presses a button or changes a selection.
+
+    Mediator <----------------- Collaborator
+       |                             |
+       ^                             ^
+       |                             |
+ ConcreteMediator           ------------------
+                |           |                |
+                ----------->CollaboratorImp1 |
+                \--------------------------> CollaboratorImp2 
+
+    Collaborator points back to Mediator if the contained object needs to notify the director /mediator.
+    ConcreteMediator has to know about the collaborator objects so that it can modify them.
+        
+
+Memento pattern : memento object encapsulates the state of an object, so that it can be used to recreate the object (something like serialization)
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Observer : (aka model->view). notify the other views of changes in the model (but the view can also change the model and thereby trigger update of the other views)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+???
+
+State pattern : when internal state changes, switch the implementation object (however implementation object conforms to the same interface, so that the user calls the same interface regardless of which class is used as implementation)
+        
+
+
+
+
+---
+---
+---
+
+My observations:
+
+    /? Why are there so few sequence diagrams in the GOF book ? Might be to focus more on their template of describing each design pattern. /
+    /? I read the book in 96 and it was quite novel to me back then; still i noticed the obvious similarity between some of the patterns back then ;-) Also when searching for the difference between these similar patterns: in the discussion page on stackoverflow the answers attract a lot of aggressive handwaving ('you are comparing apples to oranges'; for me that is a politician alert)/
+    /? Fast forward to 2020: Java shops still ask about design patterns at at interviews, for some reason. C++ shops ask less about this stuff. Is that by coincidence?/
+    /? Some criticise the design pattern concept: with a more powerful programming language some of these patterns become pointless (like composite pattern becomes less interesting with case classes and pattern matching) /
+
+ 
+
+
