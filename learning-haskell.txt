@@ -484,4 +484,27 @@ class  (Eq a) => Ord a  where
   max, min              :: a -> a -> a
 
 
+--  a (thought up) example of using a type class:
 
+data TrafficLight = Red | Yellow | Green  
+
+-- instance keyword says that typeclass Eq now applies to data TrafficLight; after that the missing == function is declared in where clause.
+
+instance Eq TrafficLight where  
+    Red == Red = True  
+    Green == Green = True  
+    Yellow == Yellow = True  
+    _ == _ = False 
+
+
+-- example of using type class with generic type Maybe !
+
+-- another example; a type like Maybe, (with generic types!)
+data MyMaybe a = MJust a | MNothing
+
+-- Here (Eq m) => is a class constraint: 
+
+instance (Eq m) => Eq (MyMaybe m) where  
+    MJust x == MJust y = x == y  
+    MNothing == MNothing = True
+    _ == _ = False
