@@ -5,6 +5,9 @@ Sources:
  "Learn you a Haskell for great good!" http://learnyouahaskell.com/chapters  // much clearer! doesn't skip over stuff and leave it as an exercise.
 
 
+At first the notion of pure functional programming looks very strange - how is one supposed to do anything? It turns that any modification of the program state is possible if you make a new copy of the program state where the desired change is made. Now you don't have to make a global copy of all the state at each step - like when you modify a list then you can make a new list where at each step you make a copy of a single node (map function). Another example is that you can modify a tree - one node at a time; That's why functional programming like lists and recursive data structures (as well as recursion). 
+(in fact it turns out that many programming language courses at university are now teaching Haskell instead of List/Scheme).
+
 Haskell has a strong type system - it doesn't do implicit type conversion; each type conversion has to be explicit (implies some copying in the process)
 
  - ghc installation doesn't bring in the prelude source code (libraries are all in binary compiled form .dyn_hi files; here is the source https://github.com/ghc/ghc/tree/master/libraries/base ) 
