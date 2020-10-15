@@ -16,6 +16,8 @@ Haskell has a strong type system - it doesn't do implicit type conversion; each 
 
 Functional languages like lists + recursion (but these are slow because of cache misses). You can do some list packing, but that doesn't change the picture....
 
+In a way both Lisp and Haskell are going along the same tradeoff:: performance isn't of primary importance, what counts is a neat way to express thoughts. <eof-rant>
+
 Funny slogan: Haskell - freedom from state ( https://wiki.haskell.org/Haskell_logos/New_logo_ideas )
 
 - - - - - -
