@@ -6,7 +6,7 @@ Sources:
 
 
 At first the notion of pure functional programming looks very strange - how is one supposed to do anything? It turns that any modification of the program state is possible if you make a new copy of the program state where the desired change is made. Now you don't have to make a global copy of all the state at each step - like when you modify a list then you can make a new list where at each step you make a copy of a single node (map function). Another example is that you can modify a tree - one node at a time; That's why functional programming like lists and recursive data structures (as well as recursion). 
-(in fact it turns out that many programming language courses at university are now teaching Haskell instead of List/Scheme).
+(in fact it turns out that many programming language courses at university are now teaching Haskell instead of Lisp/Scheme; the ideas of map/filter/foldl are now introduced by means of Haskell ;; i guess the downside is that they they no longer teach homoiconicity and lisp type macros)
 
 Haskell has a strong type system - it doesn't do implicit type conversion; each type conversion has to be explicit (implies some copying in the process)
 
