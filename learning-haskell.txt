@@ -5,10 +5,11 @@ Sources:
  "Learn you a Haskell for great good!" http://learnyouahaskell.com/chapters  // much clearer! doesn't skip over stuff and leave it as an exercise.
 
 
-At first the notion of pure functional programming looks very strange - how is one supposed to do anything? It turns that any modification of the program state is possible if you make a new copy of the program state where the desired change is made. Now you don't have to make a global copy of all the state at each step - like when you modify a list then you can make a new list where at each step you make a copy of a single node (map function). Another example is that you can modify a tree - one node at a time; That's why functional programming like lists and recursive data structures (as well as recursion). 
-(in fact it turns out that many programming language courses at university are now teaching Haskell instead of Lisp/Scheme; the ideas of map/filter/foldl are now introduced by means of Haskell ;; i guess the downside is that they they no longer teach homoiconicity and lisp type macros)
+At first the notion of pure functional programming looks very strange - how is one supposed to do anything? It turns that any modification of the program state is possible if you make a new copy of the program state where the desired change is made. Now you don't have to make a global copy of all the state at each step - like when you modify a list then you can make a new list where at each step you make a copy of a single node (map function). Another example is that you can modify a tree - one node at a time; That's why functional programming like lists and recursive data structures (as well as recursion). For parsers you return an optional Maybe value of a pair ( <item parsed>, <remaining input> )
 
-Haskell has a strong type system - it doesn't do implicit type conversion; each type conversion has to be explicit (implies some copying in the process)
+(in fact it turns out that many programming language courses at university are now teaching Haskell instead of Lisp/Scheme; the ideas of map/filter/foldl,foldr are now introduced by means of Haskell ;; i guess the downside is that they they no longer teach homoiconicity and lisp type macros)
+
+Haskell has a strong type system - it doesn't do implicit type conversion; each type conversion has to be explicit (implies some additional copying in the process)
 
  - ghc installation doesn't bring in the prelude source code (libraries are all in binary compiled form .dyn_hi files; here is the source https://github.com/ghc/ghc/tree/master/libraries/base ) 
 
@@ -280,6 +281,7 @@ type AuthorName = String
 data BookRec =  BookTitle AuthorName ISBN 
                 deriving (Eq, Show) -- throws in 'traits' like ability to print a value and compare it for equality) (but it's optional)
 
+
 --- also can use as enumeration!
 
 data Color = Red | Yellow | Green
@@ -306,17 +308,36 @@ data Tree a = Node a (Tree a) (Tree a) | Empty
 
 -- record syntax: in addition to data it generates getter functions.
 
+type CustomerID = Int
+type CustomerName = string  
+type Address = String
+
 data Customer = Customer {      
         customerID      :: CustomerID, 
         customerName    :: String, 
         customerAddress :: Address    } 
         deriving (Show)
 
--- you don't have to write get functions like the folloging
+-- you don't have to write get functions like the following (they get generated)
 
 -- customerID :: Customer -> Int
 -- customerID(Customer id _ _) = id -- i don't care is the underscore value.
 
+-- the 'setter' function changeCustomerId gets a book as argument and returns a new book instance with modified customerid field.
+changeCustomerId book newId =  book { customerID = newId }
+
+> a = Customer 1 "a" "b"
+> a 
+  {customerID = 1, customerName = "a", customerAddress = "b"}
+> changCustomerId a 2 
+  {customerID = 2, customerName = "a", customerAddress = "b"}
+
+-- you can change several field values in one set function!
+
+changeCustomerIdAndName book newId newName = book { customerID = newId, customerName = newName }
+
+> changeCustomerIdAndName a 2 "z"
+Customer {customerID = 2, customerName = "z", customerAddress = "b"}
 
 
 -- you can defined a function by listing its cases!
@@ -326,7 +347,7 @@ myNot False = True
 -- beware: if you didn't list the second case then calling myNot False results in runtime exception "Non-exhaustive pattern"
 myNot True = False
 
-(why don't they enforce exhaustive pattern matching at compile time? not always reasonable -
+why don't they enforce exhaustive pattern matching at compile time? not always reasonable -
   not always possible (guard expressions can be complex); also functions are not always defined for all domains - like factorial only for positive ints) https://stackoverflow.com/questions/3804484/in-haskell-why-non-exhaustive-patterns-are-not-compile-time-errors ) 
 
 
@@ -475,8 +496,9 @@ newf str = undefined
 
 --- the prelude defines the following type class for comparing stuff:
 
+-- note that generic type a is the type that the interface functions of the typeclass reciving as arguments/return values.
 class  Eq a  where
-    (==), (/=) :: a -> a -> Bool
+    (==), (/=) :: a -> a -> Bool  -- Note the :: syntax - the interface function prototype is to the right of ::
     
     -- that's the default implementation; by providing the default you give he implementing class the choice to implement the other alternative choice.
     x /= y     =  not (x == y)
