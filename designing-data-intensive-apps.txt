@@ -1,0 +1,133 @@
+
+
+
+Designing Data-Intensive Applications by Martin Kleppmann
+
+(DIA) data intensive applications := the main challenge is the complexity of data that is processed
+
+recent trends (between 2000-2020)
+    - big data volumes
+    - services supposed to be highly available
+    - machines didn't become faster; but number of cpu cores increased and networks are faster -> more parallel processing.
+    - distributed build systems (thanks to infrastructure as a service - IaaS) 
+    - open source systems prevalent (noosql and message queues are often used tools)
+
+says he makes sense of the new world and describes lasting principles.
+
+Part I - fundamental ideas of data intensive apps
+
+Chapter I - analyses the relevant concerns (Reliability, Scalability, Maintainability)
+
+Reliability (continue to work even when things go wrong); 
+    expectations for software:
+    - system performs expected functions
+    - can tolerate errors in data/user mistakes or some degree of errors in software components (fault tolerance)
+    - can function under load
+    - prevent unauthorized access
+
+    Terminology:
+        fault - 'one component deviating from the spec'
+        Failure - system as a whole stops functioning.
+
+        still there are 'systemic faults' in software - when the same fault causes unrelated machines to fail 
+            examples: leap second bug in linux kernel, 
+            memory leak will cause unrelated machines to have OOM (out of memory)
+            cascading faults (one component causes others to fault, then others and others)
+            component that other component depend on fails (like DNS) - thus creating wider impact
+
+        ? how is a systemic fault different from a system failure?'
+
+        Says they like to do continuous testing by simulating faults in production systems (like the chaos monkey that kills random processes)
+
+        Also says continuous monitoring is needed to identify if the system is running correctly...
+
+
+Scalability  - ability of system to cope with increased load
+    
+    - no one fit all characteristic to describe loads; the /load parameters/ depend on a given system.
+      Load parameter examples:
+        throughput/requests per seconds (batch systems care about this)
+        response time (interactive systems care about this)
+            - here they look at the average, median and nth percentile (entry in histogram of cases per percentage of latency).
+            - service level agreements may state the required median and required 99% nth  percentile.
+            - /amazon optimize for 99% percentile for latency: customers who get a low latency are very valuable - because they do a lot of transactions/
+        latency - (duration that a requests waits to be handled) /more of an internal characteristic/ 
+        ratio of read requests vs write requests.
+        hit rate on cache.  
+        number of concurrent active users.
+
+    - example how load parameters as type of measurements change with the system: 
+        twitter has two basic use cases: 'post tweet' and 'show timeline for a user'
+            - at start showing the timeline for a users was select in tweet table join follower table (that wasn't very scalable)
+            - then they started to cache the timeline for each active user, 
+              when a person posts a message the change is pushed to the timeline objects of each active subscriberd
+                (now for writes we have the measure of updating the 'fan out' - followers timelines.)
+            - problem: some celebrities have millions of followers, so updating the timeline of each celebrity follower is too much work; (these are exempt from fan out, for their followers they must fetch celebrity tweets when building the cached timeline)
+    
+
+    - questions to ask:
+        - if you increase the load (by relevant 'load parameter') - given the same setup, how does per performance decrease?
+        - if you increase the load (by relevant 'load parameter') - How many machines do you need to add to keep the same performance?
+            / order of magnitude changes may require a change of architecture/
+
+    - types of scaling:
+        - scale up (get faster, more powerful machine) /costs a lot but is easier (you try to scale up database installations)/ (you scale up 'pets')
+        - scale out (get more machines) /adds lots of complexity on the system and may require change of architecture!/ (you scale out 'cattle')
+
+Maintainability - (most costs are after development while maintaining a system)
+    concerns
+        - Operability - measures how easy it is for operations team to keep the system running
+            For monitoring/problem solving/patching/upgrading/load planning 
+        - simplicity - how easy it is to understand the internals of the system?
+            avoiding accidental complexity (complexity arising from implementation details and not inherent in the problem (as seen by users): 
+        - evolvability - (extensibility, modifiability, plasticity)
+
+
+Chapter II - data model (modelling language and query language)
+
+        - Many apps layer one data model on top of another one (like application level data object is layered on top of infrastructure data object layered on top of the database engine, etc)
+- as usual: each layer hides complexity from the next layer on top to simplify the next layer on top (the different layers don't always fit - that creates an 'impedance mismatch')
+
+- sql: says it was successful because the programmer doesn't have to think a lot how the data is represented by DBMS (? he has when tuning for performance ?) and RDBMS do transaction isolation well!
+- nosql: became popular due to a set of requirements/options 
+    - need for greater scalability (as compared to RDBMS) - very large datasets and throughput rates required for something like twitter.
+    - lots of open source tools and solutions
+    - frustration from sql (application objects don't always map to tables) 'desire for more dynamic and expressive data models'
+    - specialized query operations (that can do without transactions)
+    - in some way it's the return of hierarchical and network models; greetings from IMS (says SQL/RDBMS won that war because application code was much more simple as compared to the alternatives; the RDBMS query optimizer hides complexity of dealing with records directly/access paths to a record)
+
+- with sql you have multiple choices for representations: non-indexed fields can be 1) in separate columns 2) in special json type field 3) as json document in TEXT field.
+- schemaless json in database is often regarded as 'decreasing the impedance mismatch' (OMG) , what it does give you is the ability to handle collections of fields/records (at the expense of having to do validations in the application code)
+- still separating common fields into separate table and linking them with foreign key (normalization) makes a lot of sense::: (? why were they bitching about sql in the first place?)
+    - for localization (can translate a table into n languages without duplicating entries)
+    - ability to query fields by value
+    - duplication of values makes ambiguity and is bad.
+- still foreign keys introduce many-to-one relations; the need for sub queries (or joins) ->  many-to-many relations are therefore difficult to handle (and are slow compared to other approaches - all due to sub queries); so we keep bitching.
+
+- in any event where xml/json/xaml fields are stored: you most often don't have a schema (that means validation task is on the application code)
+- however the irony is that lack of schema is sited as being easier to migrate data formats (as you don't have to modify/alter the data schema) - now that comes at the expense of even more messy application code...
+
+
+remaining chapters: tools and approaches
+
+DIA use building blocks (application code stitches these tools togather)
+Increasing overlap between tools & approaches (kafka message queue does store messages persistently) or reddis (data store also used as message queue)
+
+    - datastores (sql,nosql) for persistance
+    - caches to store intermediate results
+    - search indexes 
+    - stream processing - (allow messages to be sent to remote processes for asynchronous handling) - like message queues
+    - batch processing pipelines
+
+Minimizing human errors:
+    - 'design system as to minimize the opportunity for error' and that 'encourage/make it easy to do the right thing and discourage to do the wrong thing' (i guess that's the rational of the 'opinionated' business that one sees all over the place)
+        - (implies that this leads to an restrictive approach and that by overdoing it the user will be forced to work around that; so that 'the right balance is needed)
+    - isolated sandbox environment for testing and training ( "Decouple the places where people make the most mistakes from the places wherethey  can  cause  failure")
+    - make it easy to recover from human errors (fast rollback of configuration and code in production environments)
+    - testing (unit testing/integration testing/system testing )
+    - continuous monitoring of performance/throughput/response times/error rates (makes it possible to diagnose conditions)
+
+
+Part II - challenges in building distributed systems (across multiple machines) 
+
+Part III - derived datasets (no one single database)
