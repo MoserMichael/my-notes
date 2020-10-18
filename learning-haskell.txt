@@ -340,6 +340,14 @@ changeCustomerIdAndName book newId newName = book { customerID = newId, customer
 Customer {customerID = 2, customerName = "z", customerAddress = "b"}
 
 
+
+-- newtype declaration - the purpose is to create a new_$type as alias to existing type, or as a subset of its values
+-- the type declared with newtype has one field and one constructor only !
+-- (why would one use that over data? takes less space; data instance needs to track which constructor has been used to construct the instance; newtype doesn't have that overhead)
+
+
+
+
 -- you can defined a function by listing its cases!
 
 myNot False = True
@@ -395,13 +403,38 @@ myHead2 [] = Nothing
 myHead2 (x:xs) = Just x
 
 -- instead of pattern matching you can do that as if expression (if is expression that returns value - therefore it always has an else clause!)
+-- (you must do if expression in lambda functions (unnamed functions) where you can't do multiple patterns
+myHead3 x = if null x then Nothing else (Just (head x))
 
-myHeaad3 x = if null x then Nothing else (Just (head x))
+-- case expressions can do pattern matching; note the indentation - the second match expression must be nested under the first one.
+-- (similar to let expressions, but with the distinction of allowing pattern matching clauses to allow extraction of values from types!)
 
--- let defines bindings that are visible for expression after in keyword.
+test2 = case myHead3 [1,2,3] of Nothing -> print("Error empty result")
+                                Just xs -> print(xs)
+
+>test 2
+1
+
+
+-- Eiher type is similar to Maybe :: it's an alternative of two types (the Left type or the Right type)
+-- is often used to express an alternative return value of result type or an error string.
+
+safeDiv :: Float -> Float -> Either String Float
+safeDiv x 0 = Left "Divison by zero"
+safeDiv x y = Right (x / y)
+
+
+-- case expressions can do pattern matching; note the indentation - the second match expression must be nested under the first one.
+-- (similar to let expressions, but with the distinction of allowing pattern matching clauses to allow extraction of values from types!)
+
+test = case (safeDiv 3 0) of Left val -> print(val)
+                             Right msg -> print(msg)
+
+-- let expressions :: defines bindings that are visible for expression after in keyword.
 -- also value of squarex is computed only when used within expression that comes after in
+-- (if you need to do pattern matching then look at case expressions)
 
--- beware! indentation/whitespace is significant! (therefore expand tabs to spaces in the editor)
+-- beware! indentation/whitespace is significant - the second let clause must be nested under the first one! (therefore expand tabs to spaces in the editor)
 
 pythagoras x y = let squarex = x * x
                      squarey = y * y
@@ -535,3 +568,6 @@ instance (Eq m) => Eq (MyMaybe m) where
     MJust x == MJust y = x == y  
     MNothing == MNothing = True
     _ == _ = False
+
+
+
