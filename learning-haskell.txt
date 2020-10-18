@@ -47,23 +47,22 @@ ghci - the haskell repl environment. (they got it online: https://repl.it/langua
 -- can do it in prefix form.
 (+) 2 2
 
--- functions are called prefix
 add a b = a + b
 
+-- normal functions are normally called in prefix form
 add 2 3
 
--- but can be called infix with backticks (binary function)
+-- but the same function can be called in infix form with backticks (binary function)
 2 `add` 3
-
 
 -- unary operators must be enclosed in parenthesis (otherwise it can't get the precedence)
 2 * (- 3)
 
--- type Integer :: integers of arbitrary precision - no overflow (see the exponentation)
+-- type Integer :: integers of arbitrary precision - no overflow (see the following doesn't overflow!)
 2 ^ 1024
 
 -- type Int :: integer of native machine type.
--- type Char :: unicode char
+-- type Char :: Unicode char
 -- type Boolean: True False && || Comparison: == (is equal to) /= (not equal to (surprise)
 -- type Float, type Double
 
@@ -220,8 +219,13 @@ filter even [1, 2, 3, 4, 5, 6]
 map negate [1,2,3]
 > [-1, -2, -3]
 
+-- you can do that with lambda functions (unnamed functions are written in form \x -> <right hand side of function on x>)
+map (\x -> -x) [1,2,3]
+> [-1,-2,-3]
+
+
 -- ((0 + 1) + 2) + 3
--- problem with foldl: space leak : function argument in haskel are only evaluated when used; so each argument results in a internal thunk object (on heap) that is needed to do the delayed evaluation.
+-- problem with foldl: space leak : function argument in Haskell are only evaluated when used; so each argument results in a internal thunk object (on heap) that is needed to do the delayed evaluation.
 
 foldl + 0 [1, 2, 3]
 >  6
@@ -235,8 +239,9 @@ myMap f xs = foldr step [] xs
                 step x ys = f x : ys -- note that f is from the enclosing function! (capture)
 
 
--- they like to use anonymous functions with fold/map/filter
--- (\x y -> x + y) is anonymous function that adds its arguments
+-- they like to use anonymous(or lambda) functions with fold/map/filter
+-- (\x y -> x + y) is anonymous function that adds its arguments ;
+-- with anonymous functions you can't do pattern matching (must do if.. else instead) as they are limited to one clause!
 
 foldl (\x y -> x + y) 0  [1, 2, 3]
 
@@ -346,7 +351,15 @@ Customer {customerID = 2, customerName = "z", customerAddress = "b"}
 -- (why would one use that over data? takes less space; data instance needs to track which constructor has been used to construct the instance; newtype doesn't have that overhead)
 
 
+-- the newtype is declared with the single constructor
+newtype Positives = MakePositive Integer
 
+-- can have a conversion function that invokes the type constructor when applicable.
+toPositive n = if n <= 0 then error "must be positive int" else MakePositive n
+
+a = toPositive 3
+:type a
+> a :: Positives
 
 -- you can defined a function by listing its cases!
 
@@ -550,6 +563,16 @@ data TrafficLight = Red | Yellow | Green
 
 -- instance keyword says that typeclass Eq now applies to data TrafficLight; after that the missing == function is declared in where clause.
 
+-- typeclass Eq as defined in pelude
+class Eq a where  
+    (==) :: a -> a -> Bool  
+    (/=) :: a -> a -> Bool  
+    x == y = not (x /= y)  -- now this provides a default implemntation! (of one in terms of the other)
+                           -- a type that implements Eq must provide only one of them (the other one is implement in terms of that function!)
+    x /= y = not (x == y)    
+
+
+-- now: type TrafficLight implements the interface of Eq (in Haskell terminology 'is an instance of typeclass Eq')
 instance Eq TrafficLight where  
     Red == Red = True  
     Green == Green = True  
@@ -569,5 +592,23 @@ instance (Eq m) => Eq (MyMaybe m) where
     MNothing == MNothing = True
     _ == _ = False
 
+-- Functors: a functor is a typclass for doing things like 'map' (apply a function to the entries in a wrapper or container type)
 
+-- each instance of functor must implement an fmap function (map for lists is a functor; actually fmap is therefore an alias for map)
+--      fmap (\x -> -x) [1,2,3]
+--      > [-1,-2,-3]
+-- 
 
+-- the functor typeclass definition in the prelude:
+-- note that f is a type constructor (used as f a) and not a generic type like in Eq trait!
+class Functor f where  
+    fmap :: (a -> b) -> f a -> f b  
+
+-- that's how a list becomes a functor by means of the fmap function (to implement fmap that makes it a functor)
+instance Functor [] where  
+    fmap = map  
+
+-- and the Maybe type (optional type) is a functor too! you can apply a function to the content of Maybe to turn it onto a optional value on the result (if the option has a value)
+instance Functor Maybe where  
+    fmap f (Just x) = Just (f x)  
+    fmap f Nothing = Nothing  
