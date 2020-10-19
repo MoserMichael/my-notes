@@ -3,7 +3,11 @@
 Sources: 
  "Real world haskell" book. 
  "Learn you a Haskell for great good!" http://learnyouahaskell.com/chapters  // much clearer! doesn't skip over stuff and leave it as an exercise.
+ "wikibook on Haskell" https://en.wikibooks.org/wiki/Haskell
+ https://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
+https://adit.io/index.html
 
+/i often get stuck by reading on haskell; but you can always try with another book to fill in the gap; just like with Mathematics ;-)/
 
 At first the notion of pure functional programming looks very strange - how is one supposed to do anything? It turns that any modification of the program state is possible if you make a new copy of the program state where the desired change is made. Now you don't have to make a global copy of all the state at each step - like when you modify a list then you can make a new list where at each step you make a copy of a single node (map function). Another example is that you can modify a tree - one node at a time; That's why functional programming like lists and recursive data structures (as well as recursion). For parsers you return an optional Maybe value of a pair ( <item parsed>, <remaining input> )
 
@@ -266,6 +270,27 @@ sqeven = map (2^) . filter even
 
 sqeven [1,2,3,4]
 > [4, 16]
+
+
+-- other invocation techniques:
+
+-- dollar takes a function and an argument, and calls the function on the argument (big deal?)
+:type ($)
+> ($) :: (a -> b) -> a -> b
+
+-- yes! it's right associative (whereas regular function call is left associative.
+:info ($)
+> infixr 0 $
+
+-- where does that make a difference?
+
+import Data.List
+
+sort [3,2,1] ++ [-100,101,1000]
+> 1,2,3,-100,101,1000]
+
+sort $ [3,2,1] ++ [-100,101,1000]
+> [-100,1,2,3,101,1000]
 
 
 
@@ -550,12 +575,6 @@ class  Eq a  where
     x /= y     =  not (x == y)
     x == y     =  not (x /= y)
 
--- the type class Ord defines the interface for ordering relationship (it extends Eq -so a type that implements Ord must also implement Eq)
-
-class  (Eq a) => Ord a  where
-  (<), (<=), (>=), (>)  :: a -> a -> Bool
-  max, min              :: a -> a -> a
-
 
 --  a (thought up) example of using a type class:
 
@@ -563,11 +582,11 @@ data TrafficLight = Red | Yellow | Green
 
 -- instance keyword says that typeclass Eq now applies to data TrafficLight; after that the missing == function is declared in where clause.
 
--- typeclass Eq as defined in pelude
+-- typeclass Eq as defined in prelude
 class Eq a where  
     (==) :: a -> a -> Bool  
     (/=) :: a -> a -> Bool  
-    x == y = not (x /= y)  -- now this provides a default implemntation! (of one in terms of the other)
+        x == y = not (x /= y)  -- now this provides a default implemntation! (of one in terms of the other)
                            -- a type that implements Eq must provide only one of them (the other one is implement in terms of that function!)
     x /= y = not (x == y)    
 
@@ -579,9 +598,7 @@ instance Eq TrafficLight where
     Yellow == Yellow = True  
     _ == _ = False 
 
-
 -- example of using type class with generic type Maybe !
-
 -- another example; a type like Maybe, (with generic types!)
 data MyMaybe a = MJust a | MNothing
 
@@ -592,7 +609,18 @@ instance (Eq m) => Eq (MyMaybe m) where
     MNothing == MNothing = True
     _ == _ = False
 
--- Functors: a functor is a typclass for doing things like 'map' (apply a function to the entries in a wrapper or container type)
+-- the type class Ord defines the interface for ordering relationship (it extends Eq -so a type that implements Ord must also implement Eq)
+-- this is an example of class extension. The class Ord inherits all of the operations in Eq, but in addition has a (defines the requirement for a)
+-- set of comparison operations and minimum and maximum functions:
+
+
+class  (Eq a) => Ord a  where
+  (<), (<=), (>=), (>)  :: a -> a -> Bool
+  max, min              :: a -> a -> a
+
+
+-- Functors: a functor is a typeclass for doing things like 'map' (apply a function to the entries in a wrapper or container type)
+-- the Functor is 
 
 -- each instance of functor must implement an fmap function (map for lists is a functor; actually fmap is therefore an alias for map)
 --      fmap (\x -> -x) [1,2,3]
@@ -612,3 +640,52 @@ instance Functor [] where
 instance Functor Maybe where  
     fmap f (Just x) = Just (f x)  
     fmap f Nothing = Nothing  
+
+----
+---- Applicative functor typeclass (extends the Functor typeclass)
+----
+
+ :info Applicative
+class Functor f => Applicative (f :: * -> *) where
+  pure :: a -> f a
+  (<*>) :: f (a -> b) -> f a -> f b
+  (*>) :: f a -> f b -> f b
+  (<*) :: f a -> f b -> f a
+  {-# MINIMAL pure, (<*>) #-}
+  	-- Defined in ‘GHC.Base’
+
+-- this takes a function (wrapped up in a functor type) as first argument.
+-- the second argument is a value wrapped up in the function value.
+-- The <*> function does the following: unwraps the function from the functor value (argument: f (a -> b)); unwraps the argument value from the second functor parameter (f a); applies the function from the unwrapped value a (calls f a) and gets value b as result; this result value b is again wrapped in the functor (and returned as return value f b). /functor is parametrized on generic type/
+
+  (<*>) :: f (a -> b) -> f a -> f b
+ 
+
+-----
+----- Monads;
+----- these are a way to stick processing pipelines together
+----- Monads extend the Applicative type class
+-----
+
+-- a Monad is a type class (interface) derived from Applicative type class.
+
+:info Monad
+
+class Applicative m => Monad (m :: * -> *) where
+  (>>=) :: m a -> (a -> m b) -> m b
+  (>>) :: m a -> m b -> m b
+  return :: a -> m a
+  fail :: String -> m a
+  {-# MINIMAL (>>=) #-}
+  	-- Defined in ‘GHC.Base’
+
+-- an Option type is a monad; (for the next sentenced read 'wrapped value' as a generalization of 'option value')
+
+-- middle step of a pipeline: (extracts argument a from wrapped value m a. applies the second argument function (a -> m b) to get the next stage of the pipeline.
+-- (? why don't they do as in functor: second argument a -> b and the monad would wrap b into m b ?)
+
+  (>>=) :: m a -> (a -> m b) -> m b
+
+-- take a constructor function to wrap a simple value into the wrapped value.  
+  return :: a -> m a
+ 
