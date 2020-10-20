@@ -107,10 +107,13 @@ Chapter II - data model (modelling language and query language)
 - in any event where xml/json/xaml fields are stored: you most often don't have a schema (that means validation task is on the application code)
 - however the irony is that lack of schema is sited as being easier to migrate data formats (as you don't have to modify/alter the data schema) - now that comes at the expense of even more messy application code...
 
+- makes sense to keep data that is accessed together in the same xml/json document (never mind the cost to parse the whole thing)
 
-remaining chapters: tools and approaches
+- relational DBMS got a JSON field (with varying level of support) so that there is some convergence between document storage and RDBMS.
 
-DIA use building blocks (application code stitches these tools togather)
+remaining chapters: tools and approachesS
+
+DIA use building blocks (application code stitches these tools together)
 Increasing overlap between tools & approaches (kafka message queue does store messages persistently) or reddis (data store also used as message queue)
 
     - datastores (sql,nosql) for persistance
@@ -127,6 +130,32 @@ Minimizing human errors:
     - testing (unit testing/integration testing/system testing )
     - continuous monitoring of performance/throughput/response times/error rates (makes it possible to diagnose conditions)
 
+
+Chapter II - data models & query languages
+
+Query language:
+- SQL has declarative query language (because you specify desired result in the query).
+    - declarative query language is more concise than imperative query language where the query is done in code 
+    - the order of query results can come out different 
+    - declarative language is done behind the scene - the database engine could run it in parallel 
+  Map reduce query language - is imperative ql (does map/filter/fold with a lambda expression function without side effects (assignment) that applies the filtering/processing); (mongo db does that)
+    - somewhere in between with flexibility/conciseness as compared with declarative vs imperative query language
+     
+Graph databases - all data is a set of nodes and links between them; is ok when there are lots of many-to-many relationships in the data.
+    - some products like NEO4j have their own declarative data manipulation and query language.
+
+SQL and many-to-many relationships: SQL has recursive syntax since SQL 1999 - recursive common table expression (but that is not quite concise)
+
+
+Chapter III - storage 
+
+talks bout how table indexes for lookup of record in table by key field are done in RDBMS (data there is organized from a log of binary records - that makes it easier to handle crashes, also append only handles writes quickly)
+
+    - one approach is to have a hash map for lookup (?!) - over a limited range of records in the log (to keep the hash table of manageable size)
+        - still wasteful, and also you can't do range queries (only lookup of entry by key)
+    - SSTables (sorted string table) and LSM-Tree (log structured merge tree)
+    - BTree indexes
+     
 
 Part II - challenges in building distributed systems (across multiple machines) 
 
