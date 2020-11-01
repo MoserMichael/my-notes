@@ -133,30 +133,90 @@ Minimizing human errors:
 
 Chapter II - data models & query languages
 
+Application objects and database tables often need a translation layer that translates between database row between one or multiple sql tables, and the application object; for example one to many relationships have to be looked up into an application object collection. They call these difficulties 'object-relational mismatch'
+    - on the other hand: if you have a 'normalized' relational DB (meaning all common data redirected to tables without duplication ) then that has a lot of good points
+        - such as avoiding ambiguities (if you duplicate the 'location name' field then what do you do with places that have the same name?)
+        - better localization support (just translate the string table, but references to entries in string table stay the same)
+        - queries go well because of lack of ambiguity.
+
+Application objects map more neatly to json documents (or json fields in sql database) but now the json data is not validated against a schema (well, there is sql schema, but I guess document db's don't support them when this book was written).
+
+Issue of schema: Either you have the DMBS validate a schema, or the validation is in the application code while inserting/updating/querying values.
+(that makes this debate similar to static type checking (with schema) vs dynamic (runtime) type checking).
+Each approach has its good and bad things: for example lack of schema will have more flexibility as there is 'update table'/schema change overhead (also schema migration adds to system downtime (?)); (still there is more work the 'dynamic approach' overall, if you ask me) 
+
+SQL and many-to-many relationships: SQL has recursive syntax since SQL 1999 - recursive common table expression (but that is not quite concise)
+
 Query language:
 - SQL has declarative query language (because you specify desired result in the query).
     - declarative query language is more concise than imperative query language where the query is done in code 
     - the order of query results can come out different 
     - declarative language is done behind the scene - the database engine could run it in parallel 
-  Map reduce query language - is imperative ql (does map/filter/fold with a lambda expression function without side effects (assignment) that applies the filtering/processing); (mongo db does that)
+  Map reduce query language - is imperative ql (does map/filter/fold with a lambda expression function without side effects (assignment) that applies the filtering/processing); (mongo db query language looks even more declarative, but that's a disguise)
     - somewhere in between with flexibility/conciseness as compared with declarative vs imperative query language
-     
-Graph databases - all data is a set of nodes and links between them; is ok when there are lots of many-to-many relationships in the data.
+  Imperative query language:    
+    - code that loops through data and checks if item meet a coded condition.`` 
+    
+Graph databases - all data is a set of nodes and links between them; is ok when there are lots of many-to-many relationships in the data; Is supposed to work more natural rather than putting it into relational tables.
+    - graph db models (directed graph, each of them)
+        - property model : each node(vertex) and each link have a unique ID and each has a set of name   /value propertiesl 
+        - triple store model; each facts stored as 3-tuples: (subject, predicate, object) ; subject and obect are nodes(vertexes); predicate is a directed link.
     - some products like NEO4j have their own declarative data manipulation and query language.
 
-SQL and many-to-many relationships: SQL has recursive syntax since SQL 1999 - recursive common table expression (but that is not quite concise)
 
+To sum it up; NoSQL come as following models (both don't enforce a schema, typically)
+    - document db: data comes in self contained documents and relations between documents is rare (?)
+    - graph db: any node can be potentially connected with every other node.
 
-Chapter III - storage 
+Chapter III - storage & retrieval 
 
 talks bout how table indexes for lookup of record in table by key field are done in RDBMS (data there is organized from a log of binary records - that makes it easier to handle crashes, also append only handles writes quickly)
 
-    - one approach is to have a hash map for lookup (?!) - over a limited range of records in the log (to keep the hash table of manageable size)
-        - still wasteful, and also you can't do range queries (only lookup of entry by key)
-    - SSTables (sorted string table) and LSM-Tree (log structured merge tree)
-    - BTree indexes
-     
+    - one approach is to have a hash map for lookup (?!) 
+        - works for append only (log) data; map the key to the record offset.
+        - can have segments of a file (each segment with it's own hash table; so as to accommodate limited length of offset field).
+        - since date is append only: on deleting a record one has to append a 'this entry is deleted' record (also called tombstone)
+        - problems:
+            - index must fit into memory (having on disk hash index means a lot of disk seeks, that is bad).
+            - can't do range queries (only lookup of entry by key)
+    - SSTables (sorted string table) 
+        - divides the file into segments, where each segment has a set of sequential entries sorted by key valued.
+        - again need to divide a file into segments; `
+        - merging two segments into one: easy as entries are sorted; if the same key appears in both segments then take the most recent record 
+            (merging of two/several segments is done by compaction process)
+        - uses smaller in-memory index (than hash map); still need the first and last record of each segment file (then search the partial segment when found)
+        - for the batch of least recently used entries: maintain them in memory with a BTREE index (this in-memory structure is called MEMTABLE).
+        - when the MEMTABLE grows too big then write sort it and write it to disk as a segment. 
+        - Problem: need to keep a log of recently used entries; so that it can recover the last records (still in memory MEMTABLE) upon crash.
 
-Part II - challenges in building distributed systems (across multiple machines) 
+    - LSM-Tree (log structured merge tree)
+        similar to SSTables; but devides ss-tables into 'levels'. Tables from lower levels are merged into larger tables that are put into the next 'level'.
+            lots of tables are ordered into 'levels' (not clear what the difference between 'size tiered' and 'level tiered' compaction is). Each level contains tables with non-overlapping key ranges.
+              - size tiered compaction  
+              - level tiered compaction
 
-Part III - derived datasets (no one single database)
+            optimization: add in memory bloom filter to each segment (to check if entry is in key range, as there are tables in different tiers with overlapping key ranges)
+              
+
+       - BTree indexes (most often used and well known). Each node has a set of entries for keys k(1) .... k(n); and or each key k(i) it has a pointer p(i) that points to the node that will contain all keys in the range between k(i) and k(i+1)
+             - take care to pick records size so that disk block is filled properly.
+             - they make an effort to keep it balanced, but sometimes they need to split nodes (to keep it balanced). Now if it crashes then the tree is corrupted. To fix that: keep a log of pending modifications (written first before applying the change); that's a write-ahead-log (WAL); Alternatively:: copy on write - prepare a modified page with the new btree entry; then update the parent page to point to the modified page.       
+             ;                                                           
+
+    comparing btree and lsm
+    - BTree is faster for read, while LSM is faster or write (while reading LSM tree has to check multiple entries)
+    - lsm tree: entry is not bound to block size, therefore can be compressed better and does less fragmentation - that occurs when splitting btree nodes.
+    - lsm have less 'write amplification' - (that is a lsm write turns into less writes on disk on average) (? What about compaction ?)
+    - lsm compaction may not keep up with the write rate (bad) in this case reads become slow - have to check for more segments.
+    - btree performance is more uniform (less spikes) as each key is in one location.
+
+    Indexes
+        - You can have a 'clustered index' In this some columns get duplicated in the btree index - for faster read access. (now that brings all the perils of duplication and makes the dmbs transaction management more complicated)
+            CREATE INDEX IX_test ON table1(column1) INCLUDE (column2)
+        - multi-column indexes: most often they just concatenate all the index field and search over this value (that's called concatenated index); problem: you can't do range searches (combine x and y coordinates, you can't find { (x,y) |  x1 <x < x2 && y1 < y < y2 }
+                - have more specialized structures for that :: R-Tree
+
+
+ Part II - challenges in building distributed systems (across multiple machines) 
+    
+    Part III - derived datasets (no one single database)
