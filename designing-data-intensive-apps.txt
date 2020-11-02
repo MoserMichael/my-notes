@@ -189,7 +189,7 @@ talks bout how table indexes for lookup of record in table by key field are done
         - when the MEMTABLE grows too big then write sort it and write it to disk as a segment. 
         - Problem: need to keep a log of recently used entries; so that it can recover the last records (still in memory MEMTABLE) upon crash.
 
-    - LSM-Tree (log structured merge tree)
+    - LSM-Tree (log structured merge tree, very suitable for append-only data)
         similar to SSTables; but devides ss-tables into 'levels'. Tables from lower levels are merged into larger tables that are put into the next 'level'.
             lots of tables are ordered into 'levels' (not clear what the difference between 'size tiered' and 'level tiered' compaction is). Each level contains tables with non-overlapping key ranges.
               - size tiered compaction  
@@ -198,7 +198,7 @@ talks bout how table indexes for lookup of record in table by key field are done
             optimization: add in memory bloom filter to each segment (to check if entry is in key range, as there are tables in different tiers with overlapping key ranges)
               
 
-       - BTree indexes (most often used and well known). Each node has a set of entries for keys k(1) .... k(n); and or each key k(i) it has a pointer p(i) that points to the node that will contain all keys in the range between k(i) and k(i+1)
+       - BTree indexes (most often used and well known). Each node has a set of entries for keys k(1) .... k(n); and or each key k(i) it has a pointer p(i) that points to the node that will contain all keys in the range between k(i) and k(i+1). Very suitable as index for data that is updated in-place.
              - take care to pick records size so that disk block is filled properly.
              - they make an effort to keep it balanced, but sometimes they need to split nodes (to keep it balanced). Now if it crashes then the tree is corrupted. To fix that: keep a log of pending modifications (written first before applying the change); that's a write-ahead-log (WAL); Alternatively:: copy on write - prepare a modified page with the new btree entry; then update the parent page to point to the modified page.       
              ;                                                           
@@ -216,7 +216,32 @@ talks bout how table indexes for lookup of record in table by key field are done
         - multi-column indexes: most often they just concatenate all the index field and search over this value (that's called concatenated index); problem: you can't do range searches (combine x and y coordinates, you can't find { (x,y) |  x1 <x < x2 && y1 < y < y2 }
                 - have more specialized structures for that :: R-Tree
 
+    Free text search
+        - keep a reverse index: for each word (that is not a stop word like 'and' 'or') keep a list of the document id's that it appears in
+        - allow to search for synonyms of search term (or terms within given editing distance to make up for typos)
+
+    In memory database - is fast because doesn't need to encode the data in log format (for persistence)
+       says "OLTP Through the Looking Glass, and What We Found There" Stavros Harizopoulos, Daniel J. Abadi,    Michael Stonebraker 
+
+
+    OLTP (online transaction processing) vs Analytics (data warehourses).
+    OLTP - needs low latency (interactive queries) and high availability.
+
+    Analytics need to run batch queries over a wide range of records for their reports, this access pattern can interfere with transaction processing (walking over all records and accessing a few columns may add lock contention); Therefore analytics get their own separate database called 'data warehouse' (sometimes that's just a snapshot of the real OLTP database) 
+    But it can also be a separate product that is tuned to access patterns of analytic queries!
+        -- Analytics may also want to keep historic data that is not relevant to OLTP, so there is much more data to look at than with OLTP.
+
+    Data is often translated into different formats for purpose of analytics:: 
+        - fact table is a fat table for each 'fact' transaction (may have hundreds of columns!), with many foreign key references to additional tables (called dimension table)
+    Often a single analytics query is reading just a few columns from the fact table; therefore they may keep a table for a single column (column centric storage) - such a table has lots of similar information, and can often be compressed!
+        - also in column centric storage and append only write access leads to choice of LSM tree for storage.
+
+    Other concerns: like to sort rows by the column that acts as frequent dimension in queries; May have multiple such indexes! 
+    Sorting order of rows can also affect compression, as similar data is placed nearby.
+
+    Common sums are cached in special tables called 'materialized views' (now they have the headache of invalidating stuff)
+    when 'material views' go multidimensional they are called 'data cube'
 
  Part II - challenges in building distributed systems (across multiple machines) 
     
-    Part III - derived datasets (no one single database)
+        Part III - derived datasets (no one single database)
