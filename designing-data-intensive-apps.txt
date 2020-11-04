@@ -242,6 +242,37 @@ talks bout how table indexes for lookup of record in table by key field are done
     Common sums are cached in special tables called 'materialized views' (now they have the headache of invalidating stuff)
     when 'material views' go multidimensional they are called 'data cube'
 
+Chapter IV - how applications deal with schema changes
+
+- server apps do rolling upgrades (upgrade on a few nodes and see if it still works, then proceed with some more nodes,...)
+- so new and older version must deal with the same data! the requirements are
+    - backward compatibility - new versions of the system can read data written by older versions
+    - forward compatibility - older versions of the system can read data written by newer versions. (older versions must ignore data extensions of newer versions!)
+
+language specific serialization (like java.io.Serializable and python pickle) have problems:
+    - not portable between languages. (that's why they often prefer xml, json, etc)
+    - security problems as the mechanism needs to be able to instantiate arbitrary classes (and/or carry code with the data).
+    - hard to deal well with versioning 
+    - cpu intensive. (could be more efficient)
+
+problems with textual encoding (json, xml, csv)
+   - ambiguity how language implementations deal with number formats (just store numbers as strings in json)
+   - binary data needs to be translated to base64 strings (makes the data bigger by a third)
+   - most apps don't bother with schemas, as they have to serialize the data, and the parsing step is the implicit validation process.
+
+        binary encoding - binary encodings are sometimes preferred for compactness. (lots of binary encodings for json! MessagePack, BSON, BJSON, UBJSON, BISON, Smile .. there is also json-b, json-c to add to the confusion (json-b does string tables to avoid repeating field names)
+    
+
+google protocol buffers, apache thrift, apache avro - RPC libaries have the same problem of binary representation, so they too can be used for binary serialization (protobuf seems to be the most common one now)
+    - in proto definition: each message field has an integer tag and fields are optional by default. This enables forward and backward compatibility -if new fields get new tag numbers! You can change an optional field into a repeated field with protobuf, as the binary format it gets the same markers.
+
+Apache avro 
+    - they don't have tags for fields; instead each modification gets a version number; and the runtime has to find a transormation between the version of the written data and the readers schema version. One can add/remove fields with a default value - this preserves compatibility between versions
+    - avro different options of encoding the schema with written data
+        - put the schema in the header; for large files
+        - keep the version number with each record, allows to mix different versions in one file.
+        - negotiate schema version on connection setup for rpc usage.
+
  Part II - challenges in building distributed systems (across multiple machines) 
     
         Part III - derived datasets (no one single database)
