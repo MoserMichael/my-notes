@@ -170,9 +170,9 @@ To sum it up; NoSQL come as following models (both don't enforce a schema, typic
 
 Chapter III - storage & retrieval 
 
-talks bout how table indexes for lookup of record in table by key field are done in RDBMS (data there is organized from a log of binary records - that makes it easier to handle crashes, also append only handles writes quickly)
+How are indexes for lookup of record in table by key field are done in RDBMS? (data there is organized from a log of binary records - that makes it easier to handle crashes, also append only handles writes quickly)
 
-    - one approach is to have a hash map for lookup (?!) 
+    - one approach is to have a hash map for lookup (?! chained hash, not linear hash) 
         - works for append only (log) data; map the key to the record offset.
         - can have segments of a file (each segment with it's own hash table; so as to accommodate limited length of offset field).
         - since date is append only: on deleting a record one has to append a 'this entry is deleted' record (also called tombstone)
@@ -190,12 +190,12 @@ talks bout how table indexes for lookup of record in table by key field are done
         - Problem: need to keep a log of recently used entries; so that it can recover the last records (still in memory MEMTABLE) upon crash.
 
     - LSM-Tree (log structured merge tree, very suitable for append-only data)
-        similar to SSTables; but devides ss-tables into 'levels'. Tables from lower levels are merged into larger tables that are put into the next 'level'.
-            lots of tables are ordered into 'levels' (not clear what the difference between 'size tiered' and 'level tiered' compaction is). Each level contains tables with non-overlapping key ranges.
+        similar to SSTables; but has multiple ss-tables grouped into 'levels'. Tables from lower levels are merged into larger tables that are put into the next 'level'.
+            Lots of tables are ordered into 'levels' (not clear what the difference between 'size tiered' and 'level tiered' compaction is). Each level contains tables with non-overlapping key ranges.
               - size tiered compaction  
               - level tiered compaction
 
-            optimization: add in memory bloom filter to each segment (to check if entry is in key range, as there are tables in different tiers with overlapping key ranges)
+            Optimization: add in memory bloom filter to each segment (to check if entry is in key range, as there are tables in different tiers with overlapping key ranges)
               
 
        - BTree indexes (most often used and well known). Each node has a set of entries for keys k(1) .... k(n); and or each key k(i) it has a pointer p(i) that points to the node that will contain all keys in the range between k(i) and k(i+1). Very suitable as index for data that is updated in-place.
@@ -203,7 +203,7 @@ talks bout how table indexes for lookup of record in table by key field are done
              - they make an effort to keep it balanced, but sometimes they need to split nodes (to keep it balanced). Now if it crashes then the tree is corrupted. To fix that: keep a log of pending modifications (written first before applying the change); that's a write-ahead-log (WAL); Alternatively:: copy on write - prepare a modified page with the new btree entry; then update the parent page to point to the modified page.       
              ;                                                           
 
-    comparing btree and lsm
+    Comparing btree and lsm
     - BTree is faster for read, while LSM is faster or write (while reading LSM tree has to check multiple entries)
     - lsm tree: entry is not bound to block size, therefore can be compressed better and does less fragmentation - that occurs when splitting btree nodes.
     - lsm have less 'write amplification' - (that is a lsm write turns into less writes on disk on average) (? What about compaction ?)
@@ -264,15 +264,48 @@ problems with textual encoding (json, xml, csv)
     
 
 google protocol buffers, apache thrift, apache avro - RPC libaries have the same problem of binary representation, so they too can be used for binary serialization (protobuf seems to be the most common one now)
-    - in proto definition: each message field has an integer tag and fields are optional by default. This enables forward and backward compatibility -if new fields get new tag numbers! You can change an optional field into a repeated field with protobuf, as the binary format it gets the same markers.
+    - in proto definition: each message field has an integer tag (assigned by author of proto file) and fields are optional by default. 
+    - integer tag value of fields enables forward and backward compatibility - if new fields get new tag numbers (old code just ignores data fields with tags it doesn't know!) You can change an optional field into a repeated field with protobuf, as the binary format it gets the same markers.
 
 Apache avro 
-    - they don't have tags for fields; instead each modification gets a version number; and the runtime has to find a transormation between the version of the written data and the readers schema version. One can add/remove fields with a default value - this preserves compatibility between versions
-    - avro different options of encoding the schema with written data
+    - they don't have tags for fields; instead each modification gets a version number; and the runtime has to find a transformation between the version of the written data and the readers schema version. One can add/remove fields with a default value - this preserves compatibility between versions
+    - avro has different options of encoding the schema with written data
         - put the schema in the header; for large files
         - keep the version number with each record, allows to mix different versions in one file.
         - negotiate schema version on connection setup for rpc usage.
+     - says avro approach is better for dynamically generated schemas; when a new version of the schema is generated: in protobuf you would need to update integer tags and take care that new fields get new tag numbers.
 
- Part II - challenges in building distributed systems (across multiple machines) 
-    
-        Part III - derived datasets (no one single database)
+Databases and backward compatibility.
+    - database may have had schema change, but old code may access the DB with new schema! 
+        - DB client is backward/forward compatible; 
+        - but application now get the following semantic problem: Old client reads new schema that got fields added. New field gets ignores; now old code updates the record - do the added fields of modified record get null values? If the app just copies the DB fields into an application object and then does the update query based on app object data then you have a problem.
+
+database evolution: when a db table new fields, then dbms avoids to rewrite its table (costs time); instead it has to deal with rows written when the old schema was active! Now you have a schema migration problem - linked in Espresso DB uses Avro to address this problem.
+
+Web services 
+ - like to use http based mechanism - SOAP (has fallen out of favor) or REST (use OpenAPI/swagger for interface definition) ; but these are slower than RPC.
+ - rpc call is very different from calling local function; no use to try to make it look the same because :: Network timeout - you don't know if server crashed - there is no equivalent concept in local function calls. What happens when request or response get lost due to Network problems? is a failed request resent? Network can have very different latencies because congestion. Client and server in different language - don't have the same number primitives.
+ - says REST is popular because 'it doesn't try to look too much like RPC; REST advantages: you can test it easily with curl, don't have to deal with code generation; easy to experiment and there are lots of tools around
+ - RPC is evolving: newer version of RPC care about schema compatibility; in REST addition of parameters & return values are seen as non breaking changes. gRPC has streams (for sending/receiving sets of objects)
+ - RPC advantage: it is much faster then REST (no text parsing, which is slow)
+ - handling versioning in the API: REST may have version as part of URL or HTTP accept header. With RPC you may have admin interface or version as param.
+ - says REST is preferred for talking between different organizations (therefore REST interface need to preserve backw. compatibility longer); RPC is preferred for talking within the same organization.
+
+Message queues - asynchronous and, one way communication (client publishes message to queue/topic, server is reading from that queue/topic), isn't waiting for response). more flexible than RPC:
+- server can be down temporarily, server crash does not lead to client timeout (the queue is a buffer) therefore messages don't get lost in transit.
+- client needs to know queue topic, don't need to know the server address. There is more decoupling: client publishes message.
+- unlike RPC: the message is just a sequence of bytes; no provisions for versioning - that's the problem of the application. /typically more tight coupling of clients vd servers version is assumed/ 
+- for rolling upgrades: apps have to choose something like gRPC messsages as data instead of default format.
+
+Part II - challenges in building distributed systems (across multiple machines) 
+  
+Vertical scaling  - get server with more CPU/RAM (costs go up non-linearly) - fault tolerance suffers (everything is down with the big server). vertical scaling for data: Shared disks accessed by many machines - problems with locks.
+
+Horizonal scaling - get more machines (assumes shared nothing between components) - problem: more work with the software
+
+- Data Replication (keep copies of the same data on different machines)
+
+- Data partitioning  (different subsets of the data kept on different machines)
+
+
+Part III - derived datasets (no one single database)
