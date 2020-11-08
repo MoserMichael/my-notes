@@ -1,18 +1,21 @@
 
 
+This book gives you a good overview over a wide range of topics in data processing/web apps; if one sits in his own niche then chances are that you don't know any other areas too well; this book gives an wider overview of problems that have to be dealt with across the stack; therefore you get a better grasp on the architecture solutions that cloud based stuff is adopting.
+
+----
 
 Designing Data-Intensive Applications by Martin Kleppmann
 
 (DIA) data intensive applications := the main challenge is the complexity of data that is processed
 
-recent trends (between 2000-2020)
+Recent trends (between 2000-2020)
     - big data volumes
     - services supposed to be highly available
     - machines didn't become faster; but number of cpu cores increased and networks are faster -> more parallel processing.
     - distributed build systems (thanks to infrastructure as a service - IaaS) 
     - open source systems prevalent (noosql and message queues are often used tools)
 
-says he makes sense of the new world and describes lasting principles.
+Says he makes sense of the new world and describes lasting principles.
 
 Part I - fundamental ideas of data intensive apps
 
@@ -296,7 +299,7 @@ Message queues - asynchronous and, one way communication (client publishes messa
 - client needs to know queue topic, don't need to know the server address. There is more decoupling: client publishes message.
 - unlike RPC: the message is just a sequence of bytes; no provisions for versioning - that's the problem of the application. /typically more tight coupling of clients vd servers version is assumed/ 
 - for rolling upgrades: apps have to choose something like gRPC messsages as data instead of default format.
-
+a
 Part II - challenges in building distributed systems (across multiple machines) 
   
 Vertical scaling  - get server with more CPU/RAM (costs go up non-linearly) - fault tolerance suffers (everything is down with the big server). vertical scaling for data: Shared disks accessed by many machines - problems with locks.
@@ -309,3 +312,76 @@ Horizonal scaling - get more machines (assumes shared nothing between components
 
 
 Part III - derived datasets (no one single database)
+
+
+- leader based replication (active/passed based replication; master-slave replication) :: one instance is instance write mode, it can store data (aka. master, leader, primary) all other instances are read-only and will receive the change log for the data and change their data accordingly (read instances also known as: read replicas, slaves, secondaries, hot standbys.
+
+- synchronous replication: server processes a write request; the writeable instance acknowledges the write to the client only after all readonly instances have acknowledged that they received and processed the replication message.`Common setup: changes are replicated synchronoysly to one readonly instance (that one is in hot standby to take up when the current writable instance fails); all others are replicated asynchronously (this way request latency is kept in limits for the client).
+- if all replication is done asynchronously then there is a potential problem with data loss, says they still do it it keep latency down (if many readonly instances or instances are far away)
+
+New readOnly instance setup: need to get a full snapshot from the leader; then ask the leader to send all the diffs since that snapshot, process them and go online after that.
+- similar recovery step needed if a readonly instance is taken offline for some time (for maintenance).
+
+- upon write instance/leader failure the cluster needs to elect a new leader.
+    - determine that leader failed (the pings time out, is not failsafe)
+    - elect new leader (either by consensus or a controller node apoints it; now if there is one instance only that is replicated synchronously then that would be the candidate in both cases)
+
+Shit can happen during replication (complicated failure scenarios during failover)
+- with async. replication - a instance without full backup is elected, then the old leader comes back, what happens with newer data in old leader?
+- a replica without full data becomes leader; now some of the assigned primary keys get reused. What happens if these keys are being referred to by outside systems?
+- at the same time two nodes conclude they are the leader - can lead to data corruption as both masters are assigning primary keys.
+- too short leader timeouts can be due to congestion/load and can lead to these failure cases; too long timeouts can lead to long delays :: what is the right leader timeout?
+
+Mechanisms of replication
+- Statement based replication: the current leader can send sql statements to the followers; problem: SQL statements that call random(), rely on current DB state, etc will end up having different results in each follower.
+0 
+- WAL (write-ahead log shipment) :: The SQL DB maintains a write log of all transactions, send that to the follower. Problem: the write log is tied to the db version; you need the master/follower instances to be of the same version
+- Logical row based replication :: some DB's have a logical row log for replication purposes that is upward compatible.
+- trigger based replication :: (obscure, used when you only need to replicate a subset of the data) have a DB stored procedure trigger run when a table changes, make it record changes in a special table, and have that table replicated.
+
+- replication for performance reasons (read scaling): you end up with many asynchronously replicated followers; each one with out-of-date data. Now a client can get out of date data. Welcome to the world of 'eventual consistency' (many applications don't need transactions) Now there are several levels of consistency and one has to consider what kind of service is acceptable:
+
+    Problem: Application reads its own writes; if subsequent reads come from any replicated follower they may return old data.
+    Read after write consistency := requirement to read your own write consistently. How to do that?
+     - probably you need this guarantee only for your own data (like the same users profile) - as that's the data he has changed himself previously; Always read that data from the leader; read other data from any other replica
+     - alternative: track time of record update, if record is too old then re-read from the leader.
+     - check if replica is up to date by reading your own most recent modification; if you don't get it then either wait or move to another replica.
+
+
+    cross device read after write consistency := can get your previously written data from any client machine.
+     - now the tricks with checking your own last writes don't work.
+     - need to route all requests to the same datacenter (us-east) Harder to do that with mobile devices.
+     
+    Monotonic read ::= guarantee that a user will not see older data on a later read (can happen if read 2 goes to a replica with older data). Solve this by routing DB reads to the same replica for the same user.
+
+    Consistent prefix write := if a sequence of records have been written, then every reader gets the records by their correct sequence.
+
+
+Multi-leader replication (master-master, active-active) :=  multiple writable nodes in the system.
+
+Why would you do that?
+- if you have multiple geographic data centers; each data center has a leader that gets the writes for it's region; now they need to sync in order to work on the same global dataset. Now conflicts can get complex if the same entries get overwritten in multiple data centers.
+- client that allow offline operations; when offline each client is its own DB; when they get back online they need to sync with the global DB.
+- collaborative editing: you can't have a lock on globals state, instead each client has to sync with the global state.
+
+Problem: conflicts must be resolved - two writes of the same data succeeded on two different masters; during replication you find that they are in conlict (modify the same data differently)
+    - one can avoid it: writes to data are routed to the leader that is in the region that owns the data of a user
+    - resolve conflicts on read: store both conflicting versions, when the user reads his data than prompt him to resolve the conflict.
+    - have some mechanism that  resolves conflicts automatically (somehow) when they are identified during replication.
+        - either application level script
+        - conlict-free datatypes (says still in research); or Mergeable persistent data structures (keep changelog and allow three-way merge as in git); or operational transformation (what googledocs does for conflict resolution on simultaneous editing)
+
+
+Topologies for multi-leader replication
+   - circular - each change has tag of origin node, is propagated to the next in the ring; when it get back to the origin node it is no longer passed on. Problem: one node falls off the ring (would have to reconfigure and skip the failed node)
+   - all-to-all replication - problem: different speed of links leads to wrong causality of events. The replication protocol would have to add versioning and figure this out (says not always good support for that, be careful)
+   - star, all-to-all.
+
+Leaderless replication - every instance can do writes, every instance replicates with each other. Used with NoSQL (DyanmoDB, Cassandra, etc)
+  - each record has a version sequence number that is always incremented; You have to read from several instances and take the result with highest sequence number (great, what do they do when a stale instance gets a write and it becomes inconsistent?)
+  - read repair :: client does multiple reads to several instances (variable r); one of them returns stale data; now the client writes the correct data to that instance.
+  - anti entropy process :: the server has a background process that replicates from other instances.
+  - writes :: options: 1) client sends write to multiple instances (variable w), it succeeds if a quorum returns ACK. 2) client writes to one instance and that instance has to replicate the write to the other instance.
+  - quorum read: if r + w > numer-of-total-instances then you are sure that the next read will get the right data
+  - shit happens when w is low.
+   
