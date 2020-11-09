@@ -366,11 +366,19 @@ Why would you do that?
 
 Problem: conflicts must be resolved - two writes of the same data succeeded on two different masters; during replication you find that they are in conlict (modify the same data differently)
     - one can avoid it: writes to data are routed to the leader that is in the region that owns the data of a user
-    - resolve conflicts on read: store both conflicting versions, when the user reads his data than prompt him to resolve the conflict.
-    - have some mechanism that  resolves conflicts automatically (somehow) when they are identified during replication.
-        - either application level script
-        - conlict-free datatypes (says still in research); or Mergeable persistent data structures (keep changelog and allow three-way merge as in git); or operational transformation (what googledocs does for conflict resolution on simultaneous editing)
-
+    - alternative to avoidance - detect & resolve conflicts
+        - detecting conflicts: Kinds of conflicts:
+            - two concurrent writes change the same record; now have two versions of them
+            - application specific conflicts: scheduling the same room for two different groups at the same time (more difficult to spot: depends on known state at scheduling state)
+        - resolving conflicts:    
+            - each write gets a time stamp, upon conflict the write with highest conflict wins.
+            - have both results (possible in collaborative editing apps)
+            - have a data structure with all versions, let the user later resolve them (by prompting him in UI)
+            - resolve conflicts on read: store both conflicting versions, when the user reads his data than prompt him to resolve the conflict.
+            - have some mechanism that resolves conflicts automatically (somehow) 
+                - when they are identified during replication: either application level script; 
+                - when a conflicting values is used: let the user choose in prompt (need to preserve all conflicting versions for that
+                - conlict-free datatypes (says still in research); or Mergeable persistent data structures (keep changelog and allow three-way merge as in git); or operational transformation (what googledocs does for conflict resolution on simultaneous editing)
 
 Topologies for multi-leader replication
    - circular - each change has tag of origin node, is propagated to the next in the ring; when it get back to the origin node it is no longer passed on. Problem: one node falls off the ring (would have to reconfigure and skip the failed node)
@@ -378,10 +386,16 @@ Topologies for multi-leader replication
    - star, all-to-all.
 
 Leaderless replication - every instance can do writes, every instance replicates with each other. Used with NoSQL (DyanmoDB, Cassandra, etc)
-  - each record has a version sequence number that is always incremented; You have to read from several instances and take the result with highest sequence number (great, what do they do when a stale instance gets a write and it becomes inconsistent?)
-  - read repair :: client does multiple reads to several instances (variable r); one of them returns stale data; now the client writes the correct data to that instance.
+  - conflict resulution strategies:
+      - each record has a version sequence number that is always incremented; You have to read from several instances and take the result with highest sequence number (great, what do they do when a stale instance gets a write and it becomes inconsistent?)
+ 
+  - simultaneous writes :: conflict resolved as follows - client detects that read returns stale data; now the client writes the correct data back to that instance. 
+      - client writes to all leaders concurrently; succeeds if a quorum size (variable w) returns success..
+      - read repair :: read from all leaders and (variable r) of them return the same data 
+      - quorum reads/writes::: if r + w > numer-of-total-instances then you are sure that the next read will get the right data
+            - n=3 w=2 r=2 - tolerate one node down
+            - n=5 w=3 r=3 - tolerate two node down
+      - shit can happen when w is low (when errors accumulate)
   - anti entropy process :: the server has a background process that replicates from other instances.
-  - writes :: options: 1) client sends write to multiple instances (variable w), it succeeds if a quorum returns ACK. 2) client writes to one instance and that instance has to replicate the write to the other instance.
-  - quorum read: if r + w > numer-of-total-instances then you are sure that the next read will get the right data
-  - shit happens when w is low.
-   
+  - avoid concurrent writes :: client writes to one instance and that instance has to replicate the write to the other instance.
+  
