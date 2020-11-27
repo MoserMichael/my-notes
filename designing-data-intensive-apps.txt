@@ -2,6 +2,10 @@
 
 This book gives you a good overview over a wide range of topics in data processing/web apps; if one sits in his own niche then chances are that you don't know any other areas too well; this book gives an wider overview of problems that have to be dealt with across the stack; therefore you get a better grasp on the architecture solutions that cloud based stuff is adopting.
 
+(i think that the ideology of microservices tries to disguise the complexities of distributed systems.  
+ it was good at selling the idea (look, every component is simple!) but the marketing material doesn't mention the insane complexity of distributed systems.
+ So better get some idea of what is going on, because that's how they do things now, a big picture overview get important))
+
 ----
 
 Designing Data-Intensive Applications by Martin Kleppmann
@@ -267,7 +271,9 @@ problems with textual encoding (json, xml, csv)
     
 
 google protocol buffers, apache thrift, apache avro - RPC libaries have the same problem of binary representation, so they too can be used for binary serialization (protobuf seems to be the most common one now)
-    - in proto definition: each message field has an integer tag (assigned by author of proto file) and fields are optional by default. 
+    -
+
+    in proto definition: each message field has an integer tag (assigned by author of proto file) and fields are optional by default. 
     - integer tag value of fields enables forward and backward compatibility - if new fields get new tag numbers (old code just ignores data fields with tags it doesn't know!) You can change an optional field into a repeated field with protobuf, as the binary format it gets the same markers.
 
 Apache avro 
@@ -390,12 +396,47 @@ Leaderless replication - every instance can do writes, every instance replicates
       - each record has a version sequence number that is always incremented; You have to read from several instances and take the result with highest sequence number (great, what do they do when a stale instance gets a write and it becomes inconsistent?)
  
   - simultaneous writes :: conflict resolved as follows - client detects that read returns stale data; now the client writes the correct data back to that instance. 
-      - client writes to all leaders concurrently; succeeds if a quorum size (variable w) returns success..
+      - client reads and writes to all leaders concurrently; but waits/blocks until |w| writes returns success. waits/blocks until |r| reads return success. 
       - read repair :: read from all leaders and (variable r) of them return the same data 
       - quorum reads/writes::: if r + w > numer-of-total-instances then you are sure that the next read will get the right data
             - n=3 w=2 r=2 - tolerate one node down
             - n=5 w=3 r=3 - tolerate two node down
+            - r=w=n/2 can tolerate n/2 failures
       - shit can happen when w is low (when errors accumulate)
   - anti entropy process :: the server has a background process that replicates from other instances.
   - avoid concurrent writes :: client writes to one instance and that instance has to replicate the write to the other instance.
-  
+  (lost him somewhere here)
+
+
+Partitioning of data into disjoint datasets (for scalability)
+
+- used with replication (leader-follower replication, where the leader is writable and followers can only do read requests)
+    - on each node there may be multiple partitions, but only one of them is a writable partition.
+- how to partition?
+    - assign continuous key range to a partition. (like encyclopedia divides into volume partition based on article name key)
+    - within each key range: keep the entries sorted (to allow for range queries)
+    - problem: the distribution of data per key may have an uneven distribution (example: time series database (time of measurement is key)  with lots of measurements per specific period,)
+        - can 'fix' the problem by adding additional info to the key (like the sensor name)
+    - partition by hash:    parition-index = hash(key-value) % NUMBER_OF_PARTITIONS 
+        - problem: now you can't do range queries, as entries with adjacent key values end up in different partitions.
+    - alternative: cassandra compound keys: use one or more keys and concatenate them to get 'compound key' take some higher order bits of that key and use that to compute the partition, rest of the key is a index in sorted data structure (ss-tables)   
+        - preserves more locality for range queries.
+
+Problem: can still get uneven load in partitions (like a celebrity can generate a lot of traffic in soc. media site -> uneven load)
+    - can have special treatment for specific high load keys.
+
+secondary indexes: (have them in relation databases, or in elasticsearch); often a sec. index doesn't identify a single record, but a set of records (like index of articles per word in article); 
+    - partition by documents: the secondary index is separate for each partition. (covers entries find in that partition only).
+        - now queries by secondary index need to be done separately for each partition, and results need to be merged. That is expensive!
+        - writes kept simple: sec. index update changes one partition only.
+   - partition by terms: keep a single secondary index that points to records in all partitions. (need to partition the index!)
+        - positive side; read queries on secondary index don't need to be sent to all partitions for parallel execution.
+        - negative side; writes are more complicated, they cover multiple partitions.
+
+allow rebalancing of partitions;    
+    - want to move as few records as required, rebalancing may not lead to downtime. rebalancing should result in a more evenly distributed set.
+    - solution: keep hash(key) % NUM_PARTITIONS schema, but have much more partitions then storage nodes; each node has a range of partitions, when needed you can move a view to a different node.
+
+    - rebalancing with dynamic partitions := keys within a partition are sorted, so split a partition when it grows beyond threhold size. (easy to split).
+        - problem; have only one partition while the database is small (to fix that can pre-partition a initial set of partitions)
+
