@@ -67,7 +67,7 @@ Scalability  - ability of system to cope with increased load
         twitter has two basic use cases: 'post tweet' and 'show timeline for a user'
             - at start showing the timeline for a users was select in tweet table join follower table (that wasn't very scalable)
             - then they started to cache the timeline for each active user, 
-              when a person posts a message the change is pushed to the timeline objects of each active subscriberd
+              when a person posts a message the change is pushed to the timeline objects of each active subscriber
                 (now for writes we have the measure of updating the 'fan out' - followers timelines.)
             - problem: some celebrities have millions of followers, so updating the timeline of each celebrity follower is too much work; (these are exempt from fan out, for their followers they must fetch celebrity tweets when building the cached timeline)
     
@@ -437,6 +437,140 @@ allow rebalancing of partitions;
     - want to move as few records as required, rebalancing may not lead to downtime. rebalancing should result in a more evenly distributed set.
     - solution: keep hash(key) % NUM_PARTITIONS schema, but have much more partitions then storage nodes; each node has a range of partitions, when needed you can move a view to a different node.
 
-    - rebalancing with dynamic partitions := keys within a partition are sorted, so split a partition when it grows beyond threhold size. (easy to split).
+    - rebalancing with dynamic partitions := keys within a partition are sorted, so split a partition when it grows beyond threshold size. (easy to split).
         - problem; have only one partition while the database is small (to fix that can pre-partition a initial set of partitions)
+        - can have fixed number of partitions per node; when adding a node you choose a set of existing partitions and split them - keeps more or less even distribution as dataset grows.
 
+how is repartitioning done?
+    - fully manual
+    - fully automated, problem: unpredictable when rebalancing is going to take place, now rebalancing comes with cost (like rerouting requests, and moving data) these may come at a peak usage moment when it could lead to system overload. (like when automatic overload detection leads to rebalancing, thus making the problem worse)
+    - make suggestion to the admin and have him approve the plan (semi automatic); good to have a human in the loop who sees the global picture.
+
+reading with partitions
+    - one can poll all nodes
+    - request via a proxy that has partition layout and knows where to forward.
+    - each client has the full partitioning info and knows which node to ask.
+how to sync all clients/proxies with the correct partition layout? Can use special naming service to keep partition info (Apache zookeeper)
+Cassandra uses a gossip protocol to pass this info around.Ga
+
+
+Transactions
+    
+transaction/two phase commit -  makes sure  that the transaction either succeeds fully or fails.
+Keep the data save from application failures, therefore keep application program simple (no need to manually roll back data changes when error occurs);;     
+
+- need to know when transactions are required, as they have a lot of overhead. Says nosql databases came with partitioning & replication by default; and an ideology that says that transactions don't go well with scalable, performant, reliable systems.
+
+
+ACID
+    Atomicityv = the property of having transactions; each transaction either succeeds or fails.
+        - need to check what happens with larger (multi kilobyte) single object writes on network or power failures. (partially failed writes shouldn't be committed)
+    Consistency = transactions maintain the DB in valid state
+        - maintain the integrity of constraSints (like foreign key references), 
+        - if application define triggers: these are  stored procedures run as event handlers to check for invariants, these are maintained
+        - cascades of transactions: if a sub-transaction out of a series of transaction fails, then the whole complex transaction fails.
+    Isolation - handles concurrency; transactions can run in parallel, and result in the same state as consecutive transactions. (shouldn't see incomplete transaction data)
+        - lots of ambiguity around this concept (!) 
+    Durability - if data was committed: data doesn't disappear on system failure.
+        - means a committed transaction has been written to persistent log (so that it can be recovered if node failed suddenly)
+        - with replication: adds hat the transaction log has been written to several nodes.
+        
+
+Isolation in more detail:
+    serializable isolation - transactions run in parallel just the same as serially (rare transaction guarantee, is very costly); there are weaker kinds of guarantees:
+        (often done via two phase locking)
+
+a more basic level of guarantee (more primitive than 'serializable isolation')
+    read committed - "No dirty reads" := reads can only get data that has been committed by earlier transactions. 
+    write committed - "No dirty writes' := writes change data that has been committed by earlier transactions.
+        'serializable isolation' is the default isolation level on most DB engines (!)
+        'read skew/non-rrepeatable read' Problem: lost updates; if a transaction reads a value, modifies it and write it back then 'serializable isolation' has a problem with two concurrent transaction that read the same value: if the first transaction commits first, then the second transaction is based on the old value - and will overwrite it.
+
+    'serializable isolation' is implemented with write locks on each row. Transaction that wants to write a row has to get the lock; if the transaction change the row then a shadow value is set on the row; the shadow value becomes the row value - once the transaction is committed.
+
+---
+    'snapshot isolation' ==  each transaction (A) reads data values that were committed by transactions before the start of this transaction (A)
+    implemented similar to 'serializable isolation' write lock + keep multiple values of of the same row modified by previous transactions (called MVCC - multi version concurrency control)
+    (this to keep reads running, don't want to block reads on a lock)
+    in PSQL each transaction gets a monotonous increasing id; each version of the row value is tagged with the transaction id that changed it; a transaction can not read a version of the row with a smaller transaction id then the current one.
+  - how trsnaction id is used:
+        - have a list of ongoing transaction ids; - ignore writes from any id in the list
+        - ignore writes from aborted transactions (those writes are not cleaned up immediately)
+        - ignore writes from later transactions.
+    
+    how do indexes work with MVCC?
+        - index entry points to all versions of an object, again only the relevant version for the current transaction is picked up - needs garbage collection of old versions.
+          tricky details: in PSQL they avoid changing the index for two objects concurrently that fit the same page (how?)
+          alternative (Couchdb) : do copy on write if two objects in the same page are changed by two concurrent transactions.
+
+    Problem: the same concept of 'repeatable reads' has different names in different system (and has slightly different meaning between systems!), that's because is outside of the standard.     Oracle - calls it serializable
+    PSQL and MYSQL - call it 'repeatable read'
+        
+    
+    Now snaphot isolation makes read only transaction in the presence of other concurrent transactions possible; You still have the 'lost update problem' if transaction a reads a value, computes the changed value and then writes it back.
+    
+    To avoid that sql has atomic transactions that are implemented by obtaining exclusive lock on a single record (this is called cursor stability) 
+    /limited in scope because it works on single table record/
+        UPDATE counters SET value = value + 1 WHERE key = 'foo';
+    Implies that you need to check if object relational frameworks uses this feature - they may do the read and write separately and that is dangerous.
+
+    still that doesn't solve problems that must change multiple records atomically, here you can lock multiple records!
+            BEGIN TRANSACTION;
+            SELECT * FROM figures
+             WHERE name = 'robot' AND game_id = 222
+             -- FOR UPDATE makes exclusive lock on all records returned by the query!
+             FOR UPDATE;
+            -- Check whether move is valid, then update the position
+            -- of the piece that was returned by the previous SELECT.
+            UPDATE figures SET position = 'c4' WHERE id = 1234;
+            COMMIT;
+        
+    alternative to locking; the DB may have the feature of detecting lost updates, if that occurs then the transaction that lost an update is aborted.
+    now he says oracle has that (serializable transaction level) and MS-SQL server has that (serializable transaction level)
+
+    Some DB's have 'atomic' compare and set operation on a single record. 
+            UPDATE wiki_pages SET content = 'new content'
+            WHERE id = 1234 AND content = 'old content';
+    even that has to be checked against the fine print: doesn't work if it may read from old snapshots.    
+
+    if the DB is replicated and allows multiple leaders that may change different replicas concurrently     
+    then there are problems:
+        - conflicting versions must be reconciled. (no big deal for increment only counters or sets - conflict resolution just takes both values)
+        - problem with values that are set: last write wins is often the default, and that gives problems. (so here compare and et and cursor stability don't work)
+
+    Write skews and phantoms
+    Write skews = need to select on multiple rows (A), then based on result make a change ( . Now a transaction can commit  between A and B  and change the precondtion, 
+        at least one doctor must be on a shift.
+        fix; in the select, lock all matched records (for update)
+                BEGIN TRANSACTION;
+                SELECT * FROM doctors
+                 WHERE on_call = true
+                 AND shift_id = 1234 FOR UPDATE;
+                UPDATE doctors
+                 SET on_call = false
+                 WHERE name = 'Alice'
+                 AND shift_id = 1234;
+                COMMIT;
+        example; booking room system, can't book the same room twice. problem: can't do the lock the select entry trick, there is nothing to lock.
+        Solution: introduce an entry to lock (introduce a time slot table table, so that time slots can be locked in the select query) 
+                this trick is called 'Materializing conflicts'
+
+
+    Serializable transaction isolation level :- db guarantees that concurrent transaction results will be the same as if the transactions are run one after the other. (strongest guarantee)
+    How is this implemented?    
+        - run the transactions by one thread, serially
+            got into favor around 2007 - when RAM got cheap, so the whole DB can be kept in ram (?but you must write the log to disk), also online transactions are short so that sometimes one thread can do.
+             long analytic queries are read-only and can run elsewhere with snapshot isolation
+             with this approach they use stored procedures (program run inside the dB) to minimize communication latency between db and application server.
+             modern DB is not limited to PL/SQL language (they can use java or groovy, etc); still you need to profile resource usage by the queries involved.
+             if data is partitioned; need to lock all partitions involved (can get very slow) (? but he says everything fits into RAM
+        - two phase locking (provides serializable isolation, as readers have to wait too) 
+            - if a transaction A has read a record, then this record can't be changed by a different transaction (it has to wait till A has completed or committed)
+            - if a transaction A wrote to a record, then to read that record other transactions have to wait until A commits or aborts. 
+            
+            Is implemented by having a reader-writer lock on every record (!) when reading a record the transactions acquires read lock, when writing gets a write lock. 
+            DB needs to detect deadlocks (are very frequent here)
+            two phase locking is used as a last resort, as performance tanks; also latencies are hard to predict (bad for online systems)
+
+        - optimistic concurrency control
+                        
