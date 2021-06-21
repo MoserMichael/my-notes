@@ -3,6 +3,11 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago ...)
 
 
+
+---21/06/21 16:55:34----------------------
+
+stackoverflow search got much better. Once upon a time google search was preferable, now it makes sense to use stackoverflow search...
+
 ---21/06/21 16:30:32----------------------
 
 show dependecies with gradle

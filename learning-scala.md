@@ -333,6 +333,13 @@ have functions:
 
     You can have nested functions in scala (one advantage is to not pollute the namespace with internal functions - make them nested)
 
+    
+    space syntax function call: https://alvinalexander.com/scala/scala-methods-dots-spaces-single-one-parameter/
+        pizza.add(cheese)  // common way of calling a method; dot syntax.
+
+        pizza add cheese   // this goes in scala; space syntax. Supposed to be better for embedded domain specific languages (but now you need IntelliJ for reading code, nothing is free)
+    
+
 strings
 
 string interpolation; quote expressions in string.
@@ -1621,8 +1628,8 @@ For comprehension / stream programming in scala
 
     // a data stream that gives you all users in their twenties.
     val twentySomethings =
-      for (user <- userBase if user.age >=20 && user.age < 30)
-      yield user.name // adds this to a List[string] - that's the return value of the for expression !
+      for (user <- userBase if user.age >=20 && user.age < 30) // filters the userBase collection for users in their twenties.
+      yield user.name // adds this to a List[string] - that's the return value of the for expression ! a kind of map
 
     // use the stream as a source.
     twentySomethings.foreach(name => println(name))  

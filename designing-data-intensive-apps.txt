@@ -95,7 +95,7 @@ Chapter II - data model (modelling language and query language)
         - Many apps layer one data model on top of another one (like application level data object is layered on top of infrastructure data object layered on top of the database engine, etc)
 - as usual: each layer hides complexity from the next layer on top to simplify the next layer on top (the different layers don't always fit - that creates an 'impedance mismatch')
 
-- sql: says it was successful because the programmer doesn't have to think a lot how the data is represented by DBMS (? he has when tuning for performance ?) and RDBMS do transaction isolation well!
+- sql: says it was successful because the programmer doesn't have to think a lot how the data is represented by DBMS (? he has when tuning for performance ?) and RDBMS do transaction isolation well! (? can be tricky as well ?)
 - nosql: became popular due to a set of requirements/options 
     - need for greater scalability (as compared to RDBMS) - very large datasets and throughput rates required for something like twitter.
     - lots of open source tools and solutions
@@ -555,7 +555,6 @@ a more basic level of guarantee (more primitive than 'serializable isolation')
         Solution: introduce an entry to lock (introduce a time slot table table, so that time slots can be locked in the select query) 
                 this trick is called 'Materializing conflicts'
 
-
     Serializable transaction isolation level :- db guarantees that concurrent transaction results will be the same as if the transactions are run one after the other. (strongest guarantee)
     How is this implemented?    
         - run the transactions by one thread, serially
@@ -567,10 +566,14 @@ a more basic level of guarantee (more primitive than 'serializable isolation')
         - two phase locking (provides serializable isolation, as readers have to wait too) 
             - if a transaction A has read a record, then this record can't be changed by a different transaction (it has to wait till A has completed or committed)
             - if a transaction A wrote to a record, then to read that record other transactions have to wait until A commits or aborts. 
+            - to prevent phantom: needs to acquire a read lock on all records that match a select query !
             
             Is implemented by having a reader-writer lock on every record (!) when reading a record the transactions acquires read lock, when writing gets a write lock. 
-            DB needs to detect deadlocks (are very frequent here)
-            two phase locking is used as a last resort, as performance tanks; also latencies are hard to predict (bad for online systems)
+
+            There is no limit on the duration of transactions - locks can be held on quite some time, and block readers, therefore
+                - latencies can get unpredictable (slow in the high percentile) and go up.  
+                - DB needs to detect deadlocks (are very frequent here)
+                - two phase locking is used as a last resort
 
         - optimistic concurrency control
                         
