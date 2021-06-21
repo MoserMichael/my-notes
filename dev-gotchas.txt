@@ -7,8 +7,17 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 ---21/06/21 17:38:22----------------------
 
 Magic alias that removes spaces from file names and puts _ instead of them. Works on osx!
+(from here https://stackoverflow.com/questions/2709458/how-to-replace-spaces-in-file-names-using-a-bash-script )
 
 alias nospaceinfilenames='for f in *\ *; do mv "$f" "${f// /_}"; done'
+
+Other goodies: ps sorted by cpu and memory. also less -R can browse through output with colors! (should be a default behavior, in my opinion)
+
+alias pstopcpu="ps -eo pcpu,pid,user,args | sort -n -k 1 -r | awk '"'{ $1="\033[31m"$1"%\033[0m"; $4="\033[31m"$4"\033[0m"; print }'"' | less -R"
+
+
+pstopmem_usage="list processes with top memory usage on top (first column in red)"
+alias pstopmem="ps -eo vsz,pid,user,args | sort -n -k 1 -r | awk '"'{ $1="\033[31m"$1 / 1000"Mib\033[0m"; $4="\033[31m"$4"\033[0m"; print }'"' | less -R"
 
 
 ---21/06/21 16:55:34----------------------
