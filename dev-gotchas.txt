@@ -3,6 +3,10 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago ...)
 
 
+---22/06/21 01:38:59----------------------
+
+today i learned  that okta is charging per created user https://www.okta.com/pricing/
+that's how you do business, never thought of such an option...
 
 ---21/06/21 17:38:22----------------------
 
@@ -24,6 +28,11 @@ alias pstopmem="ps -eo vsz,pid,user,args | sort -n -k 1 -r | awk '"'{ $1="\033[3
 
 stackoverflow search got much better. Once upon a time google search was preferable, now it makes sense to use stackoverflow search...
 
+i wonder if they are still using elasticsearch only for search. Elasticsearch used TF/IDF algorithm, but stored the word count separately for each shard.
+
+Here they say that now they are also using Okapi BM25 https://www.elastic.co/guide/en/elasticsearch/reference/current/similarity.html (but that one is also doing inverse term frequency)
+
+
 ---21/06/21 16:30:32----------------------
 
 show dependecies with gradle
@@ -32,6 +41,7 @@ show dependecies with gradle
 
     gradle -q dependencies
 
+keeping all the dependency versions happy is a challenge....
 
 ---21/06/21 16:14:48----------------------
 
