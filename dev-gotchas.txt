@@ -3,6 +3,12 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this a long time ago...)
 
 
+
+---21/06/21 16:14:48----------------------
+
+On the github page: a comment with /retest will cause the CI to rerun the build and test. (/rebuild doesn't work).
+This may be a feature of the particular CI scripts that we are using, don't know.
+
 ---21/06/21 15:49:21----------------------
 
 gradle, oh gradle.
@@ -14,6 +20,7 @@ gradle cleanTest  test --fail-fast 2>&1 | tee log.log
 - --fail-fast tell it to stop on the first test failure (much easier to debug the tests this way).\
 
 I have the following function in my .bashrc file (and it's always better to keep a log of that compilation/test run)
+
 
 function makeIt {
     if [[ -f build.gradle ]]; then
@@ -33,14 +40,16 @@ function makeIt {
                 mvn "$@" 2>&1 | tee log.log
             fi
         else
-            make "$@" 2>&1 | tee log.log
+            if [[ -f Makefile  ]] || [[ -f makefile ]] || [[ -f GNUmakefile ]]; then
+                make "$@" 2>&1 | tee log.log
+            else
+                echo "don't know how to make this, yet"
+            fi
         fi
     fi
 }
 
 alias m='makeIt'
-
-
 
 ---21/06/21 15:47:12----------------------
 
