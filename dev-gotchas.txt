@@ -20,7 +20,7 @@ show dependecies with gradle
 ---21/06/21 16:14:48----------------------
 
 On the github page: a comment with /retest will cause the CI to rerun the build and test. (/rebuild doesn't work).
-§This may be a feature of the particular CI scripts that we are using, don't know.
+This may be a feature of the particular CI scripts that we are using, don't know.
 
 ---21/06/21 15:49:21----------------------
 
