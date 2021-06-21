@@ -4,6 +4,13 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 
 
+---21/06/21 17:38:22----------------------
+
+Magic alias that removes spaces from file names and puts _ instead of them. Works on osx!
+
+alias nospaceinfilenames='for f in *\ *; do mv "$f" "${f// /_}"; done'
+
+
 ---21/06/21 16:55:34----------------------
 
 stackoverflow search got much better. Once upon a time google search was preferable, now it makes sense to use stackoverflow search...
