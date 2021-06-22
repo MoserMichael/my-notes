@@ -21,6 +21,7 @@ The opposite of 'opinionated software' is the perl philosophy of 'There's more t
 
 I think that 'opinionated software' often starts where there are a lot of dependencies; then comes the 'spring boot' layer on top of this mess, that also binds you to a specific way of doing things, that is supposed to make life simpler. More centralisation may bring more certainty, but it drastically limits freedom of choice.
 
+What is the difference between a library and a framework? The framework calls your components while it starts up, it has the main function (entry point). This is also called 'inversion of control' (everything in software must have a fancy name). https://en.wikipedia.org/wiki/Inversion_of_control . Interesting that perl used to have a lot of libraries on cpan, but not too many frameworks. However there are 'frameworks' that don't have their own main function, for example bootle https://bottlepy.org/docs/dev/ in python doesn't do a thing like that (to be fair, bootle is a 'microframework' an not a proper 'framework') 
 
 ---22/06/21 01:38:59----------------------
 
