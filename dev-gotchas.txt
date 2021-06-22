@@ -19,7 +19,7 @@ Here https://dzone.com/articles/perils-of-opinionated-frameworks-like-spring-boo
 
 The opposite of 'opinionated software' is the perl philosophy of 'There's more than one way to do it' https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it (or here http://wall.org/~larry/pm.html )
 
-I think that 'opinionated software' often starts where there are a lot of dependencies; then comes the 'spring boot' layer on top of this mess, that also binds you to a specific way of doing things, that is supposed to make life simpler. More centralisation may bring more certainty, but it drastically limits freedom.
+I think that 'opinionated software' often starts where there are a lot of dependencies; then comes the 'spring boot' layer on top of this mess, that also binds you to a specific way of doing things, that is supposed to make life simpler. More centralisation may bring more certainty, but it drastically limits freedom of choice.
 
 
 ---22/06/21 01:38:59----------------------
