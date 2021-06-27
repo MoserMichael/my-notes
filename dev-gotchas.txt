@@ -10,7 +10,7 @@ Java has Optional, but I didn't manage to use the option chaining feature of Opt
 
 Optional is still useful if you don't try to chain Option with flatMap or map.
 
-Maybe that's why they like golang, there the standard library doesn't try to be too clever; but then it doesn't have stream processing out of the box (streams are a time saver in java and scala.
+Maybe that's why they like golang, there the standard library doesn't try to be too clever; but then it doesn't have functional stream processing on containers out of the box (streams are a time saver in java and scala;  It is often less error prone to combine map/flatmap then to write a for loop).
 
 ---26/06/21 05:41:07----------------------
 
