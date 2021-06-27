@@ -4,6 +4,14 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 
 
+---27/06/21 04:21:10----------------------
+
+Java has Optional, but I didn't manage to use the option chaining feature of Optional; it has many fine points. It gets very trick if you have to think about null values (which you have to); see https://www.sitepoint.com/how-optional-breaks-the-monad-laws-and-why-it-matters/ 
+
+Optional is still useful if you don't try to chain Option with flatMap or map.
+
+Maybe that's why they like golang, there the standard library doesn't try to be too clever; but then it doesn't have stream processing out of the box (streams are a time saver in java and scala.
+
 ---26/06/21 05:41:07----------------------
 
 While writing a recursive descent parsers:
@@ -68,18 +76,7 @@ but it works in /usr/local/bin
 ln -sf /usr/local/bin/gcc-11 /usr/local/bin/gcc
 ln -sf /usr/local/bin/g++-11 /usr/local/bin/g++
 
-so the only way is to fudge with the shell.
-
-aliases are not exported to sub shells, so that's a problem.
-
-
-----
-
-
-שׁש
-
-
----
+Interesting that the brew installation doesn't come with ld; hmm...
 
 ---22/06/21 02:41:22----------------------
 
