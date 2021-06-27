@@ -1,3 +1,5 @@
+" Set text width as 72.
+
 This is a log, here I am listing the gotchas that I stepped upon as a developer.
 Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice.
 (should have started a log like this ages ago ...)
