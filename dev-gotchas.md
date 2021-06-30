@@ -5,6 +5,15 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago ...)
 
 
+---30/06/21 04:39:54----------------------
+
+Today i stumbled upon immutable lists in java. In java an attempt to modify an immutable list will throw an exception.
+
+That is very different to immutable lists in Scala. Here the addition of an element to the list will return in a copy of the original list, with the element added (that's how they do functional programming, instead of modifying Foo, you create a copy of foo with the desired modification).
+
+Compare all this to the C++ approach, which is still different. in C++ you can have a const references (or const pointer); if a function has been declared as const, then calling this function is not supposed to modify a given object; given a const reference one can only call the const functions of an object. (But you can have exceptions to the rule: if a member of a class is marked with the mutable keyword, then a const function can change it...)
+
+It seems that they get less consistent about pureness and functional programming when looking at things from a lower level perspective (and more performance oriented perspective, that is)
 
 ---27/06/21 04:21:10----------------------
 
