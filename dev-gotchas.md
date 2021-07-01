@@ -125,11 +125,12 @@ This is an important article, as it explains monads in terms that a java program
 
 Here are my notes:
 
-monads are:
-    - you can think of a monad as a java parametrized type  ```class Monad<T>``` with the following function
-    - unit in Haskell terminology is like a 'builder' function, that takes an element of T and wraps it in an instance of Monad&lt;T&gt;
-        ```public <T> M<T> unit(T element) ```
-    - bind in Haskell terminology is like a flatMap  in java:  it takes a function that takes T as argument and returns Monad<U> 
+monads are: (hold your breath, this is an explanation for mere mortals ;-)
+
+1. you can think of a monad as a java parametrized type  ```class Monad<T>``` with the following function
+2. unit in Haskell terminology is like a 'builder' function, that takes an element of T and wraps it in an instance of Monad&lt;T&gt;
+    ```public <T> M<T> unit(T element) ```
+3. bind in Haskell terminology is like a flatMap  in java:  it takes a function that takes T as argument and returns Monad<U> 
 ```
 public static <T, U> M<U> bind(M<T> monad, Function<T, M<U>> f) {
     return f.apply(monad.wrappedValue());
