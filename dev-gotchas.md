@@ -32,9 +32,9 @@ Apple says to blow some air at the keyboard, but my fiddling with the vacuum cle
          :0   : start of file
 
          
-         And there is much more... [more](https://vim.fandom.com/wiki/All_the_right_moves) I didn't manage to remember most of the stuff...
-      
-         And you can remap some, i remapped m to page up an n to page down
+And there is much more... [more](https://vim.fandom.com/wiki/All_the_right_moves) I didn't manage to remember most of the stuff...
+
+And you can remap some, i remapped m to page up an n to page down
 
 ```
 :map , <PageUp>
