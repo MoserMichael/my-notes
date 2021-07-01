@@ -13,12 +13,14 @@ Apple says to blow some air at the keyboard, but my fiddling with the vacuum cle
 
 - on GUI tools, like IntelliJ, you can keep going with the trackpad; now you have to make the scrollbar visible all the time:
 
+```
     Select the Mac icon (in the top left corner)
     Select System Preferences
     Click on General
     Set the "Show scroll bars:" option to Always  
 
-    (if i could only make the track button black, so that it will always be visible, but that's too much to ask for...)
+    (if i could only make the track button black, so that it will always be visible at all times, but that's too much to ask for...)
+```
 
 - for vim there is a second workaround: in normal mode one can navigate with the keyboard: 
 
@@ -39,8 +41,9 @@ Apple says to blow some air at the keyboard, but my fiddling with the vacuum cle
 :map . <PageDown>
 ```
 
-        but the default vim PageUp and PageDown commands suck a bit; if you do a page down and then a page up then you will not land on the same line.
-        So lets do some scripting:
+but the default vim PageUp and PageDown commands suck a bit; if you do a page down and then a page up then you will not land on the same line.
+So lets do some scripting:
+
 ```
 :map ,  :MyPageDown<Return>
 :map .  :MyPageUp<Return>
