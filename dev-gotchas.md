@@ -135,6 +135,7 @@ For example: apply for an Optional is called only when the optional has a value;
 
 In addition to that there are the Monad laws (in Haskell terminology); these ensure that you can chain the flatMap (bind) calls together in perfect harmony:
 
+The java Option 'monad' doesn't implement the monad laws correctly, that's why it is hard to chain processing with map/flatMap.
 
 
 
@@ -150,13 +151,7 @@ gcc on osx isn't gcc... it's clang. (hideous, when a thing called foo isn't bein
 
 the two of them spit out the same version info.
 
-`::map m <PageUp>
-:map n <PageDown>
-
-map m <PageUp>
-:map n <PageDown>
-
-``
+```
 gcc --version
 
     Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/4.2.1
