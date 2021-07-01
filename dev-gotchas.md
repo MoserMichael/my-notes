@@ -18,9 +18,9 @@ Apple says to blow some air at the keyboard, but my fiddling with the vacuum cle
     Select System Preferences
     Click on General
     Set the "Show scroll bars:" option to Always  
-
-    (if i could only make the track button black, so that it will always be visible at all times, but that's too much to ask for...)
 ```
+
+(if i could only make the track button black, so that it will always be visible at all times, but that's too much to ask for...)
 
 - for vim there is a second workaround: in normal mode one can navigate with the keyboard: 
 
