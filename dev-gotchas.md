@@ -212,22 +212,23 @@ Also you must put /usr/local/bin in the path before /bin
 
 ---22/06/21 02:41:22----------------------
 
-the term 'opionionated' as used in software https://stackoverflow.com/questions/802050/what-is-opinionated-software
+the term 'opionionated' as used in software [see this discussion](https://stackoverflow.com/questions/802050/what-is-opinionated-software)
 
-    " Opinionated software means that there is basically one way (the right way™) to do things and trying to do it differently will be difficult and frustrating. On the other hand, doing things the right way™ can make it very easy to develop with the software as the number of decisions that you have to make is reduced and the ability of the software designers to concentrate on making the software work is increased"
-
-https://books.google.com/ngrams/graph?content=opinionated+software&year_start=1800&year_end=2019&corpus=26&smoothing=3&direct_url=t1%3B%2Copinionated%20software%3B%2Cc0#t1%3B%2Copinionated%20software%3B%2Cc00
-
-google ngram viewer says the term took off during 2003, peak usage during 2009. An often cited example of 'opinionated software' is 'ruby on rails' or 'spring boot'  
+Opinionated software means that there is basically one way (the right way™) to do things and trying to do it differently will be difficult and frustrating. On the other hand, doing things the right way™ can make it very easy to develop with the software as the number of decisions that you have to make is reduced and the ability of the software designers to concentrate on making the software work is increased
 
 
-Here https://dzone.com/articles/perils-of-opinionated-frameworks-like-spring-boot spring boot is criticised for being 'too opinionated'; it brings in a lot of dependencies (jpa, netty for grpc, etc. etc. etc.) he says that the choice of spring boot therefore determines a lot of choices up front... (like the versions of the dependent packages that must be used)
+[Google ngram says](https://books.google.com/ngrams/graph?content=opinionated+software&year_start=1800&year_end=2019&corpus=26&smoothing=3&direct_url=t1%3B%2Copinionated%20software%3B%2Cc0#t1%3B%2Copinionated%20software%3B%2Cc00) 
 
-The opposite of 'opinionated software' is the perl philosophy of 'There's more than one way to do it' https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it (or here http://wall.org/~larry/pm.html )
+google ngram viewer says the term took off during 2003, peak usage during 2009. An often cited example of 'opinionated software' is 'ruby on rails' or 'spring boot'  (rails appeared in 2005)
+
+
+[this article](https://dzone.com/articles/perils-of-opinionated-frameworks-like-spring-boot) says that spring boot is 'too opinionated'; it brings in a lot of dependencies (jpa, netty for grpc, etc. etc. etc.) he says that the choice of spring boot therefore determines a lot of choices up front... (like the versions of the dependent packages that must be used)
+
+The opposite of 'opinionated software' is the perl philosophy of 'There's more than one way to do it' [link](https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it) (or [here](http://wall.org/~larry/pm.html
 
 I think that 'opinionated software' often starts where there are a lot of dependencies; then comes the 'spring boot' layer on top of this mess, that also binds you to a specific way of doing things, that is supposed to make life simpler. More centralisation may bring more certainty, but it drastically limits freedom of choice.
 
-What is the difference between a library and a framework? The framework calls your components while it starts up, it has the main function (entry point). This is also called 'inversion of control' (everything in software must have a fancy name). https://en.wikipedia.org/wiki/Inversion_of_control . Interesting that perl used to have a lot of libraries on cpan, but not too many frameworks. However there are 'frameworks' that don't have their own main function, for example bootle https://bottlepy.org/docs/dev/ in python doesn't do a thing like that (to be fair, bootle is a 'microframework' an not a proper 'framework') 
+What is the difference between a library and a framework? The framework calls your components while it starts up, it has the main function (entry point). This is also called 'inversion of control' (everything in software must have a fancy name). [Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) . Interesting that perl used to have a lot of libraries on cpan, but not too many frameworks. However there are 'frameworks' that don't have their own main function, for example [bootle](https://bottlepy.org/docs/dev/) in python doesn't do a thing like that (to be fair, bootle is a 'microframework' an not a proper 'framework') 
 
 ---22/06/21 01:38:59----------------------
 
