@@ -1,9 +1,93 @@
 " Set text width as 72.
 
 This is a log, here I am listing the gotchas that I stepped upon as a developer.
-Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice.
-(should have started a log like this ages ago ...)
+Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice; Some of the fun in programming is to have your assumptions invalidated; this is not just a cause for grieve, it is an opportunity to re-examine your assumption...
 
+(should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
+
+
+---01/07/21 01:43:59----------------------
+
+The macbook keyboard is ... not very long lasting; after a year or so you get failures of some quite important keys. For me these are the arrow keys.
+Apple says to blow some air at the keyboard, but my fiddling with the vacuum cleaner made it even worse ;-) 
+
+- on GUI tools, like IntelliJ, you can keep going with the trackpad; now you have to make the scrollbar visible all the time:
+
+    Select the Mac icon (in the top left corner)
+    Select System Preferences
+    Click on General
+    Set the "Show scroll bars:" option to Always  
+
+    (if i could only make the track button black, so that it will always be visible, but that's too much to ask for...)
+
+- for vim there is a second workaround: in normal mode one can navigate with the keyboard: 
+
+        hjkl  : h for left key, j for previous line, k for next line
+         bw   : b for previous word, w for next word (these make for some fast navigation!)
+         0    : start of line
+         $    : end of line
+         G    : end of file
+         :0   : start of file
+
+         
+         And there is much more... [more](https://vim.fandom.com/wiki/All_the_right_moves) I didn't manage to remember most of the stuff...
+      
+         And you can remap some, i remapped m to page up an n to page down
+
+```
+:map , <PageUp>
+:map . <PageDown>
+```
+
+        but the default vim PageUp and PageDown commands suck a bit; if you do a page down and then a page up then you will not land on the same line.
+        So lets do some scripting:
+```
+:map ,  :MyPageDown<Return>
+:map .  :MyPageUp<Return>
+
+
+command! -nargs=* MyPageDown call s:RunMPGD()
+command! -nargs=* MyPageUp call s:RunMPGU()
+
+function! s:RunMPGD()
+    let s:curline = line('.')
+    let s:pagesize = winheight(0)
+    let s:filesize = line('$') - s:pagesize
+
+    if s:curline < s:filesize
+       execute "normal" . s:pagesize . "j"
+    endif
+endfunction
+
+function! s:RunMPGU()
+    let s:curline = line('.')
+    let s:pagesize = winheight(0)
+
+    if s:curline > s:pagesize
+       execute "normal" . s:pagesize . "k"
+    endif
+endfunction
+
+```
+i guess that's why tools like IntelliJ have a vim emulation mode - to compensate for a broken macbook keyboard, now the keyboard can go on, until the : character is no longer...
+
+In vim one can customize everything, it just takes a lot of time to do so, and when you are done then the result feels like a pyrrhic victory...
+
+---30/06/21 09:34:35----------------------
+
+A unit test that starts to listen on a grpc service stub, now if you immediately start to send requests to this service stub, then on some environments the stub might not be ready yet to receive the calls; so you need to add a seconds sleep between init of the server stub and sending requests to it. Bother!
+
+java grpc has a thread pool dedicated to it's stuff, and a threads in this pool are listening and servicing the networking calls. Now with the thread pool there can be a slight delay between initiation of something and its execution. Normally the exact point of time where a grpc service will be up is not a big concern, but when used in this unit test scenario it is an important detail.
+
+```
+   try {
+            fooServiceStub = ServerBuilder.forPort(nFooPortNumber).addService(new FooServiceStub()).build();
+            fooServiceStub.start();
+        }  catch(IOException ex) {
+            ex.printStackTrace();
+        }
+       
+````
 
 ---30/06/21 04:39:54----------------------
 
@@ -15,13 +99,44 @@ Compare all this to the C++ approach, which is still different. in C++ you can h
 
 It seems that they get less consistent about pureness and functional programming when looking at things from a lower level perspective (and more performance oriented perspective, that is)
 
+---
+
+Where did I stumble upon immutable lists? java grpc message objects are supposed to be immutable; you can't modify any field - if call an getter function that is returning a list, then this list is read only. If you need a slightly different grpc message object, then build a new one.
+
+
 ---27/06/21 04:21:10----------------------
 
-Java has Optional, but I didn't manage to use the option chaining feature of Optional; it has many fine points. It gets very trick if you have to think about null values (which you have to); see https://www.sitepoint.com/how-optional-breaks-the-monad-laws-and-why-it-matters/ 
+Java has [Optional](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html) , but I didn't manage to use the option chaining feature of Optional; it has many fine points. It gets very trick if you have to think about null values (which you have to); see https://www.sitepoint.com/how-optional-breaks-the-monad-laws-and-why-it-matters/ 
 
 Optional is still useful if you don't try to chain Option with flatMap or map.
 
+Funny thing this optional, it was supposed to solve nullpointerexception (you either have empty or something), but it creates a set of problems on its own...
+
 Maybe that's why they like golang, there the standard library doesn't try to be too clever; but then it doesn't have functional stream processing on containers out of the box (streams are a time saver in java and scala;  It is often less error prone to combine map/flatmap then to write a for loop).
+
+---
+
+https://www.sitepoint.com/how-optional-breaks-the-monad-laws-and-why-it-matters/ 
+
+This is an important article, as it explains monads in terms that a java programmer can understand:
+
+Here are my notes:
+
+monads are:
+    - you can think of a monad as a java parametrized type  ```class Monad<T>``` with the following function
+    - unit in Haskell terminology is like a 'builder' function, that takes an element of T and wraps it in an instance of Monad&lt;T&gt;
+        ```public <T> M<T> unit(T element) ```
+    - bind in Haskell terminology is like a flatMap  in java:  it takes a function that takes T as argument and returns Monad<U> 
+```
+public static <T, U> M<U> bind(M<T> monad, Function<T, M<U>> f) {
+    return f.apply(monad.wrappedValue());
+```
+For example: apply for an Optional is called only when the optional has a value; for a [stream](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Stream.html) , flatMap replaces all elements of the stream with the return value of function f.
+
+In addition to that there are the Monad laws (in Haskell terminology); these ensure that you can chain the flatMap (bind) calls together in perfect harmony:
+
+
+
 
 ---26/06/21 05:41:07----------------------
 
@@ -35,7 +150,13 @@ gcc on osx isn't gcc... it's clang. (hideous, when a thing called foo isn't bein
 
 the two of them spit out the same version info.
 
-```
+`::map m <PageUp>
+:map n <PageDown>
+
+map m <PageUp>
+:map n <PageDown>
+
+``
 gcc --version
 
     Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/4.2.1
@@ -98,7 +219,7 @@ Also you must put /usr/local/bin in the path before /bin
 
 the term 'opionionated' as used in software https://stackoverflow.com/questions/802050/what-is-opinionated-software
 
-" Opinionated software means that there is basically one way (the right way™) to do things and trying to do it differently will be difficult and frustrating. On the other hand, doing things the right way™ can make it very easy to develop with the software as the number of decisions that you have to make is reduced and the ability of the software designers to concentrate on making the software work is increased"
+    " Opinionated software means that there is basically one way (the right way™) to do things and trying to do it differently will be difficult and frustrating. On the other hand, doing things the right way™ can make it very easy to develop with the software as the number of decisions that you have to make is reduced and the ability of the software designers to concentrate on making the software work is increased"
 
 https://books.google.com/ngrams/graph?content=opinionated+software&year_start=1800&year_end=2019&corpus=26&smoothing=3&direct_url=t1%3B%2Copinionated%20software%3B%2Cc0#t1%3B%2Copinionated%20software%3B%2Cc00
 
@@ -171,8 +292,14 @@ keeping all the dependency versions happy is a challenge....
 On the github page: a comment with /retest will cause the CI to rerun the build and test. (/rebuild doesn't work).
 This may be a feature of the particular CI scripts that we are using, don't know.
 
----21/06/21 15:49:21----------------------
+---
 
+The CI is only keeping the standard output of gradle; here you need to find which test failed, so search for the string '() FAILED';
+
+also one should search for STANDARD_OUT - this string marks start of each junit test; and the test runner likes to randomize he ordering of the tests...
+
+
+---21/06/21 15:49:21----------------------
 gradle, oh gradle.
 
 gradle cleanTest  test --fail-fast 2>&1 | tee log.log
