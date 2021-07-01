@@ -224,7 +224,7 @@ google ngram viewer says the term took off during 2003, peak usage during 2009. 
 
 [this article](https://dzone.com/articles/perils-of-opinionated-frameworks-like-spring-boot) says that spring boot is 'too opinionated'; it brings in a lot of dependencies (jpa, netty for grpc, etc. etc. etc.) he says that the choice of spring boot therefore determines a lot of choices up front... (like the versions of the dependent packages that must be used)
 
-The opposite of 'opinionated software' is the perl philosophy of 'There's more than one way to do it' [link](https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it) (or [here](http://wall.org/~larry/pm.html
+The opposite of 'opinionated software' is the perl philosophy of 'There's more than one way to do it' [link](https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it) (or [here](http://wall.org/~larry/pm.html)
 
 I think that 'opinionated software' often starts where there are a lot of dependencies; then comes the 'spring boot' layer on top of this mess, that also binds you to a specific way of doing things, that is supposed to make life simpler. More centralisation may bring more certainty, but it drastically limits freedom of choice.
 
@@ -238,7 +238,7 @@ that's how you do business, never thought of such an option...
 ---21/06/21 17:38:22----------------------
 
 Magic alias that removes spaces from file names and puts _ instead of them. Works on osx!
-(from here https://stackoverflow.com/questions/2709458/how-to-replace-spaces-in-file-names-using-a-bash-script )
+(from [here](https://stackoverflow.com/questions/2709458/how-to-replace-spaces-in-file-names-using-a-bash-script) )
 
 ```
 alias nospaceinfilenames='for f in *\ *; do mv "$f" "${f// /_}"; done'
@@ -268,9 +268,9 @@ also it helps to have this one in your .bashrc file; puts the current git branch
 
 stackoverflow search got much better. Once upon a time google search was preferable, now it makes sense to use stackoverflow search...
 
-i wonder if they are still using elasticsearch only for search. Elasticsearch used TF/IDF algorithm, but stored the word count separately for each shard.
+i wonder if they are still using elasticsearch only for search. Elasticsearch used TF/IDF algorithm, but stored the word count separately for each shard, so that you often gen inconsistent search results.  (it needs and index of the frequency for each token/word to function)
 
-Here they say that now they are also using Okapi BM25 https://www.elastic.co/guide/en/elasticsearch/reference/current/similarity.html (but that one is also doing inverse term frequency)
+Here they say that now they are also using Okapi BM25 [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/similarity.html) (but that one is also doing inverse term frequency)
 
 
 ---21/06/21 16:30:32----------------------
@@ -296,6 +296,7 @@ also one should search for STANDARD_OUT - this string marks start of each junit 
 
 
 ---21/06/21 15:49:21----------------------
+
 gradle, oh gradle.
 
 gradle cleanTest  test --fail-fast 2>&1 | tee log.log
