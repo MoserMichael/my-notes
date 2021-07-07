@@ -6,6 +6,23 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+---07/07/21 04:54:26----------------------
+
+difference between stream map and forEach.
+
+I recently had the following pipe in a java program:
+```
+var result = myList.stream().map(...).filter(...).collect(Collectors.toList());
+```
+Now  after some revision it changed to
+```
+ myList.stream().map(...);
+```
+Now that one is never executed. The error of course is that this statement does not produce a return value, the return value is not used and therefore ignored, and that's the reason why the statement is never executed.
+The source of this error, of course is that map may not be fully funnctional in that it may call other functions that do thinks like storing records in a database (an implicit side effect that doesn't modify any variable) That's the reason why they have forEach - this construct doesn't have a return value and is not ignored, as a result....
+
+That's part of the fine print of mixing functional and object oriented paradigms.
+
 ---01/07/21 01:43:59----------------------
 
 The macbook keyboard is ... not very long lasting; after a year or so you get failures of some quite important keys. For me these are the arrow keys.
@@ -76,6 +93,11 @@ i guess that's why tools like IntelliJ have a vim emulation mode - to compensate
 
 In vim one can customize everything, it just takes a lot of time to do so, and when you are done then the result feels like a pyrrhic victory...
 
+
+----
+
+Another interesting problem: VIM MAPS j to scrolling down, whereas me would find it more natural to scroll up. I left it as is as an exercise: how easy will it be for me to adjust to a changed assumption in an ingrained cognitive bias. The experiment is still ongoing...
+
 ---30/06/21 09:34:35----------------------
 
 A unit test that starts to listen on a grpc service stub, now if you immediately start to send requests to this service stub, then on some environments the stub might not be ready yet to receive the calls; so you need to add a seconds sleep between init of the server stub and sending requests to it. Bother!
@@ -91,6 +113,11 @@ java grpc has a thread pool dedicated to it's stuff, and a threads in this pool 
         }
        
 ````
+
+---
+it's amazing how much of my time at work is spent with dealing to fix failures that happen during CI tests. 
+You sometimes got amazingly different behavior of the test environment on your local machine vs the environment on the CI.
+
 
 ---30/06/21 04:39:54----------------------
 
