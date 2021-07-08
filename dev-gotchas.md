@@ -315,7 +315,7 @@ What we learned from this: being a software developer means to be a master in th
 
 show dependecies with gradle
 ```
-    cd &lt;directory of sub project&gt;
+    cd <directory of sub project>
 
     gradle -q dependencies
 ```
