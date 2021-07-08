@@ -304,6 +304,13 @@ i wonder if they are still using elasticsearch only for search. Elasticsearch us
 Here they say that now they are also using Okapi BM25 [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/similarity.html) (but that one is also doing inverse term frequency)
 
 
+--- 
+Another useful tool is [github code search ](https://github.com/search) especially if you use a few of the search operators [explained here](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-code)
+
+---
+
+What we learned from this: being a software developer means to be a master in the art of searching for stuff. I think that [Google Fu](https://www.urbandictionary.com/define.php?term=google-fu) is no longer sufficient, as the web has grown too big for one single company to handle (or maybe the focus of our masters at the big search company has changed, no way to be sure on that). 
+
 ---21/06/21 16:30:32----------------------
 
 show dependecies with gradle
