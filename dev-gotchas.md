@@ -5,10 +5,19 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
+---19/07/21 03:25:02----------------------
+
+Another well known rake: a client that does it's own caching, when used with multiple instances.
+
+Instance A gets a modify foo request, followed by a get foo request, naturally the modification of foo will put the correct result in the cache of A, so that the subsequent get request will return the correct value. Instance B receives a get request for foo and returns the cached incorrect value of foo.
+
+Recently stumbled at this with the [Okta java sdk](https://github.com/okta/okta-sdk-java) - (another rake: the github project does not include all the sources, like very important classes like DefaultClient and DefaultUser; luckily you can see them with any good java decompiler, like IntelliJ)
+
+Luckily it is relatively easy to cancel the caching, by supplying a custom CacheManager instance to ClientBuilder, one that does return a non-caching Cache instance on each request)
 
 ---07/07/21 04:54:26----------------------
 
-difference between stream map and forEach.
+Difference between streams: map and forEach.
 
 I recently had the following pipe in a java program:
 ```
@@ -98,6 +107,22 @@ In vim one can customize everything, it just takes a lot of time to do so, and w
 
 Another interesting problem: VIM MAPS j to scrolling down, whereas me would find it more natural to scroll up. I left it as is as an exercise: how easy will it be for me to adjust to a changed assumption in an ingrained cognitive bias. The experiment is still ongoing...
 
+----
+
+You can also use vim instead of less:
+
+So instead of
+
+``` find . -name foo | less```
+
+It is now
+
+``` find . - name foo | vim -```
+
+----
+
+Another well kept bash secret is to use Ctrl-r for searching the command history
+
 ---30/06/21 09:34:35----------------------
 
 A unit test that starts to listen on a grpc service stub, now if you immediately start to send requests to this service stub, then on some environments the stub might not be ready yet to receive the calls; so you need to add a seconds sleep between init of the server stub and sending requests to it. Bother!
@@ -150,6 +175,8 @@ https://www.sitepoint.com/how-optional-breaks-the-monad-laws-and-why-it-matters/
 
 This is an important article, as it explains monads in terms that a java programmer can understand:
 
+So that Optional is an 'almost monad' and java streams are full monads [explained here](https://stackoverflow.com/questions/20943094/are-the-streams-in-java-8-monads)
+
 Here are my notes:
 
 monads are: (hold your breath, this is an explanation for mere mortals ;-)
@@ -157,7 +184,14 @@ monads are: (hold your breath, this is an explanation for mere mortals ;-)
 1. you can think of a monad as a java parametrized type  ```class Monad<T>``` with the following function
 2. unit in Haskell terminology is like a 'builder' function, that takes an element of T and wraps it in an instance of Monad&lt;T&gt;
     ```public <T> M<T> unit(T element) ```
-3. bind in Haskell terminology is like a flatMap  in java:  it takes a function that takes T as argument and returns Monad&lt;U&gt; -  it calls the transforming function on type U that transforms it into a different type T, and then wraps the result around the same monadic type with ```unit```.
+    - for optional: unit is [Optional.ofNullable](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#ofNullable-T-) ; this function makes an empty Optional for null argument, and wraps a non null argument in a non empty Optional value.
+    - for stream: unit is  [Stream.of](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#of-T-) (? what about Stream.of(T ...values) ?)
+
+3. bind in Haskell terminology is like a flatMap  in java:  Bind receives a function f as argument, f takes an instance of T as argument; bind applies f to the Monad&lt;U&gt; 
+    - For java Optional bind (aka flatMap) extracts the contained T value, if it is present, and applies f to it. 
+    - for java Stream bin (aka flatMap) for each element of the stream, apply f to the element and paste the result of applying f into the output stream. (example; if f is the identity function, then this will turn a list of lists into a simple list that is the concatenation of all the list elements) Interestingly this is different from the bind in the previous example, where the result is a plain value of T, and here it is a Monad&lt;T&gt; by itself; confusing...
+    
+
 ```
 public static <T, U> M<U> bind(M<T> monad, Function<T, M<U>> f) {
     return f.apply(monad.wrappedValue());
@@ -165,6 +199,11 @@ public static <T, U> M<U> bind(M<T> monad, Function<T, M<U>> f) {
 For example: apply for an Optional is called only when the optional has a value; for a [stream](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Stream.html) , flatMap replaces all elements of the stream with the return value of function f.
 
 In addition to that there are the Monad laws (in Haskell terminology); these ensure that you can chain the flatMap (bind) calls together in perfect harmony:
+
+The monad laws:
+
+1. Left identity law: bind(unit(value), f) === f(value)
+
 
 The java Option 'monad' doesn't implement the monad laws correctly, that's why it is hard to chain processing with map/flatMap.
 
