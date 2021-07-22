@@ -10,7 +10,7 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 Wrote a python script that gathers logs in order to identify a situation described in the previous entry [link to script](https://github.com/MoserMichael/myenv/blob/master/scripts/follow-kube-logs.py)
 
-the scription:
+The scripts help text:
 ```
 log  pods/containers in deployment:
   --namespace NAMESPACE, -n NAMESPACE
