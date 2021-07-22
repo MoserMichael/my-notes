@@ -29,7 +29,7 @@ So that by running ```./follow-kube-logs.y -n my-namespace -p my-deployment -d l
 
 The purpose of this script is to be a more lightweight solution then to use prometheus/graphana for viewing your deployment logs, as it is sometimes easier to grep through the logs, as compared to writing elaborate prometheus queries.
 
-In a way kubernetes is our generations jcl (job control language on ibm mainframes) ; There is a remote similarity in how we are writing descriptors for tasks and then submit it for execution and wait till the mainframe has considered our specification. (suddenly feeling old because of this comparison ...)
+In a way kubernetes is our generations jcl (job control language on ibm mainframes) ; There is a remote similarity in how we are writing descriptors for tasks and then submit it for execution and wait till the mainframe/kubernetes cluser has considered our specification. (suddenly feeling old because of this comparison ...)
 
 ---19/07/21 03:25:02----------------------
 
