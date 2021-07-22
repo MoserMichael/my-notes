@@ -33,16 +33,18 @@ In a way kubernetes is our generations jcl (job control language on ibm mainfram
 
 ---19/07/21 03:25:02----------------------
 
-Another well known rake: a client that does it's own caching, when used with multiple instances.
+Another well known rake: a client library that does it's own caching is used in an implementation of a service that runs in multiple instances.
 
 Instance A gets a modify foo request, followed by a get foo request, naturally the modification of foo will put the correct result in the cache of A, so that the subsequent get request will return the correct value. Instance B receives a get request for foo and returns the cached incorrect value of foo.
 
-Recently stumbled at this with the [Okta java sdk](https://github.com/okta/okta-sdk-java) - (another rake: the github project does not include all the sources, like very important classes like DefaultClient and DefaultUser; luckily you can see them with any good java decompiler, like IntelliJ)
+Recently stumbled at this with the [Okta java sdk](https://github.com/okta/okta-sdk-java) - here it was not obvious that the client is doing its own caching. (another rake: the github project does not include all the sources, like very important classes like DefaultClient and DefaultUser; luckily you can see them with any good java decompiler, like IntelliJ)
 
 Luckily it is relatively easy to cancel the caching, by supplying a custom CacheManager instance to ClientBuilder, one that does return a non-caching Cache instance on each request)
 
+Another interesting case is the aws KMS client, that has it's own cache, but where there is no set default for the cache expiration; so that i ended up with a cache that does not do any caching....
+
 ---
-actually this would be some interview question: 'how would yuu deal with a caching client library used in a multi pod deployment of a service, describe the problem scenario and solution', as there is more then one way to solve this problem.
+actually this would be some interview question: 'how would you deal with a caching client library used in a multi pod deployment of a service, describe the problem scenario and solution', as there is more then one way to solve this problem.
 
 - One could cancel caching of the client.
 - One could use a special router to route all requests to change any specific entity to the same service instance
