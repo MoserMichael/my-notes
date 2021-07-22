@@ -1,7 +1,7 @@
 " Set text width as 72.
 
 This is a log, here I am listing the gotchas that I stepped upon as a developer.
-Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice; Some of the fun in programming is to have your assumptions invalidated; this is not just a cause for grieve, it is an opportunity to re-examine your assumption...
+Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice; Some of the fun in programming is to have your assumptions invalidated; this is not just a cause for grieve, it is an opportunity to re-examine your assumptions, which is a good thing.
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
@@ -42,12 +42,14 @@ Recently stumbled at this with the [Okta java sdk](https://github.com/okta/okta-
 Luckily it is relatively easy to cancel the caching, by supplying a custom CacheManager instance to ClientBuilder, one that does return a non-caching Cache instance on each request)
 
 ---
-actually this would be some interview question: 'how would yuu deal with a caching client library used in a multi pod deployment of a service, describe the problem scenario and soltion', as there is more then one way to solve this problem.
+actually this would be some interview question: 'how would yuu deal with a caching client library used in a multi pod deployment of a service, describe the problem scenario and solution', as there is more then one way to solve this problem.
 
 - One could cancel caching of the client.
 - One could use a special router to route all requests to change any specific entity to the same service instance
 - one could write such a routing logic as part of the service, and delegate work with the caching client to a third service, based on this logic.
 - etc. (probably a few other approaches as well).
+
+(hope that i won't have to answer my own job interview questions any time soon ;-)
 
 ---07/07/21 04:54:26----------------------
 
