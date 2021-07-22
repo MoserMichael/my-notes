@@ -177,7 +177,7 @@ java grpc has a thread pool dedicated to it's stuff, and a threads in this pool 
 
 ---
 it's amazing how much of my time at work is spent with dealing to fix failures that happen during CI tests. 
-You sometimes got amazingly different behavior of the test environment on your local machine vs the environment on the CI.
+You sometimes got amazingly different behavior of the test environment on your local machine vs the environment on the CI environment; often these can be explained due differences of dealing with timeouts, or not waiting enough for some service, etc.
 
 
 ---30/06/21 04:39:54----------------------
