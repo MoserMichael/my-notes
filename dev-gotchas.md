@@ -31,6 +31,8 @@ The purpose of this script is to be a more lightweight solution then to use prom
 
 In a way kubernetes is our generations jcl (job control language on ibm mainframes) ; There is a remote similarity in how we are writing descriptors for tasks and then submit it for execution and wait till the mainframe/kubernetes cluster has considered our specification. (suddenly feeling old because of this comparison ...)
 
+update: changed the script, now it scans the deployment once per second for changes, new pods are logged too. 
+
 ---19/07/21 03:25:02----------------------
 
 Another well known rake: a client library that does it's own caching is used in an implementation of a service that runs in multiple instances.
