@@ -12,17 +12,24 @@ Wrote a python script that gathers logs in order to identify a situation describ
 
 The scripts help text:
 ```
+usage: follow-kube-logs.py [-h] [--namespace NAMESPACE] [--deployment DEPLOYMENT] [--out OUTDIR] [--kubectl KUBECMD] [--trace] [--complete-bash] [--complete]
+
+This program starts to follow the logs of containers in all pods of a kubernetes deployment. The output is written to a file per container. The script then waits for user input, logging
+is stopped once the user has pressed enter.  optional arguments: -h, --help            show this help message and exit
+
 log  pods/containers in deployment:
   --namespace NAMESPACE, -n NAMESPACE
                         optional: specify namespace of deployment (default: )
-  --deployment DEPLOYMENT, -p DEPLOYMENT
+  --deployment DEPLOYMENT, -d DEPLOYMENT
                         mandatory: name of deployment (default: )
-  --dir OUTDIR, -d OUTDIR
+  --out OUTDIR, -o OUTDIR
                         mandatory: name of output directory (default: )
   --kubectl KUBECMD, -k KUBECMD
                         optional: name of kubectl command (default: kubectl)
   --trace, -x           optional: enable tracing (default: False)
 
+suport for bash autocompletion of command line arguments:
+  --complete-bash, -b   show bash source of completion function (default: False)
 ```
 
 So that by running ```./follow-kube-logs.y -n my-namespace -p my-deployment -d logdir``` you will create directory logdir, it will create a subdirectory for each pod running in the deployment my-deployment in namepace my-namespace and spawn a process that follows the logs of each of the containers for that pod, to gather the logs for that container, while the script is running. The script then waits and asks for the user to press enter, whereas it will kill the spawned processes and stop the logging.
@@ -32,6 +39,9 @@ The purpose of this script is to be a more lightweight solution then to use prom
 In a way kubernetes is our generations jcl (job control language on ibm mainframes) ; There is a remote similarity in how we are writing descriptors for tasks and then submit it for execution and wait till the mainframe/kubernetes cluster has considered our specification. (suddenly feeling old because of this comparison ...)
 
 update: changed the script, now it scans the deployment once per second for changes, new pods are logged too. 
+
+update: added command completion, now to enable command completion, place the script in the path and run
+```  follow-kube-logs.py -b >>$HOME/.bashrc ```
 
 ---19/07/21 03:25:02----------------------
 
