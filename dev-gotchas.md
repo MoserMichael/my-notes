@@ -6,6 +6,50 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+
+---27/07/21 03:04:38----------------------
+
+The following code used to work in python2.7, but it doesn't work in python3.
+
+You can't iterate over the keys of a dictionary in python3, and modify the underlying dictionary within the loop.
+
+In python2 the method keys() of type dict was returning a list object that is holding a copy of the keys 
+
+
+in python3 they return a special set like view into the keys of a dictionary, this set is of type [dict_keys](https://docs.python.org/3/library/stdtypes.html#dict.keys), this speeds up iterating over the keys of a dictionary, but now you can't modify the collection while iterating over it.
+
+```
+map={ "first":1, "second" : 2, "third" : 3 }
+
+print("keys type: {}".format(type(map.keys())))
+
+for k in map.keys():
+    if k == "second":
+        # in python3 this gives the error; RuntimeError: dictionary changed size during iteration
+        del map[k]
+
+print(map)
+```
+
+In python3 you have to copy the keys explicitly into a list, to get the old behavior.
+
+```
+map={ "first":1, "second" : 2, "third" : 3 }
+
+print("keys type: {}".format(type(map.keys())))
+
+for k in list(map.keys()):
+    if k == "second":
+        del map[k]
+
+print(map)
+```
+
+I used to step onto this rake repeatedly in the past, let's see if writing it down will prevent a similar repetition in the future....
+
+Similar trivia: range used to be [function](https://docs.python.org/2.7/library/functions.html#range) in python2.7 that used to return a list of numbers in python2.7, in python3 it is a type constructor that is returning a [range](https://docs.python.org/3/library/stdtypes.html#range) object, this uses much less memory.
+
+
 ---22/07/21 04:05:11----------------------
 
 Wrote a python script that gathers logs in order to identify a situation described in the previous entry [link to script](https://github.com/MoserMichael/myenv/blob/master/scripts/follow-kube-logs.py)
@@ -42,6 +86,8 @@ update: changed the script, now it scans the deployment once per second for chan
 
 update: added command completion, now to enable command completion, place the script in the path and run
 ```  follow-kube-logs.py -b >>$HOME/.bashrc ```
+
+update: made a repository for this script [link](https://github.com/MoserMichael/follow-kube-logs)
 
 ---19/07/21 03:25:02----------------------
 
