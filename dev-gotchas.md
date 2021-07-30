@@ -105,6 +105,7 @@ Another interesting case is the aws KMS client, that has it's own cache, but whe
 actually this would be some interview question: 'how would you deal with a caching client library used in a multi pod deployment of a service, describe the problem scenario and solution', as there is more then one way to solve this problem.
 
 - One could cancel caching of the client.
+- in the case of Okta: one could rewrite the code to use the REST api - this doesn't come with its own client side caching.
 - One could use a special router to route all requests to change any specific entity to the same service instance
 - one could write such a routing logic as part of the service, and delegate work with the caching client to a third service, based on this logic.
 - etc. (probably a few other approaches as well).
@@ -518,4 +519,24 @@ java will start to omit stack traces, without this option. -XX:-OmitStackTraceIn
 Why did they do that? Why?
 
 
+---29/07/21 06:08:37----------------------
+
+Visual studio code shortcuts:  https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
+
+Command shift +     ::: make resolution larger
+Command shift -     ::: make resolution smaller
+
+Close outline at the right of the screen (this one is called "minimap")
+
+Command ,           ::: opens the settings page, search for minimap, uncheck 'minimap enabled'
+
+
+
+---29/07/21 06:15:02----------------------
+
+IntelliJ goodies.  https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html 
+
+press two times shift in quick succession, then in the windows press the 'symbols' tab ::: can show the source of any symbol, has a good built-in decompiler!
+
+Command B   ::: go to declaration.
 
