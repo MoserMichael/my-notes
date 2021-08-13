@@ -7,6 +7,37 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 
 
+---13/08/21 14:31:52----------------------
+
+Other essential kubectl commands, really helpful ones.
+
+This lists all events that happened in the namespace; Pods starting and crashing, etc. etc.
+
+```kubectl get events -n NAMESPACE``` 
+
+What is going on with my pods? Who is crashing and restarting?
+This lists all the bad things that happened in the namespace;
+
+```kubectl get events -n NAMESPACE | grep -i failed```
+
+This shows all the logs in a container of the crashed pods (name of crashed pods is in the event log produced by previous command); 
+note that you have to give the name of a container name. 
+
+```kubectl logs --previous POD-NAME-OF-CRASHED-POD  -n NAMESPAE -c CONTAINER-NAME-IN-CRASHED-POD```
+
+If you don't know the name of a container in the pod, then then the following command will remind you:
+
+```kubectl logs --previous POD-NAME-OF-CRASHED-POD  -n NAMESPACE```
+
+Now there is the command of pure magic, this one gives you an ssh shell to a container in a running pod.
+
+```kubectl exec --stdin --tty POD-NAME -c CONTAINER-NAME -n NAMESPACE -- /bin/bash```
+
+Of course this command may fail, if the container does not have the bash shell installed. In this case, the following command tells you which shell is installed.
+
+```kubectl exec --stdin --tty POD_NAME -c CONTAINER-NAME -n NAMESPACE -- echo $SHELL```
+
+
 ---27/07/21 03:04:38----------------------
 
 The following code used to work in python2.7, but it doesn't work in python3.
@@ -49,6 +80,7 @@ I used to step onto this rake repeatedly in the past, let's see if writing it do
 
 Similar trivia: range used to be [function](https://docs.python.org/2.7/library/functions.html#range) in python2.7 that used to return a list of numbers in python2.7, in python3 it is a type constructor that is returning a [range](https://docs.python.org/3/library/stdtypes.html#range) object, this uses much less memory.
 
+A good collection of differences between python 2 and python 3 is [here](https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html#bankers-rounding)
 
 ---22/07/21 04:05:11----------------------
 
