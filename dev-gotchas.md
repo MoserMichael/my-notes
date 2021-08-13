@@ -88,16 +88,29 @@ Wrote a python script that gathers logs in order to identify a situation describ
 
 The scripts help text:
 ```
-usage: follow-kube-logs.py [-h] [--namespace NAMESPACE] [--deployment DEPLOYMENT] [--out OUTDIR] [--kubectl KUBECMD] [--trace] [--complete-bash] [--complete]
+usage: follow-kube-logs.py [-h] [--namespace NAMESPACE]
+                           [--deployment DEPLOYMENT] [--stset STATEFULSET]
+                           [--rset REPLICASET] [--out OUTDIR]
+                           [--kubectl KUBECMD] [--trace] [--complete-bash]
+                           [--complete]
 
-This program starts to follow the logs of containers in all pods of a kubernetes deployment. The output is written to a file per container. The script then waits for user input, logging
-is stopped once the user has pressed enter.  optional arguments: -h, --help            show this help message and exit
+This program starts to follow the logs of containers in all pods of a
+kubernetes deployment/replicaset/statefulset. The output is written to a file
+per container. The script then waits for user input, logging is stopped once
+the user has pressed enter.
 
-log  pods/containers in deployment:
+optional arguments:
+  -h, --help            show this help message and exit
+
+log  pods/containers in either one of deployment/replicaset/statefuleset:
   --namespace NAMESPACE, -n NAMESPACE
                         optional: specify namespace of deployment (default: )
   --deployment DEPLOYMENT, -d DEPLOYMENT
-                        mandatory: name of deployment (default: )
+                        name of deployment (default: )
+  --stset STATEFULSET, -s STATEFULSET
+                        name of statefull set (default: )
+  --rset REPLICASET, -r REPLICASET
+                        name of replica set (default: )
   --out OUTDIR, -o OUTDIR
                         mandatory: name of output directory (default: )
   --kubectl KUBECMD, -k KUBECMD
@@ -105,7 +118,11 @@ log  pods/containers in deployment:
   --trace, -x           optional: enable tracing (default: False)
 
 suport for bash autocompletion of command line arguments:
-  --complete-bash, -b   show bash source of completion function (default: False)
+  --complete-bash, -b   show bash source of completion function (default:
+                        False)
+  --complete, -c        internal: used during code completion (default: False)
+  --kubectl KUBECMD, -k KUBECMD
+                        optional: name of kubectl command (default: kubectl)
 ```
 
 So that by running ```./follow-kube-logs.y -n my-namespace -p my-deployment -d logdir``` you will create directory logdir, it will create a subdirectory for each pod running in the deployment my-deployment in namepace my-namespace and spawn a process that follows the logs of each of the containers for that pod, to gather the logs for that container, while the script is running. The script then waits and asks for the user to press enter, whereas it will kill the spawned processes and stop the logging.
