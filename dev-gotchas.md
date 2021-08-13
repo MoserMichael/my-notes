@@ -248,9 +248,27 @@ It is now
 
 ``` find . - name foo | vim -```
 
+So it is the following alias for me, note that vim doesn't quite work with color escapes, so lets fall back to less when colors are asked for:
+Some people advise to use the AnsiEsc vim plugin for color escape codes, but this didn't work for me.
+
+```
+function _less {
+    local arg="$1"
+    if [[ "$arg" == "-R" ]]; then
+        less -R
+    else
+        vim -
+    fi
+}
+
+alias less=_less
+```
 ----
 
 Another well kept bash secret is to use Ctrl-r for searching the command history
+
+
+
 
 ---30/06/21 09:34:35----------------------
 
