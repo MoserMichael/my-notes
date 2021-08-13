@@ -44,7 +44,7 @@ The following code used to work in python2.7, but it doesn't work in python3.
 
 You can't iterate over the keys of a dictionary in python3, and modify the underlying dictionary within the loop.
 
-In python2 the method keys() of type dict was returning a list object that is holding a copy of the keys 
+In python2 this worked just fine: the method keys() of type dict was returning a list object that is holding a copy of the keys 
 
 
 in python3 they return a special set like view into the keys of a dictionary, this set is of type [dict_keys](https://docs.python.org/3/library/stdtypes.html#dict.keys), this speeds up iterating over the keys of a dictionary, but now you can't modify the collection while iterating over it.
