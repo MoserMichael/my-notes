@@ -6,10 +6,9 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
-
 ---13/08/21 14:31:52----------------------
 
-Other essential kubectl commands, really helpful ones.
+Other essential kubectl commands, really helpful ones for solving real problems with kubernetes usage.
 
 This lists all events that happened in the namespace; Pods starting and crashing, etc. etc.
 
@@ -509,6 +508,10 @@ Here they say that now they are also using Okapi BM25 [here](https://www.elastic
 
 --- 
 Another useful tool is [github code search ](https://github.com/search) especially if you use a few of the search operators [explained here](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-code)
+
+One interesting usage, besides searching for a code pattern, is to search for interesting projects on github; also see [searching for repositorie](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-for-repositories) and [searching for topics](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-topics)
+
+[```stars:>=10 language:cpp in:readme games```]( https://github.com/search?q=stars%3A%3E%3D10+language%3Acpp+in%3Areadme+games&type=Repositories )  this searches  for projects that have more than ten 'stars', are using the c++ programming language, and have the word "games" in the readme.
 
 ---
 
