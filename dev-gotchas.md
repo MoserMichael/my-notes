@@ -588,6 +588,14 @@ java will start to omit stack traces, without this option. -XX:-OmitStackTraceIn
 
 Why did they do that? Why?
 
+Another big thing is -XX:CompileThreshold
+
+It turns out that this value is 10000 on HotSpot server, this means that a java function is just in time compiled only when it has been executed for 10000 times.
+
+See [this link](https://jpbempel.github.io/2013/04/03/compilethreshold-is-relative.html)  
+
+That's one of the advantages of golang, here there is no hard to predict just in time compilation, everything is compiled up-front, there is less of this strange warm-up time after starting a service. On the other hand golang has executables of enormous size.
+
 
 ---29/07/21 06:08:37----------------------
 
