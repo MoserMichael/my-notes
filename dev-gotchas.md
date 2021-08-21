@@ -441,11 +441,17 @@ ln -sf /usr/local/bin/g++-11 /usr/local/bin/g++
 ```
 Interesting that the brew installation doesn't come with ld; hmm...
 
-Also you must put /usr/local/bin in the path before /bin
+Also you must put /usr/local/bin in the path before /bin 
+
+---
+
+Another big one: the built-in sed on the mac is kind of weird: it adds a trailing newline on every file, and is acting weird in every other sense as well.
+
+Luckily we can install the regular gnu sed. ```brew install gnu-sed``` now you have to invoke it as gsed. 
 
 ---22/06/21 02:41:22----------------------
 
-the term 'opionionated' as used in software [see this discussion](https://stackoverflow.com/questions/802050/what-is-opinionated-software)
+The term 'opionionated' as used in software [see this discussion](https://stackoverflow.com/questions/802050/what-is-opinionated-software)
 
 Opinionated software means that there is basically one way (the right way™) to do things and trying to do it differently will be difficult and frustrating. On the other hand, doing things the right way™ can make it very easy to develop with the software as the number of decisions that you have to make is reduced and the ability of the software designers to concentrate on making the software work is increased
 
@@ -495,6 +501,14 @@ also it helps to have this one in your .bashrc file; puts the current git branch
 
   PS1="[\u@\h \W\$(parse_git_branch)]\$ "
 ```
+
+The ultimate refactoring tool: search and replace a string for all files under git:
+
+```
+git ls-files -z | xargs -0 sed -i -e "s/FROM_STRING/TO_STRING/g" 
+```
+
+now for osx you need to use gnu sed, and not the built in one, as mentioned previously. [This script](https://github.com/MoserMichael/myenv/blob/master/scripts/gitreplace.sh) takes care of it.
 
 
 ---21/06/21 16:55:34----------------------
