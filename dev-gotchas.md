@@ -591,10 +591,13 @@ function makeIt {
             fi
         fi
     fi
+    beep.sh
 }
 
 alias m='makeIt'
 ```
+
+the m alias runs the relevant build command in the current directory; writes a file with the output, and makes a [beep](https://github.com/MoserMichael/myenv/blob/master/scripts/beep.sh) at the end; this signals to to get back from [swordfighting](https://xkcd.com/303/)
 
 ---21/06/21 15:47:12----------------------
 
