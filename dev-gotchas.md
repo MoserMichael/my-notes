@@ -11,19 +11,20 @@ I am looking a bit into the Rust programming language; i think it is interesting
 
 Compare this to golang, which did gain widespread acceptance between 2012 and 2021 (in 2012 they had version 1.0 of golang released); Rust's version 1.0 came out in 2015.
 
-What they have in common:
-    * Both languages have a killer feature over their competitors.
-        * Golang is competing with the JVM platform; golang has go routines and compilation to standalone executables (unlike JVM based languages it does not have the start up time, when the program is running in interpreted mode, without having completed just in time compilation); Golang is competing with Java/JVM based languages for application server stuff.
-        * Rust is competing with C++, has the killer feature of save code, a guarantee against buffer overflows in save code. Rust has a very rich syntax, it is inspired by Ocaml, it has a switch statement that can do deep pattern matching (like in Scala), and has a very flexible macro facility.
-        
-        
+What they have in common
+
+* Both languages have a killer feature over their competitors.
+    * Golang is competing with the JVM platform; golang has go routines and compilation to standalone executables (unlike JVM based languages it does not have the start up time, when the program is running in interpreted mode, without having completed just in time compilation); Golang is competing with Java/JVM based languages for application server stuff.
+    * Rust is competing with C++, has the killer feature of save code, a guarantee against buffer overflows in save code. Rust has a very rich syntax, it is inspired by Ocaml, it has a switch statement that can do deep pattern matching (like in Scala), and has a very flexible macro facility.
+    
+    
 Where are the differences?
-    * It is very easy to pick up golang for someone who has worked with java, It has the backing of Google, which has a lot of clout in software development (even though they are not known as development tool vendors)
-    * Rust is introducing very new features, and has a steeper learning curve. Also Mozilla fired the team responsible for developing Rust in 2020 [here]( https://en.wikipedia.org/wiki/Rust_(programming_language)#History) - it was later picked up by the Rust foundation, but the whole process raised doubts abut the future of Rust.
+* It is very easy to pick up golang for someone who has worked with java, It has the backing of Google, which has a lot of clout in software development (even though they are not known as development tool vendors)
+* Rust is introducing very new features, and has a steeper learning curve. Also Mozilla fired the team responsible for developing Rust in 2020 [here]( https://en.wikipedia.org/wiki/Rust_(programming_language)#History) - it was later picked up by the Rust foundation, but the whole process raised doubts abut the future of Rust.
 
 I suspect that there are several factors that determine programming language adoption
-    * The viability of the platform,
-    * The availability of programmers for a programming language is the single most important factor in programming language adoption. I think the continued popularity of C++ and Java ha much to do with the fact; an enterprise wants to treat programmers as interchangeable screws, and a less widespread programming language would make this practice much more difficult.
+* The viability of the platform,
+* The availability of programmers for a programming language is the single most important factor in programming language adoption. I think the continued popularity of C++ and Java ha much to do with the fact; an enterprise wants to treat programmers as interchangeable screws, and a less widespread programming language would make this practice much more difficult.
 
 Interesting corollary: I think that an enterprise with a less common programming language (like Scala or Rust), would have to treat its programmer much better than a competing shop that uses a common platform like Java or C++; they have a greater investment in their workforce, due to the platform issue, are probably more likely to raise salaries every now and then and would be less likely to 'hire and fire'...
     
