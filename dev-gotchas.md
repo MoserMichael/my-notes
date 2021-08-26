@@ -21,7 +21,7 @@ What they have in common
 Where are the differences?
 * It is very easy to pick up golang for someone who has worked with java, It has the backing of Google, which has a lot of clout in software development (even though they are not known as development tool vendors)
 * Rust is introducing very new features, and has a steeper learning curve. Also Mozilla fired the team responsible for developing Rust in 2020 [here]( https://en.wikipedia.org/wiki/Rust_(programming_language)#History) - it was later picked up by the Rust foundation, but the whole process raised doubts abut the future of Rust.
-* I think that golang has a better defined niche with a lot of demand; it is targeting server software development in a managed language; The niche of Rust would be security sensitive code running as a native executable.
+* I think that golang has a better defined niche with a lot of demand; it is targeting server software development in a managed language; The niche of Rust would be security sensitive code running as a native executable, but also server code that has to be secure and better performing then managed code. I guess perceived ease of development and deployment wins over more efficiency and more secure code.
 
 I suspect that there are several factors that determine programming language adoption
 * The viability of the platform,
