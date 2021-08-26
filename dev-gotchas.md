@@ -24,9 +24,9 @@ Where are the differences?
 
 I suspect that there are several factors that determine programming language adoption
 * The viability of the platform,
-* The availability of programmers for a programming language is the single most important factor in programming language adoption. I think the continued popularity of C++ and Java ha much to do with the fact; an enterprise wants to treat programmers as interchangeable screws, and a less widespread programming language would make this practice much more difficult.
+* The availability of programmers for a programming language is the single most important factor in programming language adoption. I think the continued popularity of C++ and Java has much to do with the fact; an enterprise wants to treat programmers as interchangeable screws, and a less widespread programming language would make this practice much more difficult.
 
-Interesting corollary: I think that an enterprise with a less common programming language (like Scala or Rust), would have to treat its programmer much better than a competing shop that uses a common platform like Java or C++; they have a greater investment in their workforce, due to the platform issue, are probably more likely to raise salaries every now and then and would be less likely to 'hire and fire'...
+Interesting corollary: I think that an enterprise with a less common programming language (like Scala or Rust), would have to treat its programmers much better than a competing shop that uses a commonly used platform like Java or C++; they have a greater investment in their workforce, due to the platform issue, are probably more likely to raise salaries every now and then and would be less likely to 'hire and fire'...
     
  
 ---13/08/21 14:31:52----------------------
