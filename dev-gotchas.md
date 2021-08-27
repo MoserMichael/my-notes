@@ -14,7 +14,7 @@ Compare this to golang, which did gain widespread acceptance between 2012 and 20
 What they have in common
 
 * Both languages have a killer feature over their competitors.
-    * Golang is competing with the JVM platform; golang has go routines and compilation to standalone executables (unlike JVM based languages it does not have the start up time, when the program is running in interpreted mode, without having completed just in time compilation); Golang is competing with Java/JVM based languages for application server stuff.
+    * Golang is competing with the JVM platform; golang has go routines (easier concurrency with n:m threads, n cooperative threads running in m operating system threads) and compilation to standalone executables (unlike JVM based languages it does not have the start up time, when the program is running in interpreted mode, without having completed just in time compilation); Golang is competing with Java/JVM based languages for application server stuff.
     * Rust is competing with C++, has the killer feature of save code, a guarantee against buffer overflows in save code. Rust has a very rich syntax, it is inspired by Ocaml, it has a switch statement that can do deep pattern matching (like in Scala), and has a very flexible macro facility.
     
     
@@ -26,6 +26,7 @@ Where are the differences?
 I suspect that there are several factors that determine programming language adoption
 * The viability of the platform,
 * The availability of programmers for a programming language is the single most important factor in programming language adoption. I think the continued popularity of C++ and Java has much to do with the fact; an enterprise wants to treat programmers as interchangeable screws, and a less widespread programming language would make this practice much more difficult.
+    * C++ was designed to be easier to learn by means of backward compatibility with C; This decision was good for programming language adoption; it was a good trade off, even at the expense of being a source of many issues with the language.
 
 Interesting corollary: I think that an enterprise with a less common programming language (like Scala or Rust), would have to treat its programmers much better than a competing shop that uses a commonly used platform like Java or C++; they have a greater investment in their workforce, due to the platform issue, are probably more likely to raise salaries every now and then and would be less likely to 'hire and fire'...
     
