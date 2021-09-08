@@ -1,5 +1,7 @@
 " Set text width as 72.
 
+My [linkedin profile](https://www.linkedin.com/in/michael-moser-32211b1/) 
+
 This is a log, here I am listing the gotchas that I stepped upon as a developer.
 Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice; Some of the fun in programming is to have your assumptions invalidated; this is not just a cause for grieve, it is an opportunity to re-examine your assumptions, which is a good thing.
 
@@ -248,30 +250,42 @@ So lets do some scripting:
 command! -nargs=* MyPageDown call s:RunMPGD()
 command! -nargs=* MyPageUp call s:RunMPGU()
 
-function! s:RunMPGD()
-    let s:curline = line('.')
+function! RunMPGD() range
     let s:pagesize = winheight(0)
-    let s:filesize = line('$') - s:pagesize
+    let s:filesize = line('$')
+    let s:topline = line('w0')
 
-    if s:curline < s:filesize
-       execute "normal" . s:pagesize . "j"
+    let s:move = s:pagesize  
+    if s:topline + s:pagesize > s:filesize
+        let s:move = s:filesize - s:topline
     endif
+
+    "execute "normal" . s:move . "j"
+    let s:curline = line('.') + s:move
+    let s:col = col('.')
+    call setpos(".", [0,  s:curline, s:col ] )
 endfunction
 
-function! s:RunMPGU()
+function! RunMPGU() range
     let s:curline = line('.')
     let s:pagesize = winheight(0)
-
-    if s:curline > s:pagesize
-       execute "normal" . s:pagesize . "k"
+    let s:topline = line('w0')
+                
+    let s:move = s:pagesize
+    if s:curline < s:pagesize
+        let s:move = s:curline
     endif
+
+    let s:curline = s:curline - s:move
+    let s:col = col('.')
+    call setpos(".", [0,  s:curline, s:col ] )
 endfunction
 
 ```
 i guess that's why tools like IntelliJ have a vim emulation mode - to compensate for a broken macbook keyboard, now the keyboard can go on, until the : character is no longer...
 
 In vim one can customize everything, it just takes a lot of time to do so, and when you are done then the result feels like a pyrrhic victory...
-
+One problem is that i don't know how to scroll in visual mode, so that the selection is still kept...
 
 ----
 
