@@ -59,7 +59,7 @@ Now there is the command of pure magic, this one gives you an ssh shell to a con
 
 ```kubectl exec --stdin --tty POD-NAME -c CONTAINER-NAME -n NAMESPACE -- /bin/bash```
 
-Of course this command may fail, if the container does not have the bash shell installed. In this case, the following command tells you which shell is installed.
+Of course this command may fail, if the container does not have the bash shell installed. In this case, the following command tells you which shell is installed (doesn't work if the container does not have a shell installed, which also happens)
 
 ```kubectl exec --stdin --tty POD_NAME -c CONTAINER-NAME -n NAMESPACE -- echo $SHELL```
 
@@ -189,7 +189,7 @@ actually this would be some interview question: 'how would you deal with a cachi
 
 ---07/07/21 04:54:26----------------------
 
-Difference between streams: map and forEach.
+Difference between java streams: map and forEach.
 
 I recently had the following pipe in a java program:
 ```
