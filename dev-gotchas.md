@@ -566,6 +566,13 @@ One interesting usage, besides searching for a code pattern, is to search for in
 
 [```stars:>=10 language:cpp in:readme games```]( https://github.com/search?q=stars%3A%3E%3D10+language%3Acpp+in%3Areadme+games&type=Repositories )  this searches  for projects that have more than ten 'stars', are using the c++ programming language, and have the word "games" in the readme.
 
+
+[```https://github.com/search?p=4&q=%22curated+list%22&type=Repositories```](https://github.com/search?p=4&q=%22curated+list%22&type=Repositories) searching for repositories with the phrase 'curated list' gives you a lot of cool link collections.
+
+[```https://github.com/search?q=type%3Auser+followers%3A%3E1000```](https://github.com/search?q=type%3Auser+followers%3A%3E1000) this query gets you a list of celebrity github users with more than 1000 likes.
+
+
+
 ---
 
 What we learned from this: being a software developer means to be a master in the art of searching for stuff. I think that [Google Fu](https://www.urbandictionary.com/define.php?term=google-fu) is no longer sufficient, as the web has grown too big for one single company to handle (or maybe the focus of our masters at the big search company has changed, no way to be sure on that). 
