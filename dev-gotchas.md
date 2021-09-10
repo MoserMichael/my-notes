@@ -7,6 +7,11 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
+
+---10/09/21 14:26:50----------------------
+
+One interesting aspect in software development is [Software rot](https://en.wikipedia.org/wiki/Software_rot), or otherwise known as bit rot. I came across this thing in one of my project, [kind-helper](https://github.com/MoserMichael/kind-helper). The project is a helper script for setting up a kubernetes test cluster with the kind utility. One of the features of this project is to set up an ingress (you can optionally set up a tls/https ingress). The problem was that the format of the ingress object changed, therefore the whole edifice seized to work. However I did make some use of [github actions](https://github.com/features/actions) - they give us the chance to set up a continuous integration environment that may test a github probject with public access on a regular basis. I have managed to use this feature of our benevolent owners in order to test the kind-helper project on a regular basis, therefore i got some notice of the fact that the unit test for this project seized to work. Now if you ever find someone bitching about unit testing, then you can argue that this technique will notify you of any changes in the environment of your software, as this environment may change in unexpected ways.
+
 ---26/08/21 23:16:37----------------------
 
 I am looking a bit into the Rust programming language; i think it is interesting that this language did not gain wider acceptance until 2021, right now there are very few job openings that require Rust.
