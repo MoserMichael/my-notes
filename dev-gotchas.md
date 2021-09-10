@@ -37,7 +37,10 @@ I suspect that there are several factors that determine programming language ado
 
 Interesting corollary: I think that an enterprise with a less common programming language (like Scala or Rust), would have to treat its programmers much better than a competing shop that uses a commonly used platform like Java or C++; they have a greater investment in their workforce, due to the language/platform issue, are probably more likely to raise salaries every now and then and would be less likely to 'hire and fire'... 
     
- 
+---
+
+Still, i think that Rust will gain some acceptance, at some stage. Consider these projects: [rustls](https://github.com/rustls/rustls) and [ring](https://github.com/briansmith/ring) ; they aim to reimplement libssl/libcrypto in Rust, so that you will not be likely to see any buffer/stack overruns...
+
 ---13/08/21 14:31:52----------------------
 
 Other essential kubectl commands, really helpful ones for solving real problems with kubernetes usage.
