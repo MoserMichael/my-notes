@@ -110,8 +110,28 @@ for k in list(map.keys()):
 print(map)
 ```
 
-I used to step onto this rake repeatedly in the past, let's see if writing it down will prevent a similar repetition in the future....
+Also the built-in ````map``` function returns an iterator like object, so that it does lazy evaluation in python3, in python2 you would get a list as return value.
+This has the advantage that the result of map is evaluated lazily, only when it is needed. On the other hand you can iterate only once over the result of ```map```, unlike python2.
+```
+def inc(x):
+    print("calling inc with ", x)
+    return x + 1
 
+res = map( inc, [1,2,3] )
+
+print("return type of map", res)
+
+print("first iteration:")
+for n in res:
+    print(n)
+
+print("second iteration:")
+for n in res:
+    print(n)
+```
+
+I used to step onto this rake repeatedly in the past, let's see if writing it down will prevent a similar repetition in the future....
+Another lesson: some say that 'python is easy', however python keeps changing with every major and minor release, which is confusing (perl5 doesn't do so, therefore perl scripts have a better chance to keep running without change; There comes a trade off with every decision, in the land of computers...
 Similar trivia: range used to be [function](https://docs.python.org/2.7/library/functions.html#range) in python2.7 that used to return a list of numbers in python2.7, in python3 it is a type constructor that is returning a [range](https://docs.python.org/3/library/stdtypes.html#range) object, this uses much less memory.
 
 A good collection of differences between python 2 and python 3 is [here](https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html#bankers-rounding)
