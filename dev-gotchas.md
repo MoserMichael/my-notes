@@ -703,9 +703,11 @@ Command ,           ::: opens the settings page, search for minimap, uncheck 'mi
 
 ---29/07/21 06:15:02----------------------
 
-IntelliJ goodies.  https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html 
+IntelliJ goodies on OSX.  https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html 
 
 press two times shift in quick succession, then in the windows press the 'symbols' tab ::: can show the source of any symbol, has a good built-in decompiler!
 
 Command B   ::: go to declaration.
+
+Command L   ::: go to line number
 
