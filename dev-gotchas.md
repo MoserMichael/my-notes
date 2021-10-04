@@ -8,8 +8,25 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
----10/09/21 14:26:50----------------------
+---05/10/21 02:38:15----------------------
 
+It is possible to use the [jdb](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html) debugger, in order to get a stack trace of a java thread that got stuck, for a process running in a container of a pod of a kubernetes cluster. Every tool has its uses...
+
+On the server side:
+
+- The java process needs to be invoked with the following command line arguments: ```-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000``` this means that the process listens on port 8000 for remote debugging requests.
+- The kubernetes cluster needs an ingress on port 8000
+
+On the client side; 
+
+- forward the debugging port to the pod that contains the java process that is to be debugged. ```kubectl port-forward POD_RUNNING_JAVA -n POD_NAMESPACE 8000:8000```
+- Run jdb and attach it to the process via the port: ```jdb -attach localhost:8000 ```
+- list all threads ```threads``` . All threads are listed in the form ```(<Thread_name>)<thread_id_hex>``` where the thread_name is what you pass to ```Thread.set_namei```
+- ```suspend``` - suspend all running threads.
+- ```where <thread_id_hex>``` show stack track of remote thread
+
+
+<---10/09/21 14:26:50----------------------
 One interesting aspect in software development is [Software rot](https://en.wikipedia.org/wiki/Software_rot), or otherwise known as bit rot. I came across this thing in one of my project, [kind-helper](https://github.com/MoserMichael/kind-helper). The project is a helper script for setting up a kubernetes test cluster with the kind utility. One of the features of this project is to set up an ingress (you can optionally set up a tls/https ingress). The problem was, that the format of the ingress object changed, therefore the whole edifice seized to work. However I did make some use of [github actions](https://github.com/features/actions) - they give us the chance to set up a continuous integration environment, that may test a github probject with public access on a regular basis. I have managed to use this feature, granted to us by our benevolent owners, in order to test the kind-helper project on a regular basis. Therefore I have managed to get some notice of the fact, that the integration tests for this project seized to work. Now if you ever find someone bitching about automatic tests - like unit tests/integration tests, then my response would be, that this technique will give some notification of any changes in the environment, which may affect your software. I think that that there are a lot of possibilities for environmental changes, most of them come down to changes in dependencies (libraries or components that your components depend on). These changes are a very frequent cause of errors in software development.
 
 ---26/08/21 23:16:37----------------------
