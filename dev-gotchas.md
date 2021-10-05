@@ -19,9 +19,9 @@ On the server side:
 
 On the client side; 
 
-- forward the debugging port to the pod that contains the java process that is to be debugged. ```kubectl port-forward POD_RUNNING_JAVA -n POD_NAMESPACE 8000:8000```
+- forward the debugging port to the pod that contains the java process that is to be debugged. ```kubectl port-forward POD_RUNNING_JAVA -n POD_NAMESPACE 8000:8000``` While forwarding is running in one console, start a new console to run the following commands:
 - Run jdb and attach it to the process via the port: ```jdb -attach localhost:8000 ```
-- list all threads ```threads``` . All threads are listed in the form ```(<Thread_name>)<thread_id_hex>``` where the thread_name is what you pass to ```Thread.set_namei```
+- list all threads ```threads``` . All threads are listed in the form ```(<Thread_name>)<thread_id>``` where the thread_name is what you pass to ```Thread.set_name```
 - ```suspend``` - suspend all running threads.
 - ```where <thread_id_hex>``` show stack track of remote thread
 
