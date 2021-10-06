@@ -344,7 +344,7 @@ One problem is that i don't know how to scroll in visual mode, so that the selec
 
 ----
 
-Half a year later I found the solution of how to keep the selection in visual mode too. Maybe it would have been easier to buy an external keyboard, rather than to compensate
+Several months later I found the solution of how to keep the selection in visual mode too [source](https://vi.stackexchange.com/questions/8335/how-to-i-get-around-normal-exiting-visual-mode/8336). Maybe it would have been easier to buy an external keyboard, rather than to compensate
 for this problem with scripting...
 
 ```
