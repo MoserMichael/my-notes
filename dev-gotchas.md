@@ -305,7 +305,7 @@ So lets do some scripting:
 command! -nargs=* MyPageDown call s:RunMPGD()
 command! -nargs=* MyPageUp call s:RunMPGU()
 
-function! RunMPGD() range
+function! RunMPGD() 
     let s:pagesize = winheight(0)
     let s:filesize = line('$')
     let s:topline = line('w0')
@@ -321,7 +321,7 @@ function! RunMPGD() range
     call setpos(".", [0,  s:curline, s:col ] )
 endfunction
 
-function! RunMPGU() range
+function! RunMPGU() 
     let s:curline = line('.')
     let s:pagesize = winheight(0)
     let s:topline = line('w0')
