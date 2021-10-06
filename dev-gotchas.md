@@ -344,6 +344,27 @@ One problem is that i don't know how to scroll in visual mode, so that the selec
 
 ----
 
+Half a year later I found the solution of how to keep the selection in visual mode too. Maybe it would have been easier to buy an external keyboard, rather than to compensate
+for this problem with scripting...
+
+```
+:vnoremap ,  :call RunMPGDV()<Return> 
+:vnoremap .  :call RunMPGUV()<Return>
+
+function! RunMPGDV()
+    normal gv
+    call RunMPGD()
+endfunction
+
+function! RunMPGUV() 
+    normal gv
+    call RunMPGU()
+endfunction
+
+```
+
+----
+
 Another interesting problem: VIM MAPS j to scrolling down, whereas me would find it more natural to scroll up. I left it as is as an exercise: how easy will it be for me to adjust to a changed assumption in an ingrained cognitive bias. The experiment is still ongoing...
 
 ----
