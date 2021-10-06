@@ -21,10 +21,11 @@ On the client side;
 
 - forward the debugging port to the pod that contains the java process that is to be debugged. ```kubectl port-forward POD_RUNNING_JAVA -n POD_NAMESPACE 8000:8000``` While forwarding is running in one console, start a new console to run the following commands:
 - Run jdb and attach it to the process via the port: ```jdb -attach localhost:8000 ```
-- list all threads ```threads``` . All threads are listed in the form ```(<Thread_name>)<thread_id>``` where the thread_name is what you pass to ```Thread.set_name```
+- run the following commands iin jdb: ```threads``` - this one is listing all threads are listed in the form ```(<Thread_name>)<thread_id>``` where the thread_name is what you pass to ```Thread.set_name```
 - ```suspend``` - suspend all running threads.
 - ```where <thread_id_hex>``` show stack track of remote thread
 
+```jdb``` is a very low level java debugger, but it has it's uses.
 
 <---10/09/21 14:26:50----------------------
 
@@ -157,6 +158,10 @@ Another lesson: some say that 'python is easy', however python keeps changing wi
 Similar trivia: range used to be [function](https://docs.python.org/2.7/library/functions.html#range) in python2.7 that used to return a list of numbers in python2.7, in python3 it is a type constructor that is returning a [range](https://docs.python.org/3/library/stdtypes.html#range) object, this uses much less memory.
 
 A good collection of differences between python 2 and python 3 is [here](https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html#bankers-rounding)
+
+---
+
+I later wrote this article on the python module system [here](https://github.com/MoserMichael/pythonimportplayground)
 
 ---22/07/21 04:05:11----------------------
 
