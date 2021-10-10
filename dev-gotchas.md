@@ -10,7 +10,7 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 ---10/10/21 04:46:52----------------------
 
-I made a [presentation](https://www.youtube.com/watch?v=7ug8cWKAuO8) for the gitblame vim plugin [link](https://github.com/MoserMichael/gitblame)
+I made a [presentation](https://www.youtube.com/watch?v=7ug8cWKAuO8) for the gitblame vim plugin [link to project](https://github.com/MoserMichael/gitblame)
 
 Now making a presentation based on screen recording is not quite a trivial thing to do on a mac, there are many options here:
 
