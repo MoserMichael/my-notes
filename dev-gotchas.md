@@ -747,8 +747,35 @@ It turns out that this value is 10000 on HotSpot server, this means that a java 
 
 See [this link](https://jpbempel.github.io/2013/04/03/compilethreshold-is-relative.html)  
 
-That's one of the advantages of golang, here there is no hard to predict just in time compilation, everything is compiled up-front, there is less of this strange warm-up time after starting a service. On the other hand golang has executables of enormous size.
+That's one of the advantages of golang, here there is no hard to predict just in time compilation, everything is compiled up-front, there is less of this strange warm-up time after starting a service. On the other hand, golang has executables of enormous size.
 
+```
+$ which kubectl
+/usr/local/bin/kubectl
+
+$ stat -x /usr/local/bin/kubectl
+  File: "/usr/local/bin/kubectl"
+  Size: 55           FileType: Symbolic Link
+  Mode: (0755/lrwxr-xr-x)         Uid: (    0/    root)  Gid: (   80/   admin)
+Device: 1,5   Inode: 2013626    Links: 1
+Access: Wed Sep  2 19:20:39 2020
+Modify: Wed Sep  2 19:20:39 2020
+Change: Wed Sep  2 19:20:39 2020
+
+$ ls -l /usr/local/bin/kubectl
+lrwxr-xr-x  1 root  admin  55 Sep  2  2020 /usr/local/bin/kubectl -> /Applications/Docker.app/Contents/Resources/bin/kubectl
+
+$ stat -x /Applications/Docker.app/Contents/Resources/bin/kubectl
+  File: "/Applications/Docker.app/Contents/Resources/bin/kubectl"
+  Size: 50104496     FileType: Regular File
+  Mode: (0755/-rwxr-xr-x)         Uid: (  502/michaelmo)  Gid: (   80/   admin)
+Device: 1,5   Inode: 17339265    Links: 1
+Access: Thu Oct  7 10:12:44 2021
+Modify: Wed Dec  9 17:24:19 2020
+Change: Fri Dec 11 05:22:00 2020
+```
+
+Kubectl is 50 megabytes big, arguably that's quite a bit for this command line program.
 
 ---29/07/21 06:08:37----------------------
 
