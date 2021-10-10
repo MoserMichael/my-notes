@@ -8,6 +8,19 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+---10/10/21 04:46:52----------------------
+
+I made a [presentation](https://www.youtube.com/watch?v=7ug8cWKAuO8) for the gitblame vim plugin [link](https://github.com/MoserMichael/gitblame)
+
+Now making a presentation based on screen recording is not quite a trivial thing to do on a mac, there are many options here:
+
+- quicktime can record the screen, but your video will be without sound (at least I didn't manage to record with sound)
+- There are several screen recording programs that claim to be free, but it's only a demo version that requires you to pay for a license.
+- Both zoom and slack could possibly do it, but I didn't manage to make it work. Once upon a time there was google hangouts, where you could do a screen recording. However this product was discontinued by google, for whatever reasons.
+- Now what really worked for me is the [Screen recorder for Chrome](https://chrome.google.com/webstore/detail/screen-recorder/hniebljpgcogalllopnjokppmgbhaden) This plugin is really free (right now) and it allows you to record a particular window (not the whole screen). You can also pause and resume the recording, which is very useful for someone like me, who is not a seasoned presenter.
+
+Lots of options here. It took me some research to find something that works for me, as usual...
+
 ---05/10/21 02:38:15----------------------
 
 It is possible to use the [jdb](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html) debugger, in order to get a stack trace of a java thread that got stuck, for a process running in a container of a pod of a kubernetes cluster. Every tool has its uses...
