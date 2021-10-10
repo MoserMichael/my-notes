@@ -254,7 +254,7 @@ actually this would be some interview question: 'how would you deal with a cachi
 - one could write such a routing logic as part of the service, and delegate work with the caching client to a third service, based on this logic.
 - etc. (probably a few other approaches as well).
 
-(hope that i won't have to answer my own job interview questions any time soon ;-)
+(hope that i won't have to answer my own job interview questions any time soon, interviewing for a job gives me post traumatic stress disorder ;-)
 
 ---07/07/21 04:54:26----------------------
 
