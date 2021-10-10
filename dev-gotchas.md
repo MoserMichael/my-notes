@@ -17,7 +17,7 @@ Now making a presentation based on screen recording is not quite a trivial thing
 - quicktime can record the screen, but your video will be without sound (at least I didn't manage to record with sound)
 - There are several screen recording programs that claim to be free, but it's only a demo version that requires you to pay for a license.
 - Both zoom and slack could possibly do it, but I didn't manage to make it work. Once upon a time there was google hangouts, where you could do a screen recording. However this product was discontinued by google, for whatever reasons.
-- Didn't manage to use ffmpeg and gstreamer (though I had some fun with gstreamer, while trying: this command gives you a distorted mirror, quite funny: ```gst-launch-1.0  avfvideosrc device-index=0 ! videoconvert ! warptv ! videoconvert ! autovideosink```)
+- Didn't manage to use ffmpeg and gstreamer, though I had some fun with gstreamer, while trying: this command gives you a distorted mirror, quite funny: ```gst-launch-1.0  avfvideosrc device-index=0 ! videoconvert ! warptv ! videoconvert ! autovideosink```
 - Now what really worked for me is the [Screen recorder for Chrome](https://chrome.google.com/webstore/detail/screen-recorder/hniebljpgcogalllopnjokppmgbhaden) This plugin is really free (right now) and it allows you to record a particular window (not the whole screen). You can also pause and resume the recording, which is very useful for someone like me, who is not a seasoned presenter.
 
 Lots of options here. It took me some research to find something that works for me, as usual...
