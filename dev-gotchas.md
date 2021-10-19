@@ -735,6 +735,10 @@ alias m='makeIt'
 
 the m alias runs the relevant build command in the current directory; writes a file with the output, and makes a [beep](https://github.com/MoserMichael/myenv/blob/master/scripts/beep.sh) at the end; this signals to to get back from [swordfighting](https://xkcd.com/303/)
 
+---
+
+i have also written this script, which is github specific: [makepr.py](https://github.com/MoserMichael/githubapitools/blob/master/makepr.py) It automates creation of pull request, waits until the continuous integration build for the top commit has completed, then notifies you upon completion of the build.
+
 ---21/06/21 15:47:12----------------------
 
 java will start to omit stack traces, without this option. -XX:-OmitStackTraceInFastThrow
