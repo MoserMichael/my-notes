@@ -408,6 +408,9 @@ function _less {
 
 alias less=_less
 ```
+
+One downside: this version of less will wait for the program to complete, before it shows anything. So it is not quite ideal for very long running programs. Everything seems to have its caveats, in the land of computing...
+
 ----
 
 Another well kept bash secret is to use Ctrl-r for searching the command history
