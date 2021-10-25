@@ -8,6 +8,15 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+---25/10/21 14:43:56----------------------
+
+While monitoring a log file that is changing;
+
+```tail -f mysterious-log-file.log | grep --line-buffered SEARCH_TERM```
+
+Without the ```--line-buffered``` you will not get an update of any new events. (stepped on this several times, let's see if I remember it the next time)
+
+
 ---10/10/21 04:46:52----------------------
 
 I made a [presentation](https://www.youtube.com/watch?v=7ug8cWKAuO8) for the gitblame vim plugin [link to project](https://github.com/MoserMichael/gitblame)
