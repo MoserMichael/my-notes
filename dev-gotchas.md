@@ -14,7 +14,7 @@ While monitoring a log file that is changing;
 
 ```tail -f mysterious-log-file.log | grep --line-buffered SEARCH_TERM```
 
-Without the ```--line-buffered``` you will not get an update of any new events. (stepped on this several times, let's see if I remember it the next time)
+```tail -f``` shows any  changes of the log file, now without the ```--line-buffered``` argument on grep, you will not get an update of any new events. (stepped on this several times, let's see if I remember it the next time)
 
 
 ---10/10/21 04:46:52----------------------
