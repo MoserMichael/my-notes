@@ -8,7 +8,6 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
-
 ---06/11/21 09:37:45----------------------
 
 Today i learned, that google is tracking your entire browser history in Chrome, is tracking your every move via android, is also recording your voice (not quite sure what is being recorded), among other things...  It says that you can disable this [here](https://myactivity.google.com/activitycontrols); though i am not entirely sure if you can trust that statement.
@@ -16,9 +15,11 @@ Today i learned, that google is tracking your entire browser history in Chrome, 
 See more [here](http://jaruzel.com/blog/how-much-does-google-know-about-me)
 
 That's what I call 'opinionated snooping', the default is to track your every move. In a way I am glad, that i failed to pass the google hiring process, when I tried.
-I really wouldn't like be part of these games, even though they are probably a cool place to work for. This mega corporation seems to have a vision of things, which is not quite pleasant: i mean the statement 'dont be evil' depends on your particular definition of evil. (I guess they would regard a bad financial quarter as very evil)
+I really wouldn't like to be part of these games, even though they are probably a cool place to work for. This mega corporation seems to have a vision of things, which is not quite pleasant: i mean the statement 'dont be evil' depends on your particular definition of evil. (I guess they would regard a bad financial quarter as very evil)
 
-Among other things I learned: it turns out that Orwell did get a lot of ideas for '1984' from Zamyatin's 'we'; see [Orwell's review](https://orwell.ru/library/reviews/zamyatin/english/e_zamy) Also [here](https://www.nytimes.com/2021/11/02/books/review/yevgeny-zamyatin-we.html). I didn't quite find '1984' to be very convincing, when I read it; maybe Orwell did not experience too much of socialism, when he was in Spain, during the civil war there; however 'We' was much more real to me, when I was growing up in the German Democratic Republic, aka East Germany.
+Among other things I learned: it turns out that Orwell did get a lot of ideas for '1984' from Zamyatin's 'We'; see [Orwell's review](https://orwell.ru/library/reviews/zamyatin/english/e_zamy) Also [here](https://www.nytimes.com/2021/11/02/books/review/yevgeny-zamyatin-we.html). I didn't quite find '1984' to be very convincing, when I read it; maybe Orwell did not experience too much of socialism, when he was in Spain, during the civil war there; however 'We' was much more real to me, when I was growing up in the German Democratic Republic, aka East Germany.
+
+Sorry for all of the politics, this was meant to be a professional blog. Well, I think there is no way to get around that...
 
 ---25/10/21 14:43:56----------------------
 
