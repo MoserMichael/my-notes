@@ -8,6 +8,15 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+
+---08/11/21 03:33:18----------------------
+
+I was plagued by garbage characters appearing in vim. Luckily there is a fix for that explained [here](https://stackoverflow.com/questions/21618614/vim-shows-garbage-characters)
+
+```:set t_RV=```
+
+What would i do without stackoverflow...
+
 ---06/11/21 09:37:45----------------------
 
 Today i learned, that google is tracking your entire browser history in Chrome, is tracking your every move via android, is also recording your voice (not quite sure what is being recorded), among other things...  It says that you can disable this [here](https://myactivity.google.com/activitycontrols); though i am not entirely sure if you can trust that statement.
