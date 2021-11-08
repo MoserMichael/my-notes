@@ -47,6 +47,12 @@ Among other things I learned: it turns out that Orwell did get a lot of ideas fo
 
 Sorry for all of the politics, this was meant to be a professional blog. Well, I think there is no way to get around that...
 
+--
+
+Here is a good one: 'there ain't no anti-utopia, that our current elites wouldn't want to implement for real' [source](https://www.anekdot.ru/id/1262613/)
+
+Unrelated: I made a crawler generated web page, that lists flagged stories only [here](https://mosermichael.github.io/flagged-hn/page_1.html) and the crawler for this stuff is [right here](https://github.com/MoserMichael/flagged-hn/)  (I tried to make the logo look like that of the GDR newspaper the 'Neues Deutschland', giggle)
+
 ---25/10/21 14:43:56----------------------
 
 While monitoring a log file that is changing;
