@@ -11,11 +11,26 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 ---08/11/21 03:33:18----------------------
 
-I was plagued by garbage characters appearing in vim. Luckily there is a fix for that explained [here](https://stackoverflow.com/questions/21618614/vim-shows-garbage-characters)
+I was plagued by garbage characters appearing in vim. 
+Actually i never get this on linux, only on the mac.
+To fix this problem somehow, i redefined ctrl+a to redraw the screen
 
-Put this into ~/.vimrc , it helps with the problem!
+```
+:vnoremap <C-A> <Esc>:redraw!<Return>
 
-```:set t_RV=```
+:inoremap <C-A> <Esc>:redraw!<Return>i
+
+:nnoremap <C-A> :redraw!<Return>
+```
+
+Luckily there is a fix for that explained [here](https://stackoverflow.com/questions/21618614/vim-shows-garbage-characters)
+Now if you get this problem, then put this into your ~/.vimrc , it helps with the problem!
+
+```
+if has('mac')
+:set t_RV=
+endif
+```
 
 What would i do without stackoverflow...
 
