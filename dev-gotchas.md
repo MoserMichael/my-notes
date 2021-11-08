@@ -13,6 +13,8 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 I was plagued by garbage characters appearing in vim. Luckily there is a fix for that explained [here](https://stackoverflow.com/questions/21618614/vim-shows-garbage-characters)
 
+Put this into ~/.vimrc , it helps with the problem!
+
 ```:set t_RV=```
 
 What would i do without stackoverflow...
