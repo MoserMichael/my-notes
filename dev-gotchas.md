@@ -53,6 +53,7 @@ Here is a good one: 'there ain't no anti-utopia, that our current elites wouldn'
 
 Unrelated: I made a crawler generated web page, that lists flagged submissions and comments from [hacker news](https://news.ycombinator.com/news)  Here is the result: ['red flagged hacker news'](https://mosermichael.github.io/flagged-hn/page_1.html) and the crawler for this stuff is [right here](https://github.com/MoserMichael/flagged-hn/)  (I tried to make the logo look like that of the GDR newspaper the 'Neues Deutschland', giggle)
 
+Update: google at least gives you an 'opt out' clause (not sure if they really do an opt out, or if they have to keep the data because of some other considerations), other giants of the surveillance industrial complex don't do that (facebook doesn't have an opt-out clause, for that matter)
 --
 
 A friend of mine managed to appeal a parking ticket, based on the location data that is tracked by android snooping. Maybe he is right and i am wrong, but me doesn't want to feed the monster with more data than it is necessary, also everything that 'listens and looks' (aka. 'Horch und Guck') is just a bit too frightening, to me.
