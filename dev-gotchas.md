@@ -63,9 +63,13 @@ A friend of mine managed to appeal a parking ticket, based on the location data 
 
 --
 
-At least vim isn't calling home (unlike visual studio code, with it's telemetry)
+At least vim isn't calling home (unlike visual studio code, with it's telemetry).
 
-Anyhow: I have a vim plugin that uses openssl to encrypt a file that is being edited. [link](https://github.com/MoserMichael/vimcrypt2). Another technological fix, for a problem that is posed by society...  (most of the entries in this log go with 'here is a script to fix your woes' ;-)
+Anyhow: I have a vim plugin that uses openssl to encrypt a file that is being edited. [link](https://github.com/MoserMichael/vimcrypt2), that works for me.
+
+This can be used to keep your own private notes relatively secured (well, they can still put up a keylogger, if they really bother)
+
+Anyhow, this vim plugin is a kind of technological fix, for a problem that is posed by society. (Well, most of the entries in this log go with 'here is a script to fix your woes' ;-)
 
 ---25/10/21 14:43:56----------------------
 
