@@ -32,7 +32,9 @@ if has('mac')
 endif
 ```
 
-What would i do without stackoverflow...
+What would i do without stackoverflow... 
+
+Nope, i still need the shortcut on occasion, especially when searching for a string, the screen doesn't always get redrawn....
 
 ---06/11/21 09:37:45----------------------
 
@@ -58,6 +60,12 @@ Update: google at least gives you an 'opt out' clause (not sure if they really d
 --
 
 A friend of mine managed to appeal a parking ticket, based on the location data that is tracked by android snooping. Maybe he is right and i am wrong, but me doesn't want to feed the monster with more data than it is necessary, also everything that 'listens and looks' (aka. 'Horch und Guck') is just a bit too frightening, at least to me.
+
+--
+
+At least vim isn't calling home (unlike visual studio code, with it's telemetry)
+
+Anyhow: I have a vim plugin that uses openssl to encrypt a file that is being edited. [link](https://github.com/MoserMichael/vimcrypt2). Another technological fix, for a problem that is posed by society...  (most of the entries in this log go with 'here is a script to fix your woes' ;-)
 
 ---25/10/21 14:43:56----------------------
 
