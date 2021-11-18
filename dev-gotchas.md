@@ -219,7 +219,7 @@ for k in list(map.keys()):
 print(map)
 ```
 
-Also the built-in ````map``` function returns an iterator like object, so that it does lazy evaluation in python3, in python2 you would get a list as return value.
+Also the built-in ```map``` function returns an iterator like object, so that it does lazy evaluation in python3, in python2 you would get a list as return value.
 This has the advantage that the result of map is evaluated lazily, only when it is needed. On the other hand you can iterate only once over the result of ```map```, unlike python2.
 ```
 def inc(x):
@@ -504,7 +504,7 @@ java grpc has a thread pool dedicated to it's stuff, and a threads in this pool 
             ex.printStackTrace();
         }
        
-````
+```
 
 ---
 it's amazing how much of my time at work is spent with dealing to fix failures that happen during CI tests. 
