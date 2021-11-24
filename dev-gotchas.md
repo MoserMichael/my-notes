@@ -12,32 +12,32 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 I am dabbling quite a bit in Python, in my public repositories, here on github. Python feels sometimes like a kind of lisp, Peter Norvig is often quoted of having [said so](http://norvig.com/python-lisp.html). There are some similarities, due to python being very dynamic and expressive /also if you ask me: you need to overcome some barrier of entry with the syntax (for python it's that spaces have some real meaning, for lisp it's the nesting of lists), You are fine with both lisp and python, once you have overcome these difficulties/
 
-One area where python is not lisp - python is not [Homoiconic](https://en.wikipedia.org/wiki/Homoiconicity) unlike lisp. This means that a python program can't be manipulated as python data. That means that the python interpreter [cpython](https://github.com/python/cpython) needs to do quite a bit of parsing, it is time to look a bit at parsing in general and in the world of python.
+One area where python is not lisp - python is not [Homoiconic](https://en.wikipedia.org/wiki/Homoiconicity). This means that a python program can't be manipulated as python data. As a result, the python interpreter [cpython](https://github.com/python/cpython) needs to do quite a bit of parsing, it is time to look a bit at parsing in general and in the world of python.
 
-Parsing comes in two stages: often there is a first stage, called [lexical analysis/tokenization](https://en.wikipedia.org/wiki/Lexical_analysis) where the input text is broken up into tokens like keywords, identifiers and comments, and a second stage called [syntax analysis](https://en.wikipedia.org/wiki/Parsing#Computer_languages), where they take the tokens as input, and build an [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree), that shows the structure of the program. (in a homoiconic program, you would get the abstract syntax tree for free, in the form of the data structure that expresses the program)
+Parsing comes in two stages: often there is a first stage, called [lexical analysis/tokenization](https://en.wikipedia.org/wiki/Lexical_analysis) where the input text is broken up into tokens like keywords, identifiers and comments, and a second stage called [syntax analysis](https://en.wikipedia.org/wiki/Parsing#Computer_languages), where they take the tokens as input, and build an [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree), that shows the structure of the program. (in a homoiconic programming language, you would get the abstract syntax tree for free, in the form of the data structure that expresses the program)
 
-Now some parsers try to do without the lexical analysis stage, for [parsing expression grammars](https://en.wikipedia.org/wiki/Parsing_expression_grammar) are a type of top-down parsers that are famous for doing without a lexical analysis stage, but the result turns out to be a bit awkward:
+Now some parsers try to do without the lexical analysis stage, for [parsing expression grammars (PEG)](https://en.wikipedia.org/wiki/Parsing_expression_grammar) are a type of top-down parsers that are famous for doing without a lexical analysis stage, but the result turns out to be a bit awkward:
 
 I think that peg parsers have a lot of problems:
 
-  - one problem; you need to deal with comments as part of the grammar, That can be a bit of a problem, as comments may come as part of each and every token. One way to fix that with PEG parsers is to have a scanner stage that removes tokens from the input, before they are handled by the peg parser, That would be a kind of lexical analysis: lexers are eating up comments, and just don't pass them on as tokens.
+  - one problem; you need to deal with comments as part of the grammar, That can be a bit of a problem, as comments may appear just about everywhere. One way to fix that problem with PEG parsers is to have a filter stage, that removes tokens from the input, before they are handled by the parser, That would be a kind of preprocessor similar to lexical analysis: lexers are eating up comments, and just don't pass them on as tokens.
   - the peg parser needs to do a lot of backtracking, partly to resolve ambiguities between tokens - an example ambiguity between tokens: an identifier be identified by a regular expression ```[A-Za-z]([a-zA-z0-9\_]*)``` , now this regular expression can also scan about every keyword.
   - it needs a lot of lookahead, a whole lot.
 
 Still the grammar for peg parsers is much more intutitive, and you don't have to fight shift/reduce and reduce/reduce conflicts (like with yacc/bison), or indulge in other workarounds.
 
-Anyway, lets look at what [cpython](https://github.com/python/cpython) is doing: before python 3.9 had a simple grammar, the ideal was to have a LL(1) grammar, you would just look at one token, in order to decide what clause will be parsed. In practice they had a couple of workarounds, still it was an LL(k) grammar, one that can be parsed with a fixed number of lookahead symbols. up to python 3.9 the grammar was defined [here](https://github.com/python/cpython/blob/3.8/Grammar/Grammar) and it had a lexical analysis stage with tokens defined [here](https://github.com/python/cpython/blob/3.8/Grammar/Tokens) Most of the parser would be translated to a finite automata, that would be coerced to do the parsing.
+Anyway, lets look at what [cpython](https://github.com/python/cpython) is doing: before python 3.9 had a simple grammar, the ideal was to have a LL(1) grammar, you would just look at one token, in order to decide what clause will be parsed. In practice they had a couple of workarounds, still it was an LL(k) grammar, one that can be parsed with a fixed number of lookahead symbols. up to python 3.9 the grammar was defined [here](https://github.com/python/cpython/blob/3.8/Grammar/Grammar) and it had a lexical analysis stage with tokens defined [here](https://github.com/python/cpython/blob/3.8/Grammar/Tokens) Most of the parser would be translated to a [finite automata](https://en.wikipedia.org/wiki/Finite-state_machine), that would be used for the syntax parsing.
 
-Lets build the thing on the mac:
+Lets build cpython on the mac:
 
-On the mac you first need to get openssl 
+On the mac you first need to get openssl, as a prerequisite.
 ```brew install openssl```
 
 Then get the sources and build it
 
 ```
     git clone https://github.com/python/cpython.git cpython
-    pushd cpython
+    cd python
 
     # for 3.8 (still has the old dfa based parser)
     git checkout origin/3.8 -b 3.8
@@ -50,14 +50,14 @@ Then get the sources and build it
     make -s -j2
 ``` 
 
-Anyway, i think that parser speed is not that important to python - in the end it all ends up translated into bytecode files with extension *.pyc. What matters is the speed of the runtime, that's where most of the time is being spent.
+Anyway, i think that parser speed is not that important to python - in the end it all ends up translated into bytecode files with extension *.pyc. What really matters, is the speed of the runtime interpreter that runs the bytecode, that's where most of the time is being spent.
 The Python developers argue, that the PEG parser is within 10% performance of the previous table based parser. (so many factors that would determine this statement, also noone can double check this result, anyway) One reason being that the syntax tree produced by the peg parser doesn't need to be post proessed.
 
 What is interesting, is that the switch to the PEG based parser in python 3.9 coincides with a whole set of changes in the python syntax [here](https://docs.python.org/3/whatsnew/3.9.html)Apparently it has been easier to add stuff here, I suspect that this factor has determined all the other changes...
 
 For more info see [here](https://lwn.net/Articles/816922/) and [here](https://www.python.org/dev/peps/pep-0617/).
 
-Or there are other reasons, go figure...
+Also, the switch in parsers almost coinicdes with a change in governance of the python project [here](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html), maybe there is some correlation here, go figure...
 
 ---08/11/21 03:33:18----------------------
 
