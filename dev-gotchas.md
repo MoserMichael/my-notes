@@ -55,7 +55,7 @@ The Python developers argue, that the PEG parser is within 10% performance of th
 
 What is interesting, is that the switch to the PEG based parser in python 3.9 coincides with a whole set of changes in the python syntax [here](https://docs.python.org/3/whatsnew/3.9.html)Apparently it has been easier to add stuff here, I suspect that this factor has determined all the other changes...
 
-For more info see [here][https://lwn.net/Articles/816922/) and [here](https://www.python.org/dev/peps/pep-0617/).
+For more info see [here](https://lwn.net/Articles/816922/) and [here](https://www.python.org/dev/peps/pep-0617/).
 
 Or there are other reasons, go figure...
 
