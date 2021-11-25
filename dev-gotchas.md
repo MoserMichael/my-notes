@@ -50,14 +50,14 @@ Then get the sources and build it
     make -s -j2
 ``` 
 
-Anyway, i think that parser speed is not that important to python - in the end it all ends up translated into bytecode files with extension *.pyc. What really matters, is the speed of the runtime interpreter that runs the bytecode, that's where most of the time is being spent.
-The Python developers argue, that the PEG parser is within 10% performance of the previous table based parser. (so many factors that would determine this statement, also noone can double check this result, anyway) One reason being that the syntax tree produced by the peg parser doesn't need to be post proessed.
+Anyway, i think that parser speed is not that important to python - in the end, most of it ends up being translated into bytecode files with extension *.pyc. What really matters, is the speed of the runtime interpreter that runs the bytecode, that's where most of the time is being spent.
+The Python developers argue, that the PEG parser is within 10% speed of the previous table based parser. One reason being that the in-memory syntax tree produced by the peg parser doesn't need to be post proessed. (I would guess, that many factors that would determine this statement, I guess that it would depend on many factors, like most things in software).
 
-What is interesting, is that the switch to the PEG based parser in python 3.9 coincides with a whole set of changes in the python syntax [here](https://docs.python.org/3/whatsnew/3.9.html)Apparently it has been easier to add stuff here, I suspect that this factor has determined all the other changes...
+What is interesting, is that the switch to the PEG based parser in python 3.9 coincides with a whole set of changes in the python syntax [here](https://docs.python.org/3/whatsnew/3.9.html)Apparently it has become easier to add stuff to the language. I suspect, that this factor is the real motive behind the big switch in parsers.
 
 For more info see [here](https://lwn.net/Articles/816922/) and [here](https://www.python.org/dev/peps/pep-0617/).
 
-Also, the switch in parsers almost coinicdes with a change in governance of the python project [here](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html), maybe there is some correlation here, go figure...
+Also, the switch in parsers almost coincides with a change in governance of the python project [here](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html), maybe there is some correlation here, go figure...
 
 ---08/11/21 03:33:18----------------------
 
