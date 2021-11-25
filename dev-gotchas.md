@@ -51,8 +51,8 @@ Then get the sources and build it
     make -s -j2
 ``` 
 
-Anyway, i think that parser speed is not that important to python - in the end, most of it ends up being translated into bytecode files with extension *.pyc. What really matters, is the speed of the runtime interpreter that runs the bytecode, that's where most of the time is being spent.
-The Python developers argue, that the PEG parser is within 10% speed of the previous table based parser. One reason being that the in-memory syntax tree produced by the peg parser doesn't need to be post processed. (I would guess, that this would actually depend on many factors, like most things in software).
+Anyway, i think that parser speed is not that important to python - in the end, most of it ends up being translated into bytecode files with extension *.pyc, and the same bytecode files are used for subsequent runs of the same program. What really matters, is the speed of the runtime interpreter that runs the bytecode, that's where most of the time is being spent.
+The Python developers argue, that the PEG parser is within 10% speed of the previous table based parser. One reason being that the in-memory syntax tree produced by the peg parser doesn't need to be post processed. (I would guess, that the parser performance assessment would actually depend on many factors, like most things in software).
 
 What is interesting, is that the switch to the PEG based parser in python 3.9 coincides with a whole set of changes in the python syntax [here](https://docs.python.org/3/whatsnew/3.9.html). Apparently it has become easier to add stuff to the language. I suspect, that this factor is the real motive behind the big switch in parsers.
 
