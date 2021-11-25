@@ -27,6 +27,7 @@ I think that peg parsers have a lot of problems:
 Still the grammar for peg parsers is much more intutitive, and you don't have to fight shift/reduce and reduce/reduce conflicts (like with yacc/bison), or indulge in other workarounds.
 
 Anyway, lets look at what [cpython](https://github.com/python/cpython) is doing: before python 3.9 had a simple grammar, the ideal was to have a LL(1) grammar, you would just look at one token, in order to decide what clause will be parsed. In practice they had a couple of workarounds, still it was an LL(k) grammar, one that can be parsed with a fixed number of lookahead symbols. up to python 3.9 the grammar was defined [here](https://github.com/python/cpython/blob/3.8/Grammar/Grammar) and it had a lexical analysis stage with tokens defined [here](https://github.com/python/cpython/blob/3.8/Grammar/Tokens) Most of the parser would be translated to a [finite automata](https://en.wikipedia.org/wiki/Finite-state_machine), that would be used for the syntax parsing.
+With python 3.9, the default parser is generated from [this grammar definition](https://github.com/python/cpython/blob/3.9/Grammar/python.gram), and it is generated into a PEG parser. Note that all the keywords are defined as string constants, that appear in the grammar definition file.
 
 Lets build cpython on the mac:
 
@@ -53,7 +54,7 @@ Then get the sources and build it
 Anyway, i think that parser speed is not that important to python - in the end, most of it ends up being translated into bytecode files with extension *.pyc. What really matters, is the speed of the runtime interpreter that runs the bytecode, that's where most of the time is being spent.
 The Python developers argue, that the PEG parser is within 10% speed of the previous table based parser. One reason being that the in-memory syntax tree produced by the peg parser doesn't need to be post processed. (I would guess, that this would actually depend on many factors, like most things in software).
 
-What is interesting, is that the switch to the PEG based parser in python 3.9 coincides with a whole set of changes in the python syntax [here](https://docs.python.org/3/whatsnew/3.9.html)Apparently it has become easier to add stuff to the language. I suspect, that this factor is the real motive behind the big switch in parsers.
+What is interesting, is that the switch to the PEG based parser in python 3.9 coincides with a whole set of changes in the python syntax [here](https://docs.python.org/3/whatsnew/3.9.html). Apparently it has become easier to add stuff to the language. I suspect, that this factor is the real motive behind the big switch in parsers.
 
 For more info see [here](https://lwn.net/Articles/816922/) and [here](https://www.python.org/dev/peps/pep-0617/).
 
