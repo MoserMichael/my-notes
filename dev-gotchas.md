@@ -63,6 +63,7 @@ Also, the switch in parsers almost coincides with a change in governance of the 
 ---
 
 I am not sure if the analogy between python and lisp is the correct one. Python is all about its object system, now just look at python meta objects; these are said to have come to us from smalltalk. So it would be fair to say that Python has a very strong ancestry in Smalltalk. Interesting that the wikipedia article on Python is not listing Smalltalk as having had an influence on python [here](https://en.wikipedia.org/wiki/Python_(programming_language))
+On the other hand: smalltalk was very much influenced by Lisp, so they say. So maybe that was the meaning of this comparison...
 
 ---08/11/21 03:33:18----------------------
 
