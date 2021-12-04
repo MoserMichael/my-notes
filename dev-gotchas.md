@@ -117,7 +117,8 @@ Update: google at least gives you an 'opt out' clause (not sure if they really d
 
 --
 
-A friend of mine managed to appeal a parking ticket, based on the location data that is tracked by android snooping. Maybe he is right and i am wrong, but me doesn't want to feed the monster with more data than it is necessary, also everything that 'listens and looks' aka. ['Horch und Guck'](https://langua.de/synonym/VEB%20Horch%20und%20Guck) is just a bit too frightening, at least to me.
+A friend of mine managed to appeal a parking ticket, based on the location data that is tracked by android snooping. Maybe he is right and i am wrong, maybe we get a good deal, by giving up our privacy in return for a better content suggestion on youtube, or, as in this case, in return for the ability to proove our whereabouts, when needed.
+However me doesn't want to feed the monster with more data than it is necessary, also everything that 'listens and looks' aka. ['Horch und Guck'](https://langua.de/synonym/VEB%20Horch%20und%20Guck) is just a bit too frightening, at least to me.
 
 --
 
