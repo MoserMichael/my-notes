@@ -60,15 +60,15 @@ For more info see [here](https://lwn.net/Articles/816922/) and [here](https://ww
 
 Also, the switch in parsers almost coincides with a change in governance of the python project [here](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html), maybe there is some correlation here, go figure...
 
-What i learned from this: Python's metaprogramming facilities are built around metaclasses and decorators (these are explained in the linked course).
-These tools are built around reflection, and the dynamic nature of python. It is possible, that is enough in balance, to offset the lack of being a homoiconic language, i am not sure about this...
-
 ---
 
 I am not sure if the analogy between python and lisp is the correct one. Python is all about its object system, now just look at python meta objects; these are said to have come to us from smalltalk. So it would be fair to say that Python has a very strong ancestry in Smalltalk. Interesting that the wikipedia article on Python is not listing Smalltalk as having had an influence on python [here](https://en.wikipedia.org/wiki/Python_(programming_language))
 On the other hand: smalltalk was very much influenced by Lisp, so they say. So maybe that was the meaning of this comparison...
 
 Now here is my attempt to understand the python object modell, the [Python object primer for python3](https://github.com/MoserMichael/python-obj-system) . Let's see how that works out...
+
+What i learned from this: Python's metaprogramming facilities are built around metaclasses and decorators (these are explained in the linked course).
+These tools are built around reflection, and the dynamic nature of python. It is possible, that is enough in balance, to offset the lack of being a homoiconic language, i am not sure about this...
 
 ---08/11/21 03:33:18----------------------
 
