@@ -23,9 +23,7 @@ Thank you all for keeping me up to date, on what is going on!
 [!['Thank you all' by the 'Free Design'](https://img.youtube.com/vi/vvLO1i0mTIo/0.jpg)](https://www.youtube.com/watch?v=vvLO1i0mTIo)
 
 
-"Think and dream and share your mental wealth
-The world is out to get us, but it can't
-Because we're friends (Because we're friends, friends)"
+"Think and dream and share your mental wealth/The world is out to get us, but it can't/Because we're friends!"
 
 ---22/11/21 06:08:24----------------------
 
