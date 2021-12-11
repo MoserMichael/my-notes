@@ -20,9 +20,11 @@ One of the generated reports is a [report of every repository that got a star fr
 
 Thank you all for keeping me up to date, on what is going on!
 
-<div>
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+<foreignObject width="560" height="315">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vvLO1i0mTIo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+</foreignObject>
+</svg>
 
 "Think and dream and share your mental wealth
 The world is out to get us, but it can't
