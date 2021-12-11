@@ -12,7 +12,7 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 I am a long time reader of [hacker news](https://news.ycombinator.com/news), It's an incredible source of information, but it too has its editorial biases. For example this [hightly interesting discussion](https://news.ycombinator.com/item?id=29505524) appeared on the front page the other day, but then suddenly disappeared from the front page again, and also from any other page that appeared in the vicinity of the front page on that day. I am not quite sure, as to why that happened.
 
-Anyway, it's probably time to diversify my information diet, and the source is right here! When logged into github, the main page is showing all the repositories, that were starred by anyone, who got a star from me. That is an excellent source on what is happening here! And so it goes, that I am starring everyone, who was so kind to put a star on any of my projects, partially out of curiosity, and a desire to learn new stuff.
+Anyway, it's probably time to diversify my information diet, and the source is right here! When logged into github, the main page is showing all the repositories, that were recently starred by anyone, who got a star from me. That is an excellent source on what is happening here! And so it goes, that I am starring everyone, who was so kind to put a star on any of my projects, partially out of curiosity, and a desire to learn new stuff.
 
 You might also want to look at one the scripts that I wrote recently, [Here](https://github.com/MoserMichael/MoserMichael), this script is a building a README.md file, that is appearing on my github profile, by virtue of naming the repository after my github user. All this is run as a [github action](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions) - as a continuous integration process, hosted by our (hopefully) benevolent hosts here. 
 
@@ -23,7 +23,6 @@ Thank you all for keeping me up to date, on what is going on!
 Clicking on the image will open a youtube video with the song 'Thank you all' by the 'Free Design'
 
 [!['Thank you all' by the 'Free Design'](https://img.youtube.com/vi/vvLO1i0mTIo/0.jpg)](https://www.youtube.com/watch?v=vvLO1i0mTIo)
-
 
 "Think and dream and share your mental wealth/The world is out to get us, but it can't/Because we're friends!"
 
