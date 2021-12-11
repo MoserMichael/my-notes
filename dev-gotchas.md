@@ -14,7 +14,7 @@ I am a long time reader of [hacker news](https://news.ycombinator.com/news), It'
 
 Anyway, it's probably time to diversify my information diet, and the source is right here! When logged into github, the main page is showing all the repositories, that were recently starred by any github user, who got a star from me. That is an excellent source on what is happening here! And so it goes, that I am starring everyone, who was so kind to put a star on any of my projects, partially out of curiosity, and a desire to learn new stuff.
 
-You might also want to look at one the scripts that I wrote recently, [Here](https://github.com/MoserMichael/MoserMichael), this script is a building a README.md file, that is appearing on my github profile, by virtue of naming the repository after my github user. All this is run as a [github action](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions) - as a continuous integration process, hosted by our (hopefully) benevolent hosts here. 
+You might also want to look at one the scripts that I wrote recently, [Here](https://github.com/MoserMichael/MoserMichael), this script is a building a README.md file, that is appearing on my github profile, by virtue of naming the repository after my github user. All this is run as a [github action](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions) - as a continuous integration process, hosted by our (hopefully) benevolent hosts here. (More details in the [about page](https://github.com/MoserMichael/MoserMichael/blob/master/ABOUT.md))
 
 One of the generated reports is a [report of every repository that got a star from me](https://github.com/MoserMichael/MoserMichael/blob/master/USER_STARRED.md). 
 
