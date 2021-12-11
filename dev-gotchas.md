@@ -20,6 +20,8 @@ One of the generated reports is a [report of every repository that got a star fr
 
 Thank you all for keeping me up to date, on what is going on!
 
+Clicking on the image will open a youtube video with the song 'Thank you all' by the 'Free Design'
+
 [!['Thank you all' by the 'Free Design'](https://img.youtube.com/vi/vvLO1i0mTIo/0.jpg)](https://www.youtube.com/watch?v=vvLO1i0mTIo)
 
 
