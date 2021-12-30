@@ -174,6 +174,10 @@ Now making a presentation based on screen recording is not quite a trivial thing
 
 Lots of options here. It took me some research to find something that works for me, as usual...
 
+---
+
+Another neat Chrome browser plugin is [Markdown Preview plus](https://chrome.google.com/webstore/detail/markdown-preview-plus-dz%E7%89%B9/mbbfdipmmlbkfdkeklpioafmdcodhfli) ; it allows you to view local markdown files in Chrome, rendered as html. After installation, you need to visit the url chrome://extensions/, press on details for 'Markdown Preview Plus' and enable the option 'Allow access to file URLs'. Works like charm (previously, i was pushing a change to a markdown file to github, just to view the change rendered, that creates very convoluted commit history, mind my French ;-) )
+
 ---05/10/21 02:38:15----------------------
 
 It is possible to use the [jdb](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html) debugger, in order to get a stack trace of a java thread that got stuck, for a process running in a container of a pod of a kubernetes cluster. Every tool has its uses...
