@@ -8,6 +8,33 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+---23/01/22 03:13:03----------------------
+
+Today I was told a very nice joke, on my front-page [here](https://raw.githubusercontent.com/MoserMichael/MoserMichael/f409499bace8fedb1d7eb722ca1d7f0c3c3b5fa9/README.md)
+
+<pre>
+ ________________________________________
+/ Q: How many Harvard MBA's does it take \
+| to screw in a light bulb? A: Just one. |
+| He grasps it firmly and the universe   |
+\ revolves around him.                   /
+ ----------------------------------------
+        \   ^__^
+         \  (..)\_______
+            (__)\       )\/\
+             -- ||----w |
+                ||     ||
+nltk score: -10 '(from -100..100) state: 'neutral' eye: .. tongue: --
+</pre>
+
+The script that updates the front-page is running [this little project](https://github.com/MoserMichael/opinionated-fortune-cow); the text is taken from the [fortune](https://en.wikipedia.org/wiki/Fortune_%28Unix%29) program, and piped into [cowsay](https://en.wikipedia.org/wiki/Cowsay), to display a nice ascii-art cow. Now I am also running it through [nltk](https://www.nltk.org/) based sentiment analysis, however in this instance the system failed to appreciate the subtle humor of the joke, that's the kind of robots we have right now.
+
+Now we do have smarter robots, Both [IBM Watson](https://en.wikipedia.org/wiki/Watson_(computer)) and [Google search](https://en.wikipedia.org/wiki/Google_Search) are example of systems that take a more layered approach, these systems are dissecting a complex problem into many tiny aspects, and they manage to integrate these tiny aspects into a coherent picture. However it takes a lot o people and enormous amounts of resources to do the trick. The next logical step would be to simplify the construction of such systems, but that is clearly beyond the scale of this little blog (it also seems to be beyond the scale of any company, taken in isolation)
+
+The micro service architecture can be understood as an attempt to standardize the process of dissecting a big problems into relatively simple component parts. The real objective of the micro service architecture is to have a system that is vertically scalable, so as to make the system capable of servicing a very large workload. Maybe a similar approach is required in order to simplify and standardize the layers of data processing and knowledge processing pipelines. That would probably be a process that would require a sustained effort over many years, and it would most likely require many attempts and failures in order to find something workable.
+
+In a sense I am also grasping that light bulb, here in this blog entry, and waiting for the universe to revolve around it ;-)
+
 ---11/12/21 13:01:21----------------------
 
 I am a long time reader of [hacker news](https://news.ycombinator.com/news), It's an incredible source of information, but it too has its editorial biases. For example this [hightly interesting discussion](https://news.ycombinator.com/item?id=29505524) appeared on the front page the other day, but then suddenly disappeared from the front page again, and also from any other page that appeared in the vicinity of the front page on that day. I am not quite sure, as to why that happened.
@@ -25,6 +52,10 @@ Clicking on the image will open a youtube video with the song 'Thank you all' by
 [!['Thank you all' by the 'Free Design'](https://img.youtube.com/vi/vvLO1i0mTIo/0.jpg)](https://www.youtube.com/watch?v=vvLO1i0mTIo)
 
 "Think and dream and share your mental wealth/The world is out to get us, but it can't/Because we're friends!"
+
+---
+
+Update: now my python [tracer and bytecode course](https://github.com/MoserMichael/pyasmtool) got some enormous visibility, after having been on the front page of hacker news! [here](https://news.ycombinator.com/item?id=29959262). Thanks a lot! Not it is impossible to follow everyone manually, so i [fixed this script](https://github.com/MoserMichael/githubapitools/blob/master/starcounter.py) and added the -f option to do that automatically. Sometimes i get so many followers, so that the script fails at one pass, as it exceeds a github api throttle on the number of rest api calls, but that's a good problem, in my book ;-)
 
 ---22/11/21 06:08:24----------------------
 
