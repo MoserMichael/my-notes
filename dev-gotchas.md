@@ -35,6 +35,10 @@ The micro service architecture can be understood as an attempt to standardize th
 
 In a sense I am also grasping that light bulb, here in this blog entry, and waiting for the universe to revolve around it ;-)
 
+---
+
+I found some resources, to get some hint of what I am talking about: [awesome datascience](https://github.com/academic/awesome-datascience) [datascience for beginners](https://github.com/amrrs/For-Data-Science-Beginners), it seems that searching for 'awesome anything' on github will give you a great intro to any topic...
+
 ---11/12/21 13:01:21----------------------
 
 I am a long time reader of [hacker news](https://news.ycombinator.com/news), It's an incredible source of information, but it too has its editorial biases. For example this [hightly interesting discussion](https://news.ycombinator.com/item?id=29505524) appeared on the front page the other day, but then suddenly disappeared from the front page again, and also from any other page that appeared in the vicinity of the front page on that day. I am not quite sure, as to why that happened.
