@@ -37,7 +37,7 @@ In a sense I am also grasping that light bulb, here in this blog entry, and wait
 
 ---
 
-I found some resources, to get some hint of what I am talking about: [awesome datascience](https://github.com/academic/awesome-datascience) [datascience for beginners](https://github.com/amrrs/For-Data-Science-Beginners), it seems that searching for 'awesome anything' on github will give you a great intro to any topic...
+I found some resources, to get some hint of what I am talking about: [awesome datascience](https://github.com/academic/awesome-datascience) and [datascience for beginners](https://github.com/amrrs/For-Data-Science-Beginners), it seems that searching for 'awesome anything' on github will give you a great intro to any topic...
 
 ---11/12/21 13:01:21----------------------
 
