@@ -8,6 +8,181 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+---30/04/22 11:43:11----------------------
+
+I got a new M1 mac at work, suddenly it turns out, that running a docker is turning into rocket science.
+The aim is to run a basic alpine docker image, with the home directory mounted into the file system of the docker image:
+
+The --platform linux/amd64 option tells docker to run the docker image in an x86_64 emulator. So that's more of a VM than a lightweight container...
+
+```
+
+# on the host
+> uname -m
+arm64
+
+> docker run --rm --platform linux/amd64 -it --entrypoint /bin/sh -v $HOME:/var/home alpine:3.12
+
+/ # uname -m
+x86_64
+```
+
+Luckily you can inspect the architecture of an image
+
+```
+> docker image inspect alpine:3.12 | grep Architecture
+"Architecture": "amd64",
+```
+
+However it is possible to run a native docker image on this M1 mac.
+
+```
+> docker run --rm  -it --entrypoint /bin/sh -v $HOME:/var/home arm64v8/alpine
+
+/ # uname -m
+> 
+```
+
+You can also get the architecture with jq (hope the json format doesn't change...) For met its:
+
+```
+> docker image inspect arm64v8/alpine:3.12 | jq -r 'first | .Architecture'
+arm64
+
+> docker image inspect arm64v8/alpine:3.12 | jq -r 'first | .Os'
+linux
+
+```
+
+And it's possible to be more specific about the version tag of the image
+
+```
+docker run --rm  -it --entrypoint /bin/sh -v $HOME:/var/home arm64v8/alpine:3.12
+```
+
+Again, you can inspect the architecture of an image:
+
+```
+> docker image inspect arm64v8/alpine:3.12 | grep Architecture
+        "Architecture": "arm64",
+```
+
+
+Now of course you will get some script here, that tries to make life easier by abstracting all this madness (but that script has probably a dozen or so bugs)
+
+Here is the link to the script [runimagelocal](https://github.com/MoserMichael/myenv/blob/master/scripts/runimagelocal)
+
+Here is the help text
+
+```
+Usage: /Users/michaelmoser/bin/runimagelocal -i <image name>  [ -s <shell> ] [ -m <mount_dir>]
+
+Runs a container interactively with the docker image, by default using the shell /bin/sh.
+Can override the shell with the -s option)
+
+The HOME directory is mounted to /var/home in the container (can override with -m option)
+```
+
+If no image is given then a default native linux image is run in a container, where the home directory is mounted into the container.
+Otherwise all the details mentioned earlier are performed:
+- the architecture of the image is determined
+- if it isn't a native image, then the --platform option is set.
+
+
+---28/03/22 09:29:31----------------------
+
+Remembering the details of golang, i wasn't exposed to this language for quite some time now...
+[here](https://github.com/MoserMichael/rzgrep) is my exercise on the subject.
+
+- golang has a linter now [golangci-lint](https://golangci-lint.run/), let's check if it is better than ```go vet```
+  The goland ide seems to be best - they are much better as an ide than anything out there (or maybe i just didn't learn how to use visual studio code...)
+
+- actually i installed go on a new computer, it's version 1.18, therefore I can play with the new go generic feature 
+  My result is [here](https://github.com/MoserMichael/rzgrep/blob/master/src/cbuf/cbuf.go) - actually golang feels much better with generics...
+
+  (intro [here](https://go.dev/doc/tutorial/generics)
+  That was a bit sparse, there is also [this source](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#generic-types)   
+
+- accessing a field in a struct and a reference to a struct has the same syntax. That's very confusin for someone who is coming from the land of C (or from the land of Java, where everything is a reference)
+  I found myself making another copy of a structure in an array, for example, and changed the copy that was outside of the array, while the intent was to change
+  the struct that was within the array...
+  (actually I nevere liked C++ references, almost never used them, unless forced at gunpoint)
+
+- the following signatures has a problem: what do you do about returning errors?
+  Here you would need to return some value of SomeType togather with the error.
+
+    func Foo() (SomeType, err) {
+
+  You can return a reference to SomeType instead:
+
+    func Foo() (*SomeType, err) {
+
+- append on arrays: works on nil slice as first argument slice; there is no point in defining an empty slice for the sake of appending something to it.
+  Creating an empty slice still requires an allocation (the nil value doesn't)
+
+- defer inside a for loop isn't a good idea: defer calls "inside the loop don’t get executed until the func ends — not when each step of for loop ends. All calls here will eat up the func’s stack and may cause unforeseen problems." 
+  The goland ide warns of this...
+
+- concat strings (like java StringBuffer) - you don't need to allocate an object
+```
+// It's ready to use from the get-go.
+// You don't need to initialize it.
+var sb strings.Builder
+
+for i := 0; i < 1000; i++ {
+    sb.WriteString("a")
+}
+fmt.Println(sb.String())
+```
+- never use println, it just happens to be there, in order to have a print thing without dependencies... use fmt.Printf instead
+
+- the second statement re-assigns the variable err, despite the := sign.
+
+```
+        f, err := os.Open(name)
+        d, err := f.Stat()
+```
+- the bad and ugly part: the golang build system (everything is fine, if you got just one file in the main package with a main function)
+  magic environment variables:
+    
+    - GOROOT - where is go installed? (need to set that, if you play around with multiple go versions)
+    - GO111MODULE - that's where the shitshow starts, they kept changing the behavior of this env var  !!! 
+    - GOPATH  the directory that is the root of $GOPATH/src 
+        - all project packages get they directories under src
+        - the main package is put under cmd/some_dir/main_file.go, and the compiler is invoked as follows:  
+          ```GOPATH=$(PWD) GO111MODULE=off go build -o rzgrep cmd/rzgrep/main.go```
+
+- what symbols are exported from a package?
+
+     "In Go, a name is exported (from a package) if it begins with a capital letter. For example, Pizza is an exported name, as is Pi, which is exported from the math package. ", that's why they like mixed case names, actually...
+        - why? the designers of go didn't like to add special keywords like 'private' 'public', so they choose to do visibility as a convention.
+          not nice to the poor programmer, who has to remember yet another incantation...
+
+---20/03/22 00:06:13----------------------
+
+Today i learned about java: (i tend to learn new language features, when being exposed to some new code base, never bothered to keep up with all the changes of the java language...)
+
+
+https://stackoverflow.com/questions/37583464/what-is-round-brackets-parentheses-in-try-catch-in-java
+https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+
+The python with statement has an equivalent in java, see the try with parenthesis syntax; the BufferedReadable must support the AutoClosable or Closable interface (must have a close method)
+
+```
+try (BufferedReader br =
+               new BufferedReader(new FileReader(path))) {
+    return br.readLine();
+}
+```
+
+I see that often, that some language feature is inspiring/appearing in multiple programming languages... (interesting if there is a term for that)
+
+A java lambda with empty parameters () can be used as a Runnable instance; strange but true...
+https://stackoverflow.com/questions/25192108/what-is-the-breakdown-for-javas-lambda-syntax
+For example it can be submitted to a thread pool....
+
+
+
 ---23/01/22 03:13:03----------------------
 
 Today I was told a very nice joke, on my front-page [here](https://raw.githubusercontent.com/MoserMichael/MoserMichael/f409499bace8fedb1d7eb722ca1d7f0c3c3b5fa9/README.md)
@@ -771,6 +946,11 @@ Also you must put /usr/local/bin in the path before /bin
 Another big one: the built-in sed on the mac is kind of weird: it adds a trailing newline on every file, and is acting weird in every other sense as well.
 
 Luckily we can install the regular gnu sed. ```brew install gnu-sed``` now you have to invoke it as gsed. 
+
+
+---
+
+another one: if you need the gnu grep then you can get it with ```brew install grep```, but you can only use it as ```ggrep```, ```gegrep``` and ```gfgrep``` ...
 
 ---22/06/21 02:41:22----------------------
 
