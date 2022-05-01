@@ -108,6 +108,8 @@ Remembering the details of golang, i wasn't exposed to this language for quite s
   the struct that was within the array...
   (actually I nevere liked C++ references, almost never used them, unless forced at gunpoint)
 
+  To add insult to injury: Maps are always passed by reference! They did that, because the authors of the language realized, that nobody is getting the difference.... [link](https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go)
+
 - the following signatures has a problem: what do you do about returning errors?
   Here you would need to return some value of SomeType togather with the error.
 
