@@ -160,6 +160,80 @@ fmt.Println(sb.String())
         - why? the designers of go didn't like to add special keywords like 'private' 'public', so they choose to do visibility as a convention.
           not nice to the poor programmer, who has to remember yet another incantation...
 
+- I finally got the purpose of golang embedding.
+
+Here the type Parent is a member of Child, that means that all the members of Parent are added into the struct Child.
+
+```
+type Parent struct{
+    value int64
+}
+
+func (i *Parent) Value() int64{
+    return i.value
+}
+
+type Child struct{
+    Parent
+    multiplier int64
+}
+
+func (i Child) Value() int64{
+    return i.value * i.multiplier
+}
+```
+    [Here](http://www.hydrogen18.com/blog/golang-embedding.html) it says that this is supposed to look like inheritance (you can access all fields of the embedded structure), but without the is-a relationship that you get with inheritance. (i think that structure embedding is an evil invention, i think this solution is worse than the 'diamond inheritance' problem...)
+
+And you can embed pointers!
+
+```
+type Bitmap struct{
+    data [4][4]bool
+}
+
+type Renderer struct{
+    *Bitmap //Embed by pointer
+    on uint8
+    off uint8
+}
+
+func (r *Renderer)render() {
+    for i := range(r.data){
+        for j := range(r.data[i]){
+            if r.data[i][j] {
+                fmt.Printf("%c",r.on)
+            } else {
+                fmt.Printf("%c",r.off)
+            }
+        }
+        fmt.Printf("\n")
+    }
+}
+
+```
+
+And embedding an interface is supposed to chain the instance with another instance of that interface...
+
+```
+type echoer struct{
+    io.Reader //Embed an interface
+}
+
+func (e * echoer) Read(p []byte) (int, error) {
+    // call another Reader instance... But why Reader.Read? Why do you need to access the type now?
+    amount, err := e.Reader.Read(p)
+    if err == nil {
+        fmt.Printf("Overridden read %d bytes:%s\n",amount,p[:amount])
+    }
+    return amount,err
+}
+```
+
+"The first advantage to this is that you can rely on functions that use the NewX idiom returning a struct by-pointer to do initialization. The second advantage is that you can embed all the functionality of a type without needing to know when it is instantiated." says the link...
+
+I think that very often this "syntactic sugar" business is about building a following for your language ... at the expense of aggravating the actual user of the language..
+
+
 ---20/03/22 00:06:13----------------------
 
 Today i learned about java: (i tend to learn new language features, when being exposed to some new code base, never bothered to keep up with all the changes of the java language...)
