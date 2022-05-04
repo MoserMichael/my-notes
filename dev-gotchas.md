@@ -88,6 +88,7 @@ Otherwise all the details mentioned earlier are performed:
 - the architecture of the image is determined
 - if it isn't a native image, then the --platform option is set.
 
+Some say that adding another script like this one is just about adding another detail that needs to be remembered, however for me its a way to figure things out. Also it saves some time, I really think that!
 
 ---28/03/22 09:29:31----------------------
 
