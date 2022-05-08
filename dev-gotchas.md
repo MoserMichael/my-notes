@@ -8,6 +8,50 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+
+---08/05/22 21:57:10----------------------
+
+Another bash trick: 
+
+```
+err_report() {
+    set +x
+    echo "Error on: ${BASH_SOURCE}:$1 : "$(sed $1'q;d' ${BASH_SOURCE})
+    exit 1
+}
+trap 'err_report $LINENO' ERR
+```
+
+That's slightly better than ```set -e``` - if a command fails, it also shows the  ```file:line: line-in-script``` that failed
+
+Also: instead of ```set -x``` in a top level script, do the following:
+
+```
+      export PS4='+(${BASH_SOURCE}:${LINENO}) '
+      export TRACE=1
+      set -x
+```
+That will show the file:line) before each executed line.
+
+Now the trace environment variable can be propagated to dockers with (note that PS4 is not empty, even if not in use! That's why we have TRACE)
+
+```
+docker build --build-arg TRACE="$TRACE" ....
+docker run -e TRACE="$TRACE" ... ```
+```
+
+(don't ask me, why docker build and docker run have different options for passing on environment variables)
+
+Now the child script can also set it's tracint, conditioned on the presence of the TRACE env variable that was passed from the top level
+
+```
+if [[ ! -z $TRACE ]]; then
+    export PS4='+(${BASH_SOURCE}:${LINENO}) ' 
+    export TRACE=1
+    set -x
+fi
+```
+
 ---30/04/22 11:43:11----------------------
 
 I got a new M1 mac at work, suddenly it turns out, that running a docker is turning into rocket science.
