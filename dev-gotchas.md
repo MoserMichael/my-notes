@@ -8,6 +8,42 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+---19/05/22 09:18:58----------------------
+
+Smartbear telling a very good story on code reviews, and how the thing can go wrong. [link](https://smartbear.com/blog/avoiding-the-politics-of-code-review/) Here is my summary:
+
+Problems
+- formalizing and mandating a corporate code review process can lead to a unintended consequences 
+- you also need to teach everyone to use the code review tool in an effective manner! That's not a trivial task
+
+In practice:
+
+- the code review policy can be used in a toxic manner by an individual within the company. (everything in a company has some department political aspect)
+  Patterns of abuse:
+  - The big man on the campus
+    Individual uses code reviews as a way to cement his position of influence.
+        - nitpicking on every detail
+        - problem: the constant flow of negative feedback creates a situation of learned helplessness on the part of the individual under review.
+        (this means that the individual doesn't even try anything, and falls into a state of passiveness, for fear of getting another bunch of hits)
+        - problem for the organisation: the team does not scale well. The big man on the campus becomes a scare resource and bottleneck.
+   - The cool kids: instead of one man there is a clique with elevated privileges
+        - problem: leads to groupthink
+        - "Admittance to the inner circle is hard-won and requires a lot of invested time and proved loyalty."
+        - problem: "good ideas and practices are discarded if they come from the wrong people."
+          initiative is limited to "the most long-tenured and thus the most insulated people on the team."
+        - the cool kids also institute an informal "tournament ladder" - divide the team into in group, out group, and other groups in between.
+          people are assigned to the group based on arbitrary detail.
+            - people focus on the wrong thing, and not on moving the product further
+            - it makes everyone neurotic, as it is hard for the individuals to play these games.
+- The best part: how to avoid it:
+    - "Ensure that reviews are two-way. Never have people who only review and people who only get reviewed."
+    - "Always focus on the code and not the person who wrote the code."
+    - "Make the reviews small, frequent, and informal. Marathon group sessions in rooms make people defensive."
+    - "Frame things as questions and suggestions rather than orders and accusations. Ask that others do the same."
+    - "Automate as many checks as possible so that reviews don't focus on simple details."
+    - You can frame the review as optional "asking for advice" instead of a gatekeeper approach of "getting the code approved"
+    - Says that the potential harm of the bad approach is worse then the risks of the bad approach.
+
 
 ---08/05/22 21:57:10----------------------
 
