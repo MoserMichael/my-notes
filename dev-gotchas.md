@@ -26,6 +26,8 @@ I wonder if someone has made an alternative UI for code reviews, one that would 
 
 <<< Current music: [Black Flag - Nervous Breakdown](https://www.youtube.com/watch?v=302oEzSPCqE)  >>>
 
+<<< You got more of it in my playlist [Punk for visiting the Tax man](https://www.youtube.com/playlist?list=PLKLJgfW_iAYv6WJm1zqWqheNN-dmpOIbt) >>>
+
 ---19/05/22 09:18:58----------------------
 
 Smartbear telling a very good story on code reviews, and how the thing can go wrong. [link](https://smartbear.com/blog/avoiding-the-politics-of-code-review/) Here is my summary:
