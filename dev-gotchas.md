@@ -14,15 +14,17 @@ Interesting thought: Github/Microsoft is pushing the [copilot](https://copilot.g
 The deficiencies that I found with the github code review tool:
 
 - The "conversation" screen of a pull request is enormously cluttered, hard to understand what is going on.
-- I am working through the list of issues, and marking issues, in order not to loose track of where I am.
-  The reviewer gets a notification, sees the code prior to the changes being committed, which does not create a good impression.
+- I am working through the list of issues, and marking the checkbox on issues as I go along, in order not to loose track of where I am.
+  It turns out that this cases the reviewer to get a notification! He sees the code prior to the changes being committed, which does not create a good impression...
 - Issues being collapse for no apparent reason.
 - there should be some protocol that goes like this
     - the submitter marks an issue as done
     - the reviewer approves of the change
-    - the issue should then be moved to some other screen, so as not to clutter the "conversation" screen.
+    - the issue should then be moved to some other screen, so as not to clutter the "conversation" screen. (You could do that by the editor deleting the review comment, but they don't do that, as it gives the appearance of no work being done).
 
 I wonder if someone has made an alternative UI for code reviews, one that would be better suited for the task...
+
+<<< Current music: [Black Flag - Nervous Breakdown](https://www.youtube.com/watch?v=302oEzSPCqE)  >>>
 
 ---19/05/22 09:18:58----------------------
 
@@ -59,7 +61,6 @@ In practice:
     - "Automate as many checks as possible so that reviews don't focus on simple details."
     - You can frame the review as optional "asking for advice" instead of a gatekeeper approach of "getting the code approved"
     - Says that the potential harm of the bad approach is worse then the risks of the bad approach.
-
 
 ---08/05/22 21:57:10----------------------
 
@@ -110,6 +111,8 @@ I got a new M1 mac at work, suddenly it turns out, that running a docker is turn
 The aim is to run a basic alpine docker image, with the home directory mounted into the file system of the docker image:
 
 The --platform linux/amd64 option tells docker to run the docker image in an x86_64 emulator. So that's more of a VM than a lightweight container...
+
+(Interesting side note: you can run a x86 executable on a M1 mac, that's because the OSX operatin system has the [Rosetta](https://en.wikipedia.org/wiki/Rosetta_(software) component that translates the instructions of an X86 executable into M1 instructions. The docker thing would have to do a corresponding emulation/translation, whatever you call it)
 
 ```
 
