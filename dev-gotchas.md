@@ -60,7 +60,7 @@ In practice:
     - "Frame things as questions and suggestions rather than orders and accusations. Ask that others do the same."
     - "Automate as many checks as possible so that reviews don't focus on simple details."
     - You can frame the review as optional "asking for advice" instead of a gatekeeper approach of "getting the code approved"
-    - Says that the potential harm of the bad approach is worse then the risks of the bad approach.
+    - Says that the potential harm of the bad approach is worse than taking up the risks, that is taking the risks that come with the policy of not requiring a code review for each and every commit.
 
 ---08/05/22 21:57:10----------------------
 
