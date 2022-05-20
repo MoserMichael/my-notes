@@ -15,8 +15,8 @@ The deficiencies that I found with the github code review tool:
 
 - The "conversation" screen of a pull request is enormously cluttered, hard to understand what is going on.
 - I am working through the list of issues, and marking the checkbox on issues as I go along, in order not to loose track of where I am.
-  It turns out that this cases the reviewer to get a notification! He sees the code prior to the changes being committed, which does not create a good impression...
-- Issues being collapse for no apparent reason.
+  It turns out that the reviewer to get a notification, when I click that checkbox! Now he sees the code prior to the changes being committed, which does not create a good impression...
+- Issues being collapse for no apparent reason, also not being able to reply in some cases, when the system thinks that the code has changed, or things have moved.
 - there should be some protocol that goes like this
     - the submitter marks an issue as done
     - the reviewer approves of the change
