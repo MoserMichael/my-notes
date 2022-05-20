@@ -282,7 +282,8 @@ func (i Child) Value() int64{
     return i.value * i.multiplier
 }
 ```
-    [Here](http://www.hydrogen18.com/blog/golang-embedding.html) it says that this is supposed to look like inheritance (you can access all fields of the embedded structure), but without the is-a relationship that you get with inheritance. (i think that structure embedding is an evil invention, i think this solution is worse than the 'diamond inheritance' problem...)
+
+[Here](http://www.hydrogen18.com/blog/golang-embedding.html) Now that makes sense: structure embedding is supposed to look like inheritance (you can access all fields of the embedded structure), but without the is-a relationship that you get with inheritance. (i think that structure embedding is an evil invention, i think this solution is worse than the 'diamond inheritance' problem...)
 
 And you can embed pointers!
 
