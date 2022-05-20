@@ -112,7 +112,7 @@ The aim is to run a basic alpine docker image, with the home directory mounted i
 
 The --platform linux/amd64 option tells docker to run the docker image in an x86_64 emulator. So that's more of a VM than a lightweight container...
 
-(Interesting side note: you can run a x86 executable on a M1 mac, that's because the OSX operatin system has the [Rosetta](https://en.wikipedia.org/wiki/Rosetta_(software) component that translates the instructions of an X86 executable into M1 instructions. The docker thing would have to do a corresponding emulation/translation, whatever you call it)
+(Interesting side note: you can run a x86 executable on a M1 mac, that's because the OSX operating system has the [Rosetta](https://en.wikipedia.org/wiki/Rosetta_(software)) component that translates the instructions of an X86 executable into M1 instructions. The docker thing would have to do a corresponding emulation/translation, whatever you call it)
 
 ```
 
