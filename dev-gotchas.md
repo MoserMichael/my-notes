@@ -7,6 +7,22 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
+---20/05/22 02:42:37----------------------
+
+Interesting thought: Github/Microsoft is pushing the [copilot](https://copilot.github.com/) product, this one is supposed to tell you how and what to code, however the code review tool on github sucks deeply, and they don't seem to be working on that one. Fixing the code review tool should be a much simpler task, imho...
+
+The deficiencies that I found with the github code review tool:
+
+- The "conversation" screen of a pull request is enormously cluttered, hard to understand what is going on.
+- I am working through the list of issues, and marking issues, in order not to loose track of where I am.
+  The reviewer gets a notification, sees the code prior to the changes being committed, which does not create a good impression.
+- Issues being collapse for no apparent reason.
+- there should be some protocol that goes like this
+    - the submitter marks an issue as done
+    - the reviewer approves of the change
+    - the issue should then be moved to some other screen, so as not to clutter the "conversation" screen.
+
+I wonder if someone has made an alternative UI for code reviews, one that would be better suited for the task...
 
 ---19/05/22 09:18:58----------------------
 
