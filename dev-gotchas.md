@@ -33,6 +33,8 @@ When the Docker community was looking for a distro they found that they could ma
 “This made the Alpine community grow very fast the last 2 years. Even Docker Inc. got the eyes up for Alpine so now Docker sponsors the development of Alpine,”
 """
 
+/with linux you may have more choice, but that also seems to go with more politics... go figure.../
+
 ---20/05/22 02:42:38----------------------
 
 Some say that [gerrit](https://www.gerritcodereview.com/) is a better code review tool than what is being offered at github, would have to play around with it...
