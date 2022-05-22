@@ -12,16 +12,26 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 I want to build some python + c based stuff (based on glibc) in a docker:
 
-Python wheels uses the [manylinux](https://github.com/pypa/manylinux) docker image, this was based on CentOS (as of 2022 they depend on CentOS 7 - that one will EOL in 2024), but RedHat killed CentOS, and that step makes it hard to trust anything based on that company (sorry fedora).
+Python wheels uses the [manylinux](https://github.com/pypa/manylinux) docker image, this was based on CentOS (as of 2022 they depend on CentOS 7 - that one will reach end of life in 2024), but RedHat killed CentOS, and that step makes it hard to trust anything based on that company (sorry fedora).
 
 Alpine is a very small linux distribution, people like to build small docker images basted on that distribution.
 However there is a catch: it is based on musl standard C library, and some projects have a problem when they are compiled with musl, as this standard library is slightly different from glibc. There is a problem, if the project that you want to build is having an incompatibility with glibc (that happens)
 
-There is a thing called flatpak on alpine, but it doesn't help when you need to compile a project that uses the function missing in musl stdlib (flatpak helps with running executabls)
-
-So there is ubuntu, which is a bit big, for a docker image.
+There is a thing called flatpak on alpine, but it doesn't help when you need to compile a project that uses the function missing in musl stdlib (flatpak helps with running executabels)
 
 /and then all this goodness will break after a few months anyway, stuff is so brittle, nowadays/
+
+Interesting fact: maintaining a linux distro is a lot of work, fedora was doing a good job, in general. 
+Alpine is ok for most cases, it turns out that alpine is sponsored by Docker...
+(turns out they all need a big sponsor, in the end...)
+
+See [here](https://thenewstack.io/alpine-linux-heart-docker/)
+
+"""
+When the Docker community was looking for a distro they found that they could make their containers significantly smaller if they used Alpine and that building the Alpine containers takes a fraction of the time compared to other distros.
+
+“This made the Alpine community grow very fast the last 2 years. Even Docker Inc. got the eyes up for Alpine so now Docker sponsors the development of Alpine,”
+"""
 
 ---20/05/22 02:42:38----------------------
 
