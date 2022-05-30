@@ -8,6 +8,24 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+
+---30/05/22 05:50:09----------------------
+
+I think that i wrote something quotable [ here ]( https://news.ycombinator.com/item?id=31552476#31554898 ) on the web revival:
+
+---
+the closest thing i found is .. github.
+
+You even have a "definitive list of lists (of lists)" https://github.com/jnv/lists
+
+You can find lots of foo by searching for "list of foo" on github search. https://github.com/search?q=list+of+anything
+
+.. and you can make your own free presence with github pages, just like on geocities! https://docs.github.com/en/pages/quickstart
+
+(now where do you find those 'under construction' giffies? :-)
+
+   /* old things never die, they just get pushed to some free github repo. Maybe there is some git server up there in the sky, that will take care of us when we die :-( */
+
 ---21/05/22 03:40:55----------------------
 
 I want to build some python + c based stuff (based on glibc) in a docker:
