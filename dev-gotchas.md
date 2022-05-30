@@ -24,7 +24,7 @@ You can find lots of foo by searching for "list of foo" on github search. https:
 
 (now where do you find those 'under construction' giffies? :-)
 
-   /* old things never die, they just get pushed to some free github repo. Maybe there is some git server up there in the sky, that will take care of us when we die :-( */
+   /* old things never die, they just get pushed to some free github repo. Maybe there is some git server up there in the sky, that will take care of us when we die :-( (figuratively speaking) */
 
 ---21/05/22 03:40:55----------------------
 
