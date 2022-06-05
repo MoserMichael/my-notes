@@ -115,6 +115,11 @@ In practice:
     - You can frame the review as optional "asking for advice" instead of a gatekeeper approach of "getting the code approved"
     - Says that the potential harm of the bad approach is worse than taking up the risks, that is taking the risks that come with the policy of not requiring a code review for each and every commit.
 
+--
+a funny picture on the subject:
+
+![code review](media/code-review.jpg)
+
 ---08/05/22 21:57:10----------------------
 
 Another bash trick: 
