@@ -116,6 +116,7 @@ In practice:
     - Says that the potential harm of the bad approach is worse than taking up the risks, that is taking the risks that come with the policy of not requiring a code review for each and every commit.
 
 --
+
 a funny picture on the subject:
 
 ![code review](media/code-review.jpg)
