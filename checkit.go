@@ -37,7 +37,8 @@ map lookup of struct, the value is returned by value
 ********************************
 now you learned something
 (yeah, and simple go is confusing the heck out of me)
-(why are there always such inconsistencies???)
+If you think in object-oriented terms, then a collection (map or sequence) is just another object.
+However, golang has a different treatment for collection values!!!
 ********************************
 */
 func main() {
@@ -116,7 +117,8 @@ func main() {
 ********************************
 now you learned something
 (yeah, and simple go is confusing the heck out of me)
-(why are there always such inconsistencies???)
+If you think in object-oriented terms, then a collection (map or sequence) is just another object.
+However, golang has a different treatment for collection values!!!
 ********************************`)
 
 }
