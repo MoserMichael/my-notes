@@ -30,7 +30,7 @@ You can find lots of foo by searching for "list of foo" on github search. https:
 
 I want to build some python + c based stuff (based on glibc) in a docker:
 
-Python wheels uses the [manylinux](https://github.com/pypa/manylinux) docker image, this was based on CentOS (as of 2022 they depend on CentOS 7 - that one will reach end of life in 2024), but RedHat killed CentOS, and that step makes it hard to trust anything based on that company (sorry fedora).
+Python wheels uses the [manylinux](https://github.com/pypa/manylinux) docker image, this was based on CentOS (as of 2022 they depend on CentOS 7 - that one will reach end of life in 2024), but RedHat killed CentOS, and that step makes it hard to trust anything that comes out of RedHat (sorry fedora).
 
 Alpine is a very small linux distribution, people like to build small docker images basted on that distribution.
 However there is a catch: it is based on musl standard C library, and some projects have a problem when they are compiled with musl, as this standard library is slightly different from glibc. There is a problem, if the project that you want to build is having an incompatibility with glibc (that happens)
@@ -317,7 +317,7 @@ fmt.Println(sb.String())
 
 - I finally got the purpose of golang embedding.
 
-Here the type Parent is a member of Child, that means that all the members of Parent are added into the struct Child.
+Here the type Parent is a member of struct Child, that means that all the members of struct Parent are added into the struct Child.
 
 ```
 type Parent struct{
