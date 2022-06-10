@@ -254,7 +254,7 @@ Remembering the details of golang, i wasn't exposed to this language for quite s
 [here](https://github.com/MoserMichael/rzgrep) is my exercise on the subject.
 
 - golang has a linter now [golangci-lint](https://golangci-lint.run/), let's check if it is better than ```go vet```
-  The goland ide seems to be best - they are much better as an ide than anything out there (or maybe i just didn't learn how to use visual studio code...)
+  The goland ide seems to be best - they are much better as an ide than anything out there (or maybe i just didn't manage to learn how to use visual studio code effectively)
 
 - actually i installed go on a new computer, it's version 1.18, therefore I can play with the new go generic feature 
   My result is [here](https://github.com/MoserMichael/rzgrep/blob/master/src/cbuf/cbuf.go) - actually golang feels much better with generics...
@@ -262,7 +262,8 @@ Remembering the details of golang, i wasn't exposed to this language for quite s
   (intro [here](https://go.dev/doc/tutorial/generics)
   That was a bit sparse, there is also [this source](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#generic-types)   
 
-- accessing a field in a struct and a reference to a struct has the same syntax. That's very confusin for someone who is coming from the land of C (or from the land of Java, where everything is a reference)
+- it's the same syntax for accessing a struct field via and via a struct value. That's very confusing for someone who is coming from the land of C (or from the land of Java, where everything is a reference)
+
   I found myself making another copy of a structure in an array, for example, and changed the copy that was outside of the array, while the intent was to change
   the struct that was within the array...
   (actually I nevere liked C++ references, almost never used them, unless forced at gunpoint)
@@ -271,20 +272,8 @@ Remembering the details of golang, i wasn't exposed to this language for quite s
 
   The same goes for contents of maps (an vectors), If you have a nested collection as the value for a map, then map lookup returns a reference value, otherwise you get a map lookup by value...
 
-- the following signatures has a problem: what do you do about returning errors?
-  Here you would need to return some value of SomeType togather with the error.
-
-    func Foo() (SomeType, err) {
-
-  You can return a reference to SomeType instead:
-
-    func Foo() (*SomeType, err) {
-
 - append on arrays: works on nil slice as first argument slice; there is no point in defining an empty slice for the sake of appending something to it.
   Creating an empty slice still requires an allocation (the nil value doesn't)
-
-- defer inside a for loop isn't a good idea: defer calls "inside the loop don’t get executed until the func ends — not when each step of for loop ends. All calls here will eat up the func’s stack and may cause unforeseen problems." 
-  The goland ide warns of this...
 
 - concat strings (like java StringBuffer) - you don't need to allocate an object
 ```
@@ -297,6 +286,10 @@ for i := 0; i < 1000; i++ {
 }
 fmt.Println(sb.String())
 ```
+
+- defer inside a for loop isn't a good idea: defer calls "inside the loop don’t get executed until the func ends — not when each step of for loop ends. All calls here will eat up the func’s stack and may cause unforeseen problems." 
+  The goland ide warns of this...
+
 - never use println, it just happens to be there, in order to have a print thing without dependencies... use fmt.Printf instead
 
 - the second statement re-assigns the variable err, despite the := sign.
@@ -305,6 +298,7 @@ fmt.Println(sb.String())
         f, err := os.Open(name)
         d, err := f.Stat()
 ```
+
 - the bad and ugly part: the golang build system (everything is fine, if you got just one file in the main package with a main function)
   magic environment variables:
     
