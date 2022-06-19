@@ -1,16 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unsafe"
+)
 
 type StrMap map[string]string
 
 func passStringMap(m StrMap) {
+	// Size of map arguments passed to function: 8
+	fmt.Printf("Size of map arguments passed to function: %d\n", unsafe.Sizeof(m))
 	m["first_key"] = "changed_val"
 }
 
 type StrVec []string
 
 func passStringVec(m StrVec) {
+
+	//Size of vector arguments passed to function: 24
+	//doesn't depend on the size, number of arguments in the vector - it is passed by some kind of reference
+	fmt.Printf("Size of vector arguments passed to function: %d\n", unsafe.Sizeof(m))
 	m[0] = "changed_val"
 }
 
@@ -19,6 +28,8 @@ type StrStruct struct {
 }
 
 func passStringStruct(m StrStruct) {
+	// Size of StrStruct instance passed to function: 16
+	fmt.Printf("Size of StrStruct instance passed to function: %d\n", unsafe.Sizeof(m))
 	m.firstVal = "changed_val"
 }
 
@@ -55,8 +66,10 @@ func main() {
 		panic("You thought maps are passed by value? wrong!")
 	}
 
-	vecStr := []string{"first", "second", "third"}
+	vecStr2 := []string{"first", "second", "third", "fourth", "fifth", "sixth"}
+	passStringVec(vecStr2)
 
+	vecStr := []string{"first", "second", "third"}
 	passStringVec(vecStr)
 
 	if vecStr[0] != "first" {
