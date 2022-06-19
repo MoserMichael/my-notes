@@ -7,11 +7,9 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
-
-
 ---30/05/22 05:50:09----------------------
 
-I think that i wrote something quotable [ here ]( https://news.ycombinator.com/item?id=31552476#31554898 ) on the web revival:
+I think that i wrote something quotable [here]( https://news.ycombinator.com/item?id=31552476#31554898 ) on the web revival:
 
 ---
 the closest thing i found is .. github.
@@ -254,6 +252,11 @@ Remembering the details of golang, i wasn't exposed to this language for quite s
 [here](https://github.com/MoserMichael/rzgrep) is my exercise on the subject.
 
 - It's the same syntax for accessing a struct field via and via a struct instance and via a reference to a struct. That's very confusing for someone who is coming from the land of C (or from the land of Java, where everything is a reference) However some entitites are treated more equal than others, in other contexts: if you pass a map or a sequence as a function argument, then these are always passed by reference! They did that, because the authors of the language realized, that nobody is getting the difference.... [link](https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go) Yes, and vectors are also passed by reference, but structs are passed by value!  Now if you have an collection (map or sequence) that contains a different collection as value, then accessing the outer collection will return ... a reference to the inner value. However a loopkup in an array/map of structs will make a copy of the contained struct instance. This is my example that shows you the all of the gory details [here you go](checkit.go) (I think that the 'tour of go' doesn't tell you this...)
+
+- an interface can be either implemented over a structure type [see iface.go](iface.go) or on a reference to a structure [see iface2.go](iface2.go)
+    - implementing on a struct type is more flexible: both the reference and the instance type support a given interface!!!
+    - a function parameter that is of an interface type is two pointers large one of them refers to some internal type information, the other one referes to the data!
+      Read all about it [here](https://www.tapirgames.com/blog/golang-interface-implementation) (a bit confusing, if you ask me)
 
 - actually i installed go on a new computer, it's version 1.18, therefore I can play with the new go generic feature. My result is [here](https://github.com/MoserMichael/rzgrep/blob/master/src/cbuf/cbuf.go) - actually golang feels much better with generics...  (intro [here](https://go.dev/doc/tutorial/generics) That was a bit sparse, there is also [this source](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#generic-types)   
 
