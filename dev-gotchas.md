@@ -15,7 +15,7 @@ Learning rust. I once had a look at it, some years ago, but i forgot all of it. 
 
 Here are my notes.
 
-[notes learning rust](learning_rust.txt)
+[notes on learning rust](https://github.com/MoserMichael/my-notes/blob/master/learning-rust.txt)
 
 ---18/08/22 09:20:39----------------------
 
