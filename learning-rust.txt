@@ -1,0 +1,673 @@
+
+the command shows the rust book in the browser
+    rustup docs --book
+
+https://play.rust-lang.org/ - rust playground, try it out in the browser. (took notes during august 2022, they keep changing that language...)
+
+https://news.ycombinator.com/item?id=17627564 - this! " I'm afraid of rust adding too many features for its own good like c++ did.. "
+    answer: no, we added these - in order to help beginning rust programmers!
+
+(using mixed case for functions will give you a warning, always_use_for_function, types must be MixedCaseForTypes (very opinionated approach, if you aske me, but that's life - one has to adapt... One of the reasons one has to stick with an IDE, it tells you when you are off the mark...))
+    - in a sense this opinionated approach will give them more uniform library implementations
+    - my problem: each language has a different way to be opinionated - it can get quite confusing...
+
+Everything assigned by let is immutable (by default)
+ 
+    fn main() {
+        let rust_const = 42;
+        println!("Hello, world! here is a number {rust_const}");
+    }
+
+unless you say its value can be changed by adding the mut keyword
+
+    fn main() {
+        let mut rust_var = 42;
+        println!("Hello, world! here is a number {rust_var}");
+        rust_var = 0;
+        println!("Hello, world! here is a number {rust_var}");
+    }
+
+Another syntax for telling about constants
+
+    // const thing must tell the type upon declaration! - u32 (uint32)
+    // can add the same type annotation to let
+    const SECONDS_IN_HOUR : u32 = 60 * 60;
+
+    fn main() {
+        let mut rust_var = 42;
+        println!("Seconds in hour {SECONDS_IN_HOUR}");
+    }
+
+Rust types
+    i8 i16 i32 i64 i128 isize - signed integer
+    u8 u16 u32 u64 u128 usize - unsigned integer
+
+        Integer overflow: if compiled in "debug mode" this leads to panic/assertion, no panic in release mode
+        (but there are ways to check for overflows with wrapping_ / checked_ methods)
+
+    f32 f64
+    bool
+    char (unicode char)
+
+    Tuple types (a function can return multiple values, by returning a tuple type!)
+
+        let tup: (i32, f64, u8) = (500, 6.4, 1);
+
+        let five_hundred = x.0; // access a tuple element by index
+
+        let (x, y, z) = tup;  // or unpack all tuple fields this ways (x - tup.0, y - tup.1, z - tup.2)  `       
+
+    Struct types
+        
+        // the structure
+        struct User {
+            active: bool,
+            username: String,
+            email: String,
+            sign_in_count: u64,
+        }
+
+        // an implementation block: add methods of the struct User here!
+        impl User {
+
+            // self is a non mutable reference - const (read only access)
+            fn show(&self) {
+                println!("username: '{}' email: '{}' active: '{}' sign_in_count: '{}'",
+                    self.username, self.email, self.active, self.sign_in_count)
+            }
+
+            // constructor. Note it does not get self. Caller needs to call User::new(/arguments/)
+            fn new(email : String, username : String ) -> User
+                User {
+                    email: email,
+                    username: username,
+                    active: true,
+                    sign_in_count: 1,
+                }
+            }
+
+            // anything that changes the member of the struct needs to get mutable self reference!
+            fn clear(&mut self) {
+                self.username = "".to_string();
+                self.email = "".to_string();
+                self.active = false;
+                self.sign_in_count = 0;
+            }
+
+        }
+
+        fn main() {
+            let mut me = User::new(String::from("me@gmail.com"), String::from("Me") );
+            
+            me.show();
+            
+            me.clear(); // modifies the struct, self reference is mutable
+            
+            me.show();
+        }
+
+    Tuple structures
+
+        // tuple structs: structures with unnamed fields - just like tuples!
+        // unlike tuples: they have a type identity (tuples with the same type sequence are the same!)
+        struct Color(i32, i32, i32);
+
+        impl Color {
+            fn show(&self) {
+                println!("Color:: read: {} green: {} blue: {}", self.0, self.1, self.2)
+            }
+        }
+
+
+        fn main() {
+            let black = Color(0, 0, 0);
+            black.show()
+        }
+
+    Unit structures
+
+        struct StructWithoutData;
+
+            - can have a lot of uses: as traits, also used in enums (in rust a enum is kind of union of structs that have to be handled by a match statement)
+    
+
+    Union (which is very unlike a union in C/C++, it is very similar to Scala case objects - and the big thing is that they are used with pattern matching!!!
+    (the great benefit of pattern matching is that you can forget about visitor patterns, there is a concise way to handle multiple type cases, one of the criticism of design pattern was, that they are just a substitute to missing language features...  https://wiki.c2.com/?AreDesignPatternsMissingLanguageFeatures )
+
+        use rand::Rng; // import random number generator library
+
+        enum OptionU32 {
+            None,
+            Some(u32),
+        }
+
+        fn get_num() -> OptionU32 {
+            let mut rng = rand::thread_rng();
+
+            let rand_int = rng.gen::<i32>(); // get me a random integer
+
+            if rand_int < 0 { // no result if negative
+                OptionU32::None
+            } else {
+                OptionU32::Some(rand_int as u32) // as u32 - that's how you cast in rust!
+            }
+        }
+
+        fn main() {
+            let mut num = 0;
+            while num < 10 {
+                let rand = get_num();
+                match rand {
+                    OptionU32::None => println!("No number"),
+                    OptionU32::Some(num) => println!("number {num}")
+                }
+                num = num + 1;
+            }
+        }
+    
+    Some notation instead of the match statement. if let ...
+    They say that's 'syntactic sugar' and easier for beginners to learn (i think it's just feature bloat)
+
+    fn main() {
+        let mut num = 0;
+        while num < 10 {
+            let rand = get_num();
+
+            if let OptionU32::Some(num) = rand {
+                println!("number {num}")
+            } else { // the OptionU32::None case goes here
+                println!("No number");
+            }
+            num = num + 1;
+        }
+    }
+
+    You can also do the conditional let with while loops... (goes on until you reach the first None) 
+
+        while let OptionU32::Some(num) = rand {
+            println!("number {num}")
+        }  
+
+
+    Arrays  - have fixed length (!!) all elements of the same type. Used for stack allocated data!
+
+        fn main() {
+            let arr = [42; 3]; // gives an array of three 42 constants (the type is [i32; 3]
+            println!("Hello, world! {:?}", arr); // {:?} - works only in debug mode, for arrays with less than 33 elements!!!
+        }
+
+        fn main() {
+            let a = [1,2,3];
+            let invalid_index_access = a[3]; // invalid index access. That's a compile time error
+            println!("a is {invalid_index_access}");
+        }
+
+    Ranges
+
+    fn main() {
+        let a = (10..40); // this creates a Range<i32> - useful for iteration with for statement.
+
+        for elem in a.rev() { // .rev() - returns a reverse range (you can't do that with an array...) for - loop on all elements
+            println!("the value is: {}", elem);
+        }
+    }
+
+Shaddowing: can redefine variable in inner scope
+
+    fn main() {
+        let x = 42; // is a number
+        {
+            let x = "name"; // shaddowed variable x is a string
+            println!("shddowed x is a string: {x}");
+        }
+        println!("x is a number {x}");
+    }
+
+Functions
+    - function parameter and return values must always have a type annotation in Rust.
+
+    fn inc(arg : u32) -> u32 {
+        arg + 1 // if the last line of a block is an expression, then the block evaluates to that valjue!
+    }
+
+    fn inc2(arg : u32) -> u32 {
+        return arg + 1; // you can instead have a explicit return statement
+    }
+
+    fn main() {
+        let x = 42;
+        println!("a is {:?}", inc(x));
+        println!("a is {:?}", inc2(x));
+    }
+
+Control flow
+    - if statement is an expression. you can have:
+
+    fn main() {
+        let condition = true;
+        let number = if condition { 5 } else { 6 }; // but both choices need to return a value of the same type!
+
+        println!("The value of number is: {number}");
+    }
+
+    - and loop keyword can be used as an expression:
+
+    fn main() {
+        let mut counter = 0;
+
+        let result = loop {
+            counter += 1;
+
+            if counter == 10 {
+                break counter * 2;
+            }
+        };
+
+        println!("The result is {result}");
+    }
+
+    - clever kind of goto like break, break to 'counting label.
+
+    fn main() {
+        let mut count = 0;
+        'counting_up: loop {  // 'counting - the destination of the labeled break statement!
+            println!("count = {count}");
+            let mut remaining = 10;
+
+            loop {
+                println!("remaining = {remaining}");
+                if remaining == 9 {
+                    break;
+                }
+                if count == 2 {
+                    break 'counting_up; // break returns(gotos) the 'counting label
+                    
+                }
+                remaining -= 1;
+            }
+
+            count += 1;
+        }
+        println!("End count = {count}");
+    }
+
+    - of course they need a while statement
+
+    fn main() {
+        let a = [10, 20, 30, 40, 50];
+        let mut index = 0;
+
+        while index < a.len() {
+            println!("the value is: {}", a[index]);
+
+            index += 1;
+        }
+    }
+
+    - for statement - to iterate through a container (or the reverse of it)
+
+    fn main() {
+        let a = [10, 20, 30, 40, 50];
+
+        for elem in a {
+            println!("the value is: {}", elem);
+        }
+    }
+
+Ownership - heap memory is kind of reference counted, but the reference counting is kind of done by the compiler, during compile time.
+
+    - simple values (like integers, other primitive types, tuples where all members are primitive/do the Copy trait) are copied upon assignment (more complex values need to implement the Copy trait for that), now more complicated things happen with heap based memory:...
+        
+
+
+    - memory is owned by a variable, memory is released if owning variable goes out of scope. (the drop member is called, when that happens, drop can't be called directly, called implicitly by compiler generated code)
+    
+    fn main() {
+        let s1 = String::from("hello");
+        let s2 = s1;
+
+        println!("{}, world!", s1);
+    }
+
+    The following is not ok:
+
+    fn main() {
+        let s1 = String::from("hello");
+        let s2 = s1;
+
+        println!("{}, world!", s2);
+        println!("{}, world!", s1); // s1 is no longer valid, after assignment: s2  = s1 !!!
+    }
+
+
+    But you can make a clone/copy of s1 - need to do that explicitly
+
+    fn main() {
+        let s1 = String::from("hello");
+        let s2 = s1.clone(); // this also works: String::clone(&s1)
+
+        println!("{}, world!", s2);
+        println!("{}, world!", s1);
+    }
+
+    Calling a function is tricky: it passes ownership to the called function, the caller now can't use the variable!
+
+    fn use_string(s : String) {
+        println!("show me {s}")
+    }
+
+    fn main() {
+       let s = String::from("hello world");
+
+        use_string(s);
+
+        println!("show me again {s}"); // this is an error !!! The string is no longer owned by the caller, after calling the function!!
+    }
+
+    One way of solving this: return the string back from the function! Also: see mut keyword with argument - the argument can be changed, is mutable.
+
+    fn add_suffix(mut s : String) -> String {
+        s.push_str("_suffix");
+        return s;
+    }
+
+    fn main() {
+        let s = String::from("hello world");
+
+        let s_with_suffix = add_suffix(s);
+
+        println!("show me again {s_with_suffix}");
+    }
+
+    References: passing an object to a function, WITHOUT TRANSFERRING OWNERSHIP! (as in the previous example)
+
+    fn show_string(s : &String){
+        let s_len = s.len();
+        println!("string {s} len {s_len}")
+    }
+
+    fn main() {
+        let s = String::from("hello world");
+
+        show_string(&s);
+
+        println!("can still use the original object, use of ref didn't transfer ownership! {s}")
+    }
+
+    Mutable references: the function that is passed a mutual reference can also change the content of the object!
+
+    fn change_suffix(s : &mut String){
+
+        s.push_str("_suffix");
+        println!("string {s}")
+    }
+
+    fn main() {
+        let mut s = String::from("hello world");
+
+        change_suffix(& mut s); // if s was not declared mut then you can't make a mut reference!
+
+        println!("can still use the original variable s, the content was changed!  use of ref didn't transfer ownership! {s}")
+    }
+
+
+    Note!!! you can only make a single mutable reference for a given mutable variable! Two mutable references are verboten!
+    "The benefit of having this restriction is that Rust can prevent data races at compile time." (prevents conflicts due to data being changed concurrently)
+
+    fn change_suffix(s : &mut String, m : &mut String){
+
+        s.push_str("_suffix");
+        m.push_str("_another_suffix");
+
+        println!("string {s}")
+    }
+
+    fn main() {
+        let mut s = String::from("hello world");
+
+        
+        change_suffix(& mut s, & mut s); // Error:  second mutable borrow occurs here (second parameter)
+
+    }
+
+    Note!!! You can't have a mutable and an immutable reference at the same time!
+    that would allow a race between the reader and the writer.
+
+
+    Note!!! You can have two non mutable reference at the same time! these can only have read access, that's ok - no races would occur
+
+    fn show_lengths(s : &String, m : &String){
+
+        let s_len = s.len();
+        let m_len = m.len();
+
+        println!("length s {s_len} length m {m_len}")
+    }
+
+    fn main() {
+        let  s = String::from("hello world");
+
+        show_lengths(&s, &s);
+
+    }
+
+    String slices
+
+    fn main() {
+        // That's shorthand for let s : String = ...
+        let s = String::from("!hello world");
+
+        // That's shorthand for let hello : &str = ...
+        // str is the slice type - reference to part of a string!
+        let hello = &s[1..6];
+
+        println!("the string slice is {hello}")
+    }
+
+    Now a string slice holds a reference to the original string, you can't modify the original string, as long as the reference exists!!!
+    (another race prevention stick)
+
+
+    // the book talks about iterators, lets try to do it differently...
+    fn chars_until_space(arg : &String) -> &str {
+        let mut i = 0;
+
+        while i < arg.len() {
+
+            // now we are O(n^2) - chars returns a kind of iterator....
+            // and the return value is an instance of the option monad Option<char>
+            let opt_char =  arg.chars().nth(i);
+
+            // need to unpack the option monad with a match statement
+            match opt_char {
+                Some(x) => {
+                    if x == ' ' {
+                        return &arg[0..i]
+                    }
+                }
+                None => {} // if None is not handled than that's a compilation error!
+            }
+            i = i + 1;
+        }
+
+        return &arg[..]; // return a slice to the whole string (that's a shorthand)
+    }
+
+    fn main() {
+        // That's shorthand for let s : String = ...
+        let s = String::from("hello world");
+
+        let first_word = chars_until_space(&s);
+
+        println!("first_word {first_word}");
+    }
+
+    Now the following does NOT work:
+
+    fn main() {
+        // That's shorthand for let s : String = ...
+        let mut s = String::from("hello world");
+
+        let first_word = chars_until_space(&s);
+
+        // that fails to compile! first_word - the string slice returned by chars_until_space holds a reference to the original string s!
+        // can't modify that - this would introduce the possibility of a data race!!!
+        s =  String::from("change word");
+
+        println!("first_word {first_word}");
+    }
+
+    
+Packages/Crate/Module - software 'in the big'
+    
+    Crate
+        Binary crate - compile to an executable, must have a main function
+            src/main.rs - compiler looks for this file first
+        Library crate:
+            src/lib.rs -  compiler looks for this file first
+
+    Package
+        - contains Cargo.toml file (that's the makefile - describe how to build 'something')
+        - contains one or more crates
+            - package can contain at most one library crate
+            - can contain one or more binary crates
+        - create a new package with ```cargo new my-grand-new-package-name``` (this creates a directory, to Cargo.toml file, and subdir with main.rs)
+
+
+
+Generics and traits
+    
+    Generic point
+
+        struct Point<T> {
+            x: T,
+            y: T,
+        }
+
+        // an impl block on a template struct
+        impl<T> Point<T> {
+
+            fn len(&self) -> &T {
+
+                std::num::sqrt( self.x*self.x + self.y* self.y )
+            }
+
+        }
+
+        fn main() {
+            // p is inferred as Point<i32>
+            let p = Point { x: 5, y: 10 };
+
+            println!("point p.x {} p.y {} length: {}", p.x, p.y, p.len() )
+        }
+
+    Generic function with traits, need to specify a trait on a template parameter, when you want to 'do' anything with the template parameter
+
+        // that's how you do a template function in rust
+        // Ord is a trait defined in the standard library, it means 'total ordering'
+        pub fn my_min<T: Ord>(v1: T, v2: T) -> T {
+            v1.min(v2)
+        }
+
+        //you can't have it like this - (error: binary operation `<` cannot be applied to type `T`)
+        //that means that the capabilities of the generic type must be known at compile time, through traits!
+        //pub fn my_other_min<T>(v1: T, v2: T) -> T {
+        //    v1 < v2
+        //}
+
+        fn main() {
+            let (x, y) = (5, 3);
+
+            // rust standard library has this min function
+            //let z = std::cmp::max(x, y);
+
+            // copied it into my code here
+            let z = my_min(x, y);
+
+            println!("value of z is {z}");
+        }
+
+    Generic point with constructor and add method
+
+
+        struct Point<T : std::ops::Add> {
+            x: T,
+            y: T,
+        }
+
+        // an impl block on a template struct, require the template struct to support the Add trait and the Clone trait
+        // For the add trait you also need to specify the result type of the add operation, which is the same as the point type
+        //
+        impl<T : std::ops::Add<Output = T> + Clone> Point<T>  {
+
+            fn new(x : T, y:  T) -> Point<T> {
+                Point{x, y}
+            }
+
+            fn add(&self, to_add : &Point<T>) -> Point<T> {
+
+                let x = self.x.clone();
+                let y = self.y.clone();
+
+                let xx = to_add.x.clone();
+                let yy = to_add.y.clone();
+
+                let x_pos = x.add(xx);
+                let y_pos = y.add(yy);
+
+                Point{ x: x_pos, y: y_pos }
+            }
+        }
+
+        fn main() {
+
+            // p is inferred as Point<i32>
+            let p = Point::new(5, 10);
+            let t = Point::new(6, 11);
+            let res = p.add(&t);
+
+            println!( "p: x {} y {}",p.x, p.y);
+            println!( "t: x {} y {}",t.x, t.y);
+            println!( "result: x {} y {}",res.x, res.y)
+        }
+
+    Defining a trait and implementing that trait on a structure
+
+        // defining a trait (needs to be pub, so that it can be imported from another module)
+        // trait is like a kind of interface definition
+        pub trait CallableWithArg<T,U> {
+
+            // self must be mutable, if dispatch can change the state of the object.
+            fn dispatch(&mut self, arg : &T) -> U;
+        }
+
+        // a struct that will support the CallableWithArg trait
+        pub struct Employee {
+            pub first_name: String,
+            pub last_name: String,
+            pub salary: u32 // hope his salary won't overflow ;-)
+        }
+
+        pub struct Void{
+        }
+
+        impl CallableWithArg<u32, Void> for Employee {
+            fn dispatch(&mut self, arg : &u32) -> Void {
+                // give me a raise!
+                self.salary = self.salary + arg;
+                Void{}
+            }
+        }
+
+        fn main() {
+
+            // employee is mutable, as calling dispatch will change the state of the employee
+            let mut me = Employee{ first_name: String::from("Michael"), last_name: String::from("Moser"), salary: 42};
+
+            // give me a raise!
+            me.dispatch(&1000);
+
+            println!("FirstName {} LastName {} Salary {}", me.first_name, me.last_name, me.salary);
+        }
+
+

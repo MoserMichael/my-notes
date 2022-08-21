@@ -7,6 +7,35 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
+
+
+---21/08/22 10:18:15----------------------
+
+Learning rust. I once had a look at it, some years ago, but i forgot all of it. Also they seem to have changed quite a lot...
+
+Here are my notes.
+
+[notes learning rust](learning_rust.txt)
+
+---18/08/22 09:20:39----------------------
+
+A [monorepo](https://en.wikipedia.org/wiki/Monorepo) is when you have many projects in the same source code repository.
+
+This approach simplifies the handling of dependencies, as almost everything is living under the roof of the same source code repository. However not everything is rosy. It is relatively easy to find the code for the right version of your library dependency - it's right there in the source code repo!
+
+i think that one problem of this approach comes with continuous integration testing - you need to have the unit/integration tests that run with the continuous integration build on the repository, and that can add up as you keep adding projects to the monorepo. Now you need to run all of the tests for every commit, there is no way to determine a minimal subset of the tests, that should be run upon any given change! That can possibly make a very long test cycle.
+
+The alternative would be to have a hierarchy of sub projects, and any change would have to be promoted along this path, until it is accepted into the global project. Frankly that doesn't look like a lot of fun...
+
+I wonder if there is a good solution to this problem, while having it all in the same source repository. I suspect that any bigger project will inevitably run into problems of scale, like the one explained above.
+
+--
+
+"Well, then what can a poor boy do / Except to sing for a rock and roll band?"
+
+In the words of Mick Jagger...
+
+
 <!--
 ---30/05/22 05:50:09----------------------
 
