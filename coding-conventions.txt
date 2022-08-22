@@ -1,0 +1,51 @@
+Writing it down, so as not to get confused.
+(another reason to use an IDE - they give you better hints than vim... :-( )
+
+Python
+------
+    Prescribed by PEP8  - https://peps.python.org/pep-0008/
+
+    Prefers spaces (tabstop four spaces)
+    class names: CamelCase
+    function names, variable names: lower_case_with_underscore
+    constants: ALL_CAPITAL_WITH_UNDERSCORE
+    (private functions variables start with underscore)
+
+Golang
+------
+    See: https://go.dev/doc/effective_go#names 
+
+    Prefers tabs 
+    MixedCase rules - for functions and structure names (first capital letter for names exported from package)
+    Interface names: Writer, Notifier (-er suffix)
+    Braces: c-like braces (because the compiler inserts ; by some implicit rules)
+
+Java
+----    
+    See: https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html
+
+    Package names: all lower case
+    class names: should be nouns, MixedCase
+    interface names: also MixedCase (no requirement for nouns)
+    function variable names: firstCharLowerWithMixedCase
+    constants: UPPER_CASE_WITH_UNDERSCORES
+
+Rust
+----
+    See: https://doc.rust-lang.org/1.0.0/style/style/naming/README.html
+
+    Types: CamelCase
+    function parameters variables: snake_case
+
+C++ (google style guide)
+------------------------
+
+    See: https://google.github.io/styleguide/cppguide.html
+
+    Type names: CamelCase
+    function variable names: with_underscore
+    Class members variables: have_trailing_underscore_
+    struct members: dont_have_trailing_underscore
+    constant names, enumeration constants: kMixedCase (must have prefix k)
+
+
