@@ -25,6 +25,8 @@ Here are my notes.
 
 (thinking of a tinker project, you really need to do something in order to 'get it'. I think rust should be good at parsing/interpreting, as it has a good pattern matching/match facility, sort of like Haskell)
 
+Now the rust compiler needs to work hard, even on the tiny programs that i am writing right now. I wonder how compile times will look like for anything of reasonable complexity...
+
 ---18/08/22 09:20:39----------------------
 
 A [monorepo](https://en.wikipedia.org/wiki/Monorepo) is when you have many projects in the same source code repository.
