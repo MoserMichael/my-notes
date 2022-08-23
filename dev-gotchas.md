@@ -7,6 +7,7 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
+(Obligatory xkcd link: https://m.xkcd.com/386/ ) 
 
 ---23/08/22 19:45:52----------------------
 
