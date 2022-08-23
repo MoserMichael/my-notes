@@ -23,6 +23,8 @@ Here are my notes.
 
 [notes on learning rust](https://github.com/MoserMichael/my-notes/blob/master/learning-rust.txt)
 
+(thinking of a tinker project, you really need to do something in order to 'get it'. I think rust should be good at parsing/interpreting, as it has a good pattern matching/match facility, sort of like Haskell)
+
 ---18/08/22 09:20:39----------------------
 
 A [monorepo](https://en.wikipedia.org/wiki/Monorepo) is when you have many projects in the same source code repository.
