@@ -11,6 +11,14 @@ https://news.ycombinator.com/item?id=17627564 - this! " I'm afraid of rust addin
     - in a sense this opinionated approach will give them more uniform library implementations
     - my problem: each language has a different way to be opinionated - it can get quite confusing...
 
+Tooling
+    - IntelliJ has a pretty good rust plugin
+        - you can install the "community edition" - free for personal use, then install the Rust plugin. Much easier to use than vscode!!
+          (maybe it's just my impression, as i worked a lot in IntelliJ)
+
+    - VSCode has the rust-analyzer plugin
+        - they have all these cool VSCode extensions, but no-one seems to bother with explaining how to use them... M$ used to have a better user experience, at some point...
+
 Everything assigned by let is immutable (by default)
  
     fn main() {
@@ -670,4 +678,30 @@ Generics and traits
             println!("FirstName {} LastName {} Salary {}", me.first_name, me.last_name, me.salary);
         }
 
+    Lifetime annotations on variables (these are a kind of trait, so they must be template arguments)
+    purpose of lifetime annotation: make sure that a reference does not exist for longer than the object that it points to.
 
+        // two arguments are references, the 'lifetime' of both arguments is the same ('a) and the 'lifetime' of the return value is the same as any of the arguments
+        // the lifetime is part of the function contract (therefore it's a template argument
+        // if a function returns a reference, then the reference of the return value must be the same as at least one of the arguments!!!!
+        fn longest<'a>(a : & 'a str, b : & 'a str) ->  & 'a str {
+
+            if a.len() > b.len() {
+                b
+            } else {
+                a
+            }
+        }
+
+        fn main() {
+
+            // both variables a and b are destroyed at the same time (not like in C++ where the order of the destructors is the inverse of constructors - if on the stack in the same scope)
+            let a = String::from("blabla");
+            let b = String::from("bla");
+
+            // c will also be gone, together with a and b
+            
+            let c = longest(&a, &b);
+
+            println!("Longest string {}", c)
+        }

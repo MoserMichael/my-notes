@@ -8,6 +8,11 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
 
+---23/08/22 19:45:52----------------------
+
+I got it how to deal with hacker news and twitter - just never log in! Come on - 90% of what you read on both sites is clickbait or just a waste of time.
+Also i doubt that people really value a different opinion - they only seek confirmation of their own opinions and biases.
+Almost like in the real world ;-)
 
 ---21/08/22 10:18:15----------------------
 
@@ -36,7 +41,8 @@ I wonder if there is a good solution to this problem, while having it all in the
 In the words of Mick Jagger...
 
 
-<!--
+<!---
+
 ---30/05/22 05:50:09----------------------
 
 I think that i wrote something quotable [here]( https://news.ycombinator.com/item?id=31552476#31554898 ) on the web revival:
@@ -54,7 +60,7 @@ You can find lots of foo by searching for "list of foo" on github search. https:
 
    /* old things never die, they just get pushed to some free github repo. Maybe there is some git server up there in the sky, that will take care of us when we die :-( (figuratively speaking) */
 
--->
+--->
 
 ---21/05/22 03:40:55----------------------
 
