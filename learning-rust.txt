@@ -2,6 +2,9 @@
 the command shows the rust book in the browser
     rustup docs --book
 
+(i am not a big fan of the writing style: they keep saying - look at this, we will explain it in chapter 17, they keep you in suspense until chapter 17! I don't have such a big stack! The language is really getting complex (just like c++...)
+But this is hard to explain, as many of the language features are intertwined, and it's a very different kind of language!)
+
 https://play.rust-lang.org/ - rust playground, try it out in the browser. (took notes during august 2022, they keep changing that language...)
 
 https://news.ycombinator.com/item?id=17627564 - this! " I'm afraid of rust adding too many features for its own good like c++ did.. "
@@ -705,3 +708,118 @@ Generics and traits
 
             println!("Longest string {}", c)
         }
+
+   Collections
+
+ 
+    fn main() {
+        // that's a recursive macro, creates and fills a vector object Vec<i32> and fills in 1, 2 and 3
+        // note that the vector created by the macro is immutable !!!
+        // if you try that without values, then it can't infer the template type - it will tell you to supply one in the declaration of the variable!
+        // let v1 : Vec<i32> = vec![];
+        let v1 = vec![1, 2, 3];
+
+        // {:#?} - pretty prints the array.
+        println!("{:#?}", v1);
+
+        // get an immutable reference to the first element stored in the array
+        // this panics, if the index is out of bound!
+        let ref_to_first_elem = &v1[0];
+
+        println!("the first element is {}", ref_to_first_elem);
+
+        let option_to_ref_of_first_element = v1.get(0);
+
+        if let Some(val) = option_to_ref_of_first_element {
+            println!("the first element by vector.get {}", val);
+        }
+
+        // iterating over read only references: val is of type &i32
+        for val in &v1 {
+            println!("iterate over array {}", val);
+        }
+
+        // iterate over read only reference - with position!
+        for (pos, val) in v1.iter().enumerate() {
+            println!("iterate with position {} value {}", pos, val);
+        } 
+    }
+
+    That's the longer way to do it
+
+        fn main() {
+            // the longer way: create a new vector type - note that we need to annotate the variable type, so that they can infer the type of the desired item for Vec::new !!
+            // type inference goes from left to right and from right to left !!!
+            let mut v1 : Vec<i32>  = Vec::new();
+
+            v1.push(1);
+            v1.push(2);
+
+            // {:#?} - pretty prints the array.
+            println!("{:#?}", v1)
+        }
+
+    In place modification of items in a container
+
+        fn main() {
+            let mut v1 = vec![0, 3, 4];
+            let first_elem_ref = &mut v1[0];
+
+            // in order to modify a mutable reference: you need to dereference a reference with * !!!
+            // (remember - this one panics if the index is out of bound)
+            *first_elem_ref +=  1;
+
+            // how to get option with a mutable reference
+            let first_elem_opt_ref = v1.get_mut(0);
+
+            // change the first element via option access!
+            // first is & mut i32
+            if let Some(first) = first_elem_opt_ref {
+                // double dereference of & mut !!!
+                *first += 1;
+            }
+
+            // elm is &mut i32 - can change that in place
+            for elm in &mut v1 {
+                *elm += 1;
+            }
+
+            // {:#?} - pretty prints the array.
+            println!("{:#?}", v1);
+        }
+
+        
+        General rule for collections: if collection contains reference, then the collection instance must exist as long as any of the references exist! (lifetime of entry propagates to lifetime of collection instance!!!)
+
+
+        
+        Some basic stuff about maps:
+
+            // the prelude (stuff that is included automatically) does not include maps
+            use std::collections::HashMap;
+
+            fn main() {
+                // initially as you declare the variable a1 - it gives you a HashMap<?, ?>
+                // after the first insert the type switches to HashMap<i32,String> !!! magic!
+                let mut m1 = HashMap::new();
+
+                m1.insert( 1, String::from("bla bla"));
+
+                let val = String::from("ku!");
+
+                m1.insert( 2, val);
+
+                // ownership of types without copy trait: the ownership of the value is moved to the map!
+                // this doesn't compile!
+                // println!("can't access val - ownership has moved to the map! {}", val);
+                let val = m1.get(&1);
+
+                if let Some(var) = val {
+                  println!("The value for key {} is {}", 1, var)
+                }
+
+                for (key, value) in m1 {
+                    println!("key {} value {}", key, value);
+                }
+            }
+
