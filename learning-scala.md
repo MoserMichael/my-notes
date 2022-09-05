@@ -30,7 +30,6 @@ More expressive than java:
 
         "So why Scala? Because there is a core feature set in the language that enables people to produce nice clean straightforward code with less boilerplate and enough power and flexibility to make the intent of the resulting code clearer. Like C#." 
 
-        /so it's a different language design philosophy: instead of 'keeping the feature set reasonably minimal' it's 'lets bang in another feature if it's useful (i would call that the 'language lawyer approach to programming languages')/
 
 There is lots of syntactic sugar in Scala, one has to get used to it:
     https://en.wikipedia.org/wiki/Syntactic_sugar 

@@ -2,8 +2,11 @@
 the command shows the rust book in the browser
     rustup docs --book
 
+
 (i am not a big fan of the writing style: they keep saying - look at this, we will explain it in chapter 17, they keep you in suspense until chapter 17! I don't have such a big stack! The language is really getting complex (just like c++...)
 But this is hard to explain, as many of the language features are intertwined, and it's a very different kind of language!)
+
+https://doc.rust-lang.org/stable/rust-by-example/
 
 https://play.rust-lang.org/ - rust playground, try it out in the browser. (took notes during august 2022, they keep changing that language...)
 
@@ -96,7 +99,7 @@ Rust types
                     sign_in_count: 1,
                 }
             }
-
+    :
             // anything that changes the member of the struct needs to get mutable self reference!
             fn clear(&mut self) {
                 self.username = "".to_string();
@@ -821,5 +824,7 @@ Generics and traits
                 for (key, value) in m1 {
                     println!("key {} value {}", key, value);
                 }
-            }
+ rrustup docs --book
+ustup docs --book
+           }
 
