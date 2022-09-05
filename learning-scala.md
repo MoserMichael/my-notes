@@ -583,9 +583,9 @@ Stack up a synchronized trait to make a synchronized map (add lock for multithre
 
     import scala.collection.mutable.Map
 
+    // an anonymous type is implicitly created for this purpose because of with keyword !!! 
+    // traits are not like old interfaces in java - they can have their default implementation
     val map  = new mutable.Map[String, String] with mutable.SynchronizedMap[String, String]
-
-    
 
 
 Want to use both mutable and immutable collections in the same file?
