@@ -1,3 +1,17 @@
+OSX hacks
+
+? Always show the scroll bar ?
+    In the Menu bar, click Apple Menu > System Preferences.
+    Click General.
+    Next to the "Show scroll bars" heading, select "Always."
+
+? Mirror displays - on Monterey ?
+    
+    Apple > System Preferences > Displays > select Display settings > click on Use as: "Choose Mirror As"
+
+=======
+
+
 Docker reference
 
 https://docs.docker.com/engine/reference/commandline/docker/
@@ -71,12 +85,19 @@ Mongo DB - holds a set of "collections"
         - case sensitive
 
 Mongo "collection" - similar to SQL table (but you don't have to define a schema in Mongo).
-    - "collection" identified by its name ( "" is not a valid collection name, no $ chars or \0 chars in the name; may not start with prefix "system.")
-    - store json docs of similar structure in the same collection (this allows you to do search)
+     - "collection" identified by its name ( "" is not a valid collection name, no $ chars or \0 chars in the name; may not start with prefix "system.")
+     - can store very different json documents in a collection, but that's not a good idea!
+     - Recommendation: store json docs of similar structure in the same collection (this allows you to do search)
+        
     
 A "document" in Mongo is an entry in a "collection" (it's a JSon file)- equivalent to a db "Row"; 
-    - each "document" gets it's generated special _id field.
-
+    - each "document" gets it's generated special _id field (12 bytes long - binary value)
+    - id structure: 
+            [4 bytes timestamp]
+            [4 bytes - machine id]
+            [2 bytes - pid]
+            [3 bytes - incremented counter]
+    - id field is always indexed, so you can lookup a document by it's id value!
 
 Didn't know that mongo-db is used for search; so in what sense there is a equivalence with ElasticSearch ?
 
@@ -86,5 +107,27 @@ Didn't know that mongo-db is used for search; so in what sense there is a equiva
                 - better suited for document structured data (? don't you have a schema in elasticsearch too?)
             - text search is faster in elasticsearch
 
+- mongo daemon (by default it listens on port 27017) 
+  HTTP admin UI is listening port + 1000 (default: 28017)
+
+- mongo shell: can enter expressions in json - that's very natural, as you can look at json documents as javacript maps/arrays. 
+    - the document _id is represented as ObjectId class,.
+
+    (or you can use alternative GUI based clients - like "Robo 3T")
+
+    - shell commands
+        var coll = db.getCollection("collectionName");  // lookup of collection object; or you can do as db.collectionName - but get an error if hte collection does not exist.
+        
+        - collection thing has all sorts of manipulation methods 
+                - coll.insert({a:1,b:2})  // insert doc, _id field is added upon insertion
+                - var existingDoc = coll.findOne({a:1});    // find one doc, given a field
+                - coll.update({a:1,b:3}, { '$set' : { b : '4' }}_ ;  // first argument: query for doc like this, second argument: how to change the entry, once it was found. 
+                - coll.find({}) // find all of them
+    
+
+==========================
+
+Reddis
+    - does all sort of stuff (not just key value storage), they do work queues, and locks (with a specified time to life period). /what about reliability when usingg the work queue thing?/
 
 
