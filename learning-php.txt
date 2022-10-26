@@ -1,0 +1,402 @@
+
+// php looks like insanity (at first)
+// ... But if you did Perl, then you can get used to Anything!
+//
+// The main idea is to embed code in a document, the embedded code is adding it's output to the document - at the spot of the embedding.
+//
+// https://en.wikipedia.org/wiki/PHP
+//  also interesting: MS ASP was a copy/inspired by PHP
+//  PHP is inspired by: Perl, HTML, C, C++, Java, JavaScript,
+
+# OReilly book: Kevin Tatroe, Peter MacIntyre, et al., Programming PHP (2013).pdf
+# The language : https://www.php.net/manual/en/
+
+
+# run local test server of php (accessible as http://localhost:8000 )
+php -S localhost:8000
+
+# php extensions life here:
+https://pecl.php.net/
+
+# php packages(libraries) are managed by composer
+# composer install : Installs libraries for the current project. It looks at composer.json file! 
+# After that: all downloaded libraries are listed in composer.lock file!
+composer install 
+
+- accessing an undefined variable is an error (like in python)
+
+- variable names are case sensitive (sounds reasonable)
+
+- all variable names must start with a $ (like in perl)
+
+    <?php
+    $s="this is a string";
+    echo "value of variable s : {$s}\n";  # double quoted strings - like Perl. don't forget the {} - else all hell can break loose! 
+    $ty=gettype($s);
+    echo "type of variable s : {$ty}\n";
+
+
+- you can't do that with single quoted strings (like perl/bash)
+
+- here documents (similar to perl, have var substitution - like double quoted strings!
+
+  $val = "a";
+  $val2="b";
+  $doc = <<HERE
+this is a {$val}
+
+this is another {$val2}
+HERE
+
+Output:
+    value of variable s : this is a string
+    type of variable s : string
+
+- not all animals are equal!!!
+
+    <?php
+
+    $a=1;
+    $b="1";
+
+    if ($a==$b) {
+        echo "a and b are equal via == !!! (not the case in python)\n";
+    }
+
+    if ($a===$b) {
+        echo "that's not true!\n";
+    } else {
+        echo "the === operator also compares the type, so a and be are not equal via === \n";
+    }
+
+Output:
+
+    a and b are equal via == !!! (not the case in python)
+    the === operator also compares the type, so a and be are not equal via ===
+
+- equivalent of strtok (string to array of elements of indexed array)
+    $arr = explode("," "first,second,third");
+    
+- the reverse (array to string, seperated by index - beware, it adds a separator after at the end of the string!)a
+    $csv = implide(",", $arr);
+    
+    $csv = rtrim($csv, ","); // remove the trailing ,
+
+= conditions (if, while, etc).
+
+  The following values are evaluated to false: (!!!)
+    - keyword false
+    - the NULL value
+    - integer 0
+    - floating point value 0.0 (!!)
+    - empty string ""
+    - string "0" (!!)
+    - an array (map) with zero elements
+    - an object with no values or functions (??)
+
+- an array is always an 'associative array' - a hash map
+  They are used pretty often - to store some metadata in nested maps...
+
+    <?php
+
+    $map = array(1 => "a",
+                 2 => "b",
+                 3 => "c");
+
+
+    $ty=gettype($map);
+
+    echo "type of map variable is {$ty}\n";
+
+    # iterate over the values of a n map
+    foreach($map as $val) {
+        echo "val: {$val}\n";
+        }
+
+    # iterate over keys and values
+    foreach($map as $key => $val) {
+        echo "key: {$key} val: {$val}\n";
+    }
+
+    # iterate over keys only
+    $keys = array_keys($map);
+    foreach($keys as $key) {
+        echo "key: {$key}";
+    }
+
+    echo "a map indexed by integers\n";
+
+    $map2[0] = "a";
+    $map2[1] = "b";
+    $map2[2] = "c";
+
+    $map += "d";  // += adds an element to the 
+
+    foreach($map2 as $key => $val) {
+        echo "key: {$key} val: {$val}\n";
+    }
+
+    echo "the same way of defining this map\n";
+
+    $map3 = array("a",
+                  "b",
+                  "c");
+
+    foreach($map3 as $key => $val) {
+        echo "key: {$key} val: {$val}\n";
+    }
+
+
+
+Output:
+
+type of map variable is array
+val: a
+val: b
+val: c
+key: 1 val: a
+key: 2 val: b
+key: 3 val: c
+a map indexed by integers
+key: 0 val: a
+key: 1 val: b
+key: 2 val: c
+the same way of defining this map
+key: 0 val: a
+key: 1 val: b
+key: 2 val: c
+
+
+    ----
+
+    $tbl = array(
+        "ID" => array(1, 2, 3)
+    )
+
+    // list allows to extract elements from an "indexed" array
+    // neat for using nested arrays with metadata!
+    //
+    list($first, $second, $third) = $tbl["ID"];
+
+
+- handling errors:
+
+    <?php
+
+    $map = array(1 => "a",
+                 2 => "b",
+                 3 => "c");
+
+    # accessing a  non existing key element is an error (but execution continues...)
+    $val2 = $map[4];
+
+    # the @ operator suppresses error reporting! this time you don't see an error reported to stdout and stderr!!!
+    $val = @$map[4];
+
+    $ty = gettype($val);
+    echo "value of val is {$val} type of val {$ty}\n";
+
+    # you can handle this kind of error in a Perl like way...
+    $val = @$map[4] || die("trying to access non existing key in map");
+
+Output:
+
+    PHP Notice:  Undefined offset: 4 in /Users/mmoser/t.php on line 8
+    PHP Stack trace:
+    PHP   1. {main}() /Users/mmoser/t.php:0
+
+    Notice: Undefined offset: 4 in /Users/mmoser/t.php on line 8
+
+    Call Stack:
+        0.0003     397600   1. {main}() /Users/mmoser/t.php:0
+
+    value of val is  type of val NULL
+    trying to access non existing key in map
+
+- references to variables
+
+    <?php
+    $s = "this is a string";
+    $b=&$s;
+    echo "b is a reference to variable s : {$b}\n";
+    $b="change the variable s through reference";
+    echo "s has now changed: {$s}\n";
+
+Output:
+    b is a reference to variable s : this is a string
+    s has now changed: change the variable s through reference
+
+- more exotic: you can reference a variable by it's name !!!
+
+    <?php
+    $var="hello";
+    $ref="var";
+    $$ref="world";
+    echo "now var variable has changed! {$var}";
+
+- function and class names are case insensitive! (doesn't sound reasonable)
+  
+  but all "best practices" tell you to use the same case when calling a function
+
+- keywords are also not case sensitive (so null NULL and Null is the same thing!!!) (??why??)
+
+
+    note: some keywords are kind of functions! (like in Perl and python 2.7) So no () around the call!
+
+    __halt_compiler()	abstract	and	array()	as
+    break	callable	case	catch	class
+    clone	const	continue	declare	default
+    die()	do	echo	else	elseif
+    empty()	enddeclare	endfor	endforeach	endif
+    endswitch	endwhile	eval()	exit()	extends
+    final	finally	fn (as of PHP 7.4)	for	foreach
+    function	global	goto	if	implements
+    include	include_once	instanceof	insteadof	interface
+    isset()	list()	match (as of PHP 8.0)	namespace	new
+    or	print	private	protected	public
+    readonly (as of PHP 8.1.0) *	require	require_once	return	static
+    switch	throw	trait	try	unset()
+    use	var	while	xor	yield
+    yield from	 	 	 	 
+
+
+- php does garbage collection by reference counting (like python and Perl) - last usage of object goes away then object goes away!
+
+Control structure:
+    - all very C/Perl like:
+        - break and continue can have a optional level indicator !!!
+
+            while(..) {
+                while(..) {
+                    break 2; // breaks out of the outer while loop!!! (same with continue) !!!
+                }
+             }
+
+including other files
+    include  "file.php"         // does not fail, if file.php does not exist or fails to compile (used to paste html verbatim into the page)
+    require  "file.php"         // fails if file.php does not exist or fails to compile (used to include other php code)
+    require_once "file.php"     // like require - but does not include file.php if it has already been included
+
+===
+
+namespaces:
+
+Can be nested (Html nested in Code)
+
+<?php
+namespace Code\Html;
+
+class Table {
+}
+
+?> 
+
+Use the namespace (have to include the file via require_once first)
+
+<?php
+
+use Code\Html\Table;
+
+$t = new Table;
+
+?>
+
+Or always give the whole path:
+
+<?php
+
+$t = new Code\Html\Table;
+
+?>
+
+
+===
+
+Function names are case insensitive (again, why?)
+
+Functions may not continue any code - this one just pastes some html code when called!
+
+    <?php function column()
+    { ?>
+    </td><td>
+    <?php }
+
+Function that return something must use the return statement
+
+Passing function arguments by reference:
+    <?php
+    function doubler(&$value)
+    {
+        $value = $value << 1;
+    }
+
+Variable length arguments:
+    - function has no arguments spcified
+    - function body gets number of arguments by calling func_num_args()
+    - get value of arguments with func_get_arg($1) - $i starts from 0.
+
+You can omit the value of an argument from the call just check in the variable has been set with isset (checks if argument is declared and value different from null)
+Also can use isset to check if array(hash map) key exists isset($arr[$i])
+Or you can give a default argument value:
+
+    <?php
+    function inc(value = 0)
+    {
+        $value = $value << 1;
+    }
+
+They have type hints (array/callable/AnyClassName)
+This one sums up where you can have type hints! https://mlocati.github.io/articles/php-type-hinting.html
+You can also have them in return values and class properties !!!
+
+    <?php
+    function report(IReportable value)
+    {
+        if ($value isinstanceof  BigReport) { // can check if the variable value derives from BigReport 
+        }
+        elif ($value instanceof SmallReport) {
+        }
+    }
+
+
+built-in functions
+    - printf - 
+    - print_r = pretty print argument, like Perl dump
+    - var_dump - more debug info (shows number of elements in array
+    - lots of quoting functions, look them up when you need them.
+    - lots of string manipulatoin and io function - all of them look a bit like the C functions (strstr, strpos, ... 
+    - prog_match regular expression search - like grep
+         preg_match(
+            string $regex_pattern, looks like "/..../"
+            string $string_to_search,
+            array &$matches = null, // if passed: is filled with indexes of matches
+            int $flags = 0, // see here https://www.php.net/manual/en/function.preg-match.php
+            int $offset = 0 // if passed: starting offset of the search
+            ): int|false
+
+
+- objects (syntax very much inspired by ... Java!
+
+    
+    class Person {
+        public $name;
+        public $age;
+        public $birthday;
+
+        // better add type hints - nicer to use in an IDE !!!
+        function __construct($name, $birthday) {
+          $this->name = $name;
+          $this->birthday = $birthday;
+        }
+
+        function getInfo() {
+            return "Name: {$this->name} Age: {$this->age}";
+        }
+    }
+
+    Also has destructors (__destruct method) - cleanup of objects is based on reference counting! (some other big scripting languages are the same to this respect: Python/Perl/PHP...)
+
+    Also has interfaces (interface - declare them , implements - say that object uses them) 
+    Also has traits (mix-ins) (trait - to declare, use - to use them (add trait to a class)
+    Also has abstract class 
+
