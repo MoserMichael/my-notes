@@ -1,0 +1,90 @@
+Docker reference
+
+https://docs.docker.com/engine/reference/commandline/docker/
+
+----
+
+Docker commands can display it's stuff as json!!
+
+    docker ps --format='{{json .}}'
+        {"Command":"\"/docker-entrypoint.…\"","CreatedAt":"2022-10-08 07:45:28 +0300 IDT","ID":"f99693d80146","Image":"docker/getting-started","Labels":"maintainer=NGINX Docker Maintainers \u003cdocker-maint@nginx.com\u003e","LocalVolumes":"0","Mounts":"","Names":"keen_darwin","Networks":"bridge","Ports":"0.0.0.0:80-\u003e80/tcp","RunningFor":"6 minutes ago","Size":"1.09kB (virtual 27.4MB)","State":"running","Status":"Up 6 minutes"}
+
+
+docker ps     ::: shows only running containers
+docker ps -a  ::: shows running and stopped containers !!!
+
+docker container ls ::: exactly the same as docker ps 
+
+---
+
+docker image ls     :: shows docker images (except for intermediate images)
+                    :: what is an intermediate image? Each step in docker build creates an intermediate images (these are cached to improve build time!)
+
+docker image ls -a  :: shows all docker images (including intermediate images)
+
+
+    docker image ls
+        REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+        docker/getting-started   latest    157095baba98   5 months ago   27.4MB
+
+
+    # you have more fields in the json output (no idea what they all mean).
+    docker image ls --format='{{json .}}'
+        {"Containers":"N/A","CreatedAt":"2022-04-11 18:25:34 +0300 IDT","CreatedSince":"5 months ago","Digest":"\u003cnone\u003e","ID":"157095baba98","Repository":"docker/getting-started","SharedSize":"N/A","Size":"27.4MB","Tag":"latest","UniqueSize":"N/A","VirtualSize":"27.37MB"}
+
+
+-----
+
+docker info         ## shows properties of the docker engine
+
+docker info --format='{{json .}}' ## shows more stuff in json output (again, no idea what they all mean) 
+
+-----
+
+docker inspect <container-id>|<container-name>|<image-id>|<image-name>      :: spills out details of the object. (all different format, depending on object type)
+
+
+# You can extract several fields from the result!
+
+docker inspect --format='{{json .Id}} {{json .Config.Cmd}}' docker/getting-started
+    "sha256:157095baba98513dfef4ea00423767d8dae10edfeb629e9d39ea456e53f51e6a" ["nginx","-g","daemon off;"]
+
+# strings in the template are shown as is (between the {{...}} query construct)
+
+docker inspect --format='{{json .Id}} <=> {{json .Config.Cmd}}' docker/getting-started
+"sha256:157095baba98513dfef4ea00423767d8dae10edfeb629e9d39ea456e53f51e6a" <=> ["nginx","-g","daemon off;"]
+
+------
+
+docker swarms  - they have their own cluster thing (i think docker tries to be some alternative to Kubernetes; that's more than docker-compose - which runs on a single node only)
+
+
+========================
+
+Mongo (just like Elasticsearch) is a document oriented database. 
+
+
+Mongo DB - holds a set of "collections"
+    DB identified by name 
+        - may not have following chars in it:  /, \, ., ", *, <, >, :, |, ?, $, space, \0, 
+        - limited to 64 chars length
+        - case sensitive
+
+Mongo "collection" - similar to SQL table (but you don't have to define a schema in Mongo).
+    - "collection" identified by its name ( "" is not a valid collection name, no $ chars or \0 chars in the name; may not start with prefix "system.")
+    - store json docs of similar structure in the same collection (this allows you to do search)
+    
+A "document" in Mongo is an entry in a "collection" (it's a JSon file)- equivalent to a db "Row"; 
+    - each "document" gets it's generated special _id field.
+
+
+Didn't know that mongo-db is used for search; so in what sense there is a equivalence with ElasticSearch ?
+
+        - https://cloud.netapp.com/blog/cvo-blg-elasticsearch-vs-mongodb-6-key-differences
+
+            - inserts are faster in mongo,  (mongo is written in C++, whereas elasticsearch is java)
+                - better suited for document structured data (? don't you have a schema in elasticsearch too?)
+            - text search is faster in elasticsearch
+
+
+
