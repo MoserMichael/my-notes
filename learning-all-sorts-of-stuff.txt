@@ -75,6 +75,8 @@ docker swarms  - they have their own cluster thing (i think docker tries to be s
 
 ========================
 
+https://www.mongodb.com/docs/manual/reference/command/
+
 Mongo (just like Elasticsearch) is a document oriented database. 
 
 
@@ -119,15 +121,42 @@ Didn't know that mongo-db is used for search; so in what sense there is a equiva
         var coll = db.getCollection("collectionName");  // lookup of collection object; or you can do as db.collectionName - but get an error if hte collection does not exist.
         
         - collection thing has all sorts of manipulation methods 
-                - coll.insert({a:1,b:2})  // insert doc, _id field is added upon insertion
-                - var existingDoc = coll.findOne({a:1});    // find one doc, given a field
-                - coll.update({a:1,b:3}, { '$set' : { b : '4' }}_ ;  // first argument: query for doc like this, second argument: how to change the entry, once it was found. 
+                - coll.insert({"person","Bob", "profession" : "Drummer"})  // insert doc, _id field is added upon insertion
+                - var existingDoc = coll.findOne({"person" : "Bob"});    // find one doc, given a field
+                - coll.update({"person":"Bob"}, { '$set' : { "profession":"Teacher" }}) ;  // first argument: query for doc like this, second argument: how to change the entry, once it was found. 
                 - coll.find({}) // find all of them
     
+        - update expressions can have all sorts of operators,
+                $set - set the value of a field
+
+                $inc, 
+
+                $rename (rename field) 
+
+                $push (adding to array)
+                    coll.update({"person","Aob"}, {"$push", {"children" : { "Andrew" } } });
+
+                $addToSet - like push, but prevents duplication of entries
+
+                {$pop : { "key": 1}} - remove element from beginning of array "key", {$pop : { "key": -1}} - remove from the end 
+                
+                $pull - remove matching documents
+
+                $each - push more than one entry (in an array)
+
+                $slice - limit the size of an array to maximum n elements (or remove n - if n is negative)
+                
+                $sort - sort array by given key entry (provided that array has objects where all objects have the given key attribute)
+
+            https://www.mongodb.com/docs/manual/reference/operator/update/
+            https://www.mongodb.com/docs/manual/reference/operator/
+
+        - find queries can have a lot of these (that one tries to be similar to sql SELECT...)  https://www.mongodb.com/docs/manual/reference/operator/query/    
 
 ==========================
 
 Reddis
-    - does all sort of stuff (not just key value storage), they do work queues, and locks (with a specified time to life period). /what about reliability when usingg the work queue thing?/
+    - does all sort of stuff (not just key value storage), 
+        - they do work queues, and locks (with a specified time to life period). /what about reliability when usingg the work queue thing?/
 
 
