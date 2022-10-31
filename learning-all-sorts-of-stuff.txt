@@ -11,6 +11,14 @@ OSX hacks
 
 =======
 
+Show logs of all pods (name of pod/container is in each line) - and grep through them
+
+    kubectl get pods | tail -n +2  | awk '{ print $1 }' | xargs -I{} kubectl logs --all-containers=true --ignore-errors=true --prefix=true {} | grep -i error
+
+    kubectl get pods | tail -n +2  | awk '{ print $1 }' | xargs -I{} kubectl logs --prefix=true {} | grep -i error
+
+
+======
 
 Docker reference
 
@@ -159,4 +167,7 @@ Reddis
     - does all sort of stuff (not just key value storage), 
         - they do work queues, and locks (with a specified time to life period). /what about reliability when usingg the work queue thing?/
 
+        - https://github.com/resque/php-resque - that's a php library on top of redis lists (port of ruby library), Requests are queued as json objects. 
+            Library has as a queue runner that listens on the list for jobs (maintained by github)
 
+    
