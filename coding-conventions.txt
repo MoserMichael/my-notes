@@ -15,10 +15,13 @@ Golang
 ------
     See: https://go.dev/doc/effective_go#names 
 
-    Prefers tabs 
+    No Tabs for indenatation!!! (they are religious about that...)
+    package names: single-word, lower case 
     MixedCase rules - for functions and structure names (first capital letter for names exported from package)
     Interface names: Writer, Notifier (-er suffix)
+    Don't use underscore for function/class names - they prefer mixedCaseNames for everything! (don't forget that!)
     Braces: c-like braces (because the compiler inserts ; by some implicit rules)
+    Remember: exported symbols must have a capital letter as first letter (OMG)
 
 Java
 ----    
@@ -47,5 +50,18 @@ C++ (google style guide)
     Class members variables: have_trailing_underscore_
     struct members: dont_have_trailing_underscore
     constant names, enumeration constants: kMixedCase (must have prefix k)
+
+PHP
+---
+    See: https://raw.githubusercontent.com/php/php-src/master/CODING_STANDARDS.md
+
+    function names: with_underscores
+    Module exported functions: should have a prefix with the name of the module (why? Even with the addition of namespaces?)
+    class names: CamelCase
+    iterator or exception: - with suffix Iterator and Exception, respectively
+    Braces: K&R style, Use tabs for identation, also Tab==4 spaces
+        if (.. ) {
+          echo "blabla";
+        }
 
 
