@@ -39,6 +39,10 @@ docker container ls ::: exactly the same as docker ps
 
 ---
 
+docker exec -it <container name|container id> /bin/sh   :: The classic: running a shell in a running container 
+
+---
+
 docker image ls     :: shows docker images (except for intermediate images)
                     :: what is an intermediate image? Each step in docker build creates an intermediate images (these are cached to improve build time!)
 
@@ -57,13 +61,34 @@ docker image ls -a  :: shows all docker images (including intermediate images)
 
 -----
 
-docker info         ## shows properties of the docker engine
+## shows properties of the docker engine
 
-docker info --format='{{json .}}' ## shows more stuff in json output (again, no idea what they all mean) 
+docker info         
+
+## shows more stuff in json output (again, no idea what they all mean) 
+
+docker info --format='{{json .}}' 
 
 -----
 
-docker inspect <container-id>|<container-name>|<image-id>|<image-name>      :: spills out details of the object. (all different format, depending on object type)
+### shows container logs (shows both stdout and stderr)
+
+docker logs <container name or id>  
+
+### shows logs with timestamp
+
+docker logs  --timestamps <container name or id> 
+
+### shows both stdout and stderr (they need to be sorted by timestamp, otherwise things get mixed up)
+
+docker logs  --timestamps <container name or id>  2>&1 | sort -k 1  
+
+### !!! Attention !!! docker logs writes to both STDOUT and STDERR. Error info is supposed to be written to stderr!!! ###
+
+-----
+## spills out details of the object. (all different format, depending on object type)
+
+docker inspect <container-id>|<container-name>|<image-id>|<image-name>      
 
 
 # You can extract several fields from the result!
@@ -171,3 +196,10 @@ Reddis
             Library has as a queue runner that listens on the list for jobs (maintained by github)
 
     
+===========================
+
+https://en.wikipedia.org/wiki/WebSocket
+
+    - bi-directional communication
+    - initially over http, then client sends header: 'Connection: Upgrade' 'Upgrade: websocket' + additional headers, in order to change from http to websocket protocol.
+    - 
