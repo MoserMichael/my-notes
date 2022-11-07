@@ -69,6 +69,8 @@ Output:
         echo "the === operator also compares the type, so a and be are not equal via === \n";
     }
 
+    // !== same as === - checking the types in addition
+
 Output:
 
     a and b are equal via == !!! (not the case in python)
@@ -399,4 +401,19 @@ built-in functions
     Also has interfaces (interface - declare them , implements - say that object uses them) 
     Also has traits (mix-ins) (trait - to declare, use - to use them (add trait to a class)
     Also has abstract class 
+
+- you can have Iterators (an interface for iterating over a map) or generators (with yield - just like in python!)
+
+    // iterator over lines of a file
+    public function lineGenerator() : \Generator {
+    
+        $file = fopen("file.txt",'r');    
+        if ($file != null) {
+            while (($line = fgets($file)) !== false) {
+                yield $line;
+            }
+            fclose($file);
+        }
+
+- working with processes: proc_open proc_close returns pipes for interacting with the forked child process. (all the other functions return the result in an array: shell_exec or string exec )
 
