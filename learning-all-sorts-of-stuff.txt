@@ -15,6 +15,12 @@ OSX hacks
 
     sudo lsof -iTCP -sTCP:LISTEN -n -P
 
+? osx - find all executable blabla files (not symlinks ?
+
+    find . -perm +111 -type f  -name blabla
+
+? osx - find all executable blabla files or symlinks ?
+    find . -perm +111 -type f -or -type l -name blabla
 =======
 
 Show logs of all pods (name of pod/container is in each line) - and grep through them
@@ -234,6 +240,8 @@ https://en.wikipedia.org/wiki/WebSocket
 
         - php Ratchet: 
 
+            // bad news: you can't just upgrade a http connection of you php web request handler. You need to make a standalone script that listens to incoming WebSocket request.
+
             // simple chat server (that's how they do event driven stuff)
 
             $server =  Ratchet\Server\IoServer::factory(     // creates listening socke0wwt and event loop wrapper (IoServer), 
@@ -260,4 +268,114 @@ https://en.wikipedia.org/wiki/WebSocket
                     \Ratchet\RFC6455\Handshake\ServerNegotiator - handshake method ::: does the handshake.
 
 
-    - 
+----
+
+https://realpython.com/pytest-python-testing/ (and others)
+
+    - standard library comes with unittest framework ( https://docs.python.org/3/library/unittest.html ) - very much like JUnit (with setUp and tearDown methods)
+
+    - but they have pytest : 
+        - here you don't have to import/derive from base class and call it's assertion methods; most simple test is a function with test_ prefix and calls assert
+        - pytest is an exe, it's the test runner - it gathers files with test_ prefix and calls all the test.
+
+    - so how do I set up the test?
+        - test function has parameter, the parameter is a function that is declared with @pytest.fixture decorator ; FIXTURE MEANS it produces a value used for the test.
+
+        import pytest
+
+        @pytest.fixture
+        def example_fixture():
+            return 1
+
+        def test_with_fixture(example_fixture):
+            assert example_fixture == 1
+
+    - now functions with the @pytest.fixture annotation can also have parameters, these are most probably nested fixtures, so they call themselves in turn upon the setup of the value that is returned by the fixture.
+
+    - great, now how do I tear down the test? (here things get complicated - you tear down the fixture!) generators!
+
+      One way of tearing the fixture down.
+
+        import pytest
+
+        @pytest.fixture()
+        def resource():
+            print("setup")
+            yield "resource"
+            print("teardown")
+
+        def test_that_depends_on_resource(self, resource):
+            print("testing {}".format(resource))
+
+        
+    Another way: register a callback!
+
+        @pytest.fixture()
+        def resource(request):
+            print("setup")
+
+            def teardown():
+                print("teardown")
+            request.addfinalizer(teardown)
+            
+            return "resource"
+
+        def test_that_depends_on_resource(self, resource):
+            print("testing {}".format(resource))
+
+    - lifetime of a fixture return value.
+
+        When you use a fixture in several tests, then the returned value may be cached (similar to unittest - you don't want to have a setUp per test!)
+        Now the value returned by the fixture has a lifetime, depending on the scope parameter of the fixture annotation!!!
+
+        
+        # scope="function" - if you use the resource parameter as a fixture, then the nested teardown method will be called FOR THE LAST TEST OF THIS SOURCE FILE!
+        # scope="session"  - teardown called after the end of the run of the pytest test runner !
+        # scope="module"   - teardown called after the last test in the current module
+        # scope="package"  - teardown called after the last test in the current package.
+       
+        @pytest.fixture(scope="function")
+        def resource(request):
+            print("setup")
+
+            def teardown():
+                print("teardown")
+            request.addfinalizer(teardown)
+            
+            return "resource"
+
+        def test_that_depends_on_resource(self, resource):
+            print("testing {}".format(resource))
+
+    - can parametrize tests. Each entry in the array will be passed in a separate test run of test_in_palindrome
+
+        @pytest.mark.parametrize("palindrome", [
+            "",
+            "a",
+            "Bob",
+            "Never odd or even",
+            "Do geese see God?",
+        ])
+        def test_is_palindrome(palindrome):
+            assert is_palindrome(palindrome)
+                
+    - multiple parametrize annotations: will result in all combinations (cartesian product) of all test values!
+        
+            @pytest.mark.parametrize('foo', ['a', 'b', 'c'])
+            @pytest.mark.parametrize('bar', [1, 2, 3])
+            def test_things(foo, bar):
+                assert foo in ['a', 'b', 'c']
+                assert bar in [1, 2, 3]
+
+      test report now looks as:
+
+            test_foo.py::test_things[1-a] PASSED
+            test_foo.py::test_things[1-b] PASSED
+            test_foo.py::test_things[1-c] PASSED
+            test_foo.py::test_things[2-a] PASSED
+            test_foo.py::test_things[2-b] PASSED
+            test_foo.py::test_things[2-c] PASSED
+            test_foo.py::test_things[3-a] PASSED
+            test_foo.py::test_things[3-b] PASSED
+            test_foo.py::test_things[3-c] PASSED
+
