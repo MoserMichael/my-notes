@@ -21,6 +21,16 @@ OSX hacks
 
 ? osx - find all executable blabla files or symlinks ?
     find . -perm +111 -type f -or -type l -name blabla
+
+======
+
+Kubernetes:
+    - extracting interesting fields from a set of pods:
+
+         An overview of what the containers in pods are running: (name,image,command,arguments of commands, environment)
+
+         kubectl get pods -o json | jq '.items[] | {name: .metadata.name, image: .spec.containers[].image, command: .spec.containers[].command, args: .spec.containers[].args, env: .spec.containers[].env }'
+
 =======
 
 Show logs of all pods (name of pod/container is in each line) - and grep through them
@@ -333,6 +343,8 @@ https://realpython.com/pytest-python-testing/ (and others)
         # scope="session"  - teardown called after the end of the run of the pytest test runner !
         # scope="module"   - teardown called after the last test in the current module
         # scope="package"  - teardown called after the last test in the current package.
+
+        !!! BECAUSE OF ALL THE CACHING: YOU CAN'T INVOKE A FIXTURE TWICE FOR A TEST !!!
        
         @pytest.fixture(scope="function")
         def resource(request):
@@ -348,6 +360,7 @@ https://realpython.com/pytest-python-testing/ (and others)
             print("testing {}".format(resource))
 
     - can parametrize tests. Each entry in the array will be passed in a separate test run of test_in_palindrome
+      YOU ALSO PASS PAREMTERS TO FIXTURES THIS WAY !!!
 
         @pytest.mark.parametrize("palindrome", [
             "",
