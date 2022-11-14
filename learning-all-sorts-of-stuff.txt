@@ -81,6 +81,21 @@ docker image ls -a  :: shows all docker images (including intermediate images)
         {"Containers":"N/A","CreatedAt":"2022-04-11 18:25:34 +0300 IDT","CreatedSince":"5 months ago","Digest":"\u003cnone\u003e","ID":"157095baba98","Repository":"docker/getting-started","SharedSize":"N/A","Size":"27.4MB","Tag":"latest","UniqueSize":"N/A","VirtualSize":"27.37MB"}
 
 
+---
+
+Running a container, and overriding the entry point of the container (--entrypoint can tell what to run, provided the process is installed on the image)
+
+    docker run  -it --entrypoint /bin/sh php:7.4-cli
+
+In addition: mount the current directory on the host into the container - to path /mnt/loc ; ls /mnt/loc - just like the local directory when running the command!
+
+    docker run  -v $PWD:/mnt/loc -it --entrypoint /bin/sh php:7.4-cli
+
+You can run the whole thing in detached mode ! (and attach to it later)
+This has the advantage that the docker keeps running, until the system is rebooted. (you can get a similar effect with tmux :- ) 
+
+    docker run -d  -v $PWD:/mnt/loc -it --entrypoint /bin/sh php:7.4-cli
+
 -----
 
 ## shows properties of the docker engine
@@ -127,6 +142,62 @@ docker inspect --format='{{json .Id}} <=> {{json .Config.Cmd}}' docker/getting-s
 
 docker swarms  - they have their own cluster thing (i think docker tries to be some alternative to Kubernetes; that's more than docker-compose - which runs on a single node only)
 
+------
+
+Trying to run a subprocess $(docker exec -ti <docker_id> /bin/bash) and passed the process pipes for the stdin/stdout/stderr streams.
+Got error "the input device is not a TTY".
+ 
+Now there i a lower level docker REST API! https://github.com/docker-php/docker-php 
+
+
+https://docs.docker.com/engine/api/sdk/examples/ 
+    For $(docker ps)
+    curl --unix-socket /var/run/docker.sock http://localhost/v1.41/containers/json`
+That means write raw HTTP to a unix domain socket, genius!
+
+
+https://stackoverflow.com/questions/53781590/how-to-use-docker-api-engine-to-exec-cmd-in-containera
+
+    - first create an "exec instance"
+        POST /containers/{{id/name}}/exec
+        {
+            "AttachStdin": true,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "DetachKeys": "ctrl-p,ctrl-q",
+            "Tty": true,
+            "Cmd": [
+            "bin/bash","-c","touch appa.py"
+            ],
+            "Env": [
+            "FOO=bar",
+            "BAZ=quux"
+            ],
+            "Privileged":true,
+            "User":"root"
+        }
+
+
+    = messages received after upgrade
+
+        ```go
+        header := [8]byte{STREAM_TYPE, 0, 0, 0, SIZE1, SIZE2, SIZE3, SIZE4}
+        ```
+
+        `STREAM_TYPE` can be:
+
+        - 0: `stdin` (is written on `stdout`)
+        - 1: `stdout`
+        - 2: `stderr`
+
+        `SIZE1, SIZE2, SIZE3, SIZE4` are the four bytes of the `uint32` size
+        encoded as big endian.
+
+        Following the header is the payload, which is the specified number of
+        bytes of `STREAM_TYPE`.
+
+
+    - then 
 
 ========================
 
@@ -278,13 +349,32 @@ https://en.wikipedia.org/wiki/WebSocket
                     \Ratchet\RFC6455\Handshake\ServerNegotiator - handshake method ::: does the handshake.
 
 
+        
+        - Ratchet: working with sockets:
+            
+            Ratchet\Server\IoConnection - asynchronous socket handler
+                - constructor receives derived class of \\React\\Socket\\ConnectionInterface
+
+                - \React\Socket\Connection // wraps a stream/socket so that it does the ConnectionInterface!
+                        public function __construct($resource, LoopInterface $loop)
+
+        - every server passed to a ratched event loop handles:
+
+            interface MessageInterface {
+
+                function onMessage(ConnectionInterface $clientConnection, $msg);
+
+----
+
+    List of libraries for working with the docker engine api  : https://docs.docker.com/engine/api/sdk/
+
 ----
 
 https://realpython.com/pytest-python-testing/ (and others)
 
     - standard library comes with unittest framework ( https://docs.python.org/3/library/unittest.html ) - very much like JUnit (with setUp and tearDown methods)
 
-    - but they have pytest : 
+        - but they have pytest : 
         - here you don't have to import/derive from base class and call it's assertion methods; most simple test is a function with test_ prefix and calls assert
         - pytest is an exe, it's the test runner - it gathers files with test_ prefix and calls all the test.
 
