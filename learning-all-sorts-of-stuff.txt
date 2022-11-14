@@ -199,6 +199,22 @@ https://stackoverflow.com/questions/53781590/how-to-use-docker-api-engine-to-exe
 
     - then 
 
+----
+Mapping some docker commands to the docker engine rest api
+
+Beware! The json output of curl vs docker commands is very different!
+
+    docker ps --format='{{json .}}
+
+    # doesn't show all containers (only running ones)
+    curl --unix-socket /var/run/docker.sock http://localhost/v1.41/containers/json | jq . | less
+
+    # show all containers
+    curl --unix-socket /var/run/docker.sock http://localhost/v1.41/containers/json?all=true | jq . | less
+
+    # show all containers and the size of containers field.
+    curl --unix-socket /var/run/docker.sock http://localhost/v1.41/containers/json?size=true\&all=true
+
 ========================
 
 https://www.mongodb.com/docs/manual/reference/command/
