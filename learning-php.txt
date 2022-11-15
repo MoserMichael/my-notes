@@ -1,8 +1,9 @@
 
 // php looks like insanity (at first)
 // ... But if you did Perl, then you can get used to Anything!
+// php is sort of less dictatorial than python (no pip-8 that tells you the length of a line, for example, it has it's good sides)..
 //
-// The main idea is to embed code in a document, the embedded code is adding it's output to the document - at the spot of the embedding.
+// The main idea is to embed code in a document, the embedded code is adding it's output to the document - at the spot of the embedding. (like the old ASP)
 //
 // https://en.wikipedia.org/wiki/PHP
 //  also interesting: MS ASP was a copy/inspired by PHP
@@ -15,13 +16,19 @@
 # run local test server of php (accessible as http://localhost:8000 )
 php -S localhost:8000
 
-# php extensions life here:
+# run php as an interactive shell (not the most friendly shell... :-( )
+php -a
+
+# php extensions life here: (but you can't install them with composer, you need pear for that ... )
 https://pecl.php.net/
 
-# php packages(libraries) are managed by composer
+# php packages(libraries) are managed by composer, (composer is a bit like pip in python)
 # composer install : Installs libraries for the current project. It looks at composer.json file! 
 # After that: all downloaded libraries are listed in composer.lock file!
+
 composer install 
+
+
 
 - accessing an undefined variable is an error (like in python)
 
@@ -148,8 +155,6 @@ Output:
         echo "key: {$key} val: {$val}\n";
     }
 
-
-
 Output:
 
 type of map variable is array
@@ -167,6 +172,11 @@ the same way of defining this map
 key: 0 val: a
 key: 1 val: b
 key: 2 val: c
+
+- array: check if key exists
+    
+    $arr = array( "a" => "b");
+    $e = array_key_exists( "a", $arr ); # checks if there is a key "a' in the array $arr
 
 
     ----
@@ -275,9 +285,9 @@ Control structure:
              }
 
 including other files
-    include  "file.php"         // does not fail, if file.php does not exist or fails to compile (used to paste html verbatim into the page)
+    include  "file.any"         // used to paste html verbatim into the page. include does not fail, if file.any does not exist or fails to compile.
     require  "file.php"         // fails if file.php does not exist or fails to compile (used to include other php code)
-    require_once "file.php"     // like require - but does not include file.php if it has already been included
+    require_once "file.php"     // like require - but does not include file.php if it has already been included (this is the preferred way to include stuff!)
 
 ===
 

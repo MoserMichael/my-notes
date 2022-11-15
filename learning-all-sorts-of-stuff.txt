@@ -215,6 +215,13 @@ Beware! The json output of curl vs docker commands is very different!
     # show all containers and the size of containers field.
     curl --unix-socket /var/run/docker.sock http://localhost/v1.41/containers/json?size=true\&all=true
 
+
+    ---
+
+    docker image ls -a --format='{{json .}}'
+
+    curl --unix-socket /var/run/docker.sock http://localhost/v1.41/images/json?all=true\&digest=true | jq .
+
 ========================
 
 https://www.mongodb.com/docs/manual/reference/command/
