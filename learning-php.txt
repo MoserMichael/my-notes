@@ -16,6 +16,9 @@
 # run local test server of php (accessible as http://localhost:8000 )
 php -S localhost:8000
 
+# this forks the php web server 10 times, so it can handle more than one request concurrently!
+PHP_CLI_SERVER_WORKERS=10 php -S localhost:8000
+
 # run php as an interactive shell (not the most friendly shell... :-( )
 php -a
 
@@ -28,7 +31,9 @@ https://pecl.php.net/
 
 composer install 
 
+---
 
+The language
 
 - accessing an undefined variable is an error (like in python)
 
