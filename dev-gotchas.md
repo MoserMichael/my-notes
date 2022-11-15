@@ -7,6 +7,22 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
 
+
+
+---15/11/22 14:08:45----------------------
+
+I was wasting a lot of time with building dockerfiles - files for building a docker. Here is a better approach:
+
+- To start a docker with the base image, let's assume that the base image is fedora::latest -  ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc  fedora:latest /bin/sh -c 'while [ true ]; do sleep 100; done') ```
+    - ```-o 9000:8000```  external port 9000 will be mapped to port 8000 - that's handy if you need to install and test a server that listens on port 8000 (within the container)
+    - ```-v $PWD:/mnt/loc``` the current directory will be seens as /mnt/loc within the container
+- check that the container is running.
+- attach a shell to the base imager, run the commands required to set up the desired environment, and then take the command history to write the Dockerfile  ```docker exec -ti $DID /bin/sh```
+
+That's much better then starting to write the ```Dockerfile``` by means of trial and error!!!
+You can try out stuff in the shell, interactively, then take what actually worked as the basis for the dockerfile.
+Another bonus: the environment keeps running within the docker, you can examine it as a reference point.
+
 ---23/08/22 19:45:52----------------------
 
 I got it how to deal with hacker news and twitter - just never log in! Come on - 90% of what you read on both sites is clickbait or just a waste of time.
