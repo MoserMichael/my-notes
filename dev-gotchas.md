@@ -23,6 +23,8 @@ That's much better then starting to write the ```Dockerfile``` by means of trial
 You can try out stuff in the shell, interactively, then take what actually worked as the basis for the dockerfile.
 Another bonus: the environment keeps running within the docker, you can examine it as a reference point.
 
+BTW, the docker command line seems mysterious in many ways, however the documentation has a number of great guides that explain it! See the [Docker Guides](https://docs.docker.com/get-started/overview/) It's all hidden under: Running your app in production / Configure containers !
+
 ---23/08/22 19:45:52----------------------
 
 I got it how to deal with hacker news and twitter - just never log in! Come on - 90% of what you read on both sites is clickbait or just a waste of time.

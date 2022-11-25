@@ -96,6 +96,9 @@ This has the advantage that the docker keeps running, until the system is reboot
 
     docker run -d  -v $PWD:/mnt/loc -it --entrypoint /bin/sh php:7.4-cli
 
+[Docker guides] See:  https://docs.docker.com/get-started/overview/) It's all hidden under: Running your app in production / Configure containers 
+
+
 -----
 
 ## shows properties of the docker engine
