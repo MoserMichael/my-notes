@@ -5,22 +5,20 @@ My [linkedin profile](https://www.linkedin.com/in/michael-moser-32211b1/)
 This is a log, here I am listing the gotchas that I stepped upon as a developer.
 Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice; Some of the fun in programming is to have your assumptions invalidated; this is not just a cause for grieve, it is an opportunity to re-examine your assumptions, which is a good thing.
 
-(should have started a log like this ages ago. Writing stuff down helps with clarifying the subject matter)
-
-
+(should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters)
 
 ---15/11/22 14:08:45----------------------
 
 I was wasting a lot of time with building dockerfiles - files for building a docker. Here is a better approach:
 
-- To start a docker with the base image, let's assume that the base image is fedora::latest -  ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc  fedora:latest /bin/sh -c 'while [ true ]; do sleep 100; done') ``` (or ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc  fedora:latest /bin/sleep infinity) ``` -  the main process of the docker does nothing, but doesn't finish.
+- To start a docker with the base image, let's assume that the base image is fedora::latest -  ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc fedora:latest /bin/sleep infinity) ```   -  the main process of the docker does not do much,  it just keeps the docker container in a 'running' state. (an alternative would be ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc  fedora:latest /bin/sh -c 'while [ true ]; do sleep 100; done') ```
     - ```-o 9000:8000```  external port 9000 will be mapped to port 8000 - that's handy if you need to install and test a server that listens on port 8000 (within the container)
     - ```-v $PWD:/mnt/loc``` the current directory will be seens as /mnt/loc within the container
 - check that the container is running.
 - attach a shell to the base imager, run the commands required to set up the desired environment, and then take the command history to write the Dockerfile  ```docker exec -ti $DID /bin/sh``` - you can copy the needed stuff via the mounted directory, and you can check if the installed service works, as the required port is reachable from the host.
 
 That's much better then starting to write the ```Dockerfile``` by means of trial and error!!!
-You can try out stuff in the shell, interactively, then take what actually worked as the basis for the dockerfile.
+You can try out stuff in the shell, interactively, then look at the command history and that that as the basis for writing the RUN commands in the dockerfile.
 Another bonus: the environment keeps running within the docker, you can examine it as a reference point.
 
 BTW, the docker command line seems mysterious in many ways, however the documentation has a number of great guides that explain it! See the [Docker Guides](https://docs.docker.com/get-started/overview/) It's all hidden under: Running your app in production / Configure containers !
