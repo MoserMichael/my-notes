@@ -20,7 +20,12 @@ OSX hacks
     find . -perm +111 -type f  -name blabla
 
 ? osx - find all executable blabla files or symlinks ?
+
     find . -perm +111 -type f -or -type l -name blabla
+
+? sort processes by virtual memory consumption /low memory does strange things on the mac.../
+
+    top -o mem 
 
 ======
 
@@ -63,23 +68,6 @@ Docker reference
 
 https://docs.docker.com/engine/reference/commandline/docker/
 
-----
-
-Docker commands can display it's stuff as json!!
-
-    docker ps --format='{{json .}}'
-        {"Command":"\"/docker-entrypoint.…\"","CreatedAt":"2022-10-08 07:45:28 +0300 IDT","ID":"f99693d80146","Image":"docker/getting-started","Labels":"maintainer=NGINX Docker Maintainers \u003cdocker-maint@nginx.com\u003e","LocalVolumes":"0","Mounts":"","Names":"keen_darwin","Networks":"bridge","Ports":"0.0.0.0:80-\u003e80/tcp","RunningFor":"6 minutes ago","Size":"1.09kB (virtual 27.4MB)","State":"running","Status":"Up 6 minutes"}
-
-
-docker ps     ::: shows only running containers
-docker ps -a  ::: shows running and stopped containers !!!
-
-docker container ls ::: exactly the same as docker ps 
-
----
-
-docker exec -it <container name|container id> /bin/sh   :: The classic: running a shell in a running container 
-
 ---
 
 docker image ls     :: shows docker images (except for intermediate images)
@@ -98,6 +86,40 @@ docker image ls -a  :: shows all docker images (including intermediate images)
         {"Containers":"N/A","CreatedAt":"2022-04-11 18:25:34 +0300 IDT","CreatedSince":"5 months ago","Digest":"\u003cnone\u003e","ID":"157095baba98","Repository":"docker/getting-started","SharedSize":"N/A","Size":"27.4MB","Tag":"latest","UniqueSize":"N/A","VirtualSize":"27.37MB"}
 
 
+
+---
+running a container - with a given image (if image is not present then they try to pull it from the docker registry)
+
+    docker run fedora:latest ls / 
+
+        - run $(ls /) command in the container, and print the output of the command.
+        - the command exits and the container is no longer running
+
+            docker ps -a    
+            CONTAINER ID   IMAGE           COMMAND   CREATED              STATUS                          PORTS     NAMES
+            d35b0813ce79   fedora:latest   "ls /"    About a minute ago   Exited (0) About a minute ago             eager_mcclintock
+
+        - the entry of the exited docker container remains - until it is cleaned up by running $(docker container prune -f) 
+
+    docker run --rm fedora:latest ls /  
+
+        - same as before, just that the entry for the exited docker container gets cleaned up, when the docker exits. (--rm says so)
+
+
+    docker run -d fedora:latest ls /
+8bd31381ae93712414e02c58589a8562be9739ccc01d0d9baf93f39a6ab32505
+
+        -d option says not to show the docker command output to screen, instead it prints the id of the docker container. You can now use that id to stop/resume/kill the container (or to $(docker wait CONTAINER_ID) until it exits)
+
+
+    docker run -d -p 9000:8000 -v $PWD:/mnt/loc fedora:latest /bin/sleep infinity
+
+        -d                  : runs as daemon (you get the docker container id in stdout)
+        -p 9000:8000        : maps tcp port 9000 (outside the container) to port 8000 (inside the container)
+        -v $PWD:/mnt/loc    : mounts current directory to /mnt/loc inside container
+
+        /bin/sleep infinity : the container does nothing, just keeps running (but you can attach a terminal to it that runs in the container, and it enjoys the mapped port and mounted directory!)
+
 ---
 
 Running a container, and overriding the entry point of the container (--entrypoint can tell what to run, provided the process is installed on the image)
@@ -113,8 +135,25 @@ This has the advantage that the docker keeps running, until the system is reboot
 
     docker run -d  -v $PWD:/mnt/loc -it --entrypoint /bin/sh php:7.4-cli
 
+
+---
+
+docker exec -it <container name|container id> /bin/sh   :: The classic: running a shell in a running container 
+
 [Docker guides] See:  https://docs.docker.com/get-started/overview/) It's all hidden under: Running your app in production / Configure containers 
 
+
+----
+
+docker ps     ::: shows only running containers
+docker ps -a  ::: shows running and stopped containers !!!
+
+docker container ls ::: exactly the same as docker ps 
+
+Docker commands can display it's stuff as json!!
+
+    docker ps --format='{{json .}}'
+        {"Command":"\"/docker-entrypoint.…\"","CreatedAt":"2022-10-08 07:45:28 +0300 IDT","ID":"f99693d80146","Image":"docker/getting-started","Labels":"maintainer=NGINX Docker Maintainers \u003cdocker-maint@nginx.com\u003e","LocalVolumes":"0","Mounts":"","Names":"keen_darwin","Networks":"bridge","Ports":"0.0.0.0:80-\u003e80/tcp","RunningFor":"6 minutes ago","Size":"1.09kB (virtual 27.4MB)","State":"running","Status":"Up 6 minutes"}
 
 -----
 
