@@ -201,6 +201,19 @@ docker inspect --format='{{json .Id}} <=> {{json .Config.Cmd}}' docker/getting-s
 
 docker swarms  - they have their own cluster thing (i think docker tries to be some alternative to Kubernetes; that's more than docker-compose - which runs on a single node only)
 
+
+------
+
+PORTS
+
+    - you can expose ports from a container -  that does nothing (it's a form of documenting which ports will be listened at within the container)
+        - either by having EXPOSE in the Dockerfile (during build)
+        - $(docker run --expose <port> )
+
+    - to access a daemon running within the container: you need to map the port from outside the network to a port within the network  (docker run -p 8000:80)
+
+    - you can do $(docker run -P .... ) - this will create a mapping between all 'exposed' ports to a temporarily assigned port number outside the network.
+
 ------
 
 Trying to run a subprocess $(docker exec -ti <docker_id> /bin/bash) and passed the process pipes for the stdin/stdout/stderr streams.

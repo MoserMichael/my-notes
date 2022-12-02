@@ -1,4 +1,7 @@
 Writing it down, so as not to get confused.
+
+(the zen of all coding conventions: name your functions/types/variables as they do in the standard library :-) )
+
 (another reason to use an IDE - they give you better hints than vim... :-( )
 
 Python
