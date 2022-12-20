@@ -27,6 +27,69 @@ OSX hacks
 
     top -o mem 
 
+? regular expression editor (online) ?
+
+    https://regex101.com/
+
+? show process tree (on both osx and linux) ?
+
+    htop -t
+
+Linux
+
+    # get netstat on ubuntu
+    apt-get install net-tools
+
+    # fedora: they all call that package net-tools!
+    dnf install net-tools
+
+    # get external ip address
+    dig +short txt ch whoami.cloudflare @1.0.0.1
+
+    #get external ipv6
+    dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com
+
+
+OS agnostic
+
+    # also gets external ip address
+    curl ifconfig.me
+    curl icanhazip.com
+    curl ipecho.net/plain
+    curl ident.me
+    curl bot.whatismyipaddress.com
+    curl https://diagnostic.opendns.com/myip
+    curl http://checkip.amazonaws.com
+    curl http://whatismyip.akamai.com
+
+======
+
+Ansible
+
+    https://www.digitalocean.com/community/tutorial_series/how-to-write-ansible-playbooks
+
+Terminology:
+    Playbook: yaml file that defines the script of what is being done. Includes a sequence of Tasks (unit of execution)
+
+    Modules: reusable entities for doing common tasks
+
+    Tasks: you write these to specify what the playbook is doing.
+
+Examples:
+
+    Playbook yaml that sets up variables, the first task prints them ('hosts: all' - the task act on all defined 'hosts' - these are machines that we can control)
+
+        ---
+        - hosts: all
+          vars:
+            - username: sammy
+            - home: /home/sammy   
+          tasks:
+            - name: print variables
+              debug:
+                msg: "Username: {{ username }}, Home dir: {{ home }}"
+
+
 ======
 
 Get all artifact names for a public repository using the GITHUB rest api
@@ -120,6 +183,7 @@ running a container - with a given image (if image is not present then they try 
 
         /bin/sleep infinity : the container does nothing, just keeps running (but you can attach a terminal to it that runs in the container, and it enjoys the mapped port and mounted directory!)
 
+        ## !!! sleep infinity - works on Linux, this is a GNU extension. !!!
 ---
 
 Running a container, and overriding the entry point of the container (--entrypoint can tell what to run, provided the process is installed on the image)
@@ -196,6 +260,14 @@ docker inspect --format='{{json .Id}} {{json .Config.Cmd}}' docker/getting-start
 
 docker inspect --format='{{json .Id}} <=> {{json .Config.Cmd}}' docker/getting-started
 "sha256:157095baba98513dfef4ea00423767d8dae10edfeb629e9d39ea456e53f51e6a" <=> ["nginx","-g","daemon off;"]
+
+
+Listing all tags/info for an image:
+
+    https://www.googlinux.com/how-to-list-all-tags-of-a-docker-image/
+
+    curl 'https://registry.hub.docker.com/v2/repositories/library/debian/tags/'|jq . 
+
 
 ------
 
@@ -293,6 +365,12 @@ Beware! The json output of curl vs docker commands is very different!
     docker image ls -a --format='{{json .}}'
 
     curl --unix-socket /var/run/docker.sock http://localhost/v1.41/images/json?all=true\&digest=true | jq .
+
+---
+
+Docker layered file system
+
+https://jessicagreben.medium.com/digging-into-docker-layers-c22f948ed612#:~:text=What%20are%20the%20layers%3F,during%20the%20Docker%20image%20build. 
 
 ========================
 
@@ -577,3 +655,16 @@ https://realpython.com/pytest-python-testing/ (and others)
             test_foo.py::test_things[3-b] PASSED
             test_foo.py::test_things[3-c] PASSED
 
+
+-----
+
+BNF grammars for javascript?
+    You got a lot of them in ANTLR!
+        - https://github.com/antlr/grammars-v4/tree/master/javascript/javascript
+    
+
+    C syntax BNF
+        - https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm
+
+    Pascal syntax BNF
+        - https://condor.depaul.edu/ichu/csc447/notes/wk2/pascal.html
