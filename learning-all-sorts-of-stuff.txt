@@ -35,6 +35,23 @@ OSX hacks
 
     htop -t
 
+? netstat - show process names, who is listening on a given port ?
+
+    sudo lsof -iTCP -sTCP:LISTEN -n -P
+    sudo lsof -iUDP -sTCP:LISTEN -n -P
+
+? disk space
+    
+    Show disk usage:
+        df -a -H
+
+    Show disk usage in directory
+        du -ah  /usr/ | tail -1
+
+
+    ? https://apple.stackexchange.com/questions/267165/why-is-devfs-full    
+        devfs - is always full
+
 Linux
 
     # get netstat on ubuntu
@@ -63,7 +80,13 @@ OS agnostic
     curl http://whatismyip.akamai.com
 
 ======
+Linux
 
+ALPINE - list all installed packages
+
+    apk info -vv
+
+=======
 Ansible
 
     https://www.digitalocean.com/community/tutorial_series/how-to-write-ansible-playbooks
@@ -115,6 +138,11 @@ Kubernetes:
          An overview of what the containers in pods are running: (name,image,command,arguments of commands, environment)
 
          kubectl get pods -o json | jq '.items[] | {name: .metadata.name, image: .spec.containers[].image, command: .spec.containers[].command, args: .spec.containers[].args, env: .spec.containers[].env }'
+
+
+    - https://github.com/ahmetb/kubectx 
+        set kubectl context (kubectx) and namespace (kubens) /makes it easier to work with big clusters that have many of them/
+
 
 =======
 
@@ -221,6 +249,19 @@ Docker commands can display it's stuff as json!!
 
 -----
 
+## moving a docker image to another machine
+
+    docker save FULL_SHA -o tarfile.tar
+
+    /COPY THE TARFILE.TAR to the other machine/
+
+    docker load FULL_SHA -i tarfile.tar
+
+    /Note that it often doesn't move the TAGS!!! so you need to tag the resulting image on your own/
+
+    docker tag FULL_SHA tag_name
+
+
 ## shows properties of the docker engine
 
 docker info         
@@ -273,6 +314,11 @@ Listing all tags/info for an image:
 
 docker swarms  - they have their own cluster thing (i think docker tries to be some alternative to Kubernetes; that's more than docker-compose - which runs on a single node only)
 
+
+--------
+Get info on a specific image and tag - from dockerhub (including the os/platforms of all possible images)
+
+    docker manifest inspect php:8.2-apache
 
 ------
 
@@ -373,6 +419,24 @@ Docker layered file system
 https://jessicagreben.medium.com/digging-into-docker-layers-c22f948ed612#:~:text=What%20are%20the%20layers%3F,during%20the%20Docker%20image%20build. 
 
 ========================
+
+on OSX and linux - the same output for:
+
+    docker info --format='{{json .Runtimes}}' | jq .
+    {
+      "io.containerd.runc.v2": {
+        "path": "runc"
+      },
+      "io.containerd.runtime.v1.linux": {
+        "path": "runc"
+      },
+      "runc": {
+        "path": "runc"
+      }
+    }
+
+
+====================
 
 https://www.mongodb.com/docs/manual/reference/command/
 
@@ -657,11 +721,15 @@ https://realpython.com/pytest-python-testing/ (and others)
 
 
 -----
+BNF grammars 
 
-BNF grammars for javascript?
+    Python got it's syntax in the reference
+        https://docs.python.org/3/reference/grammar.html
+
+    BNF grammars for javascript?
+
     You got a lot of them in ANTLR!
         - https://github.com/antlr/grammars-v4/tree/master/javascript/javascript
-    
 
     C syntax BNF
         - https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm
