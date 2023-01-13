@@ -736,3 +736,71 @@ BNF grammars
 
     Pascal syntax BNF
         - https://condor.depaul.edu/ichu/csc447/notes/wk2/pascal.html
+
+===
+
+Javascript generators/iterators - they are needed to provide values for a 'for' loop.
+
+Here is how you do an iterable object (that's an object that has special function to return an iterator, so that it can be used in a for loop)
+
+    class Foo {
+         constructor() {
+             this.data = [1,2,3];
+         }
+    }
+
+    //
+    // class Foo is 'iterable' if it has a member named Symbol.iterator - that returns an iterator object.
+    //
+    // need to add the function named as special symbol: Symbol.iterator to protoype
+    // can't just define a member function with that name ???!
+    // now a new Foo object will bet 'iterable' as it has an iterator.
+    //
+    Foo.prototype[Symbol.iterator] = function() {
+         let pos = 0;
+         let data = this.data;
+
+         // iterator is an object with the next function, that returns an object upon each call
+         // returned object/dict has done: - are we done iterating? and value: - value to return to for loop
+         return {
+             next: function() {
+                     return {
+                         done: !(pos in data), // are we done with the iteration?
+                         value: data[pos++]    // value returned by iterator
+                     }
+             }
+         }
+     }
+
+
+    f = new Foo();
+    for(let c of f) {
+        console.log(c);
+    }
+
+Here is how you do a generator
+
+    function *range(from,to,step) {
+        let val = from;
+        while(val < to) {
+            yield val;
+            val += step;
+        }
+    }
+
+    for(let i of range(1,10,2)) {
+        console.log(i);
+    }
+
+Calling generators directly
+
+    > a=range(1,3,1)
+    Object [Generator] {}
+    > a.next()
+    { value: 1, done: false }
+    > a.next()
+    { value: 2, done: false }
+    > a.next()
+    { value: undefined, done: true }
+    > a.next()
+    { value: undefined, done: true }
