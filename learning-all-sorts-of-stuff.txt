@@ -804,3 +804,52 @@ Calling generators directly
     { value: undefined, done: true }
     > a.next()
     { value: undefined, done: true }
+
+
+Generators can call other generators - but they have to do the call via yield* 
+
+    function *blabla() {
+        return 3;
+    }
+
+    function* func1() {
+      yield 42;
+    }
+
+    function* func2() {
+
+        // calling a generator function returns a generator object
+        let er = blabla();
+        console.log("blabla returns: " + er);
+
+        // this way it returns 3
+        er = yield *blabla();
+        console.log("blabla returns: " + er);
+
+        yield* func1();
+        yield* func1();
+        yield* func1();
+    }
+
+    for(a of func2()) {
+        console.log(a);
+    }
+
+It turns out that python has a similar thing to delegate form one generator to the other. Welcome to 'yield from' - beginning with python 3.8
+
+    def my_range(f,t,st):
+        while f < t:
+            yield f
+            f += st
+
+    # yield from - to delegate to another generator !!! (from python 3.8)
+    def range_three(f,t):
+        yield from my_range(f,t,3)
+
+    for n in my_range(1,10,1):
+        print(n)
+
+    print("generator calling generator")
+
+    for n in range_three(1,10):
+        print(n)
