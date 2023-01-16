@@ -739,6 +739,16 @@ BNF grammars
 
 ===
 
+Javascript - iterating over map entries (node session)
+
+    > a={a:1,b:2,c:3}
+    { a: 1, b: 2, c: 3 }
+    > Object.entries(a).map(([k,v],i) => { console.log("k: " + k + " v: " +v + " i :" +i); return k } )
+    k: a v: 1 i :0
+    k: b v: 2 i :1
+    k: c v: 3 i :2
+    [ 'a', 'b', 'c' ]
+
 Javascript generators/iterators - they are needed to provide values for a 'for' loop.
 
 Here is how you do an iterable object (that's an object that has special function to return an iterator, so that it can be used in a for loop)
@@ -816,7 +826,15 @@ Generators can call other generators - but they have to do the call via yield*
       yield 42;
     }
 
+    function regFunc() {
+        return 43;
+    }
+
     function* func2() {
+
+        // can call regular function from generator - works as expected
+        let bl = regFunc();
+        console.log(bl);
 
         // calling a generator function returns a generator object
         let er = blabla();
@@ -834,6 +852,7 @@ Generators can call other generators - but they have to do the call via yield*
     for(a of func2()) {
         console.log(a);
     }
+
 
 It turns out that python has a similar thing to delegate form one generator to the other. Welcome to 'yield from' - beginning with python 3.8
 
@@ -853,3 +872,26 @@ It turns out that python has a similar thing to delegate form one generator to t
 
     for n in range_three(1,10):
         print(n)
+
+=== 
+
+Python virtual environments
+
+    # create the virtual env
+    python -m venv myvenv
+
+    # activate the virtual env
+    source myvenv/bin/activate
+    #(prompt changes after that)
+
+    # if there is a requirements.txt file:
+    pip install -r requirements.txt
+
+    # create requirements (after having installed some pip packages)
+    pip freeze > requirements.txt
+
+    Benefit: pip install puts up everything in /site/packages - shared thing, can get clogged up. This way every environment is kind of isolated.
+
+    # deactivate virtual environment myvenv
+    deactivate
+
