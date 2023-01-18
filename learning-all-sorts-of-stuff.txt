@@ -516,6 +516,27 @@ Didn't know that mongo-db is used for search; so in what sense there is a equiva
 
         - find queries can have a lot of these (that one tries to be similar to sql SELECT...)  https://www.mongodb.com/docs/manual/reference/operator/query/    
 
+    - Example session:
+
+mongo 
+
+> c=db.createCollection("tst")
+{ "ok" : 1 }
+
+> c=db.getCollection("tst")
+
+> c.update({_id: 123}, { '$addToSet': {'a': 1, 'b': 2, 'c' :3} }, { 'upsert': 'true'})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 123 })
+
+> c.find({_id: 123})
+{ "_id" : 123, "a" : [ 1 ], "b" : [ 2 ], "c" : [ 3 ] }
+
+> c.update({_id: 123}, { '$addToSet': {'d': 4, 'e': 5, 'e' :5} }, { 'upsert': 'true'})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+> c.find({_id: 123})
+{ "_id" : 123, "a" : [ 1 ], "b" : [ 2 ], "c" : [ 3 ], "d" : [ 4 ], "e" : [ 5 ] }
+
 ==========================
 
 Reddis
