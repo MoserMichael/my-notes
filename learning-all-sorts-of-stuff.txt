@@ -964,3 +964,6 @@ install YAML locally
         need to set environment variable: 
         export NODE_PATH=$PWD
 
+If you are part of an installed package, then you don't need to do this!!! (can include anything in the current scope)
+
+
