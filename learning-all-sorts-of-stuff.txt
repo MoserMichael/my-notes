@@ -916,3 +916,51 @@ Python virtual environments
     # deactivate virtual environment myvenv
     deactivate
 
+
+====
+
+NodeJS - event loop
+
+    https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
+
+    Phases of the event loop
+        - timers: (timers are best effort - not exactly scheduled)
+        
+
+-----
+
+npm - creating package
+
+    - search if package exists in: https://www.npmjs.com/search?q=prs
+    - npm init new-package-name  # makes a default package.json ( package.json reference: https://docs.npmjs.com/cli/v9/configuring-npm/package-json )
+
+    - npm adduser  # use this to log into your npm account. before publishing: need to be logged into your account. 
+
+    - set NPM_TOKEN environment variable to an npm account API token with publish privs.
+
+    - npm publish --access public # from directory that has package.json - and all of the files mentioned in package.json !!!
+
+    - each publish needs to increment the package version number (in package.json)
+
+Show root folder where globally installed npm modules are:
+
+    npm root -g 
+
+install YAML package into the global dir
+    npm i yaml -g
+
+    To use globally installed package:
+
+    To use locally installed package:
+        need to set environment variable: 
+        export NODE_PATH=$(npm root -g)
+
+install YAML locally
+    npm i yaml
+
+    module is installed to $PWD/node_modules
+    
+    To use locally installed package:
+        need to set environment variable: 
+        export NODE_PATH=$PWD
+
