@@ -4,7 +4,7 @@ import sys
 import os
 
 
-status=int(sys.argv[1]);
+status=int(sys.argv[1])
 
 print(f"Exit status: {status}")
 
@@ -19,3 +19,6 @@ if os.WIFSTOPPED(status):
 
 if os.WIFSIGNALED(status):
     print(f"process terminated by signal. signal number: { os.WTERMSIG(status) } core dumped: {os.WCOREDUMP(status)}\n")
+
+if os.WIFCONTINUED(status):
+    printf("stopped child has been resumed by delivery of SIGCONT\n")

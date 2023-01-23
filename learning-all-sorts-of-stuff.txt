@@ -967,3 +967,27 @@ install YAML locally
 If you are part of an installed package, then you don't need to do this!!! (can include anything in the current scope)
 
 
+--- 
+
+Viewing ssh logs:
+
+With systemd
+
+    journalctl -fu ssh
+
+otherwise 
+
+    sudo grep sshd /var/log/auth.log
+
+In /etc/ssh/sshd_config put
+
+    LogLevel VERBOSE
+
+
+======
+
+Formatting text in whatsapp messages
+
+https://faq.whatsapp.com/539178204879377
+
+    ```...```` - makes it fixed font.
