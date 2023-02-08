@@ -1,4 +1,23 @@
+git tricks
+
+        Get all commits by user (that can be useful during performance reviews...)
+
+        # select all commits done by user
+        git log --author=<user name that appears in commit messages>
+
+        # get the commit message of all commits by user.
+        git log --author=<user name that appears in commit messages> --format=%s 
+
+        # in case that the first string is the name of the issue - get all the issues that the user did.
+        git log --author=<user name that appears in commit messages> --format=%s | awk '{print $1}' | sort | uniq
+
 OSX hacks
+
+? can't install an old php version - because it's not supported by brew ?
+
+    brew install shivammathur/php/php@7.4
+
+    this installs it based on https://github.com/shivammathur/homebrew-php (got a list of supported versions).
 
 ? Always show the scroll bar ?
     In the Menu bar, click Apple Menu > System Preferences.
@@ -51,6 +70,88 @@ OSX hacks
 
     ? https://apple.stackexchange.com/questions/267165/why-is-devfs-full    
         devfs - is always full
+
+? show memory usage in friendly terms
+
+        # option -h is for Human friendly output !!!
+        free -h
+
+
+? http server with nc
+
+    in bash shell:
+        while true; do (echo -e 'HTTP/1.1 200 OK\r\n'; echo -e "\n\tMy website has date function" ; echo -e "\t$(date)\n") | nc -l 8081; done
+        curl http://localhost:8081/
+
+
+? ssh access keys ?
+
+    # generate the keypair. (entery empty keyphrase
+    ssh-keygen -t rsa -b 4096 -f id_rsa -C "mmoser@perforce.com"
+    # you get id_rsa (private key) id_rsa.pub (public key)
+
+    # put the public key in authorized keys
+    cat id_rsa.pub >>${HOME}/.ssh/authorized_keys
+
+    # check that permission is 0600
+    stat $HOME/.ssh/authorized_keys
+
+    # save the keys somewhere in your reach. (id_rsa and id_rsa.pub)
+
+    # write down the ip admin address - (gcp tells that in the console), hostname and user $USER
+
+    # can connect with 
+    ssh -i id_rsa <user>@<admin_ip>
+
+? install docker on ubuntu ?  https://docs.docker.com/engine/install/ubuntu/
+
+    sudo apt-get update -y
+    sudo apt-get install -y \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release
+
+    # docker gpg key    
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+    # set up the repository:
+    echo \
+ "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+
+    sudo apt-get update -y
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    # make current user able to access docker 
+    sudo setfacl -m user:$USER:rw /var/run/docker.sock
+
+    #check that it is alive from non-root user
+    docker run hello-world
+    docker ps -a
+    docker container prune -f
+
+
+
+
+
+
+? tcpdump ?
+
+    # just show the packets on screen (without payload)
+    sudo tcpdump -i any port 9010
+
+    # -X adds payload
+    sudo tcpdump -X -i any port 9010
+
+    # dump packets into pcap file (can view them in wireshark, or read the file with tcpdump)
+    sudo tcpdump -i any port 9010 -s 65535 -w out.pcap
+
+
+? wireshark ?
+    don't install via brew (goes wrong) - there is an installer on https://www.wireshark.org/
+
 
 Linux
 
@@ -537,6 +638,14 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 > c.find({_id: 123})
 { "_id" : 123, "a" : [ 1 ], "b" : [ 2 ], "c" : [ 3 ], "d" : [ 4 ], "e" : [ 5 ] }
 
+    - mongo operatator reference (very important link) https://www.mongodb.com/docs/manual/reference/operator/
+
+    - now mongo is not the real shell (old and obsolete. use mongosh !!!!
+        (installation instructions: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/ )
+
+
+    - in mongosh every map on a collection will return a Cursor object. You can convert it into a javascript array with toArray (big difference!!!)
+
 ==========================
 
 Reddis
@@ -894,27 +1003,56 @@ It turns out that python has a similar thing to delegate form one generator to t
     for n in range_three(1,10):
         print(n)
 
+
+===
+
+    javascript express for http server:
+
+        const express = require("express"),
+              app = express()
+
+        app.get("/", (req, res) => {
+            res.send("Hello, TREND OCEANS!")
+            console.log("finished handling request");
+        })
+
+        console.log("before listen");
+        app.listen(3000, console.log(`Server started on port 3000`))
+        console.log("after listen");
+
+    output:
+
+        node t1.js
+        before listen
+        Server started on port 3000
+        after listen
+        finished handling request
+
 === 
 
-Python virtual environments
+    javascript sleep:
 
-    # create the virtual env
-    python -m venv myvenv
+        function onTm() {
+            console.log("onTm");
+        }
 
-    # activate the virtual env
-    source myvenv/bin/activate
-    #(prompt changes after that)
+        console.log("before sleep");
+        setTimeout(onTm,1000);
+        console.log("after sleep");
 
-    # if there is a requirements.txt file:
-    pip install -r requirements.txt
+    output:
+        node t.js
+        before sleep
+        after sleep
+        onTm
 
-    # create requirements (after having installed some pip packages)
-    pip freeze > requirements.txt
+====
+http in node:
+    node has in-built http module
+        
 
-    Benefit: pip install puts up everything in /site/packages - shared thing, can get clogged up. This way every environment is kind of isolated.
-
-    # deactivate virtual environment myvenv
-    deactivate
+    express - server
+        http://expressjs.com/en/5x/api.html
 
 
 ====
@@ -991,3 +1129,36 @@ Formatting text in whatsapp messages
 https://faq.whatsapp.com/539178204879377
 
     ```...```` - makes it fixed font.
+
+======
+
+Python virtual environments
+
+    # create the virtual env
+    python -m venv myvenv
+
+    # activate the virtual env
+    source myvenv/bin/activate
+    #(prompt changes after that)
+
+    # if there is a requirements.txt file:
+    pip install -r requirements.txt
+
+    # create requirements (after having installed some pip packages)
+    pip freeze > requirements.txt
+
+    Benefit: pip install puts up everything in /site/packages - shared thing, can get clogged up. This way every environment is kind of isolated.
+
+    # deactivate virtual environment myvenv
+    deactivate
+
+=========
+
+Workign with binary data.
+
+(Perl and Python are similar to this respect - they pack/unpack the fields - according to some printf-like text spec (the spec is called 'the template')
+Nodejs/Javascript doesn't do that - they have java like readUint8, writeUint8 functions for binary de-serialisation.
+
+
+https://perldoc.perl.org/perlpacktut
+
