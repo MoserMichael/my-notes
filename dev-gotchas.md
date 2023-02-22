@@ -8,6 +8,17 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters)
 
 
+
+---22/02/23 17:27:35----------------------
+
+i somehow got over my gpt-chat shock. Now i have come to think the following:
+
+- there is still a lot of value in things other than pure coding of leetcode problems - you need to understand what you are doing, need to be able to communicate with people who formulate the requirements and also need to be able to understand an existing code base.
+- i guess it will still take some qualitative leaps to get there, maybe it will take as long, as getting self driving cars to work (which might probably take quite a while).
+- however 'the times are they are a-changing', no doubt about that. And you never know what's around the corner...
+
+Anyay, my new project is a programming language called PYX ( link [here](https://github.com/MoserMichael/jscriptparse) ) that's a project that will keep me busy for a while...
+
 ---18/02/23 19:46:03----------------------
 
 I had a chat with ChatGPT about the book "Future Shock" by Alvin Toffler. Science fiction gone real, wow...
