@@ -7,19 +7,30 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters)
 
---22/02/23 17:27:35----------------------
+
+---23/02/23 07:08:35----------------------
+
+My new project is a programming language called PYX - the project is [here](https://github.com/MoserMichael/jscriptparse). I guess that's a project that will keep me busy for a while.
+
+I am now keeping most of my notes on various subjects in the following file now: [here it is](https://github.com/MoserMichael/my-notes/blob/master/learning-all-sorts-of-stuff.txt) .  Most of my work involves to get to terms with some strange environments, they are all different - but they do have similarities. 
+
+
+---22/02/23 17:27:35----------------------
 
 I somehow got over my gpt-chat shock. Now i have come to think the following:
 
-- there is still a lot of value in things other than pure coding of leetcode problems - you need to understand what you are doing, need to be able to communicate with people who formulate the requirements and also need to be able to understand an existing code base.
-- i guess it will still take some qualitative leaps to get there, maybe it will take as long, as getting self driving cars to work (which might probably take quite a while).
+- there is still a lot of value in things other than pure coding of leetcode problems - you need to understand the subject domain and understand what is being done, you need to be able to communicate with people who formulate the requirements and also need to be able to understand an existing code base.
+- i guess it will still take some qualitative leaps to solve the remaining issues. Maybe that time will be comparable to the time needed to fix self driving cars - not sure when it all works out.
 - however 'the times are they are a-changing', no doubt about that. And you never know what's around the corner...
 
-Anyway, my new project is a programming language called PYX - the project is [here](https://github.com/MoserMichael/jscriptparse). I guess that's a project that will keep me busy for a while...
+The most immediate changes will probably happen in the area of search engines, and how we are looking for information. Having a chat with ChatGPT may be more informative then having to go through pages of search results - where the relevance of the search results is subject to the whims of spammers and the whims of the search engine.
 
-(PS: i am keeping most of my notes on various subjects in the following file now: [here it is](https://github.com/MoserMichael/my-notes/blob/master/learning-all-sorts-of-stuff.txt) .  Most of my work involves to get to terms with some strange environments, they are all different - but they do have similarities. Curious stuff...)
+Another interesting tendency is that the big media companies are now pushing paid services instead of pushing targeted advertising. (see twitter and facebook, who are now charging for account features or even for two-factor authentication)
+Now is it possible, that 'advanced search' capabilities like chatting with ChatGPT will be turned into a paid service? 
 
-----18/02/23 19:46:03----------------------
+We are living in interesting times, let's see how it all plays out.
+
+---18/02/23 19:46:03----------------------
 
 I had a chat with ChatGPT about the book "Future Shock" by Alvin Toffler. Science fiction gone real, wow...
 
@@ -35,7 +46,7 @@ Overall, "Future Shock" provides a thought-provoking analysis of the impact of t
 
 Me: 'Is it possible to adapt to all these changes?'
 
-ChatGpt: '"Adapting to all the changes brought about by rapid technological and cultural changes, as discussed in "Future Shock," can be challenging, but it is also possible. One of the main points of the book is that individuals and societies need to become more future-oriented and adaptable to keep up with the pace of change.
+ChatGPT: '"Adapting to all the changes brought about by rapid technological and cultural changes, as discussed in "Future Shock," can be challenging, but it is also possible. One of the main points of the book is that individuals and societies need to become more future-oriented and adaptable to keep up with the pace of change.
 
 Toffler suggests that people can adapt by being open to new ideas, learning new skills, and being flexible in their thinking. He argues that individuals should embrace lifelong learning to keep up with the changes in their field of work, as well as to learn new skills for future job opportunities.
 
@@ -45,11 +56,11 @@ Overall, while adapting to rapid technological and cultural change can be challe
 
 Me: 'but will it work out?'
 
-ChatGpt: "It is difficult to predict with certainty whether adaptation to rapid technological and cultural change will work out successfully in the long term. The success of such adaptation depends on a variety of factors, including the speed and scale of the changes, the willingness of individuals and societies to adapt, and the effectiveness of the strategies used to cope with change.'
+ChatGPT: "It is difficult to predict with certainty whether adaptation to rapid technological and cultural change will work out successfully in the long term. The success of such adaptation depends on a variety of factors, including the speed and scale of the changes, the willingness of individuals and societies to adapt, and the effectiveness of the strategies used to cope with change.'
 
 Me: 'How should democracy be changed?'
 
-ChatGpt: 'In "Future Shock," Alvin Toffler argues that democracy needs to be changed to better suit the needs of a rapidly changing society. He suggests that the traditional form of representative democracy, where citizens elect representatives to make decisions on their behalf, is not well-suited to the complex and rapidly changing issues faced by society.
+ChatGPT: 'In "Future Shock," Alvin Toffler argues that democracy needs to be changed to better suit the needs of a rapidly changing society. He suggests that the traditional form of representative democracy, where citizens elect representatives to make decisions on their behalf, is not well-suited to the complex and rapidly changing issues faced by society.
 
 Toffler proposes the idea of a "participatory democracy" where citizens have a more direct say in decision-making. This could be achieved through various means, such as electronic voting, public meetings and forums, citizen initiatives and referendums, and other forms of direct citizen participation.
 
@@ -59,7 +70,7 @@ Overall, Toffler suggests that democracy needs to be reimagined to be more inclu
 
 Me: 'Who will be on top of all this?'
 
-ChatGpt: 'In the context of rapid technological and cultural change, it is difficult to predict who will be "on top" or the most successful in the long term. As new technologies and cultural shifts emerge, new opportunities for success and influence also arise. However, there are some general trends that can be observed.
+ChatGPT: 'In the context of rapid technological and cultural change, it is difficult to predict who will be "on top" or the most successful in the long term. As new technologies and cultural shifts emerge, new opportunities for success and influence also arise. However, there are some general trends that can be observed.
 
 Individuals and organizations that are able to adapt quickly to change and embrace new technologies and cultural shifts may be more likely to be successful. Additionally, those who are able to anticipate future trends and plan accordingly may have an advantage over those who are slower to adapt.
 
