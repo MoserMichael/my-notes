@@ -12,8 +12,11 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 My new project is a programming language called PYX - the project is [here](https://github.com/MoserMichael/jscriptparse). I guess that's a project that will keep me busy for a while.
 
-I am now keeping most of my notes on various subjects in the following file now: [here it is](https://github.com/MoserMichael/my-notes/blob/master/learning-all-sorts-of-stuff.txt) .  Most of my work involves some sort of navigation through diverse software environments. Now these environments are all different - but they do have similarities. The most important part seems to be: not getting lost.
+One problem is: how do you test a programming language? One approach is bootstrapping: implementing the programming language compiler/runtime on top of a more limited version of the  same programming language. That is a very sound approach for compiled languages - with static typing. However a scripting language/shell like PYX wouldn't quite benefit from this approach.
 
+I am trying to test the PYX programming language by implementing leetcode problems. (never bothered to do leetcode exercise in serious, maybe i will get some sense from this kind of exercise ;-)
+
+I have also started to keep most of my notes on various subjects in the following file now: [here it is](https://github.com/MoserMichael/my-notes/blob/master/learning-all-sorts-of-stuff.txt) . Most of my work involves some sort of navigation through diverse software environments. Now these environments are all different - but they do have similarities. The most important part seems to be: not getting lost.
 
 ---22/02/23 17:27:35----------------------
 
@@ -23,10 +26,10 @@ I somehow got over the state of ChatGPT induced shock. Now i have come to think 
 - i guess it will still take some qualitative leaps to solve the remaining issues. Maybe that time will be comparable to the time needed to fix self driving cars - not sure when it all works out.
 - however 'the times are they are a-changing', no doubt about that. And you never know what's around the corner...
 
-The most immediate changes will probably happen in the area of search engines, and how we are looking for information. Having a chat with ChatGPT may be more informative then having to go through pages of search results - where the relevance of the search results is subject to the whims of spammers and the whims of the search engine.
+The most immediate changes will probably happen in the area of search engines - and in how we are searching for information in general. Having a chat with ChatGPT may be more informative then having to go through pages of search results - where the relevance of the search results is subject to the whims of spammers and the whims of the search engine.
 
 Another interesting tendency is that the big media companies are now pushing paid services in addition to pushing targeted advertising. (see twitter and facebook, who are now charging for account verification or even for two-factor authentication)
-Now is it possible, that 'advanced search' capabilities like chatting with ChatGPT will be turned into a paid service, or will the ChatBot add casual references to relevant products into the conversation? 
+Now is it possible, that 'advanced search' capabilities like chatting with ChatGPT will be turned into a paid service, or will the ChatBot add casual references to relevant products into the conversation? I am not sure how banner adds will work, given that all the attention of the user is focused on the conversation with the AI bot. We will have to wait for an answer, apparently.
 
 We are living in interesting times, let's see how it all plays out.
 
