@@ -20,7 +20,7 @@ I have also started to keep most of my notes on various subjects in the followin
 
 ---22/02/23 17:27:35----------------------
 
-I somehow got over the state of ChatGPT induced shock. Now i have come to think the following:
+I somehow got over the state of ChatGPT induced shock. Now i have come to think of the following:
 
 - there is still a lot of value in things other than pure coding of leetcode problems - you need to understand the subject domain and understand what is being done, you need to be able to communicate with people who are defining the requirements and also need to be able to understand an existing code base.
 - i guess it will still take some qualitative leaps to solve the remaining issues. Maybe that time will be comparable to the time needed to fix self driving cars - not sure when it all works out.
