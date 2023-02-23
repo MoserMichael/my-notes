@@ -12,14 +12,14 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 My new project is a programming language called PYX - the project is [here](https://github.com/MoserMichael/jscriptparse). I guess that's a project that will keep me busy for a while.
 
-I am now keeping most of my notes on various subjects in the following file now: [here it is](https://github.com/MoserMichael/my-notes/blob/master/learning-all-sorts-of-stuff.txt) .  Most of my work involves to get to terms with some strange environments, they are all different - but they do have similarities. 
+I am now keeping most of my notes on various subjects in the following file now: [here it is](https://github.com/MoserMichael/my-notes/blob/master/learning-all-sorts-of-stuff.txt) .  Most of my work involves some sort of navigation through diverse software environments. Now these environments are all different - but they do have similarities. The most important part seems to be: not getting lost.
 
 
 ---22/02/23 17:27:35----------------------
 
-I somehow got over my gpt-chat shock. Now i have come to think the following:
+I somehow got over the state of ChatGPT induced shock. Now i have come to think the following:
 
-- there is still a lot of value in things other than pure coding of leetcode problems - you need to understand the subject domain and understand what is being done, you need to be able to communicate with people who formulate the requirements and also need to be able to understand an existing code base.
+- there is still a lot of value in things other than pure coding of leetcode problems - you need to understand the subject domain and understand what is being done, you need to be able to communicate with people who are defining the requirements and also need to be able to understand an existing code base.
 - i guess it will still take some qualitative leaps to solve the remaining issues. Maybe that time will be comparable to the time needed to fix self driving cars - not sure when it all works out.
 - however 'the times are they are a-changing', no doubt about that. And you never know what's around the corner...
 
