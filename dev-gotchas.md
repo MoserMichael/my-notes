@@ -31,6 +31,12 @@ The most immediate changes will probably happen in the area of search engines - 
 Another interesting tendency is that the big media companies are now pushing paid services in addition to pushing targeted advertising. (see twitter and facebook, who are now charging for account verification or even for two-factor authentication)
 Now is it possible, that 'advanced search' capabilities like chatting with ChatGPT will be turned into a paid service, or will the ChatBot add casual references to relevant products into the conversation? I am not sure how banner adds will work, given that all the attention of the user is focused on the conversation with the AI bot. We will have to wait for an answer, apparently.
 
+I am wondering, how this will affect education, in the long run.
+
+- Most kids don't seem to be learning for the sake of acquiring real insight, most of them do it to pass some milestone that they are expected to pass. Now they see this device that would spit out essays in a minute. How will the kids react? Will they now strive for real knowledge and insight, given that this would differentiate between them and the computer? I frankly don't know. To reformulate the question: will this thing result in greater disorientation, or will we find a new sense of purpose?
+- Will young kids still go a computer science education, given that it will probably get harder to get an entry level job? I don't know. Will people still try gain an understanding of how technical things work, or will we treat the computer as a black box that is best left untouched?
+- What about the value of being an expert? Will it get harder to tell a real expert from a fake one?
+
 We are living in interesting times, let's see how it all plays out.
 
 ---18/02/23 19:46:03----------------------
