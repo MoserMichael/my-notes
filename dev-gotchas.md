@@ -28,7 +28,8 @@ I somehow got over the state of ChatGPT induced shock. Now i have come to think 
 
 The most immediate changes will probably happen in the area of search engines - and in how we are searching for information in general. Having a chat with ChatGPT may be more informative then having to go through pages of search results - where the relevance of the search results is subject to the whims of spammers and the whims of the search engine.
 
-Another interesting tendency is that the big media companies are now pushing paid services in addition to pushing targeted advertising. (see twitter and facebook, who are now charging for account verification or even for two-factor authentication)
+Another interesting tendency is that the big media companies are now pushing paid services in addition to pushing targeted advertising. (see twitter and facebook, who are now charging for account verification or even for two-factor authentication (well some say that's because ad-tech is running into problems - which is due to the economy)
+
 Now is it possible, that 'advanced search' capabilities like chatting with ChatGPT will be turned into a paid service, or will the ChatBot add casual references to relevant products into the conversation? I am not sure how banner adds will work, given that all the attention of the user is focused on the conversation with the AI bot. We will have to wait for an answer, apparently.
 
 I am wondering, how this will affect education, in the long run.
