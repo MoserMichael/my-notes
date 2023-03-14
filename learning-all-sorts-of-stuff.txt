@@ -1,4 +1,4 @@
-git tricks
+g--progress=plainit tricksp#
 
         Get all commits by user (that can be useful during performance reviews...)
 
@@ -12,6 +12,22 @@ git tricks
         git log --author=<user name that appears in commit messages> --format=%s | awk '{print $1}' | sort | uniq
 
 OSX hacks
+
+? built-in something is very different from what you expect ?
+
+    # very true for sed - will install gsed 
+    brew install gnu-sed
+
+    gsed -i 's/blabla/blublu/g' foo.txt
+
+    # to set it up as sed - instead of gsed (still figure the path)
+    brew install --default-names gnu-sed
+
+? force quit an application
+
+    command + option + escape - brings up a 'task manager'
+
+    'Activity monitor' - a better 'task manager' that shows cpu utilization, etc. (or use top)
 
 ? can't install an old php version - because it's not supported by brew ?
 
@@ -259,6 +275,16 @@ Show logs of all pods (name of pod/container is in each line) - and grep through
 Docker reference
 
 https://docs.docker.com/engine/reference/commandline/docker/
+
+---
+
+How to build with the Dockerfile in the current directory
+
+    docker build --progress=plain --no-cache . -t resulting-image-tag
+       --progress=plain : show output on the screen! old-style! you see what is happening!
+       --no-cache       : don't use the cache to pick up something old
+       .                : current dir
+       -t blalba        : tag the resulting image as blabla
 
 ---
 
@@ -644,6 +670,9 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
         (installation instructions: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/ )
 
     - in mongosh every map on a collection will return a Cursor object. You can convert it into a javascript array with toArray (big difference!!!)
+        - but toArray() will take a lot of time - the cursor is evaluated just as it is needed, whereas toArray() will walk the whole query!!!
+
+        - (i had to do it, when translating an index from one db into another one, they were using the same index field values, so I had to get them all...)
 
 mongosh
     working with really large datasets
@@ -1170,6 +1199,22 @@ Python virtual environments
     # deactivate virtual environment myvenv
     deactivate
 
+
+Pip show installed package version of numpy
+     pip show numpy
+
+
+Show all packages
+     pip list
+
+Show all packages as a tree (which one requires which one)
+
+   # need to install the thing
+   pip install pipdeptree
+
+   pipdeptree
+
+
 =========
 
 Workign with binary data.
@@ -1190,4 +1235,12 @@ Want to submit a pull request to some repository other than your own stuff?
     https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork
 
     - need to fork that repository first.
+
+
+--------
+
+AWS lambdas
+
+    - tutorial: https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html
+
 
