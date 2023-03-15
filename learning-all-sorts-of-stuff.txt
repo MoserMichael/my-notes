@@ -1215,6 +1215,13 @@ Show all packages as a tree (which one requires which one)
    pipdeptree
 
 
+   # extremely usefull thing - i wonder why they don't have something like that as part of pip, without having to install some package, that is.
+
+
+Force upgrade a package to latest?
+
+    pip install --upgrade --force-reinstall cryptography
+
 =========
 
 Workign with binary data.
