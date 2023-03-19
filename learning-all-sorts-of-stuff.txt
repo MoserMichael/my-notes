@@ -149,8 +149,28 @@ OSX hacks
     docker container prune -f
 
 
+? list installed brew packages
 
+    brew list
 
+    # show the stuff with a gui
+    brew list --cask
+
+? install a second version of node
+
+    brew install node@18
+
+    # where is the installed version?
+
+    /opt/homebrew/opt/node@18/bin/node
+    Welcome to Node.js v18.15.0.
+    Type ".help" for more information.
+    >
+
+    # or set up as the default version
+    brew link --overwrite node@18
+    node --version
+    v18.15.0
 
 
 ? tcpdump ?
@@ -1152,6 +1172,11 @@ install YAML locally
 If you are part of an installed package, then you don't need to do this!!! (can include anything in the current scope)
 
 
+List all globally installed packages
+
+    npm list -g 
+
+
 --- 
 
 Viewing ssh logs:
@@ -1251,3 +1276,102 @@ AWS lambdas
     - tutorial: https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html
 
 
+
+----
+
+Dynamic programming - can be used to problems that have 'optimal substructure' and 'Overlapping subproblems'
+
+
+    optimal substructure - optimal solution to the problem can be constructed from the optimal solutions of its subproblems. 
+
+    Overlapping subproblems refer - a problem can be broken down into smaller subproblems, and the solutions to these subproblems are used repeatedly to solve the original problem
+
+
+Solution can be bottom up - table driven (to store the repeated solutions) 
+ or top-down - recursive (but need memoization - a hash table to store results of previously solved common subproblems)
+
+- doing the recursive solution with memoization is easier, but the table driven solution is more efficient during runtime.
+
+Doing some examples as test cases here:  https://github.com/MoserMichael/jscriptparse/tree/main/leetcode
+
+Also lots of stuff here: https://en.wikipedia.org/wiki/Category:Dynamic_programming
+
+=====
+
+Asking chatgpt on how it works:
+
+- says the Turing test is regarded as 'too subjective', as it is built on tricking an observer into believing that you talk with a human.
+  Instead they have the 'Winograd Schema Challenge' - that's a multi-choice test that asks questions on complicated sentences. https://en.wikipedia.org/wiki/Winograd_schema_challenge
+- says as of 19/3/2023 it is built on top of GPT-3 (with 'knowledge cutoff' date of 2021), is being frequently/continuously updated.
+  'larger updates' requires months or years.
+- says it has access to news sources that re not part of it's language model (like stock news, weather, web articles, current date - from a system clock)  
+  some of this info is available via API's. 'if a user asks me about the weather in a certain location, I can use an API to retrieve the current weather data for that location '
+- q: 'How can you refer to previous items in this conversation if all that you do is to predict the next word?'
+  'One technique I use is called sequence modeling, which allows me to model the entire sequence of words and phrases in a conversation and use that information to generate responses that are coherent and relevant to the current topic. Another technique is called attention-based modeling, which allows me to focus on specific parts of the conversation that are most relevant to the current turn.
+
+In addition, I can use machine learning algorithms to learn from previous turns in the conversation and adapt my responses based on the overall context and history of the dialogue. This allows me to refer back to previous items in the conversation and generate responses that are consistent and relevant to the ongoing dialogue'
+- q'tell me more about sequence modelling'
+ The basic idea behind sequence modeling is to treat a conversation or any sequence of text as a series of tokens, which can be words, phrases, or even characters.
+
+One common type of sequence modeling technique is called Recurrent Neural Networks (RNNs). RNNs are a type of neural network that can handle sequential data by processing the tokens one at a time and maintaining a hidden state that summarizes the information seen so far. This hidden state is updated at each step of the sequence, and can be used to generate predictions for the next token.
+
+Another more advanced type of sequence modeling technique is called Transformer Networks. Transformers are also a type of neural network that can handle sequential data, but they use a self-attention mechanism to directly model the relationships between all tokens in the sequence, rather than relying on a hidden state like RNNs. This makes them more effective for modeling longer sequences of text.
+
+-are you using a single model, or are you combining the output of several different modelling approaches?
+
+-   based on a single large neural network architecture that is trained on a large corpus of text data. Specifically, my architecture is based on the GPT (Generative Pre-trained Transformer) series developed by OpenAI, which is a type of Transformer-based language model.
+
+However, while I am based on a single neural network architecture, I use a combination of different techniques and approaches to generate responses to user queries. For example, in addition to sequence modeling techniques like RNNs and Transformers that I mentioned earlier, I also use techniques like language modeling, text classification, and sentiment analysis to better understand the content and context of the user's input
+
+- can you tell me more about transformers? How do you disambiguate the meaning of words with several meanings?
+
+ Transformers use a self-attention mechanism to directly model the relationships between all tokens in a sequence of text, rather than relying on a hidden state like RNNs. This makes them more effective for modeling longer sequences of text and capturing complex relationships between different parts of a text.
+
+To disambiguate the meaning of words with several meanings, transformers use a technique called contextual word embeddings. Contextual word embeddings refer to the process of representing words in a way that takes into account the context in which they appear.
+
+
+In a transformer-based language model, the model is trained on a large corpus of text data, and during training, the model learns to represent words in a high-dimensional vector space. These vectors capture the meaning of the words in the context of the sentences and documents they appear in. For example, the vector representation of the word "bat" would be different in the context of a discussion about baseball compared to a discussion about animals.
+
+When processing new text input, the transformer-based language model can use these contextual word embeddings to disambiguate the meaning of words with multiple meanings. By taking into account the context in which a word appears, the model can determine which meaning of the word is most likely to be correct in that specific context.
+
+In addition, transformers can also use other techniques like part-of-speech tagging, named entity recognition, and dependency parsing to further disambiguate the meaning of words and understand the structure and relationships between different parts of a text
+
+- How are transformers using dependency parsing?
+
+In a transformer-based language model, dependency parsing can be used to generate a dependency tree that represents the grammatical structure of a sentence. The transformer can use this tree to understand the relationships between different words and how they relate to each other in the sentence.
+
+Dependency parsing can be performed in two main ways in a transformer-based language model:
+
+As a preprocessing step: The sentence is first passed through a separate dependency parser that generates a dependency tree for the sentence. This dependency tree is then used as an additional input to the transformer-based language model. The transformer can then use this information to better understand the relationships between different words in the sentence.
+
+As part of the model architecture: The transformer can be modified to incorporate a dependency parsing component as part of its architecture. This allows the model to generate the dependency tree for a sentence directly as part of the forward pass through the model. This approach can be more efficient and can allow the model to learn to perform dependency parsing and language modeling simultaneously.
+
+Using dependency parsing in a transformer-based language model can help the model better understand the structure and relationships between different parts of a sentence. This can be particularly useful for disambiguating the meaning of words with multiple meanings and for understanding the overall meaning and intent of a sentence.
+
+- A dependency parser can result in multiple parse structures for the same sentence. What do you do if you get multiple parse structures?
+
+ a transformer-based language model can use a variety of techniques to handle the ambiguity and choose the most appropriate parse structure. Here are a few possible approaches:
+
+Probability-based selection: One approach is to assign probabilities to each parse structure based on how well it fits with the context of the sentence and the overall distribution of parse structures in the training data. The transformer can then choose the most probable parse structure as the correct one.
+
+Rule-based selection: Another approach is to use a set of hand-crafted rules to select the most appropriate parse structure. For example, the rules could favor parse structures that are more common in the training data or that better match the syntactic or semantic context of the sentence.
+
+Ensemble-based selection: A third approach is to use an ensemble of multiple dependency parsers that generate different parse structures for the same sentence. The transformer can then choose the parse structure that is most commonly agreed upon by the ensemble, or that best fits with the overall distribution of parse structures in the training data.
+
+Active learning: Finally, the model can be trained to actively seek additional information to resolve ambiguity. For example, it could ask follow-up questions or request additional input from the user to clarify the intended meaning of the sentence.
+
+Overall, handling ambiguity in dependency parsing is an active area of research, and there are many different approaches that can be used to address this challenge in a transformer-based language model.
+
+- how is the transformer model processing the output of the dependency parsing stage?
+
+After the dependency parsing stage, the output is typically represented as a graph or a tree structure where the words of the sentence are represented as nodes, and the dependencies between the words are represented as directed edges. The transformer model can then take this graph or tree structure as input and process it using various techniques.
+
+One common approach is to use graph neural networks (GNNs) to encode the graph or tree structure. GNNs are a class of neural networks that operate directly on graphs and have been shown to be effective in various natural language processing tasks, including dependency parsing. Specifically, GNNs can be used to encode the graph or tree structure of the sentence by propagating information from neighboring nodes along the edges of the graph.
+
+Another approach is to use attention mechanisms to weight the importance of each word or dependency relation in the sentence. Attention mechanisms have been a central component of transformer models and have been shown to be effective in various NLP tasks. Specifically, attention mechanisms can be used to attend to the most relevant parts of the sentence based on the dependency relations between the words.
+
+After processing the output of the dependency parsing stage, the transformer model can use this information to make predictions or generate output in various NLP tasks, such as question answering, text summarization, or machine translation.
+
+- is the GNN performing a classification task or a prediction task in this case?
+
+There was an error generating a response ...
