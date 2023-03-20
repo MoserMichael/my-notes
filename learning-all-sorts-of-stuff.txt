@@ -589,7 +589,6 @@ https://www.mongodb.com/docs/manual/reference/command/
 
 Mongo (just like Elasticsearch) is a document oriented database. 
 
-
 Mongo DB - holds a set of "collections"
     DB identified by name 
         - may not have following chars in it:  /, \, ., ", *, <, >, :, |, ?, $, space, \0, 
@@ -694,6 +693,10 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 
         - (i had to do it, when translating an index from one db into another one, they were using the same index field values, so I had to get them all...)
 
+Reference on db.collection.find - query, projection, etc. etc.
+
+    https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
+
 mongosh
     working with really large datasets
 
@@ -709,9 +712,29 @@ mongosh
         a=fs.readFileSync('file_big_array.json').toString()
 
 
-aggregation queries: (that's what they do for 'join')
+Aggregation queries: (that's what they do for 'join')
     
-https://www.mongodb.com/docs/manual/core/aggregation-pipeline/#std-label-aggregation-pipeline
+    https://www.mongodb.com/docs/manual/core/aggregation-pipeline/#std-label-aggregation-pipeline
+
+
+-----
+
+Interesting detail: they often add a field that tells if an entry has been deleted or not.
+That looks crazy - in SQL one would always delete a record, instead of adding a 'isactive' or 'isdeleted' field.
+
+
+It seems that this is a kind of historical artifact: - from prior to 2019
+
+https://stackoverflow.com/questions/6086245/is-remove-an-expensive-operation-in-mongodb
+
+    
+    this answer is a historical artifact from 2011 and it refers to the old MMAPv1 engine which was removed in 2019.
+
+    MongoDB stores the data in a double linked list and so removing results is adjusting two links, the next link of the previous document and the previous link of the next document. There is no autocompacting. 
+    Updating, if you have a value already stored, happens in place, changing one value. Now... you think, great, update one int instead of two pointers, surely faster! Not so -- you now need to index on this flag and creating indexes is "slow".
+
+
+Culture, my ass...
 
 ==========================
 
@@ -1130,8 +1153,38 @@ NodeJS - event loop
 
     Phases of the event loop
         - timers: (timers are best effort - not exactly scheduled)
-        
+ 
+----
 
+Binary data in nodejs
+(The javascript standard later added it's own stuff:  ArrayBuffer, Uint8array, Float64array etc.. but they don't use that in node)
+
+> let b= new Buffer.alloc(10); // allocates zero allocated buffer
+undefined
+
+> typeof(a)
+'object'
+> a.constructor.name
+'Buffer'
+
+> b
+<Buffer 00 00 00 00 00 00 00 00 00 00>
+
+> b[2]
+0
+
+> b[2]=1
+1
+
+> b[2]
+1
+
+> b
+<Buffer 00 00 01 00 00 00 00 00 00 00>
+
+    
+> b.length
+10
 -----
 
 npm - creating package
@@ -1375,3 +1428,47 @@ After processing the output of the dependency parsing stage, the transformer mod
 - is the GNN performing a classification task or a prediction task in this case?
 
 There was an error generating a response ...
+
+
+- how does the transformer model determine the context of a conversation?
+
+uring this training process, the transformer model learns to recognize patterns and dependencies in the text, which allows it to understand the relationships between words and the context in which they appear. For example, it learns that the word "dog" is more likely to appear in the context of a sentence like "The boy played with his dog" than in a sentence like "The girl ate a sandwich."
+
+In the context of a conversation, the transformer model uses the previous messages in the conversation as context to understand the meaning of the current message. It does this by encoding each message into a vector representation, which it uses to inform its understanding of the current message. The transformer model also has the ability to pay attention to specific parts of the context, which allows it to understand the nuances of the conversation and make more accurate predictions.
+
+- can you distinguish between questions about artificial intelligence and questions about the stock market?
+
+If a question includes terms or phrases that are commonly associated with artificial intelligence, such as "neural networks," "deep learning," or "machine learning," it is likely to be about AI. On the other hand, if a question includes terms or phrases commonly associated with the stock market, such as "stocks," "dividends," or "market capitalization," it is likely to be about the stock market.
+
+However, there may be cases where a question includes terms or phrases that could be associated with both AI and the stock market, such as "algorithmic trading" or "data analysis." In these cases, further clarification or context may be needed to determine the intended topic.
+
+- each context has a different multidimensional vector built by machine learning to disambiguate terms, isn't it ? how many different conceptual contexts are you handling?
+
+Some common conceptual contexts that I am trained on include language and grammar, general knowledge, history, science, technology, social issues, culture, and more. However, my ability to handle specific conceptual contexts depends on the availability and quality of training data related to that context.
+
+- are these different contexts defined by the model or are they defined by the developers of the system?
+
+During the training process, the developers can choose to focus on specific topics or domains by selecting appropriate training data or by fine-tuning the model on specific datasets. For example, a developer might choose to train a language model specifically on medical texts in order to create a system that is particularly adept at understanding medical terminology and concepts.
+
+- how would you sum up this conversation?
+
+In this conversation, we discussed several topics related to artificial intelligence and natural language processing. We talked about how the transformer model determines the context of a conversation, and how different contexts are represented by multidimensional vectors learned through machine learning. We also touched on the different conceptual contexts that an AI language model can handle, and how these contexts are defined by the developers of the system. Finally, we talked about the storage of user profiles in AI systems and the importance of data privacy and security regulations.
+
+- are you learning from the summaries of your conversation?
+
+As an AI language model, I am constantly learning and improving based on the conversations I have with users. This includes learning from the summaries of our conversations, as well as from the original inputs and outputs.
+
+During training, my neural network is adjusted based on patterns and relationships that it identifies in large datasets of text, which includes the text generated by users during interactions with the system. This means that the more conversations I have and the more diverse the input data is, the better I become at understanding and generating human-like responses.
+
+- Do you also employ traditional AI approaches other than machine learning?
+
+- As an AI language model based on the GPT architecture, I primarily rely on deep learning techniques, specifically neural networks and machine learning, to understand and generate natural language. However, some traditional AI approaches may also be used in combination with these techniques to enhance my performance or enable certain functionalities.
+
+For example, rule-based systems can be used to supplement machine learning by providing explicit, hand-coded rules for specific tasks or domains. These rules can help improve the accuracy and efficiency of certain tasks by encoding prior knowledge or constraints into the system.
+
+Another example is the use of knowledge graphs or ontologies, which organize knowledge into a structured representation that can be used to support reasoning and inference. These structured representations can be used to enhance my understanding of complex relationships and concepts, as well as to facilitate information retrieval and question answering tasks.
+
+That being said, the core of my functionality and performance is based on neural networks and machine learning, which enable me to learn and adapt to new data and contexts over time.
+
+
+
