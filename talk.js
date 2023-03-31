@@ -9,6 +9,7 @@ const readline = require('readline-sync');
 const chatGPTApiKey="PUT YOUR OPENAI API KEY HERE";
 const chatGPTOrgId="PUT YOUR OPENAI ORG ID HERE";
 
+
 const configuration = new Configuration({
   organization: chatGPTOrgId,
   apiKey: chatGPTApiKey,
@@ -47,7 +48,8 @@ function showHelp() {
 Commands
 ` + set_max_token_cmd + `<integer number>\t set maximum number of tokens consumed per createCompletion api call
 ` + set_temperature_cmd + `<float point>\t set the 'temperature'/'creativity' - 0.2 - creative , 0.8 - more 'focused' (must be between 0..2)
-` + read_file_cmd + `<filename>\t read and continue conversation
+` + save_cmd + `<filename>\t\t save current state of conversation fo json file.
+` + read_file_cmd + `<filename>\t read json file and continue conversation
 ` + clear_cmd +`\t\t\t clear the current conversation history, and start from scratch
 ` + help_cmd + `\t\t\t show this help text
 ` + show_cmd + `\t\t\t show current settings
@@ -62,9 +64,9 @@ the current conversation will be stored in json file ` + conversation_file_name 
 function showSettings() {
     console.log(`Current Settings:
 
-Max token values:\t` + max_token_value +`
 Model name:\t\t` + model_name + `
-
+Max token values:\t` + max_token_value +`
+Temperature:\t\t` + (temperature_value == -1 ? "default" : temperature_value ) + ` 
         
 `);
 
