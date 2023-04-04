@@ -198,7 +198,9 @@ async function talkToRobot(questionText) {
                   }
 
               } catch(ex) {
-                  console.log("not json? " + ex);
+                  if (debugIt) {
+                    console.log("not json? " + ex);
+                  }
               }
 
               console.log("answer(" + i + "): ", answer);
