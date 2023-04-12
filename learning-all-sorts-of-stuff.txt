@@ -1,8 +1,24 @@
-g--progress=plainit tricksp#
+        
+        # 'deleted by us' during merge or cherry-pick
+            # file x was added in the commit being cherry-picked
+            # file x was deleted in the branch that you cherry-pick into.
+                git add x  # if you want to keep the file
+                git rm  x  # if you want to delete the file.
 
-        Get all commits by user (that can be useful during performance reviews...)
+        # 'deleted by us' during rebase - now 'us' and 'them' is reversed !!!!
+            # file x was added in the branch that is being rebased
+            # file x was removed in the branch that is brought in
+            
 
+        # shallow clone of linux kernel (--depth 1 - get commit history of the last commit) (much faster to clone)
+        git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux-git --depth 1
+
+        # sort files by extension (rev - reverts each line of the output, so that the extension (in reverse) comes first)
+        git ls-files | rev | sort | rev
+
+        # Get all commits by user (that can be useful during performance reviews...)
         # select all commits done by user
+
         git log --author=<user name that appears in commit messages>
 
         # get the commit message of all commits by user.
