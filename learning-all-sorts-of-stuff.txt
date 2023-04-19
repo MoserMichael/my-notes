@@ -812,6 +812,31 @@ Reddis
         - https://github.com/resque/php-resque - that's a php library on top of redis lists (port of ruby library), Requests are queued as json objects. 
             Library has as a queue runner that listens on the list for jobs (maintained by github)
 
+
+
+# port forwarding to service in k8s (inner expression finds pod name from some role name that pod adheres to 
+# pod in cluster has redis running on port 6379 - local port is 6378 (other commands will use that number)
+
+kubectl port-forward "$(kubectl get pods -l role=ROLE_NAME_OF_POD_IN_CLUSTER -o jsonpath="{.items[0].metadata.name}")" 6378:6379
+
+# find a specific key
+
+echo 'keys *' | redis-cli -p 6378 | grep  blabla
+BLABLA-KEY-NAME
+
+# check the type (this one is a list)
+
+echo 'type BLABLA-KEY-NAME' | redis-cli -p 6378
+list
+
+# show how many elements are in list
+
+echo 'LLEN BLABLA-KEY-NAME' | redis-cli -p 6378
+
+# show the elements of the list between index 0 and 1 (not including 1)
+echo 'LRANGE BLABLA-KEY-NAME 0 1' | redis-cli -p 6378
+
+
     
 ===========================
 
@@ -1539,47 +1564,7 @@ That being said, the core of my functionality and performance is based on neural
 
 ===============
 
-Asking chatgpt: how to use the chatgpt api in javascript?
-
-const API_ENDPOINT = 'https://api.openai.com/v1/engines/davinci-codex/completions';
-const API_KEY = 'YOUR_API_KEY';
-
-const headers = {
-  'Content-Type': 'application/json',
-  'Authorization': `Bearer ${API_KEY}`
-};
-
-async function generateCompletion(prompt, maxTokens, temperature) {
-  const body = {
-    'prompt': prompt,
-    'max_tokens': maxTokens,
-    'temperature': temperature
-  };
-
-  const response = await fetch(API_ENDPOINT, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  });
-
-  const data = await response.json();
-  return data.choices[0].text.trim();
-}
-
-const prompt = 'Hello, how are you today?';
-const maxTokens = 50;
-const temperature = 0.5;
-
-generateCompletion(prompt, maxTokens, temperature)
-  .then((completion) => {
-    console.log(completion);
-    // display the completion text in your web page or application
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-on parameters:
+CHATGTP on it's api parameters:
 
     - The "temperature" field in a ChatGPT API request is a parameter that determines the level of randomness or creativity in the generated response.
 
@@ -1721,7 +1706,9 @@ https://www.youtube.com/watch?v=SjhIlw3Iffs
   18:24
   chatgtp has an additional reinforcement learning process - here it learns: this output is not appropriate, so don't do that again (pre-training doesn't have these constraints, so he says it's great at building internal models about the world)
 
-  19:30
+  19:30  
+  https://www.youtube.com/watch?v=SjhIlw3Iffs&t=1068s
+
   Says hallucinations are a big problem that 'limits the usefulness of chatgtp', says that can be fixed by strengthening the reinforcement learning step. 
   Will it work? let's find out!  
 
@@ -1781,6 +1768,28 @@ https://www.youtube.com/watch?v=SjhIlw3Iffs
    )      
 
 Bla-bla - (the music starts here)
+
+
+--------
+
+Not entirely sure: GPT-4 is still inventing stuff, fixing it may be harder than they admit - for example you can still trick an ML vision model with a random image. (also: there must be *some* FUD in the marketing...) See:
+
+https://www.youtube.com/watch?v=SjhIlw3Iffs&t=1068s
+
+--------
+
+
+https://www.infoq.com/news/2023/04/virtual-threads-arrives-jdk21/
+
+JEP 444: Virtual Threads Arrive in JDK 21
+    
+    - idea is to add co-thread to JDK (now golang is lossing it's big advantage over JDK - goroutines?)
+
+    - JEP444 is now 'Proposal' status in JDK21 (used to be candidate in JDK20)
+
+    - 'The JDK can now run up to 10,000 concurrent virtual threads on a small number of operating system (OS) threads'
+    
+    - 
 
    
 
