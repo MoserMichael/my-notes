@@ -294,8 +294,33 @@ Kubernetes:
 
 
     - https://github.com/ahmetb/kubectx 
-        set kubectl context (kubectx) and namespace (kubens) /makes it easier to work with big clusters that have many of them/
+        contains utils: 
+            kubectx - for switching kubectl context (each kubectl context defines how to access a particular cluster)
+                      !! kubectl configuration for switching clusters is defined in $HOME/.kube/config !!
+                      !! if you want to switch using a different cluster with kubectl command line (specify configuration directory with --kubeconfig)
+                            kubectl --kubeconfig DIFFERENT_DIR_FOR_KUBE_CONFIG !!
 
+            kubens - setting the default kubectl namespace 
+
+     - configuring a cluster
+            a bit involved, see here: https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
+
+     - list configured clusteres
+
+            kubectl config get-contexts
+
+            # kubectx - a utility that helps with contexts
+            kubectx 
+
+     - switch to another context
+
+            kubectl config use-context CONTEXT_NAME
+    
+            # ... or with kubectx
+            kubectx CONTEXT_NAME
+
+      - switch to previous context (kubectl can't do that)
+            kubectx - 
 
 =======
 
@@ -389,6 +414,24 @@ You can run the whole thing in detached mode ! (and attach to it later)
 This has the advantage that the docker keeps running, until the system is rebooted. (you can get a similar effect with tmux :- ) 
 
     docker run -d  -v $PWD:/mnt/loc -it --entrypoint /bin/sh php:7.4-cli
+
+
+Run me a linux, with my stuff:
+
+    docker run  -v $HOME/mystuff/:/mystuff -it fedora:latest   /bin/bash
+
+!!!!! run a docker inside docker DIND !!!!
+    
+    # problem - elevated privileges 
+
+    docker run --privileged -d --name dind-test docker:dind
+
+    docker exec -it dind-test /bin/sh
+
+!!! you can do on linux and without elevated privileges !!!! (needs sysbox docker runtime) / you can't do that on osx /
+    
+    https://devopscube.com/run-docker-in-docker/
+    https://github.com/nestybox/sysbox#installing-sysbox
 
 
 ---
@@ -1777,7 +1820,18 @@ Not entirely sure: GPT-4 is still inventing stuff, fixing it may be harder than 
 https://www.youtube.com/watch?v=SjhIlw3Iffs&t=1068s
 
 --------
+https://philbooth.me/blog/nine-ways-to-shoot-yourself-in-the-foot-with-postgresql
 
+Postgress perfrmance tips
+    
+    - it has work_mem parameter (size of memory reserved for a DB query)
+    - if it's too small it starts paging ON EACH QUERY (OMG)
+    - says the following formula does the approximation:
+
+        work_mem = ($YOUR_INSTANCE_MEMORY * 0.8 - shared_buffers) / $YOUR_ACTIVE_CONNECTION_COUNT 
+
+
+--------
 
 https://www.infoq.com/news/2023/04/virtual-threads-arrives-jdk21/
 
@@ -1791,7 +1845,13 @@ JEP 444: Virtual Threads Arrive in JDK 21
     
     - 
 
-   
+-----
+
+https://lwn.net/Articles/844224/ - into to lockless programming 
+
+
+
+-----
 
     
 
