@@ -8,6 +8,27 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 (should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters)
 
 
+
+---07/05/23 16:01:46----------------------
+
+- have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that his is kind of asking me questions directly - however it turns out, that he is removing my comment to his blog consistently
+    - now this Mr. Avva is apparently in line with his corporate owners (google in this case). I just realized these platforms have some explicit agenda of their own (they aren't here for the sake of free speech)
+    - now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is in charge of who will see my comments and who will not be able to see them at all.
+    - any feedback is a way to feed these corporate trolls. Also my dear late Mother told me not to take part in any of these useless parlors... (in the end those who are in charge will choose to ignore my feedback - to their own liking)
+
+What's left? Open source - that's an are that can be ignored (but it doesn't matter).
+Why?
+- Because they are depending on the message, therefore they can't censor that medium (there is some similarity here to the Prophets of the Hebrew bible - just in a more modern sence)
+
+Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part this show:
+    - a normal person is aware of the fact that the impact of the message is controlled by the owner of the platform
+    - a normal person is aware of the fact that his speech will be held against him ... when the weather turns bad.
+
+A clever person is there for the news, not in order to provide any unwarranted feedback...
+
+
+(i guess this repo will still hold my thoughts, protected by the fact that those in charge will not care about my scribble)
+
 ---23/02/23 07:08:35----------------------
 
 My new project is a programming language called PYX - the project is [here](https://github.com/MoserMichael/jscriptparse). I guess that's a project that will keep me busy for a while.
