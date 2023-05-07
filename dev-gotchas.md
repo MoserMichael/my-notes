@@ -20,7 +20,7 @@ What's left? Open source - that's a different kind of medium
 Why?
 - Because they are depending on the output created by the open source movement, therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew bible - just in a more modern sense)
 
-Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part in this show:
+- Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part in this show:
     - a normal person is aware of the fact that the impact of the message is controlled by the owner of the platform
     - a normal person is aware of the fact that his speech will be held against him, that may happen - whenever the weather turns bad.
 
