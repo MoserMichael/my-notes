@@ -1,4 +1,5 @@
-        
+git/github
+
         # 'deleted by us' during merge or cherry-pick
             # file x was added in the commit being cherry-picked
             # file x was deleted in the branch that you cherry-pick into.
@@ -27,7 +28,23 @@
         # in case that the first string is the name of the issue - get all the issues that the user did.
         git log --author=<user name that appears in commit messages> --format=%s | awk '{print $1}' | sort | uniq
 
-OSX hacks
+
+        # github.com ::: open a pull request on some other repository https://github.com/AwesomeUser/AwesomeProject
+
+        - on original repo page: create a fork (press the 'fork' button)
+        - after forking: you have that repository under your own github user  https://github.com/YourOwnUser/AwesomeProject
+
+        - clone that forked repository.
+        - create a new branch of the main branch.
+            git branch -m my_new_pr
+        - add your changes and commit
+        - set the UPSTREAM of the branch: 
+            git remote add upstream https://github.com/AwesomeUser/AwesomeProject
+        - push the new branch:
+             git push -u origin my_new_pr
+        - push command writes a long text to the console, that text includes a link to open the new pull request.   
+    
+Mac/OSX tricks
 
 ? built-in something is very different from what you expect ?
 
@@ -404,6 +421,9 @@ running a container - with a given image (if image is not present then they try 
         -v $PWD:/mnt/loc    : mounts current directory to /mnt/loc inside container
 
         /bin/sleep infinity : the container does nothing, just keeps running (but you can attach a terminal to it that runs in the container, and it enjoys the mapped port and mounted directory!)
+
+    # attach to the running container (it will not loose it's stuff - while the container is running!)
+    docker exec -it fedora:latest bash
 
         ## !!! sleep infinity - works on Linux, this is a GNU extension. !!!
 ---
@@ -1673,6 +1693,14 @@ CHATGTP on it's api parameters:
 
 
 -----
+IntelliJ
+
+    Command+L  - goto line/column 
+        12:5     - move to line 12 column 5
+        12         move to line 12 column 1
+
+    Option+Fn+F7  - or from context menu 'Find Usage' - find where symbol under cursor is used in this project
+
 
 Visual Studio Code
 
@@ -1888,12 +1916,4 @@ JEP 444: Virtual Threads Arrive in JDK 21
     - 
 
 -----
-
-https://lwn.net/Articles/844224/ - into to lockless programming 
-
-
-
------
-
-    
 
