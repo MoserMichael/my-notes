@@ -16,16 +16,15 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
     - now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is in charge of who will see my comments and who will not be able to see them at all.
     - any feedback is a way to feed these corporate trolls. Also my dear late Mother told me not to take part in any of these useless parlors... (in the end those who are in charge will choose to ignore my feedback - to their own liking)
 
-What's left? Open source - that's an are that can be ignored (but it doesn't matter).
+What's left? Open source - that's a different kind of medium
 Why?
-- Because they are depending on the message, therefore they can't censor that medium (there is some similarity here to the Prophets of the Hebrew bible - just in a more modern sence)
+- Because they are depending on the output created by the open source movement, therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew bible - just in a more modern sense)
 
-Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part this show:
+Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part in this show:
     - a normal person is aware of the fact that the impact of the message is controlled by the owner of the platform
-    - a normal person is aware of the fact that his speech will be held against him ... when the weather turns bad.
+    - a normal person is aware of the fact that his speech will be held against him, that may happen - whenever the weather turns bad.
 
-A clever person is there for the news, not in order to provide any unwarranted feedback...
-
+A clever person is there for the news, not in order to provide any unwarranted feedback (you won't be able to overturn any existing hierarchies by the power of your word...)
 
 (i guess this repo will still hold my thoughts, protected by the fact that those in charge will not care about my scribble)
 
