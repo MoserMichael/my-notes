@@ -11,7 +11,7 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 ---07/05/23 16:01:46----------------------
 
-- have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that his is kind of asking me questions directly - however it turns out, that he is removing my comment to his blog consistently
+- have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that he is kind of asking directly for my feedback - however it turns out, that he is quietly removing all of my comments to his 'blog'.
     - now this Mr. Avva is apparently in line with his corporate owners (google in this case). I just realized these platforms have some explicit agenda of their own (they aren't here for the sake of free speech)
     - now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is in charge of who will see my comments and who will not be able to see them at all.
     - any feedback is a way to feed these corporate trolls. Also my dear late Mother told me not to take part in any of these useless parlors... (in the end those who are in charge will choose to ignore my feedback - to their own liking)
