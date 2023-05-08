@@ -1,5 +1,7 @@
 " Set text width as 72.
 
+### my software developer blog (mostly)
+
 My [linkedin profile](https://www.linkedin.com/in/michael-moser-32211b1/) 
 
 This is a log, here I am listing the gotchas that I stepped upon as a developer.
@@ -7,7 +9,7 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters) 
 
-I also got another blog for [stuff that i used to post on twitter](https://github.com/MoserMichael/my-notes/blob/master/dev-blog.md)
+I also got another blog for [stuff that i used to post on twitter](https://github.com/MoserMichael/my-notes/blob/master/dev-other-blog.md)
 
 ---07/05/23 16:01:46----------------------
 
@@ -32,7 +34,7 @@ Social networks: should i stay or should i go?
 - any reasonable person is aware of the fact that his speech will be held against him, that may happen - whenever the weather turns bad.
 
 ... but now i see that it doesn't serve me any purpose, and my attention is their currency - so I am literally feeding the trolls, as they are all trolling for attention.
-Sp now i know for sure that there is [no point](https://www.youtube.com/watch?v=264BO4SKXn4) in taking part in any of these online discussions.
+So now i know for sure that there is [no point](https://www.youtube.com/watch?v=264BO4SKXn4) in taking part in any of these online discussions.
 
 A clever person is there for the news, not in order to provide any unwarranted feedback (you won't be able to change anything in any way)
 
