@@ -14,15 +14,16 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that he is kind of asking directly for my feedback - however it turns out, that he is quietly removing all of my comments to his 'blog'.
 
 - somehow it touched me, that even the owner of a nasty blog is playing politics (apparently they all do that)
+- now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is always in control of who is seeing the scribble (if you pay Elon Musk then he is more likely to show your comment - the blue tick gives 'Prioritized rankings in conversations and search' see https://help.twitter.com/en/using-twitter/twitter-blue )
 - also I just realized these platforms have some agenda of their own (they aren't here for the sake of free speech) - they just play their politics
-- now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is always in control of who is seeing the scribble (if you pay Elon Musk then he is more likely to show your comment - the blue tick gives 'Prioritized rankings in conversations and search' https://help.twitter.com/en/using-twitter/twitter-blue )
 - any feedback is a way to feed these corporate trolls - attention is their currency. Also my dear late Mother told me not to take part in any of these useless parlors... (in the end those who are in charge will choose to ignore my feedback - to their own liking)
 
 What's left? Open source - that's a different kind of medium (they can't censor me here, but they can ignore me)
 
 Why is speech allowed around here?
 
-- Because they are depending on the output created by the open source movement, therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew bible - just in a more modern sense)
+- they sort of agreed not to own the content of any repository, however things are different on social media:  (I was shocked to read that '... Facebook's terms allow them "a non-exclusive, transferable, sub-licensable, royalty-free, worldwide license to use any IP content that you post on or in connection with Facebook." In layman's terms, Facebook has license to use the photos and videos you post (which you own) in any way it sees fit, without paying you, and it can transfer that license to third parties.' https://www.findlaw.com/legalblogs/law-and-life/who-legally-owns-your-facebook-posts/ ) 
+- Because they are in a sense depending on the output created by the open source movement, therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew bible - just in a more modern sense)
 
 - Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part in this show:
 - any reasonable person is aware of the fact that the impact of the message is controlled by the owner of the platform
@@ -32,9 +33,9 @@ A clever person is there for the news, not in order to provide any unwarranted f
 
 (i guess this repo will still hold my thoughts, protected by the fact that those in charge will not care about my scribble)
 
-... but now i see that it doesn't serve me any purpose, and my attention is their currency - so I am literally feeding the trolls
+... but now i see that it doesn't serve me any purpose, and my attention is their currency - so I am literally feeding the trolls, as they are all trolling for attention...
 
-(now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation)
+(now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation, but then i was scribbling more on Facebook due to the pandemic and the pandemic is ... over)
 
 ---23/02/23 07:08:35----------------------
 
