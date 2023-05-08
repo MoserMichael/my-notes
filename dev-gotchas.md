@@ -1,6 +1,6 @@
 " Set text width as 72.
 
-### my software developer blog (mostly)
+### My software developer blog (mostly)
 
 My [linkedin profile](https://www.linkedin.com/in/michael-moser-32211b1/) 
 
@@ -40,7 +40,7 @@ A clever person is there for the news, not in order to provide any unwarranted f
 
 (i guess this repo will still hold my thoughts, protected by the fact that those in charge will not care about my scribble)
 
-(now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation, but then i was scribbling more on Facebook due to the pandemic and the pandemic is kind of ... over)
+(now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation, but then i was scribbling more on Facebook and twitter due to the pandemic, but the pandemic is kind of ... over)
 
 Therefore welcome to the ... new blog for [stuff that i used to post on twitter](https://github.com/MoserMichael/my-notes/blob/master/dev-blog.md)
 
