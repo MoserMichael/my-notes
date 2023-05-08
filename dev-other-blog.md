@@ -1,3 +1,4 @@
+" Set text width as 72.
 
 ### My blog for stuff that i used to post on twitter
 
@@ -22,7 +23,7 @@ In Soviet school they used to teach us that Lenin was writing summaries of the s
 ---04/05/23 06:34:50----------------------
 
 me talking with ChatGTP on classical AI and the attempts to combine classical AI with ML
-[link to the talk](talking-with-chatgtp.txt)
+[link to the talk](talking-with-chatgtp.md)
 
 I have come to think that ChatGTP is very good at this kind of general discussions.
 
