@@ -23,7 +23,9 @@ What's left? Open source - that's a different kind of medium (they can't censor 
 Why is speech allowed around here?
 
 - they sort of agreed not to own the content of any public repository, however things are slightly different on social media:  (I was shocked to read that '... Facebook's terms allow them "a non-exclusive, transferable, sub-licensable, royalty-free, worldwide license to use any IP content that you post on or in connection with Facebook." In layman's terms, Facebook has license to use the photos and videos you post (which you own) in any way it sees fit, without paying you, and it can transfer that license to third parties.' https://www.findlaw.com/legalblogs/law-and-life/who-legally-owns-your-facebook-posts/ ) 
-- Because they are in a sense depending on the output created by the open source movement (see [We have no moat](https://www.semianalysis.com/p/google-we-have-no-moat-and-neither) ), therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew bible - just in a more modern sense)
+- Because they are in a sense depending on the output created by the open source movement (see [We have no moat](https://www.semianalysis.com/p/google-we-have-no-moat-and-neither) ), therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew Bible - just in a more modern sense)
+
+Should i stay or should i gp?
 
 - Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part in this show:
 - any reasonable person is aware of the fact that the impact of the message is controlled by the owner of the platform
