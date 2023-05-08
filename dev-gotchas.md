@@ -11,13 +11,16 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 ---07/05/23 16:01:46----------------------
 
-- have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that he is kind of asking directly for my feedback - however it turns out, that he is quietly removing all of my comments to his 'blog'.
-    - now this Mr. Avva is apparently in line with his corporate owners (google in this case). I just realized these platforms have some explicit agenda of their own (they aren't here for the sake of free speech)
-    - now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is in charge of who will see my comments and who will not be able to see them at all.
-    - any feedback is a way to feed these corporate trolls. Also my dear late Mother told me not to take part in any of these useless parlors... (in the end those who are in charge will choose to ignore my feedback - to their own liking)
+have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that he is kind of asking directly for my feedback - however it turns out, that he is quietly removing all of my comments to his 'blog'.
+    - somehow it touched me, that even the owner of a nasty blog is playing politics (apparently they all do that)
+    - also I just realized these platforms have some agenda of their own (they aren't here for the sake of free speech) - they just play dirty politics
+    - now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is in charge of who will see my comments.
+    - any feedback is a way to feed these corporate trolls - attention is their currency. Also my dear late Mother told me not to take part in any of these useless parlors... (in the end those who are in charge will choose to ignore my feedback - to their own liking)
 
-What's left? Open source - that's a different kind of medium
-Why?
+What's left? Open source - that's a different kind of medium (they can't censor me here, but they can ignore me)
+
+Why is speech allowed around here?
+
 - Because they are depending on the output created by the open source movement, therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew bible - just in a more modern sense)
 
 - Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part in this show:
@@ -27,6 +30,10 @@ Why?
 A clever person is there for the news, not in order to provide any unwarranted feedback (you won't be able to overturn any existing hierarchies by the power of your word...)
 
 (i guess this repo will still hold my thoughts, protected by the fact that those in charge will not care about my scribble)
+
+(now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation)
+    - but now i see that it doesn't serve me any purpose, and my attention is their currency - so I am literally feeding the trolls...
+
 
 ---23/02/23 07:08:35----------------------
 
