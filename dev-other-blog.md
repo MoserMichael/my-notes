@@ -19,3 +19,17 @@ I have summed up an interesting interview with Erica Franz on Authoritarian regi
 
 In Soviet school they used to teach us that Lenin was writing summaries of the stuff that he read [here](https://prorivists.org/how_lenin_worked_with_a_book/) - so they forced us to do likewise... Somehow i have come to think that this is a good practice.
 
+
+---04/05/23 06:34:50----------------------
+
+me talking with ChatGTP on classical AI and the attempts to combine classical AI with ML
+[talk](https://github.com/MoserMichael/my-notes/blob/master/talking-with-chatgtp.txt)
+
+I have come to think that ChatGTP is very good at this kind of general discussions.
+
+(also I appreciate the lack of hubris on the part of ChatGTP - very unlike all the real workers in the field. ChatGTP is also always there to explain these frequent acronyms and explains what it is referring to - you just have to ask...)
+
+
+
+
+
