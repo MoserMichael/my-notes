@@ -12,6 +12,7 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 ---07/05/23 16:01:46----------------------
 
 have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that he is kind of asking directly for my feedback - however it turns out, that he is quietly removing all of my comments to his 'blog'.
+
     - somehow it touched me, that even the owner of a nasty blog is playing politics (apparently they all do that)
     - also I just realized these platforms have some agenda of their own (they aren't here for the sake of free speech) - they just play dirty politics
     - now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is in charge of who will see my comments.
