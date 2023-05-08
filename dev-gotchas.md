@@ -15,7 +15,7 @@ have come across Mr. [Avva](https://avva.livejournal.com). I got the impression 
 
 - somehow it touched me, that even the owner of a nasty blog is playing politics (apparently they all do that)
 - also I just realized these platforms have some agenda of their own (they aren't here for the sake of free speech) - they just play their politics
-- now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is in charge of who will see my comments.
+- now i know for sure that there is no point in taking part in any of these online discussions - the owner of the platform is always in control of who is seeing the scribble (if you pay Elon Musk then he is more likely to show your comment - the blue tick gives 'Prioritized rankings in conversations and search' https://help.twitter.com/en/using-twitter/twitter-blue )
 - any feedback is a way to feed these corporate trolls - attention is their currency. Also my dear late Mother told me not to take part in any of these useless parlors... (in the end those who are in charge will choose to ignore my feedback - to their own liking)
 
 What's left? Open source - that's a different kind of medium (they can't censor me here, but they can ignore me)
@@ -32,7 +32,7 @@ A clever person is there for the news, not in order to provide any unwarranted f
 
 (i guess this repo will still hold my thoughts, protected by the fact that those in charge will not care about my scribble)
 
-... but now i see that it doesn't serve me any purpose, and my attention is their currency - so I am literally feeding the trolls...
+... but now i see that it doesn't serve me any purpose, and my attention is their currency - so I am literally feeding the trolls
 
 (now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation)
 
