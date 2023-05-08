@@ -2,7 +2,7 @@
 
 Keeping notes while learning stuff (so they don't get lost) 
 
-Also here is a log with more general rants/insights : [dev-gotchas](dev-gotchas.md)
+Also here is a log with more general rants/insights : [dev-gotchas](dev-gotchas.md) also see [stuff i used to post on twitter](dev-other-blog.md)
 
 These notes are best viewed in vim, where I wrote them - the intention is that it should be viewed in fixed font with the text wrapping on.
 (one option would be to do markdown; the problem is that it is often non-trivial to convert to markdown as symbols like underscore have special meaning in markdown)

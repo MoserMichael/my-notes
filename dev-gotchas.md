@@ -9,7 +9,7 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters) 
 
-I also got another blog for [stuff that i used to post on twitter](https://github.com/MoserMichael/my-notes/blob/master/dev-other-blog.md)
+I also got another blog for [stuff that i used to post on twitter](dev-other-blog.md)
 
 ---07/05/23 16:01:46----------------------
 
@@ -42,7 +42,7 @@ A clever person is there for the news, not in order to provide any unwarranted f
 
 (now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation, but then i was scribbling more on Facebook and twitter due to the pandemic, but the pandemic is kind of ... over)
 
-Therefore welcome to the ... new blog for [stuff that i used to post on twitter](https://github.com/MoserMichael/my-notes/blob/master/dev-blog.md)
+Therefore welcome to the ... new blog for [stuff that i used to post on twitter](dev-other-blog.md)
 
 ---23/02/23 07:08:35----------------------
 
