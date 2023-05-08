@@ -5,13 +5,13 @@ My [linkedin profile](https://www.linkedin.com/in/michael-moser-32211b1/)
 This is a log, here I am listing the gotchas that I stepped upon as a developer.
 Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice; Some of the fun in programming is to have your assumptions invalidated; this is not just a cause for grieve, it is an opportunity to re-examine your assumptions, which is a good thing.
 
-(should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters)
+(should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters) 
 
-
+I also got another blog for [stuff that i used to post on twitter](https://github.com/MoserMichael/my-notes/blob/master/dev-blog.md)
 
 ---07/05/23 16:01:46----------------------
 
-have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that he is kind of asking directly for my feedback - however it turns out, that he is quietly removing all of my comments to his 'blog'.
+Have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that he is kind of asking directly for my feedback - however it turns out, that he is quietly removing all of my comments to his 'blog'.
 
 - somehow it touched me, that even the owner of a nasty little blog is playing politics (apparently they all do that)
 - the owner of big platforms are always in control of who is seeing the scribble (if you pay Elon Musk then he is more likely to show your comment - the blue tick gives 'Prioritized rankings in conversations and search' see https://help.twitter.com/en/using-twitter/twitter-blue )
@@ -25,7 +25,7 @@ Why is speech allowed around here?
 - they sort of agreed not to own the content of any public repository, however things are slightly different on social media:  (I was shocked to read that '... Facebook's terms allow them "a non-exclusive, transferable, sub-licensable, royalty-free, worldwide license to use any IP content that you post on or in connection with Facebook." In layman's terms, Facebook has license to use the photos and videos you post (which you own) in any way it sees fit, without paying you, and it can transfer that license to third parties.' https://www.findlaw.com/legalblogs/law-and-life/who-legally-owns-your-facebook-posts/ ) 
 - Because they are in a sense depending on the output created by the open source movement (see [We have no moat](https://www.semianalysis.com/p/google-we-have-no-moat-and-neither) ), therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew Bible - just in a more modern sense)
 
-Should i stay or should i gp?
+Social networks: should i stay or should i go?
 
 - Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part in this show:
 - any reasonable person is aware of the fact that the impact of the message is controlled by the owner of the platform
@@ -39,6 +39,8 @@ A clever person is there for the news, not in order to provide any unwarranted f
 (i guess this repo will still hold my thoughts, protected by the fact that those in charge will not care about my scribble)
 
 (now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation, but then i was scribbling more on Facebook due to the pandemic and the pandemic is kind of ... over)
+
+Therefore welcome to the ... new blog for [stuff that i used to post on twitter](https://github.com/MoserMichael/my-notes/blob/master/dev-blog.md)
 
 ---23/02/23 07:08:35----------------------
 

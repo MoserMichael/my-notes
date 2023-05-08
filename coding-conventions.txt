@@ -1,8 +1,13 @@
 Writing it down, so as not to get confused.
 
-(the zen of all coding conventions: name your functions/types/variables as they do in the standard library :-) )
+Intro
 
-(another reason to use an IDE - they give you better hints than vim... :-( )
+the zen of all coding conventions: name your functions/types/variables as they do in the standard library - one needs to avoid having more than one naming convention in the code, so take that of the stdlib :-)
+
+also that's another reason to use an IDE like IntelliJ - they give you better hints than vim... :-( 
+
+
+Summary of coding conventions
 
 Python
 ------

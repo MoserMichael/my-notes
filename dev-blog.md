@@ -1,4 +1,6 @@
 
+My blog for stuff that i used to post on twitter
+
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
