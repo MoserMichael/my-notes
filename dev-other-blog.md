@@ -14,6 +14,8 @@ But if any harm comes to SO then the quality of the tech answers in ChatGTP will
 
 As Berthold Brecht said "So many reports. So many questions."  [Questions of a reading worker](https://www.emag-augsburg.de/2018/02/21/questions-of-a-reading-worker/)
 
+Submitted the link to HN [discussion on HN](https://news.ycombinator.com/item?id=35857536)
+
 ---07/05/23 06:17:15----------------------
 
 I have summed up an interesting interview with Erica Franz on Authoritarian regimes [link to my summary](political-stuff.txt) - with specific reference to Putins attempts to resurrect Stalinism.
