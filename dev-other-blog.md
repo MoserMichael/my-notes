@@ -5,6 +5,15 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+---08/05/23 09:02:53----------------------
+
+Just realized: ChatGTP isn't hallucinating, these are Androids who are dreaming of electric sheep!
+
+Now I am re-reading "Do Androids dream of electric sheep" by Philip K Dick, so writing down the memorable phrases/scenes. [more...](androids-electric-sheep.txt)
+
+/actually pasting out memorable phrases is a nice trick - for staying focused on the text, while you have half a hundred tab windows open in the web browser.../
+
+
 ---08/05/23 05:56:47----------------------
 
 [Stack Overflow is ChatGPT Casualty: Traffic Down 14% in March](https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/)
@@ -31,7 +40,7 @@ I have come to think that ChatGTP is very good at this kind of general discussio
 
 (also I appreciate the lack of hubris on the part of ChatGTP - very unlike all the real workers in the field. ChatGTP is also always there to explain these frequent acronyms and explains what it is referring to - you just have to ask...)
 
-
+/later discovered that Google Bard is better at it - because it has a later knowledge cutoff date than ChatGTP3.5 ; this means that the data used to train Google Bard is newer and more up to date than that of ChatGTP3.5/
 
 
 
