@@ -5,6 +5,14 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+
+---09/05/23 05:10:30----------------------
+
+Is LLM prompt engineering the equivalent of ... [Robopsychology](https://en.wikipedia.org/wiki/Robopsychology) in 'I Robot' by Asimov?
+
+We are living in an interesting time...
+
+
 ---08/05/23 09:02:53----------------------
 
 Just realized: ChatGTP isn't hallucinating, these are Androids who are dreaming of electric sheep!
