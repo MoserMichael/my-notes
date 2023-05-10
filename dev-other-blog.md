@@ -6,15 +6,6 @@
 
 
 
----10/05/23 09:59:01----------------------
-
-Today i learned, that the concept of a UNIX daemon is derived from the ancient Greek concept of daemon/daimon - that's just some kind of spirit, it's not an evil demon - a very different beast! (always these subtle differences..)
-
-https://en.wikipedia.org/wiki/Daemon_(computing%29
-
-'In the general sense, daemon is an older form of the word "demon", from the Greek δαίμων. In the Unix System Administration Handbook Evi Nemeth states the following about daemons:[3]
-Many people equate the word "daemon" with the word "demon", implying some kind of satanic connection between UNIX and the underworld. This is an egregious misunderstanding. "Daemon" is actually a much older form of "demon"; daemons have no particular bias towards good or evil, but rather serve to help define a person's character or personality. The ancient Greeks' concept of a "personal daemon" was similar to the modern concept of a "guardian angel"—eudaemonia is the state of being helped or protected by a kindly spirit. As a rule, UNIX systems seem to be infested with both daemons and demons'
-
 ---09/05/23 05:10:30----------------------
 
 Is LLM [prompt engineering](https://en.wikipedia.org/wiki/Prompt_engineering) is the art of asking a questions to the language model, one that is likely to produce a better result. 
