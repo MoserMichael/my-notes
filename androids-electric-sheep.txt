@@ -1,5 +1,39 @@
 Just realized: ChatGTP isn't hallucinating, these are Androids who are dreaming of electric sheep!
 
+=====
+
+Asked google bard why the movie Blade Runner is so much different from the book:
+
+> the concept of the movie changed a lot during production, did unreleased versions of the move deal with the post-apocalyptic theme?
+View other drafts
+
+Yes, there are several unreleased versions of Blade Runner that deal with the post-apocalyptic theme. The most well-known of these is the workprint version, which was released in 1982. This version of the film is much longer than the theatrical release, and it includes several scenes that were cut from the final film. One of these scenes is a prologue that sets the film in the context of the post-apocalyptic world of the novel. In this scene, we see the aftermath of the nuclear war that has devastated the Earth. We see the ruins of cities, the bodies of the dead, and the survivors who are struggling to survive in a world that has been turned upside down.
+
+The workprint version of Blade Runner also includes several other scenes that deal with the post-apocalyptic theme. For example, there is a scene where Deckard and Rachael visit a refugee camp where people who have been displaced by the war are living. There is also a scene where Deckard has a dream about a world that has been destroyed by nuclear fire.
+
+The inclusion of these scenes in the workprint version of Blade Runner makes it clear that Ridley Scott originally intended for the film to be more faithful to the novel's post-apocalyptic setting. However, the studio ultimately decided to cut these scenes from the theatrical release in order to make the film more accessible to a wider audience.
+
+> can you provide a reference for this information?
+
+Sure. Here are some references that you can use to learn more about the unreleased versions of Blade Runner:
+
+    The Final Cut: The Definitive Edition of Blade Runner by Paul M. Sammon
+    Blade Runner: The Illustrated Story by John W. Campbell, Jr.
+    Blade Runner: The Complete Screenplays by Hampton Fancher and David Peoples
+
+These books provide detailed information about the different versions of Blade Runner, including the workprint version. They also include interviews with the filmmakers and cast members, as well as behind-the-scenes photos and artwork.
+
+You can also find information about the unreleased versions of Blade Runner on the following websites:
+
+    The Blade Runner Online Encyclopedia
+    The Blade Runner Fandom Wiki
+    The Blade Runner News Network
+
+These websites have articles, interviews, and other information about the film, including the different versions that have been released.
+
+
+====
+
 Now I am re-reading "Do Androids dream of electric sheep" by Philip K Dick, so writing down the memorable phrases/scenes. 
 
 /actually pasting out memorable phrases is a nice trick - for staying focused on the text, while you have half a hundred tab windows open in the web browser.../
@@ -76,33 +110,49 @@ what the question was. Maybe now he knows the answer." Fresh tears appeared. "I 
 eventually."
 
 
-=====
+" The deep-pile carpets, the expensive genuine wood desks, reminded him
+that garbage collecting and trash disposal had, since the war, become one of Earth's important
+industries. The entire planet had begun to disintegrate into junk, and to keep the planet habitable for
+the remaining population the junk had to be hauled away occasionally . . . or, as Buster Friendly
+liked to declare, Earth would die under a layer - not of radioactive dust - but of kipple."
 
-Asked google bard why the movie Blade Runner is so much different from the book:
+"What kind of world is it, he asked himself, when an android
+phones up a bounty hunter and offers him assistance? "
 
-> the concept of the movie changed a lot during production, did unreleased versions of the move deal with the post-apocalyptic theme?
-View other drafts
+"It's a good thing I know something about opera, Rick reflected. That's another advantage I have
+over Dave; I'm more culturally oriented."
 
-Yes, there are several unreleased versions of Blade Runner that deal with the post-apocalyptic theme. The most well-known of these is the workprint version, which was released in 1982. This version of the film is much longer than the theatrical release, and it includes several scenes that were cut from the final film. One of these scenes is a prologue that sets the film in the context of the post-apocalyptic world of the novel. In this scene, we see the aftermath of the nuclear war that has devastated the Earth. We see the ruins of cities, the bodies of the dead, and the survivors who are struggling to survive in a world that has been turned upside down.
+"Too bad. And Mozart, not long after writing The Magic Flute, had died in his thirties - of
+kidney disease. And had been buried in an unmarked paupers' grave.
+Thinking this he wondered if Mozart had had any intuition that the future did not exist, that he had
+already used up his little time. Maybe I have, too, Rick thought as he watched the rehearsal move
+along. This rehearsal will end, the performance will end, the singers will die, eventually the last score
+of the music will be destroyed in one way or another; finally the name "Mozart" will vanish, the dust
+will have won. If not on this planet then another. We can evade it awhile. As the andys can evade me
+and exist a finite stretch longer. But I get them or some other bounty hunter gets them. In a way, he
+realized, I'm part of the form-destroying process of entropy. The Rosen Association creates and I
+unmake. Or anyhow so it must seem to them."
 
-The workprint version of Blade Runner also includes several other scenes that deal with the post-apocalyptic theme. For example, there is a scene where Deckard and Rachael visit a refugee camp where people who have been displaced by the war are living. There is also a scene where Deckard has a dream about a world that has been destroyed by nuclear fire.
+"Who are you?" Her tone held cold reserve - and that other cold, which he had encountered in so
+many androids. Always the same: great intellect, ability to accomplish much, but also this. He
+deplored it. And yet, without it, he could not track them down."
 
-The inclusion of these scenes in the workprint version of Blade Runner makes it clear that Ridley Scott originally intended for the film to be more faithful to the novel's post-apocalyptic setting. However, the studio ultimately decided to cut these scenes from the theatrical release in order to make the film more accessible to a wider audience.
+"An android," he said, "doesn't care what happens to any other android. That's one of the
+indications we look for."
+"Then," Miss Luft said, "you must be an android."
+That stopped him; he stared at her.
+"Because," she continued, "Your job is to kill them, isn't it?"
 
-> can you provide a reference for this information?
+"Maybe that's a false memory. Don't androids sometimes go around with false memories?"
 
-Sure. Here are some references that you can use to learn more about the unreleased versions of Blade Runner:
 
-    The Final Cut: The Definitive Edition of Blade Runner by Paul M. Sammon
-    Blade Runner: The Illustrated Story by John W. Campbell, Jr.
-    Blade Runner: The Complete Screenplays by Hampton Fancher and David Peoples
+"You androids," Rick said, "don't exactly cover for each other in times of stress."
+ Garland snapped, "I think you're right; it would seem we lack a specific talent you humans
+possess. I believe it's called empathy."
 
-These books provide detailed information about the different versions of Blade Runner, including the workprint version. They also include interviews with the filmmakers and cast members, as well as behind-the-scenes photos and artwork.
+"Then at one time an authentic Garland existed," Phil Resch said. "And somewhere along the way
+got replaced." His sharklike lean face twisted and he struggled to understand. "Or - I've been
+impregnated with a false memory system. Maybe I only remember Garland over the whole time. But
+- " His face, suffused now with growing torment, continued to twist and work spasmodically. "Only
+androids show up with false memory systems; it's been found ineffective in humans."
 
-You can also find information about the unreleased versions of Blade Runner on the following websites:
-
-    The Blade Runner Online Encyclopedia
-    The Blade Runner Fandom Wiki
-    The Blade Runner News Network
-
-These websites have articles, interviews, and other information about the film, including the different versions that have been released.
