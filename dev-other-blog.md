@@ -61,8 +61,6 @@ Interesting that Socrates is reported to have told the story two Egyptian deitie
 
 "It's well-documented that classical Greek thinkers traveled to what we now call Egypt to expand their knowledge. When the Greek scholars Thales, Hippocrates, Pythagoras, Socrates, Plato and others traveled to Kemet, they studied at the temple-universities Waset and Ipet Isut"
 
-... interesting if this visit inspired Thales to come up with the notion of mathematical proof ...
-
 ---04/05/23 06:34:50----------------------
 
 me talking with ChatGTP on classical AI and the attempts to combine classical AI with ML
