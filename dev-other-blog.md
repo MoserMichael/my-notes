@@ -53,6 +53,16 @@ I have summed up an interesting interview with Erica Franz on Authoritarian regi
 
 In Soviet school they used to teach us that Lenin was writing summaries of the stuff that he read [here](https://prorivists.org/how_lenin_worked_with_a_book/) - so they forced us to do likewise... Somehow i have come to think that this is a good practice (of course Lenin's regime was a very nasty one...)
 
+
+Interesting that Socrates didn't like to write things down ... among other reasons because it 'destroys memory and weakens the mind'.
+[see here](https://blogs.ubc.ca/etec540sept13/2013/09/29/socrates-writing-vs-memory/) 
+
+Interesting that Socrates is reported to have told the story two Egyptian deities Theuth and Thamus. These ancient greeks must have travelled a lot: see [here](https://history.howstuffworks.com/history-vs-myth/greek-philosophers-african-tribes1.htm) 
+
+"It's well-documented that classical Greek thinkers traveled to what we now call Egypt to expand their knowledge. When the Greek scholars Thales, Hippocrates, Pythagoras, Socrates, Plato and others traveled to Kemet, they studied at the temple-universities Waset and Ipet Isut"
+
+... interesting if this visit inspired Thales to come up with the notion of mathematical proof ...
+
 ---04/05/23 06:34:50----------------------
 
 me talking with ChatGTP on classical AI and the attempts to combine classical AI with ML
