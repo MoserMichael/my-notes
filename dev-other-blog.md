@@ -5,6 +5,16 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+---12/05/23 18:37:40----------------------
+
+I tried to make a page, where chatgtp and google bard appear side-by-side on the same page, each of them embedded in an iframe tag. (tried to send the same prompt to both of them, in order to display both results side-by-side).
+
+Now google bard doesn't allow that! They are sending the ```Cross-Origin-Resource-Policy``` http header with value ```same-origin``` - therefore it's impossible to embed them in an iframe that comes from a domain other than *.google.com.
+
+The reason is that the javascript on the embedding page can access the DOM of the embedded page (google bard in this case) - and that opens the room for cross-site attacks.
+
+Now this feature probably disables some of the queries on my [duckduckbang!](https://github.com/MoserMichael/duckduckbang) project. Nasty...
+
 
 ---09/05/23 05:10:30----------------------
 

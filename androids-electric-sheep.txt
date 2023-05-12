@@ -1,11 +1,5 @@
 Just realized: ChatGTP isn't hallucinating, these are Androids who are dreaming of electric sheep!
 
-(Hallucinations of Androids are called 'false memories' in the book, but all so he says: 
-"Do androids dream? Rick asked himself. Evidently; that's why they occasionally kill their employers and flee here.
-A better life, without servitude. Like Luba Luft; singing Don Giovanni and Le Nozze instead of toiling
-across the face of a barren rock-strewn field. On a fundamentally uninhabitable colony world."
-)
-
 =====
 
 Asked google bard why the movie Blade Runner is so much different from the book:
@@ -36,6 +30,7 @@ You can also find information about the unreleased versions of Blade Runner on t
     The Blade Runner News Network
 
 These websites have articles, interviews, and other information about the film, including the different versions that have been released.
+
 
 ====
 
