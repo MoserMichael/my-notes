@@ -25,6 +25,27 @@ We are living in an interesting time...
 
 A different view would be, that it's just a way to optimize the results of a search engine.
 
+Now this following [paper](https://arxiv.org/pdf/2212.04037.pdf) argues, that the simplest LLM prompts work best, probably the prompt that has a style and wording nearest to the text of training data has the best chances.
+
+"from the article: "we devise the following straightforward procedure:
+
+1. Obtain a small set of manually created prompts for the task.
+
+2. Expand the set of prompts with automatic paraphrasing using a LM (e.g., GPT3) and backtranslation (see Section 3).
+
+3. Rank the list of prompts by perplexity (aver- aged on a representative sample of task inputs, e.g. 1,000).
+
+4. Choose the k (e.g., 3) lowest perplexity prompts.
+
+Using this algorithm, we show empirically that it is best to prioritize experimenting with the lowest perplexity prompts, as they perform better than manual prompts on average, and are more stable" 
+
+
+How is the automatic paraphrasing achieved?
+
+* first they paraphrase the hand written prompts: "We prompt it with a meta-prompt for paraphrasing to generate variations of one of our seed prompts. An example of such a meta-prompt is: Write a paraphrase for the following sentence: <seed prompt> Paraphrase:.  The 7 meta-prompts used in this step are listed in Section A in the Appendix.  We choose GPT3 as our paraphrasing model because of its well-documented generation abilities.  This is also to ensure that there is a separation between the model we use to create the prompts and the models we use to rank them (OPT and Bloom, see Section 4 for details)"
+* then they translate the text from the previous step to a different language and back into english. (the article doesn't quite explain the reasoning behind this step)
+
+
 ---08/05/23 09:02:53----------------------
 
 Just realized: ChatGTP isn't hallucinating, these are Androids who are dreaming of electric sheep!
