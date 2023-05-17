@@ -5,6 +5,66 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+
+---17/05/23 03:04:37----------------------
+
+[This article](https://arxiv.org/abs/2205.11916) - adding "Let's think step by step" to a prompt will result in a more focused answer from ChatGTP that is less likely to go with hallucinations.
+
+Now [Denny Zhou](https://twitter.com/denny_zhou/status/1529294079195897856) tells us that some of the ChatGTP models have been "finetuned with 'let's think step by step.'"
+
+Such a finetuning stage means, that they added a supervised learning stage with pre-selected dialogues that are written as a series of steps (says Google Bard) 
+
+At least that's a rational sounding explanation: I suspect that this is not the only trick in prompt engineering which has a rational explanation...
+
+Asking Google Bard (it seems that only an LLM is able to explain things about this field clearly, without recourse to jargon and without recursive acronyms...)
+
+(Also my trick: ask the robot about his sources for information in the form 'can you provide a link to the articles that are the source of this information?' )
+
+
+    >How are LLM models fine tuned?
+
+    Fine-tuning is the process of adjusting the parameters of a pre-trained large language model (LLM) to improve its performance on a specific task or domain. This is done by training the LLM on a smaller dataset that is specific to the task or domain. The fine-tuning process typically involves:
+
+    Data preparation: The first step is to prepare the data for fine-tuning. This involves cleaning the data, removing any errors or inconsistencies, and formatting it in a way that is compatible with the LLM.
+    Model selection: The next step is to select a model to fine-tune. There are a number of different LLMs available, each with its own strengths and weaknesses. The best model for a particular task will depend on a number of factors, such as the size of the dataset, the complexity of the task, and the desired performance.
+    Training: The final step is to train the LLM on the fine-tuning dataset. This is typically done using a supervised learning approach, where the LLM is trained to predict the correct output for a given input. The training process can be time-consuming, as it involves iteratively adjusting the model's parameters to minimize the error rate.
+
+    Once the LLM has been fine-tuned, it can be used to perform the desired task. The fine-tuned model will typically be more accurate and efficient than the pre-trained model.
+
+    Here are some additional details about each step of the fine-tuning process:
+
+    Data preparation: The data preparation step is important to ensure that the LLM is trained on high-quality data. The data should be cleaned to remove any errors or inconsistencies. It should also be formatted in a way that is compatible with the LLM. For example, if the LLM is a text-based model, the data should be in the form of text files.
+
+    Model selection: There are a number of different LLMs available, each with its own strengths and weaknesses. The best model for a particular task will depend on a number of factors, such as the size of the dataset, the complexity of the task, and the desired performance. For example, if the task is to generate text, a model with a large vocabulary and a good understanding of grammar will be required.
+
+    Training: The training process is typically done using a supervised learning approach, where the LLM is trained to predict the correct output for a given input. The training process can be time-consuming, as it involves iteratively adjusting the model's parameters to minimize the error rate. The amount of time required for training will depend on a number of factors, such as the size of the dataset, the complexity of the task, and the desired performance.
+
+    Fine-tuning is a powerful technique that can be used to improve the performance of LLMs on a variety of tasks. By carefully selecting a model and training it on a high-quality dataset, it is possible to achieve significant improvements in performance.
+
+
+    >can you provide a link to the articles that are the source of this information?
+
+
+    Sure. Here are some links to the articles that I used as sources for my information about fine-tuning large language models:
+
+        Research papers:
+            "Fine-Tuning Language Models for Natural Language Processing Tasks" by Howard and Ruder (2018)
+            "Parameter-Efficient Fine-Tuning of Large-Scale Pre-Trained Language Models" by Radford et al. (2020)
+            "Scaling Laws for Neural Language Models" by Brown et al. (2020)
+
+        Blog posts:
+            "Fine-Tuning Large Language Models" by Sebastian Raschka (2022)
+            "Fine-Tuning a Large Language Model with Python" by Marcello Politi (2023)
+            "How to Fine-Tune a Large Language Model" by Cobus Greyling (2023)
+
+        Online tutorials:
+            "Fine-Tuning BERT for Text Classification" by Hugging Face (2020)
+            "Fine-Tuning DistilBERT for Text Classification" by Hugging Face (2021)
+            "Fine-Tuning RoBERTa for Text Classification" by Hugging Face (2022)
+
+    I hope this helps!
+
+
 ---12/05/23 18:37:40----------------------
 
 I tried to make a page, where chatgtp and google bard appear side-by-side on the same page, each of them embedded in an iframe tag. (tried to send the same prompt to both of them, in order to display both results side-by-side).
@@ -44,6 +104,10 @@ How is the automatic paraphrasing achieved?
 
 * first they paraphrase the hand written prompts: "We prompt it with a meta-prompt for paraphrasing to generate variations of one of our seed prompts. An example of such a meta-prompt is: Write a paraphrase for the following sentence: <seed prompt> Paraphrase:.  The 7 meta-prompts used in this step are listed in Section A in the Appendix.  We choose GPT3 as our paraphrasing model because of its well-documented generation abilities.  This is also to ensure that there is a separation between the model we use to create the prompts and the models we use to rank them (OPT and Bloom, see Section 4 for details)"
 * then they translate the text from the previous step to a different language and back into english. (the article doesn't quite explain the reasoning behind this step)
+
+
+Still there is this interesting practice of 'prompt engineering. https://github.com/brexhq/prompt-engineering#a-brief-incomplete-and-somewhat-incorrect-history-of-language-models
+
 
 
 ---08/05/23 09:02:53----------------------

@@ -125,13 +125,27 @@ Mac/OSX tricks
         # option -h is for Human friendly output !!!
         free -h
 
-
 ? http server with nc
 
     in bash shell:
-        while true; do (echo -e 'HTTP/1.1 200 OK\r\n'; echo -e "\n\tMy website has date function" ; echo -e "\t$(date)\n") | nc -l 8081; done
+        bash -c 'while true; do (echo -e "HTTP/1.1 200 OK\r\nConnection: close\r\n\r\nMy website has date function\t$(date)\n") | nc -l 8081; done'
         curl http://localhost:8081/
 
+? hosted in docker
+    with-nc : my docker image with bash and nc :
+       
+    Dockerfile-with-nc 
+        FROM alpine:latest
+
+        RUN apk update && apk upgrade --no-cache
+        RUN apk add -y --no-cache bash netcat-openbsd 
+            
+    docker build -f Dockerfile-with-nc -t with-nc .
+
+    docker run --rm  -p 8082:8081 -it with-nc /bin/bash -c 'while true; do (echo -e "HTTP/1.1 200 OK\r\nConnection: close\r\n\r\nMy website has date function\t$(date)\n") | nc -l 8081; done'
+    curl http://localhost:8082/ 
+    
+    now curl doesn't exit - it doesn't get the FIN ?
 
 ? ssh access keys ?
 
@@ -247,6 +261,9 @@ OS agnostic
     curl https://diagnostic.opendns.com/myip
     curl http://checkip.amazonaws.com
     curl http://whatismyip.akamai.com
+
+
+
 
 ======
 Linux
