@@ -6,6 +6,31 @@
 
 
 
+---23/05/23 06:40:48----------------------
+
+Saw a wonderful movie "Those Magnificent men in their flying machines". 
+
+    Captain Rumpelstoss : But... how will I learn to fly?
+
+    Count Manfred Von Holstein : Same way as we learn everything else in the German army: From the book of instructions!
+
+I am hardly watching modern movies, somehow got the impression they now have a problem with their script, the script nowadays often looks incomplete with a fragmented narrative (maybe it's just my impression).
+
+    > Movie scripts in contemporary movies often look incoherent, incomplete with a fragmented narrative. Is that a correct impression?
+
+    It is true that some contemporary movies have incoherent, incomplete, and fragmented narratives. This is due to a number of factors, including the rise of streaming services, the increasing popularity of independent films, and the changing tastes of audiences.
+
+    Streaming services have made it easier for filmmakers to produce and distribute their films, regardless of their budget or genre. This has led to a proliferation of films, many of which are not well-made or well-written. As a result, audiences are more likely to be exposed to films with incoherent or incomplete narratives.
+
+    Independent films have also become more popular in recent years. These films are often made with smaller budgets and less studio interference, which can lead to more creative and experimental storytelling. However, this can also lead to films that are difficult to follow or understand.
+
+    Finally, the tastes of audiences have changed in recent years. Audiences are now more interested in films that are visually stunning and emotionally engaging, even if they do not have a traditional narrative structure. This has led to a trend of films with fragmented narratives, which are often more visually appealing and emotionally resonant than traditional films.
+
+    It is important to note that not all contemporary movies have incoherent, incomplete, or fragmented narratives. There are still many well-made films with traditional narrative structures being produced today. However, the rise of streaming services, the increasing popularity of independent films, and the changing tastes of audiences have all contributed to the trend of films with more fragmented narratives.
+
+
+I am not quite sure that writers still know how to write a coherent script - people are getting used to stuff that doesn't make sense, I think it's a tragedy...
+
 ---17/05/23 03:04:37----------------------
 
 [This article](https://arxiv.org/abs/2205.11916) - adding "Let's think step by step" to a prompt will result in a more focused answer from ChatGTP that is less likely to go with hallucinations.
