@@ -1538,6 +1538,50 @@ AWS lambdas
 
 ----
 
+Integration testing approaches :  testing interaction of groups of software models / components.
+
+    https://en.wikipedia.org/wiki/Integration_testing
+
+    Big bang - create a complete system (consisting of all components) ; run test against this configuration
+
+        Problem: 
+            the complete system hardly works during development (lot's of downtime for the developers)
+
+            https://www.tutorialspoint.com/software_testing_dictionary/big_bang_testing.htm
+
+            - Defects present at the interfaces of components are identified at very late stage as all components are integrated in one shot.
+            - It is very difficult to isolate the defects found.
+            - There is high probability of missing some critical defects, which might pop up in the production environment
+            - It is very difficult to cover all the cases for integration testing without missing even a single scenario.
+
+    Bottom up - test lower level modules in isolation, then combine them with next upper level - until you test the whole system
+
+        needs test drivers : to call the lower level models (in the absence of a complete system)
+
+        But it is easier to test the system!  https://testsigma.com/blog/difference-between-top-down-and-bottom-up-integration-testing/
+
+            - easier to find problems when limited amount of components are interacting
+            - easier to come up with a more complete test scenario
+            - less downtime than with big bang system
+
+        Problems
+            - you need to develop an army of these test drivers
+            - more time to run the test?
+
+
+    Top - down - reverse direction.
+
+        first test the higher level models, note that lower level models are substituted by test stubs (that simulate the working of the lower level models)
+
+        (says it's more suitable for procedural systems, less so for Object Oriented systems)
+        
+            
+    Sandwich level - combine bottom-up and top-down
+
+        (interesting, which companies use this one? Sounds like a lot of work)
+
+----
+
 Dynamic programming - can be used to problems that have 'optimal substructure' and 'Overlapping subproblems'
 
 
