@@ -5,6 +5,19 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+---24/05/23 05:04:20----------------------
+
+1816 was a year without summer, this video says that this event was related to the invention of the [Draisine](https://en.wikipedia.org/wiki/Draisine) - that's an early form of the bicycle 
+
+Oats were seven times more expensive, due to a bad harvest that came with the year without summer. Horses are eating oats, therefore ownership of a horse became a problem. 
+Therefore people were looking for other forms of transportation, in other words they were looking for a substitute for the horse.
+
+See this [video (in Russian)](https://www.youtube.com/watch?v=mcfm8IFhyz0&t=700s)
+
+Also the invention oft the steam engine had something to do with relatively high salaries in Britain, whereas energy was a cheap thing. They industrial revolution just didn't catch on in the rest of Europe quite as early as in England (later Britain), due to a lack of these factors - they could still manage with manual labor, because it was cheap enough...
+
+See [link](https://www.nuffield.ox.ac.uk/users/Allen/unpublished/econinvent-3.pdf)
+
 
 ---23/05/23 06:40:48----------------------
 
@@ -45,6 +58,8 @@ Asking Google Bard (it seems that only an LLM is able to explain things about th
 
 (Also my trick: ask the robot about his sources for information in the form 'can you provide a link to the articles that are the source of this information?' )
 
+
+Now this fine-tuning seems to be turning into a big business. Let's learn about it, first asking google bard (that's the LLM with the latest knowledge cutoff date - so it should know about recent stuff)
 
     >How are LLM models fine tuned?
 
