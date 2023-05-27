@@ -43,7 +43,7 @@ I am hardly watching modern movies, somehow got the impression they now have a p
 
 I am not quite sure if writers still know how to write a coherent script - people are getting used to stuff that doesn't make sense, I think it's a tragedy...
 
----
+--
 
 Saw some Christopher Nolan movies, i think he wants to be post-modern. Here they don't do linear storytelling out of principle (i think that a movie that is harder to understands, the usability of such a movie is suffering); again asked google bard for the reasoning behind all this:
 
@@ -66,6 +66,8 @@ Saw some Christopher Nolan movies, i think he wants to be post-modern. Here they
 > Of course, non-linear storytelling is not for everyone. Some people simply prefer the comfort of a linear narrative. However, if you are willing to give it a chance, you may be surprised at how rewarding non-linear storytelling can be.
 
 It's funny, but these language models are heavily influenced by the way the question has been asked. The way of how you ask it a question makes for half of the answer...
+
+The funny think is that any answer returned by an LLM has this polished air of authority. I think the worst think that can happen is to take this answer as-is and to stop asking further questions. Just look at the question from a slightly different angle - and you will get a totally different answer...
 
 ---17/05/23 03:04:37----------------------
 
