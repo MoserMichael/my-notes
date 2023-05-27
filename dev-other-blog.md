@@ -41,8 +41,31 @@ I am hardly watching modern movies, somehow got the impression they now have a p
 
     It is important to note that not all contemporary movies have incoherent, incomplete, or fragmented narratives. There are still many well-made films with traditional narrative structures being produced today. However, the rise of streaming services, the increasing popularity of independent films, and the changing tastes of audiences have all contributed to the trend of films with more fragmented narratives.
 
-
 I am not quite sure that writers still know how to write a coherent script - people are getting used to stuff that doesn't make sense, I think it's a tragedy...
+
+---
+
+Saw some Christopher Nolan movies, i think he wants to be post-modern. Here they don't do linear storytelling out of principle (i think that a movie that is harder to understands, the usability of such a movie is suffering); again asked google bard for the reasoning behind all this:
+
+    > why does post modernism dislike linear storytelling?
+
+    Postmodernism is a philosophical movement that began in the mid-20th century and has had a significant impact on many areas of culture, including literature, art, and architecture. One of the key features of postmodernism is its rejection of traditional forms of storytelling, such as linear narratives.
+
+    There are a number of reasons why postmodernists dislike linear storytelling. First, they see it as a form of oppression. Linear narratives typically present a single, unified perspective on the world, which can be seen as a way of suppressing alternative viewpoints. Second, postmodernists believe that linear narratives are unrealistic. The world is not a neatly ordered place, and stories that attempt to present it as such are often seen as false or misleading. Finally, postmodernists believe that linear narratives are boring. They argue that stories that follow a predictable path are not as engaging as those that are more complex and unpredictable.
+
+    Instead of linear narratives, postmodernists often prefer to use fragmented, nonlinear forms of storytelling. These forms of storytelling can be more challenging for readers, but they can also be more rewarding. They allow readers to participate in the creation of meaning, and they can help readers to see the world in new and different ways.
+
+    > I think that movies that adopt non linear storytelling are hard to watch
+
+    I can understand why you might find non-linear movies hard to watch. They can be confusing and disorienting, and they can make it difficult to follow the story. However, there are also many benefits to non-linear storytelling.
+
+    For one, it can be a more realistic way of telling a story. The world is not always neatly ordered, and stories that attempt to present it as such can often feel false or misleading. Non-linear stories can help to capture the complexity and messiness of real life.
+
+    Additionally, non-linear stories can be more engaging and suspenseful. When the audience is not sure what is going to happen next, they are more likely to stay engaged in the story. Non-linear stories can also be more emotionally powerful, as they can allow the audience to experience the story from different perspectives.
+
+    Of course, non-linear storytelling is not for everyone. Some people simply prefer the comfort of a linear narrative. However, if you are willing to give it a chance, you may be surprised at how rewarding non-linear storytelling can be.
+
+It's funny, but these language models are heavily influenced by the way the question has been asked. The way of how you ask it a question makes for half of the answer...
 
 ---17/05/23 03:04:37----------------------
 
