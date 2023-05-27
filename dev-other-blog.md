@@ -45,7 +45,7 @@ I am not quite sure if writers still know how to write a coherent script - peopl
 
 --
 
-Saw some Christopher Nolan movies, i think he wants to be post-modern. Here they don't do linear storytelling out of principle (i think that a movie that is harder to understands, the usability of such a movie is suffering); again asked google bard for the reasoning behind all this:
+Saw some Christopher Nolan movies, i think he wants to be post-modern. Now in post-modernism they don't do linear storytelling out of principle (i think that this makes for movies that are harder to understands, the 'usability' of such a movie is suffering significantly); again asked google bard for the reasoning behind all this:
 
 > > why does post modernism dislike linear storytelling?
 >
