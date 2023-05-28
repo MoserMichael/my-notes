@@ -69,6 +69,15 @@ It's funny, but these language models are heavily influenced by the way the ques
 
 The funny thing is that any answer returned by an LLM has this polished air of authority. I think the worst think that can happen is to take this answer as-is and to stop asking further questions. Just look at the question from a slightly different angle - and you will get a totally different answer...
 
+(also all this non-linear storytelling comes from critical theory and postmodernism (Gasp), i think postmodernism is crap [see wikipedia](https://en.wikipedia.org/wiki/Criticism_of_postmodernism) )
+
+>
+>Linguist Noam Chomsky has argued that postmodernism is meaningless because it adds nothing to analytical or empirical knowledge. He asks why postmodernist intellectuals won't respond like people in other fields when asked:
+>
+>    Seriously, what are the principles of their theories, on what evidence are they based, what do they explain that wasn't already obvious, etc? These are fair requests for anyone to make. If they can't be met, then I'd suggest recourse to Hume's advice in similar circumstances: to the flames.[6]
+>
+
+
 ---17/05/23 03:04:37----------------------
 
 [This article](https://arxiv.org/abs/2205.11916) - adding "Let's think step by step" to a prompt will result in a more focused answer from ChatGTP that is less likely to go with hallucinations.
