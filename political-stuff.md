@@ -1,3 +1,5 @@
+" Set text width as 72.
+
 https://meduza.io/feature/2023/04/27/mnogie-veryat-kogda-putin-umret-voyna-zakonchitsya-ego-rezhim-ruhnet-a-sledom-nastupit-prekrasnaya-rossiya-buduschego-tak-i-budet
 
 Erica Frantz - Authoritarian regimes compared (wrote books on the subject of authoritarian and personalist regimes: https://www.amazon.com/Books-Erica-Frantz/s?rh=n%3A283155%2Cp_27%3AErica+Frantz )
