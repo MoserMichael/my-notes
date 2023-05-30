@@ -99,7 +99,20 @@ Mac/OSX tricks
 
 ? sort processes by virtual memory consumption /low memory does strange things on the mac.../
 
-    top -o mem 
+   
+    On Osx:
+        # can use Activity Monitor - a gui app.
+
+        # top - start and sort by memory column
+        top -o mem 
+
+        # top - batch mode: write the table once and exit
+        top -b
+
+    On Linux:
+        Better: inside top, press M to sort by memory 
+        press c to show command line arguments of processes.
+
 
 ? regular expression editor (online) ?
 
@@ -242,6 +255,11 @@ Mac/OSX tricks
 
 
 Linux
+    # show kernel / cpu architecture / etc.
+    uname -a
+
+    # show which distro/distribution is on the current machine
+    ls  /etc/*-release
 
     # get netstat on ubuntu
     apt-get install net-tools
