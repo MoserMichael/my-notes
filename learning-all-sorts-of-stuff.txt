@@ -44,6 +44,12 @@ git/github
              git push -u origin my_new_pr
         - push command writes a long text to the console, that text includes a link to open the new pull request.   
     
+vimdiff
+     - space insensitive comparison:
+
+        :set diffopt+=iwhiteall
+
+
 Mac/OSX tricks
 
 ? built-in something is very different from what you expect ?
@@ -355,6 +361,13 @@ Kubernetes:
       - switch to previous context (kubectl can't do that)
             kubectx - 
 
+      - run a shell in a pod (pod-name - listed with $(kubectl get pods)
+
+          kubectl -it pod-name bash
+
+          kubectl -it pod-name sh
+
+
 =======
 
 Show logs of all pods (name of pod/container is in each line) - and grep through them
@@ -439,10 +452,18 @@ running a container - with a given image (if image is not present then they try 
 
         /bin/sleep infinity : the container does nothing, just keeps running (but you can attach a terminal to it that runs in the container, and it enjoys the mapped port and mounted directory!)
 
+        ## !!! sleep infinity - works on Linux, this is a GNU extension. !!!
+
     # attach to the running container (it will not loose it's stuff - while the container is running!)
+
     docker exec -it fedora:latest bash
 
-        ## !!! sleep infinity - works on Linux, this is a GNU extension. !!!
+    # may use the following as a substitute, maybe that's more general.
+    # sh -c 'while [ true ]; do sleep 5m; done'
+    
+    docker run -d -p 9000:8000 -v $PWD:/mnt/loc alpine:latest  sh -c 'while [ true ]; do sleep 5m; done'  
+
+
 ---
 
 Running a container, and overriding the entry point of the container (--entrypoint can tell what to run, provided the process is installed on the image)

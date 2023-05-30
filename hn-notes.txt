@@ -57,4 +57,72 @@ Sometimes, there is a valid point (e.g. because someone was rude in tone) and I'
 
     The best way is to take a break, this makes it easier to evaluate the information in it's proper context.
 
+=========
 
+https://news.ycombinator.com/item?id=34484710
+
+Ask HN: What is your experience in tech consulting?
+
+    Niches = riches.
+    You want a super-tight thing that you do (e.g. "I fix performance issues for large NodeJS code bases", or better still "I write tooling to measure performance hotspots in NodeJS code bases".)
+
+    Despite this sounding like cutting off potential customers, it doesn't work that way. Customers will reach out to you with some generic work that they want done "because I know you know NodeJS" even when you say you specialise in something.
+
+    A good first book to read: "Book yourself Solid" by Michael Port.
+
+    ===
+    
+    ...
+
+    - Your name is your bond. When people learn they can trust you, even in just a handshake (remember: contracts!) they happily recommend you to your friends
+
+    - Digitize it all. Do everything in your power, pay for every web service that makes sense, to reduce your overhead. I was incredibly happy to pay for receipt scanning (shoeboxes), book keeping / invoicing, and accounting (xero). Most people view this as an expensively monthly cost - which it is at the beginning. It will also, eventually cost less than an hour of your consulting time. Scale.
+
+    - Never price at the top of the market. It's better to be 100% busy at 80% of the fee structure, than it is to be 50% busy, at 125% of the base rate.
+
+    ===
+
+    20+ years since I started my firm, we are very successful and I love our team and our work.
+    Few points…
+
+    Word of mouth is best advertising.
+
+    Prove yourself trustworthy and honorable, there are still assholes who will try to take advantage of you but on balance, this will pay off over time.
+
+    Don’t work for free. If companies want you to work because it will look good for referrals or something- run.
+
+    Don’t work for equity or revenue shares without some cash as part of the deal. Cash is skin in the game, it makes everyone act differently.
+
+    Treat your team better than you wish you were treated - they are your most important relationships.
+
+    Be willing to fire clients.
+
+    Fancy contracts are a waste of time, if you ever get to the point after work has begun that you are talking about wording in a contract - you already lost.
+
+    Lastly…learn to delegate, I spent way too much time doing too much of the work myself- sharing the load is a superpower.
+
+    OP or anyone else thinking of doing this, feel free to reach out for a longer chat on the topic.
+
+
+    ===
+
+    Niches = riches.
+    You want a super-tight thing that you do (e.g. "I fix performance issues for large NodeJS code bases", or better still "I write tooling to measure performance hotspots in NodeJS code bases".)
+
+    Despite this sounding like cutting off potential customers, it doesn't work that way. Customers will reach out to you with some generic work that they want done "because I know you know NodeJS" even when you say you specialise in something.
+
+    A good first book to read: "Book yourself Solid" by Michael Port.
+
+
+    ====
+
+    I run a consulting firm.
+    Get one client. Do an amazing job. Use that to tell other clients what you do.
+
+    Be specific. Most people outside tech have no idea how it works. Tell them what they will get.
+
+    Increased sales, reduced costs, better productivity. Whatever it is you do, forget about the tech and talk about the benefits.
+
+    Get your elevator pitch right. Mine is "I help businesses fix their procedures". People then say "You know, I could introduce you to my friend...."
+
+    Business first, tech last.
