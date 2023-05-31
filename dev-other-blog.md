@@ -5,6 +5,13 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+---31/05/23 05:51:00----------------------
+
+Found an area where ChatGTP/Google Bard can be used with great benefit:  I am not an expert in frontend stuff, but now I had to fiddle with CSS style sheets - the LLM knows all the style combinations, and its recommendations worked!
+
+They might have done some specialized training on CSS, I had less success when asking about other API's.
+
+
 ---24/05/23 05:04:20----------------------
 
 1816 was a year without summer, this video says that this event was related to the invention of the [Draisine](https://en.wikipedia.org/wiki/Draisine) - that's an early form of the bicycle 
