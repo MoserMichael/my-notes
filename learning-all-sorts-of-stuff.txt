@@ -254,6 +254,9 @@ Mac/OSX tricks
     don't install via brew (goes wrong) - there is an installer on https://www.wireshark.org/
 
 
+
+
+
 Linux
     # show kernel / cpu architecture / etc.
     uname -a
@@ -273,6 +276,13 @@ Linux
     #get external ipv6
     dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com
 
+
+    # check if running under docker?
+
+        apk add virt-what
+        virt-what
+
+        # or check for presence of files: /.dockerenv or /.dockerinit
 
 OS agnostic
 
