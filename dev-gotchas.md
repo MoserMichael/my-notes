@@ -11,39 +11,6 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 I also got another blog for [stuff that i used to post on twitter](dev-other-blog.md)
 
----07/05/23 16:01:46----------------------
-
-Have come across Mr. [Avva](https://avva.livejournal.com). I got the impression that he is kind of asking directly for my feedback - however it turns out, that he is quietly removing all of my comments to his 'blog'.
-
-- somehow it touched me, that even the owner of a nasty little blog is playing politics (apparently they all do that)
-- the owner of big platforms are always in control of who is seeing the scribble (if you pay Elon Musk then he is more likely to show your comment - the blue tick gives 'Prioritized rankings in conversations and search' see https://help.twitter.com/en/using-twitter/twitter-blue )
-- also it somehow dawned on me, that these platforms have some agenda of their own (they aren't here for the sake of free speech) - they are just playing their politics 'by other means'.
-- any feedback is a way to feed these corporate trolls - attention is their currency. Also my dear late Mother told me not to take part in any of these useless parlors... (in the end those who are in charge will choose to ignore my feedback - to their own liking)
-
-What's left? Open source - that's a different kind of medium (they can't censor me here, but they can ignore me)
-
-Why is speech allowed around here?
-
-- they sort of agreed not to own the content of any public repository, however things are slightly different on social media:  (I was shocked to read that '... Facebook's terms allow them "a non-exclusive, transferable, sub-licensable, royalty-free, worldwide license to use any IP content that you post on or in connection with Facebook." In layman's terms, Facebook has license to use the photos and videos you post (which you own) in any way it sees fit, without paying you, and it can transfer that license to third parties.' https://www.findlaw.com/legalblogs/law-and-life/who-legally-owns-your-facebook-posts/ ) 
-- Because they are in a sense depending on the output created by the open source movement (see [We have no moat](https://www.semianalysis.com/p/google-we-have-no-moat-and-neither) ), therefore they can't censor that medium (if you care to listen then there is some similarity here to the Prophets of the Hebrew Bible - just in a more modern sense)
-
-Social networks: should i stay or should i go?
-
-- Maybe that's the point of leaving all these social networks and all of these 'discussion forums'; a real person with any senses won't take part in this show:
-- any reasonable person is aware of the fact that the impact of the message is controlled by the owner of the platform
-- any reasonable person is aware of the fact that his speech will be held against him, that may happen - whenever the weather turns bad.
-
-... but now i see that it doesn't serve me any purpose, and my attention is their currency - so I am literally feeding the trolls, as they are all trolling for attention.
-So now i know for sure that there is [no point](https://www.youtube.com/watch?v=264BO4SKXn4) in taking part in any of these online discussions.
-
-A clever person is there for the news, not in order to provide any unwarranted feedback (you won't be able to change anything in any way)
-
-(i guess this repo will still hold my thoughts, protected by the fact that those in charge will not care about my scribble)
-
-(now let's see i i can follow all this through. So far i have always crawled back to online forum participation - upon the slightest provocation, but then i was scribbling more on Facebook and twitter due to the pandemic, but the pandemic is kind of ... over)
-
-Therefore welcome to the ... new blog for [stuff that i used to post on twitter](dev-other-blog.md)
-
 ---23/02/23 07:08:35----------------------
 
 My new project is a programming language called PYX - the project is [here](https://github.com/MoserMichael/jscriptparse). I guess that's a project that will keep me busy for a while.
