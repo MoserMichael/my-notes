@@ -4,9 +4,42 @@ by Michael D Yapko
 
 - very important how one is interpreting things (attributional or explanatory style)
 
-- many risk factors for depression (having depressed parents is a strong factor - so I am doing damage to my kids!!!)
+    https://positivepsychology.com/explanatory-styles-optimism/#theory
 
-- many paths into depression, many paths out
+    Attribution theory - "our tendency to offer similar explanations for different events.” or "the way in which you explain your circumstances to yourself."
+
+    "Heider (1958, as cited in Malle, 2011) initially distinguished between perceived internal and external causes for events. Subsequently, attributional theorist, Weiner (1972) drew a distinction between (temporally) stable versus unstable causes, with stable attributions for failure being seen to contribute towards poor or low levels of motivation. The third dimension of helplessness was first introduced by Kelley (1972) who focussed on ascriptions of global versus specific causes for adverse events."
+
+    "The concept of explanatory style with three parameters (internality, stability, and globality) and the inclusion of a proposed distinction between optimistic and pessimistic attributional styles was hypothesized by Abramson, Semmel, Seligman, & Von Baeyer (1978)."
+
+    "Explanatory style as we know it was born primarily from two antecedents: The Learned Helplessness Model and The Reformulation of the Learned Helplessness Model."
+
+        "Learned helplessness proposes that control over the environment is a fundamental precursor of positivism for any organism. If an individual is repeatedly exposed to unavoidable painful or otherwise negative stimuli, they will come to expect that such events are uncontrollable and potentially develop a sense of hopelessness and depression as a result (Overmier & Seligman, 1967)."
+
+        "The research suggested that helplessness is a learned behavior. When placed in a situation where there is no control over the outcome, the animals were conditioned to expect that future attempts to negate the shocks would be futile and therefore gave up trying. Hiroto & Seligman (1975) hypothesized that humans, like animals, would cease attempts to change their circumstances if it was deemed to be out of their control.."
+
+        "experiences with uncontrollable events led to difficulties in motivation, cognition, and emotion."
+
+    reformulated learned helplessness
+
+        "The reformulated model included three causal explanatory dimensions of attribution; stable/unstable causes, internal/external causal statements, and global/specific causal explanations (Abramson et al., 1978) which we will look at in more detail later."
+
+        "the specific ways in which individuals cope with and explain uncontrollable events, Abramson et al., (1978) posited that people develop a characteristic causal explanation for unpredictable life events. This predisposing explanatory set was later termed “explanatory style” by Peterson and Seligman (1984)."
+
+            "A pessimistic explanatory style is characterized by explanations of the causes of negative outcomes as being stable, global, and internal, and the causes of positive outcomes as being unstable, specific and external in nature." ... " They personally blame themselves for bad events and perceive the root cause to be a fixed factor. When something good happens, they tend to attribute it to luck and see the cause as temporary. " - that bad thing is that this creates a cycle of helplessness.
+
+            Additional dimensions (Psychologist use tests to measure these aspects)
+                
+                - internal (me) or external ('the circumstances') are used to explain success vs failure? 
+                - permanence of forecast?
+                - global vs specific - 
+
+            "Conversely, optimistic explanatory styles are characterized by explanations for negative outcomes as being due to unstable, specific and external causes, while positive outcomes are perceived as due to stable, global and internal causes."
+
+
+- many risk factors for depression (having depressed parents is a strong factor - so I am doing damage to my kids when feeling down !!!)
+
+- many paths into depression, many paths out - each person has a different story to tell...
 
 - important: develop skills how to get out of depression. (medication does not train these - therefore high relapse ratio)
     - better explanatory style 

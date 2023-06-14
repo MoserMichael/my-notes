@@ -5,6 +5,15 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+
+---14/06/23 03:43:55----------------------
+
+just dawned on my that Jupyter Notebook is supposed to be a form of literate programming, where documentation is a first-class citizen.
+
+However Knuth thought more in terms of macros, as a kind of section that is being expanded upon, and Jupyter Notebook doesn't do these.
+
+See more on wikipedia [here](https://en.wikipedia.org/wiki/Literate_programming)
+
 ---31/05/23 05:51:00----------------------
 
 Found an area where ChatGTP/Google Bard can be used with great benefit:  I am not an expert in frontend stuff, but now I had to fiddle with CSS style sheets - the LLM knows all the style combinations, and its recommendations worked!
