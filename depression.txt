@@ -1,3 +1,5 @@
+" Set text width as 72.
+
 "How to recover from depression" 
 https://www.youtube.com/watch?v=TVgQ_tgWMyU
 by Michael D Yapko

@@ -5,10 +5,66 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+---14/06/23 04:16:45----------------------
+
+I had an interesting conversation with Google Bard, the poor robot is getting lost quickly, or rather not? Interesting that they now improving the quality of handling logic reasoning tasks by adding "implicit code execution"  [link](https://atlasalpha.serenebase.com/post?recordId=recZF8XUdJxXWleF6). I keep wandering to what extent this technique can be generalized, but that is probably a kind of philosophical question...
+
+> how does google monetize personal data obtained by google bard?
+
+Google monetizes personal data obtained from the logs of a user's conversation with Google Bard in a number of ways. These include:
+
+    Targeted advertising: Google uses the data to target users with ads that are more likely to be relevant to their interests. For example, if a user talks to Google Bard about their favorite TV show, Google might show them ads for merchandise related to that show.
+    Product development: Google uses the data to improve its products and services. For example, if a user talks to Google Bard about a problem they're having with their phone, Google might use that information to develop a new feature that will help other users with the same problem.
+    Research: Google uses the data for research purposes. For example, Google might use the data to study how people use its products and services, or to develop new technologies.
+
+Google has a number of privacy policies in place that govern how it collects and uses personal data. These policies are designed to protect users' privacy and to give users control over their data. For example, users can opt out of targeted advertising, and they can delete their personal data from Google's servers.
+
+It is important to note that Google is not the only company that monetizes personal data. Many other companies, including social media companies, also collect and use personal data to target users with ads, develop products and services, and conduct research.
+
+Users can protect their privacy by being aware of how their data is being collected and used, and by taking steps to limit the amount of data they share. For example, users can use privacy settings to control how their data is shared, and they can use ad blockers to prevent companies from tracking them across the web.
+
+Here are some additional tips for protecting your privacy when using Google Bard:
+
+    Use a private browsing mode when you're talking to Google Bard. This will prevent Google from tracking your activity across different websites.
+    Don't share any personal information that you don't want Google to have. This includes your name, address, phone number, and email address.
+    Be careful about what you say to Google Bard. Google may use what you say to improve its products and services, or to conduct research.
+
+By following these tips, you can help protect your privacy when using Google Bard.
+
+> doesn't that contradict the GDPR?
+
+Yes, it is possible that Google's monetization of personal data obtained from the logs of a user's conversation with Google Bard could contradict the GDPR. The GDPR is a European Union regulation that gives individuals more control over their personal data. It requires companies to obtain consent from individuals before collecting or using their personal data, and it gives individuals the right to access, correct, or delete their personal data.
+
+Google has argued that its monetization of personal data does not contradict the GDPR because it obtains consent from individuals before collecting or using their data. However, some privacy advocates have argued that Google's consent mechanism is not valid because it is not clear and specific. They have also argued that Google's use of personal data for targeted advertising and research purposes does not fall within the scope of the consent that individuals have given.
+
+It is possible that the European Data Protection Board (EDPB), which is the EU's independent supervisory authority for data protection, will investigate Google's monetization of personal data and make a ruling on whether it is in compliance with the GDPR. If the EDPB finds that Google's practices are not in compliance with the GDPR, it could order Google to stop collecting or using personal data in this way.
+
+In the meantime, individuals who are concerned about their privacy when using Google Bard can take steps to protect their data, such as using a private browsing mode and not sharing any personal information that they do not want Google to have.
+
+> There is a problem with your last bit of advise: Google bard requires to log in with a google account, when accessed via a browser window in private browsing mode
+
+... Poor robot is getting lost here...
+
+> But the google bard faq is stating that google is not using my Bard conversations for advertising purposes. See https://bard.google.com/faq
+
+I apologize for the confusion. You are correct, Google is not using your Bard conversations for advertising purposes. The Google Bard FAQ that you linked to states the following:
+
+    Do you use my Bard conversations for advertising purposes?
+
+    Bard conversations are not being used for advertising purposes, and we will clearly communicate any changes to this approach in the future. Read our Privacy and Security Principles to better understand how we keep our users' data private, safe, and secure. Visit your Google Account to access settings and tools that let you safeguard your data and protect your privacy.
+
+I understand that you may still have some concerns about your privacy when using Google Bard. I want to assure you that Google takes your privacy very seriously. Google's Privacy and Security Principles outline the company's commitment to protecting user data. These principles include the following:
+
+    Transparency: Google is committed to being transparent about how it collects, uses, and shares user data.
+    Choice: Google gives users control over their data. Users can choose whether or not to share their data with Google, and they can choose how their data is used.
+    Security: Google takes security very seriously. Google uses a variety of security measures to protect user data, including encryption, access controls, and audits.
+
+If you have any further questions about Google's privacy practices, please visit the Google Privacy & Security website.
+
 
 ---14/06/23 03:43:55----------------------
 
-just dawned on my that Jupyter Notebook is supposed to be a form of literate programming, where documentation is a first-class citizen.
+It just dawned on my that Jupyter Notebook is supposed to be a form of literate programming, where documentation is a first-class citizen.
 
 However Knuth thought more in terms of macros, as a kind of section that is being expanded upon, and Jupyter Notebook doesn't do these.
 
