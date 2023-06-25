@@ -355,10 +355,18 @@ Get the latest release for a public repository
 Kubernetes:
     - extracting interesting fields from a set of pods:
 
-         An overview of what the containers in pods are running: (name,image,command,arguments of commands, environment)
 
-         kubectl get pods -o json | jq '.items[] | {name: .metadata.name, image: .spec.containers[].image, command: .spec.containers[].command, args: .spec.containers[].args, env: .spec.containers[].env }'
+         Pod name and pod IP addreess
 
+         kubectl get pods -o custom-columns=NAME:metadata.name,IP:status.podIP
+
+         An overview of what the containers in pods are running: (name,image,command,arguments of commands, environment) - and pod IP
+
+         kubectl get pods -o json | jq '.items[] | {name: .metadata.name, image: .spec.containers[].image, command: .spec.containers[].command, args: .spec.containers[].args, env: .spec.containers[].env, status.podIP, podIP: .status.podIP }'
+
+    - list all ingresses (with ip addresses)
+
+        kubectl get ingress --all-namespaces
 
     - https://github.com/ahmetb/kubectx 
         contains utils: 
@@ -2031,3 +2039,17 @@ JEP 444: Virtual Threads Arrive in JDK 21
 
 -----
 
+Python turtle package on OSX
+
+    - install python via brew
+
+    brew install python3
+
+    - get version
+    
+    /opt/homebrew/bin/python3 --version
+    Python 3.11.4
+
+    - install python tkinter binding for the same version!
+
+    brew install python-tk@3.11
