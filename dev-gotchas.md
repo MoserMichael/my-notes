@@ -11,6 +11,35 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 I also got another blog for [stuff that i used to post on twitter](dev-other-blog.md)
 
+
+---06/07/23 12:04:39----------------------
+
+Some programming errors creep up again and again. Maybe i will refrain repeating them, by becoming more aware of them - so lets write them down.
+
+--
+
+I thought that the following will run, and return True, if for at least one of the elements the function ```process_elem``` will return True,
+Not so fast, ```keep_going or process_elem(elem)``` will only be called the first time, if ```keep_going``` is True then ```process_elem``` will not be called at all! (That's shortcut evaluation, but I keep forgetting about that, although it is pretty elementarry)
+
+```
+    keep_going = False
+
+    for elem in elements:
+        keep_going = keep_going or process_elem(elem)
+
+    return keep_going    
+```
+ 
+--
+
+- if there is a sequence of if statements, where each subsequent clause is ```elif``` - yeah, sometimes i forget about that and write ```if``` instead of ```elif```. Happens again and again - and has to be debugged.
+
+--
+
+Edge cases in a flow! Now one approach to check for them is to have exhaustive, 100% coverage unit tests - this forces you to go through all of the edge conditions. I know it's hard, but it is worth it. One should really go for that for stuff that has to maintain state between calls. 
+
+(To be continued...)
+
 ---23/02/23 07:08:35----------------------
 
 My new project is a programming language called PYX - the project is [here](https://github.com/MoserMichael/jscriptparse). I guess that's a project that will keep me busy for a while.
@@ -20,6 +49,7 @@ One problem is: how do you test a programming language? One approach is bootstra
 I am trying to test the PYX programming language by implementing leetcode problems. (never bothered to do leetcode exercise in serious, maybe i will get some sense from this kind of exercise ;-)
 
 I have also started to keep most of my notes on various subjects in the following file now: [here it is](https://github.com/MoserMichael/my-notes/blob/master/learning-all-sorts-of-stuff.txt) . Most of my work involves some sort of navigation through diverse software environments. Now these environments are all different - but they do have similarities. The most important part seems to be: not getting lost.
+
 
 ---22/02/23 17:27:35----------------------
 

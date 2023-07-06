@@ -1,0 +1,103 @@
+Code review survival guide:
+
+Me:
+
+Before submitting your first PR
+    - while studying the codebase, look out for the following:
+        - is code written in the same style?
+        - study recent commits, is there a change in conventions or change in coding style?
+    - ask if there are any expectation on the coding style
+    - ask who will be submitting the code, look at PR's by the same person
+     
+Before submitting any PR
+    - if it is of significant size: 
+        - give the reviewer an overview of the solution (this can reduce tensions during the review process)
+    - High unit test coverage turns out to be a must: otherwise you didn't think enough about the edge cases (that's where a lot of problems are)
+
+Politics
+    - if you are several months into a job, and notice that code reviews are strictly one sided (from top to bottom)
+        - or that an important team member never puts up his changes for review by you, then raise that question with the management! That's a legitimate concern, as code review practice is supposed to be knowledge sharing.
+
+Looking at videos at youtube:
+
+https://www.youtube.com/watch?v=GCSQZqzm18U
+    
+    How to do code review?
+
+    Make a checklist like:
+        - SOLID principles: https://en.wikipedia.org/wiki/SOLID
+        - readability
+        - security
+        - Platform specific problems:
+            in mobile apps: 
+                will it work with low privilege?
+                user leaves flow at any given moment
+                connection loss
+        - try to understand the whole solution before starting PR.
+        - automate PR process
+            - lint checks (for submitter)
+        - how urgent is the change?
+        - is there time left for optimization?
+        - review should be a source of knowledge for requester:
+            - mention other possibilities, explain your comments.
+        - appreciate good solutions (reduces tension between submitter and reviewer)
+
+
+https://www.youtube.com/watch?v=Y9sp8gONv9M by Cody Engel @CodyEngelsTalks
+
+    - Code review process
+        - first pass through the PR
+            - review unit test first: to fin out what the code is doing
+            - loot at the code: does anything stick out (as begin not correct) ? (if yes: start in depth review, if not - approve the thing)
+        - second oass through the PR
+            - are the changes straightforward? (does not depend on size of PR)
+            - focus on best practices
+                - do the names make sense?
+                - language features used appropriately? (is this idiomatic code?)
+                    - ask questions if not (example: if Kotlin is written as if it were Java)
+                - check if unit tests if they are doing what they say
+                    - red flag: class under test is mocked.
+            - ask questions about business logic if the requirements are not clear.       
+            
+            - look for code that he likes - and give positive feedback if found. (thumbs up)
+
+        - in depth code review           
+            - open the code in the IDE,
+                - manually test the changes (go through unit tests) , go through unit test in debugger
+                - set breakpoint in top level of the change, strep through the code of the change.
+
+            - easy to follow code (calls in one direction) vs code that calls multiple directions (much more complicated case)
+                - ask questions about interactions - if flow is complicated (he says 'spaghetti')
+
+    - General
+        - frame things as questions or suggestions
+        - his policy
+            - otherwise approve some seventy percent of the code.
+            - not approve 20% of the code (leaves questions)
+            - remaining 10% - block the code review with change requests.
+
+
+https://www.youtube.com/watch?v=rTvq8vS42zk
+
+    Code review is a social activity:
+        - knowledge sharing
+        - mechanism of improving the code base (did you consider this?)
+        - his analogy: when working on a big code base all are like blind people, touching on an elephant - no one has the full picture, so they have to cooperate.x
+    
+    How to do the code review?
+        - apply code of the PR,
+        - review the tests code
+            
+    Healthy code review discussion:
+        - "discuss questions that don't have a clear-cut answer, but concrete enough to be debated"
+        - Design questions should not occur during code review!
+        - nitpicks (stylistic question) - that's not healthy. Says these question should be cleared out a priori - and ideally delegated to a lint program
+
+        - says what should be discussed:
+            - naming 
+            - how to test things / what additional tests should be there?
+    
+    Advise:
+        - For big PR's: says it needs multiple diffs, where each diff can be viewed on it's own (How? I think that is not a realistic expectation - unless you work according to waterfall methodology, even here interfaces are changed, if they turn out to be wrong, now go an retrofit that into 'clear commit sequence')
+            
+
