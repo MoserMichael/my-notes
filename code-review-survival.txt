@@ -98,6 +98,51 @@ https://www.youtube.com/watch?v=rTvq8vS42zk
             - how to test things / what additional tests should be there?
     
     Advise:
-        - For big PR's: says it needs multiple diffs, where each diff can be viewed on it's own (How? I think that is not a realistic expectation - unless you work according to waterfall methodology, even here interfaces are changed, if they turn out to be wrong, now go an retrofit that into 'clear commit sequence')
+        - For big PR's: says it needs multiple diffs, where each diff can be viewed on it's own - the idea is that it should be easier to review the peaces.
+
+          (1 - How is that possible? You need to write the whole pull request in git branch A - finish all the work, including tests. 
+           2 - then create another git branch B, copy part of the files from branch A to branch B, each time copy logically related files, and make a commit that 'stands for itself'.
+              /still, i think that's a terrible practice - to ask for that
+
+               Still this supposes that the solution of a big PR can be broken up into strict layers.
+          )
+            
+-----
+
+Smartbear telling a very good story on code reviews, and how the thing can go wrong. [link](https://smartbear.com/blog/avoiding-the-politics-of-code-review/) Here is my summary:
+
+Problems
+- formalizing and mandating a corporate code review process can lead to a unintended consequences
+- you also need to teach everyone to use the code review tool in an effective manner! That's not a trivial task
+
+In practice:
+
+- the code review policy can be used in a toxic manner by an individual within the company. (everything in a company has some department political aspect)
+  Patterns of abuse:
+  - The big man on the campus
+    Individual uses code reviews as a way to cement his position of influence.
+        - nitpicking on every detail
+        - problem: the constant flow of negative feedback creates a situation of learned helplessness on the part of the individual under review.
+        (this means that the individual doesn't even try anything, and falls into a state of passiveness, for fear of getting another bunch of hits)
+        - problem for the organisation: the team does not scale well. The big man on the campus becomes a scare resource and bottleneck.
+   - The cool kids: instead of one man there is a clique with elevated privileges
+        - problem: leads to groupthink
+        - "Admittance to the inner circle is hard-won and requires a lot of invested time and proved loyalty."
+        - problem: "good ideas and practices are discarded if they come from the wrong people."
+          initiative is limited to "the most long-tenured and thus the most insulated people on the team."
+        - the cool kids also institute an informal "tournament ladder" - divide the team into in group, out group, and other groups in between.
+          people are assigned to the group based on arbitrary detail.
+            - people focus on the wrong thing, and not on moving the product further
+            - it makes everyone neurotic, as it is hard for the individuals to play these games.
+- The best part: how to avoid it:
+    - "Ensure that reviews are two-way. Never have people who only review and people who only get reviewed."
+    - "Always focus on the code and not the person who wrote the code."
+    - "Make the reviews small, frequent, and informal. Marathon group sessions in rooms make people defensive."
+    - "Frame things as questions and suggestions rather than orders and accusations. Ask that others do the same."
+    - "Automate as many checks as possible so that reviews don't focus on simple details."
+    - You can frame the review as optional "asking for advice" instead of a gatekeeper approach of "getting the code approved"
+    - Says that the potential harm of the bad approach is worse than taking up the risks, that is taking the risks that come with the policy of not requiring a code review for each and every commit.
+
+
             
 
