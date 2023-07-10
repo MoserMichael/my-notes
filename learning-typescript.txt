@@ -6,6 +6,9 @@
 - typescript: superset of javascript, adds *optional* type annotation, acts as a preprocessor (translates *.ts into *.js)
     see short intro: https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
     full book: https://www.typescriptlang.org/docs/handbook/2/basic-types.html
+               https://www.typescriptlang.org/docs/handbook/2/objects.html
+
+    Concise typescript book https://github.com/gibbok/typescript-book
 
 - install it: https://www.typescriptlang.org/download
     npm install -g typescript
@@ -77,5 +80,13 @@
     "strictNullChecks": true /* Enable strict null checks. */,
     "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
     "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+
+
+=====
+
+export class MyClass {
+  // ? means myProperty is optional, and if no value is given, that the value will be set to “undefined”
+  myProperty? : string;
+}
 
 
