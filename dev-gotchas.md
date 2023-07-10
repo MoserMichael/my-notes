@@ -270,20 +270,14 @@ The deficiencies that I found with the github code review tool:
 
 I wonder if someone has made an alternative UI for code reviews, one that would be better suited for the task...
 
-<<< Current music: [Black Flag - Nervous Breakdown](https://www.youtube.com/watch?v=302oEzSPCqE)  >>>
-
-<<< You got more of it in my playlist [Punk for visiting the Tax man](https://www.youtube.com/playlist?list=PLKLJgfW_iAYv6WJm1zqWqheNN-dmpOIbt) >>>
-
 ---19/05/22 09:18:58----------------------
--- 
 
-wAlso see my notes on studying code review processes [link](https://github.com/MoserMichael/my-notes/blob/master/code-review-survival.txt)
-
----
+see my notes on studying code review processes [link](https://github.com/MoserMichael/my-notes/blob/master/code-review-survival.txt)
 
 a funny picture on the subject:
 
 ![code review](media/code-review.jpg)
+
 
 ---08/05/22 21:57:10----------------------
 
