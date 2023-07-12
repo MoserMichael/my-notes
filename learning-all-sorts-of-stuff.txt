@@ -404,6 +404,14 @@ Kubernetes:
           kubectl -it pod-name sh
 
 
+      - list all namespaces 
+
+            kubectl get ns
+
+      - switching namespaces and cluster context: (there is an nice utility for that: kubectx + kubens)
+
+            https://github.com/ahmetb/kubectx
+
 =======
 
 Show logs of all pods (name of pod/container is in each line) - and grep through them

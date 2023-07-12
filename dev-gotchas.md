@@ -12,6 +12,10 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 I also got another blog for [stuff that i used to post on twitter](dev-other-blog.md)
 
 
+---12/07/23 07:46:26----------------------
+
+I think that 'noodle code' should be the term 'for spaghetti code ++' . Noodle code is the same pastry disguised in object oriented and functional parlance...
+
 ---06/07/23 12:04:39----------------------
 
 Some programming errors creep up again and again. Maybe i will refrain repeating them, by becoming more aware of them - so lets write them down.
