@@ -16,6 +16,8 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 I think that 'noodle code' should be the term 'for spaghetti code ++' . Noodle code is the same pastry disguised in object oriented and functional parlance...
 
+On the other hand: projects in object oriented spaghetti code++ tend to be more complex and larger than procedural spaghetti code. You can solve more complex and demanding problems in this way. You tend to end up with something more scalable.
+
 ---06/07/23 12:04:39----------------------
 
 Some programming errors creep up again and again. Maybe i will refrain repeating them, by becoming more aware of them - so lets write them down.
@@ -59,17 +61,24 @@ I have also started to keep most of my notes on various subjects in the followin
 
 I somehow got over the state of ChatGPT induced shock. Now i have come to think of the following:
 
-- there is still a lot of value in things other than pure coding of leetcode problems - you need to understand the subject domain and understand what is being done, you need to be able to communicate with people who are defining the requirements and also need to be able to understand an existing code base.
-- i guess it will still take some qualitative leaps to solve the remaining issues. Maybe that time will be comparable to the time needed to fix self driving cars - not sure when it all works out.
-- however 'the times are they are a-changing', no doubt about that. And you never know what's around the corner...
+- We still have a niche, as Human programmers: ChatGTP is good at leetcode, but there is still a lot of value in things in other areas: you need to understand the subject domain and understand what is being done:
+    - you need to be able to communicate with people who are defining the requirements 
+    - you also need to be able to understand an existing code base, the archiecture of a product, need to be able to explain why things are done the way they are.
+- i guess it will still take some qualitative leaps to solve the remaining issues. Maybe that time will be comparable to the time needed to fix self driving cars - not sure when it all works out.-
+
+However 'the times are they are a-changing', no doubt about that. And you never know what's around the corner...
 
 The most immediate changes will probably happen in the area of search engines - and in how we are searching for information in general. Having a chat with ChatGPT may be more informative then having to go through pages of search results - where the relevance of the search results is subject to the whims of spammers and the whims of the search engine.
+(and the quality of the main general search engine is declining steadily)
+
+Somehow i found ChatGTP to be an effective assistan with CSS - it just shines on any quesion on how to move around tags in html (don't need to do that often)
 
 Another interesting tendency is that the big media companies are now pushing paid services in addition to pushing targeted advertising. (see twitter and facebook, who are now charging for account verification or even for two-factor authentication (well some say that's because ad-tech is running into problems - which is due to the economy)
 
-Now is it possible, that 'advanced search' capabilities like chatting with ChatGPT will be turned into a paid service, or will the ChatBot add casual references to relevant products into the conversation? I am not sure how banner adds will work, given that all the attention of the user is focused on the conversation with the AI bot. We will have to wait for an answer, apparently.
+- Interesting if these changes will make it harder for the AI companies to obtain training data for the language models, I wonder if that will have an effect on the quality of language models.
+- Now is it possible, that 'advanced search' capabilities like chatting with ChatGPT will be turned into a paid service, or will the ChatBot will add casual references to relevant products into the conversation? I am not sure how banner adds will work, given that all the attention of the user is focused on the conversation with the AI bot. We will have to wait for an answer, apparently... but maybe there is enough money in monetizing API access, who knows.
 
-I am wondering, how this will affect education, in the long run.
+I am wondering, how this will affect education, in the long run:
 
 - Most kids don't seem to be learning for the sake of acquiring real insight, most of them do it to pass some milestone that they are expected to pass. Now they see this device that would spit out essays in a minute. How will the kids react? Will they now strive for real knowledge and insight, given that this would differentiate between them and the computer? I frankly don't know. To reformulate the question: will this thing result in greater disorientation, or will we find a new sense of purpose?
 - Will young kids still go a computer science education, given that it will probably get harder to get an entry level job? I don't know. Will people still try gain an understanding of how technical things work, or will we treat the computer as a black box that is best left untouched?
