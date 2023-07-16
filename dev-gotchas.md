@@ -18,6 +18,10 @@ I think that 'noodle code' should be the term 'for spaghetti code ++' . Noodle c
 
 On the other hand: projects in object oriented spaghetti code++ tend to be more complex and larger than procedural spaghetti code. You can solve more complex and demanding problems in this way. You tend to end up with something more scalable.
 
+One way to end up with bad code in a script: a simple script is usually being written in bash/shell script. Now at some point things get complicated, and it needs to be re-written (usually into python). This rewrite is often resulting into some code which is not quite 'pythonic'. Here you are - 'gotcha' !!!
+I don't have a fix for this kind of situation. Maybe it's a better idea to start to write these scripts in python...
+
+
 ---06/07/23 12:04:39----------------------
 
 Some programming errors creep up again and again. Maybe i will refrain repeating them, by becoming more aware of them - so lets write them down.

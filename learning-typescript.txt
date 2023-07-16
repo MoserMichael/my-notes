@@ -49,6 +49,11 @@
 
                     console.log(a==b); // true
                     console.log(a===b); // false
+
+     void       : return type that has no value. A variable of type void can have value null or undefined (why?)
+
+     never      : placeholder type that is 'never' going to occur. A variable of type never can't have any value...
+
  
 - type inference
     let a = "blabla"; // this one is easy, the compiler can infer the type, it's string\
@@ -117,60 +122,141 @@
 
 Types 
 
-    // type NumOrString can either be a Number or a String - that's a Union type!
+        // type NumOrString can either be a Number or a String - that's a Union type!
 
-    type NumOrString = Number | String
+        type NumOrString = Number | String
 
-    function add(arg : NumOrString) {
-        if (typeof arg === "number") {
-            return 1 + arg;  // if you want to use any alternative - then you have to check the type before use!
-        }
-        if (typeof arg === "string") {
-            return parseInt(arg) + 1
-        }
-        return -1; // without this you get error: "Not all code paths return a value"
-    }
-
-    // but you can do a better exhaustive check with if .. else 
-
-    function add(arg : NumOrString) {
-        if (typeof arg === "number") {
-            return 1 + arg;  // if you want to use any alternative - then you have to check the type before use!
-        } else { // arg === "string is assumed
-            return parseInt(arg) + 1
-        }
-    }
-
-
-    // a constant is also a type (a Literal type), and you can have enumerations, by chaining constants up with | 
-    // a enumeration as a union of constants
-    type Direction = "left" | "right" | "up" | "down"
-
-    type Pos = {
-        x: number;
-        y: number;
-    }
-
-    function goTo( arg: Pos, dir : Direction) : Pos {
-
-        if (dir == "left") { // now you need to check for possible values to deal with the enumeration
-            return { x: arg.x-1, y: arg.y };
-        }
-        if (dir == "right") {
-            return { x: arg.x+1, y: arg.y };
-        }
-        if (dir == "up") {
-            return { x: arg.x, y: arg.y-1 };
+        function add(arg : NumOrString) {
+            if (typeof arg === "number") { // that's called 'Narrowing' - need to check which type applies - of this union type.
+                return 1 + arg;  // if you want to use any alternative - then you have to check the type before use!
+            }
+            if (typeof arg === "string") {
+                return parseInt(arg) + 1
+            }
+            return -1; // without this you get error: "Not all code paths return a value"
         }
 
-        if (dir == "down") {
-            return { x: arg.x, y: arg.y+1 };
+        // but you can do a better exhaustive check with if .. else 
+
+        function add(arg : NumOrString) {
+            if (typeof arg === "number") { // that's called 'Narrowing' - need to check which type applies - of this union type.
+                return 1 + arg;  // if you want to use any alternative - then you have to check the type before use!
+            } else { // arg === "string is assumed
+                return parseInt(arg) + 1
+            }
         }
 
-        return arg;
-    }
 
-Exntending
+        // a constant is also a type (a Literal type), and you can have enumerations, by chaining constants up with | 
+        // a enumeration as a union of constants
+        type Direction = "left" | "right" | "up" | "down"
+
+        type Pos = {
+            x: number;
+            y: number;
+        }
+
+        function goTo( arg: Pos, dir : Direction) : Pos {
+
+            if (dir == "left") { // now you need to check for possible values to deal with the enumeration
+                return { x: arg.x-1, y: arg.y };
+            }
+            if (dir == "right") {
+                return { x: arg.x+1, y: arg.y };
+            }
+            if (dir == "up") {
+                return { x: arg.x, y: arg.y-1 };
+            }
+
+            if (dir == "down") {
+                return { x: arg.x, y: arg.y+1 };
+            }
+
+            return arg;
+        }
+
+    "Truthy" is a javascript thing: it means that variable passes boolean check (if (var) {...) 
+    Value is "truthy" - if it is not either one of: false, 0, -0, 0n, "", null, undefined, NaN. (if it has one of these value then it's "falsy")
+
+    A variable is "Truthy" if it is not null or undefined. Checking for "truthyness" (that's a typescript term)
+
+        function checkTruthy(a : string | null | undefined) {
+            if (a) { // check if it is "Truthy"
+                console.log(`a is truthy (not null or undefined): ${a}`)
+            } else {
+                console.log(`a is not truthy ${a}`);
+            }
+        }
+
+        checkTruthy(null);
+        checkTruthy(undefined);
+        checkTruthy("blabla");
+        checkTruthy(""); // that's the problem case! the check if (a) is false for empty strings!!!
+        
+    A better check - this one is identifying "" as 'truthly', still 'undefined' is identified as 'not truthly'!
+
+        function checkTruthy(a : string | null | undefined) {
+            if (a == null) { // == null is true for null and undefined - but not for empty string !!!!
+                console.log(`a is not truthy ${a}`);
+            } else {
+                console.log(`a is truthy (not null or undefined): ${a}`)
+            }
+        }
+
+        checkTruthy(null);
+        checkTruthy(undefined);
+        checkTruthy("blabla");
+        checkTruthy("");
+
+    Type predicates - a function that validates if a variable is of a given type.
+
+        // Example type validation of strings.
+        
+        function isString(val : unknown) : val is string {
+            return typeof val === 'string';
+        }
+
+        let a="aaa";
+
+        if (isString(a)) {
+            console.log("value a is a string");
+        }
+
+        let b=12;
+
+        if (!isString(b)) {
+            console.log("value b is not a string");
+        }
+
+    
+    Non null assertion operator !
+
+        function incIt(val : number | undefined | null) : number {
+            //return val + 1;  // can't do that null + 1 is not allowed in typescript
+            return val! + 1;   // the ! asserts that the value is not null - it just ignores the typecheck of typescript
+                               // (the assertion doesn't mean that a runtime check is done - it just ignores the typecheck!)
+                               // it may actually crash at runtime because of that!!!
+                               // see https://stackoverflow.com/questions/38874928/operator-in-typescript-after-object-method
+        }
+
+        console.log(incIt(undefined)); // NaN (in javascript undefined + 1 == NaN)
+
+        console.log(incIt(1)); // 2
+
+   Where  would you need that null assertion operator?
+
+        // discriminating union: radius is set if kind is "circle", sideLength is set  if kind is "square"
+        // but there is no way for the typechecker to know which one is valid.
+        // ... so they provide a way to ignore all of the typescript typechecking goodness - at your own peril!
+
+        interface Shape {
+            kind: "circle" | "square";
+            radius?: number;
+            sideLength?: number;
+        }
+
+Exntending interfaces vs extending types
+
     - derive from type to add a field into the derived type
 
         interface Animal {
@@ -199,6 +285,34 @@ Exntending
         }
 
 
+=== 
+    Continuation of 'Non null assertion operator !'
+    A better way to do discriminating unions: (much better)
+
+
+
+        interface Circle {
+            kind: "circle";
+            radius: number;
+        }
+        interface Square {
+            kind: "square";
+            sideLength: number;
+        }
+
+        type Shape = Circle | Square;
+
+        function getArea(shape: Shape) {
+            switch (shape.kind) {
+                case "circle":
+                    return Math.PI * shape.radius ** 2;
+                case "square":
+                    return shape.sideLength ** 2;
+                default:
+                    const _exhaustiveCheck: never = shape;
+                    return _exhaustiveCheck;
+            }
+        }    
 =====
 
 export class MyClass {
