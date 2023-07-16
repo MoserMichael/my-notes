@@ -5,6 +5,7 @@
 ... so no i am putting my observations over here, instead of posting them on social media (kind of)
 
 
+<!--
 ---14/06/23 04:16:45----------------------
 
 I had an interesting conversation with Google Bard, the poor robot is getting lost quickly, or rather not? Interesting that they now improving the quality of handling logic reasoning tasks by adding "implicit code execution"  [link](https://atlasalpha.serenebase.com/post?recordId=recZF8XUdJxXWleF6). I keep wandering to what extent this technique can be generalized, but that is probably a kind of philosophical question...
@@ -60,7 +61,7 @@ I understand that you may still have some concerns about your privacy when using
     Security: Google takes security very seriously. Google uses a variety of security measures to protect user data, including encryption, access controls, and audits.
 
 If you have any further questions about Google's privacy practices, please visit the Google Privacy & Security website.
-
+//-->
 
 ---14/06/23 03:43:55----------------------
 
