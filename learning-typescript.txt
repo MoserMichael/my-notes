@@ -1,7 +1,17 @@
 
-- first dynamic programming languages with optional typing seems to have been common lisp (1985). Then came Typescript - since then lots of other dynamic programming language have adopted the idea (Python 3.5 https://docs.python.org/3/library/typing.html - 2015, PHP 7 - in 2015 ...)
+- History lesson: 
+    first dynamic programming languages with optional typing seems to have been common lisp (1985). 
+    Then came others. 
+        - Typescript,  
+        - (Python 3.5 have type hints (though this is not always used for type checking) https://docs.python.org/3/library/typing.html - 2015, PHP 7 - in 2015 ...)
+    The feature has many uses other than type checking: completion in an IDE can be guided by this, automatic generation of documentation (javadoc like), etc. etc.
 
-- Javascript has lots of these supersets for adding optional typing: typescript (developed by Microsoft) there are others: Closure (google - https://developers.google.com/closure/compiler/) and flow (Facebook - https://flow.org/ )  ::: but Typescript is most popular (and the first one of these) Even javascript is working on a proposal! (https://github.com/tc39/proposal-type-annotations)
+- Javascript has seen lots of attempts to add a language extension that compiles down to javascript: (all with the purpose of 'adding types')
+    - typescript (developed by Microsoft)  /it's the most popular from the crowd/
+    - Closure (google - https://developers.google.com/closure/compiler/) 
+    - flow (Facebook - https://flow.org/ )  
+    - even javascript is working on a proposal! (https://github.com/tc39/proposal-type-annotations) /interesting; will that one get all the complexities of typescript?/
+        
 
 - typescript: superset of javascript, adds *optional* type annotation, acts as a preprocessor (translates *.ts into *.js)
 
@@ -25,7 +35,7 @@
                   For variable of type any - one is allowed to access any member (just like in javascript) and assign it a value of any other type.
 
     undefined   : just like in javascript. Function that returns nothing - assigning the return value is value 'undefined'.
-                    A variable declared as 'undefined' type can only have be assigned     value - undefined.
+                    A variable declared as 'undefined' type can only have be assigned value - undefined.
                         let a : undefined = undefined
     
     null        : the type of the null value. 
@@ -40,8 +50,19 @@
                     console.log(a==b); // true
                     console.log(a===b); // false
  
+- type inference
+    let a = "blabla"; // this one is easy, the compiler can infer the type, it's string\
+    let a : string = "blabla"; // not needed as such, this form declares the type of variable a explicitly
+
+- method parameters and return values: if you declare a argument type/return value then it will be enforced (logical thing to do)
+
+    function foo(a : string) : number {
+        return 1 + parseFloat(a)
+    }
+
 - arithmetics:
-    in typescript you can't add a number to undefined - that's not allowed. In javascript adding number to undefined results in not a number NaN (!)
+    in typescript you can't add a number to undefined - that's not allowed. 
+    In javascript adding number to undefined results in not a number NaN (!!!)
 
 - if you change stuff, so that they don't comply - then you get a warning (by default)
 
@@ -86,10 +107,96 @@
 
 -- other very nice options:
 
-     "strict": true /* Enable all strict type-checking options. */,
+    "strict": true /* Enable all strict type-checking options. */,
     "strictNullChecks": true /* Enable strict null checks. */,
     "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
     "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+    ״noImplicitAny״ - typescript can't infer a type? defaul behavior is to assign it the 'any' type (that's the default javascript behavior). This option marks such cases as an error - it's a king of 'no to javascript compatibility, super strict mode'
+
+=====
+
+Types 
+
+    // type NumOrString can either be a Number or a String - that's a Union type!
+
+    type NumOrString = Number | String
+
+    function add(arg : NumOrString) {
+        if (typeof arg === "number") {
+            return 1 + arg;  // if you want to use any alternative - then you have to check the type before use!
+        }
+        if (typeof arg === "string") {
+            return parseInt(arg) + 1
+        }
+        return -1; // without this you get error: "Not all code paths return a value"
+    }
+
+    // but you can do a better exhaustive check with if .. else 
+
+    function add(arg : NumOrString) {
+        if (typeof arg === "number") {
+            return 1 + arg;  // if you want to use any alternative - then you have to check the type before use!
+        } else { // arg === "string is assumed
+            return parseInt(arg) + 1
+        }
+    }
+
+
+    // a constant is also a type (a Literal type), and you can have enumerations, by chaining constants up with | 
+    // a enumeration as a union of constants
+    type Direction = "left" | "right" | "up" | "down"
+
+    type Pos = {
+        x: number;
+        y: number;
+    }
+
+    function goTo( arg: Pos, dir : Direction) : Pos {
+
+        if (dir == "left") { // now you need to check for possible values to deal with the enumeration
+            return { x: arg.x-1, y: arg.y };
+        }
+        if (dir == "right") {
+            return { x: arg.x+1, y: arg.y };
+        }
+        if (dir == "up") {
+            return { x: arg.x, y: arg.y-1 };
+        }
+
+        if (dir == "down") {
+            return { x: arg.x, y: arg.y+1 };
+        }
+
+        return arg;
+    }
+
+Exntending
+    - derive from type to add a field into the derived type
+
+        interface Animal {
+            name: string
+        }
+        interface Bear extends Animal {
+            honey: boolean
+        }
+
+    - define a new interface as intersection of two types (the result of the intersection has additional fields)
+
+        type Animal = {
+            name: string
+        }
+        type Bear = Animal & {
+            honey: boolean
+        }
+
+    - with interface you can do the following to add a field (you can't do that redefining with type declarations !!!)
+
+        interface Window {
+            title: string
+        }
+        interface Window {
+            ts: TypeScriptAPI
+        }
 
 
 =====
@@ -164,3 +271,6 @@ export class MyClass {
         - typescript has function overloading! (Javascript doesn't have that - last function with a name is what counts)
     
 
+-- Arrays:
+    
+        
