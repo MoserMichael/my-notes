@@ -255,6 +255,21 @@ Types
             sideLength?: number;
         }
 
+   Callback function types
+
+        type LogFunctionCB = (a: string) => void;
+
+        function doSomething(logFunc : LogFunctionCB) {
+
+            logFunc("hello world");
+        }
+
+        function logIt(msg : string) {
+            console.log(`Msg ${msg}`);
+        }
+
+        doSomething(logIt);
+
 Exntending interfaces vs extending types
 
     - derive from type to add a field into the derived type

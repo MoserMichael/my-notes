@@ -186,6 +186,11 @@ Almost like in the real world ;-)
 
 (Obligatory xkcd link: https://m.xkcd.com/386/ ) 
 
+.. Now i got a problem: where do i get any news from?
+
+(Later update: you can ask google bard - it doesn't have it in its knowledge base, but they run a query on google news, and make a summary of it!)
+
+
 ---21/08/22 10:18:15----------------------
 
 Learning rust. I once had a look at it, some years ago, but i forgot all of it. Also they seem to have changed quite a lot...
