@@ -232,7 +232,7 @@ Types
     Non null assertion operator !
 
         function incIt(val : number | undefined | null) : number {
-            //return val + 1;  // can't do that null + 1 is not allowed in typescript
+            //return val + 1;  // can't do that null + 1 is not allowed on undefined or null values
             return val! + 1;   // the ! asserts that the value is not null - it just ignores the typecheck of typescript
                                // (the assertion doesn't mean that a runtime check is done - it just ignores the typecheck!)
                                // it may actually crash at runtime because of that!!!
@@ -270,6 +270,84 @@ Types
 
         doSomething(logIt);
 
+    Call signatures: types with members
+
+        type LogFunctionWithPrefixCB = {
+            logPrefix: string;
+            call : (stringToLog: string) => void;
+        }
+
+        function makeLogFunctionWithPrefixCB( prefixStr : string) : LogFunctionWithPrefixCB {
+
+            let loggerFunc = function(this : LogFunctionWithPrefixCB, stringToLog: string) {
+                console.log(`${this.logPrefix}: ${stringToLog}`);
+            };
+
+            let ret : LogFunctionWithPrefixCB = {
+                logPrefix: prefixStr,
+                call : loggerFunc
+            };
+
+            return ret;
+        }
+
+        // using the
+        function doSomething(logFunc : LogFunctionWithPrefixCB) {
+            logFunc.call("hello world")
+        }
+
+
+        let logger = makeLogFunctionWithPrefixCB("prefix");
+
+        logger.call("lala");
+
+        doSomething(logger);
+
+    The next trick ... turns out to describe the properties of the function object - not a dictionary that has a function member!
+
+        type LogFunctionWithPrefixCB = {
+          logPrefix: string;
+          (stringToLog: string): void;
+        }
+
+        function makeLogFunctionWithPrefixCB(prefixStr: string): LogFunctionWithPrefixCB {
+          const loggerFunc = function (stringToLog: string) {  // works with const loggerFunc, but not with let loggerFunc
+            console.log(`${loggerFunc.logPrefix}: ${stringToLog}`);
+          };
+          loggerFunc.logPrefix = prefixStr;
+          return loggerFunc;
+        }
+
+        // using the
+        function doSomething(logFunc: LogFunctionWithPrefixCB) {
+          logFunc("hello world");
+        }
+
+        let logger = makeLogFunctionWithPrefixCB("prefix");
+        doSomething(logger);
+
+
+    Generic function -  example with array elemen types
+
+        function firstElement<Type>(arr: Type[]): Type | undefined {
+          return arr[0];
+        }
+
+        // same as previous - the return type is derived
+        function firstElement2<Type>(arr: Type[]){
+          return arr[0];
+        }
+
+        console.log(typeof(firstElement(["a","b"])));
+        //"string"
+
+        console.log(typeof(firstElement([1, 2])));
+        //"number"
+
+        console.log(typeof(firstElement([])));
+        //"undefined"
+
+
 Exntending interfaces vs extending types
 
     - derive from type to add a field into the derived type
@@ -303,7 +381,6 @@ Exntending interfaces vs extending types
 === 
     Continuation of 'Non null assertion operator !'
     A better way to do discriminating unions: (much better)
-
 
 
         interface Circle {

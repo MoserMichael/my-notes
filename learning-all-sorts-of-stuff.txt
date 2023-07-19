@@ -399,10 +399,13 @@ Kubernetes:
 
       - run a shell in a pod (pod-name - listed with $(kubectl get pods)
 
-          kubectl -it pod-name bash
+          kubectl -it pod-name -- bash
 
-          kubectl -it pod-name sh
+          kubectl -it pod-name -- sh
 
+      - run a shell in a container cnt of a given pod (get list of containers for pod with $(kubectl describe pod pod-name)
+
+          kubectl -it pod-name -c container-name -- bash
 
       - list all namespaces 
 
@@ -411,6 +414,28 @@ Kubernetes:
       - switching namespaces and cluster context: (there is an nice utility for that: kubectx + kubens)
 
             https://github.com/ahmetb/kubectx
+
+       - what to do in a container without core-utils?
+
+            - no ps? list processes?
+
+                ls -l /proc/*/exe
+
+            - show command line for given PID
+    
+                cat /proc/PID/cmdline | xargs --null
+
+               or if no xargs:
+    
+                cat /proc/PID/cmdline | tr \\0 \_
+
+               ... and put in space instead of _
+
+
+
+
+                
+
 
 =======
 
