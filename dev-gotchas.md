@@ -40,13 +40,35 @@ Not so fast, ```keep_going or process_elem(elem)``` will only be called the firs
     return keep_going    
 ```
  
---
 
-- if there is a sequence of if statements, where each subsequent clause is ```elif``` - yeah, sometimes i forget about that and write ```if``` instead of ```elif```. Happens again and again - and has to be debugged.
+- python: if there is a sequence of if statements, where each subsequent clause is ```elif``` - yeah, sometimes i forget about that and write ```if``` instead of ```elif```. Happens again and again - and has to be debugged.
+
+- the vanishing log context. One of the main questions in backend-land is: where are the logs?
+  Now some systems change the log context over time. For example: jboss and even simple systems like gunicorn are putting their logs in one place during their initialization sequence. However futher down the road they decide otherwise - and put the logs in some other place. 
+    
+  A sure sign of this happening: you have several instances of the same service, and the logs stop at the same moment. I spent some time wondering if a given component stopped receiving any requests - checked all sort of possibilities. The confusing aspect is that you see *some* log, however that's only part of the picture...   
+
+  My error was that I looked at the command line of the process that was running the whole show. Once upon a time one would specify the configuration in the command line of the main process.
+  Now this is a simplified understanding o what is actually happening....
+
+- working with locks: if you have got hold of a lock, then you really have to make sure to release it, now in python you have the ```finally``` clause:
+
+```
+    try:
+        do something of great importance
+    catch ex:
+        do the stuff supposed to happen if that something failed
+    finally:
+        now here is the place to release that log
+```
+
+    Everything in a language seems to have some purpose (now not all languages like the idea o exceptions - you have a totally differnt mindset in golang. But that's another story...
 
 --
 
 Edge cases in a flow! Now one approach to check for them is to have exhaustive, 100% coverage unit tests - this forces you to go through all of the edge conditions. I know it's hard, but it is worth it. One should really go for that for stuff that has to maintain state between calls. 
+
+
 
 (To be continued...)
 

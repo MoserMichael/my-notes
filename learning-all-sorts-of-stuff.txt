@@ -52,6 +52,13 @@ vimdiff
 
 Mac/OSX tricks
 
+? remove colorcodes from text ? 
+
+    # kubectl get logs  - this one is returning text with color codes (i think that's very confusing). 
+    # kubectl logs POD_NAME - color escape sequences everywhere...
+
+    cat blabla.txt | sed -e 's/\x1b\[[0-9;]*m//g'
+
 ? built-in something is very different from what you expect ?
 
     # very true for sed - will install gsed 
@@ -431,10 +438,11 @@ Kubernetes:
 
                ... and put in space instead of _
 
+        - which deployment/replicaset/etc is controlling a given pod?
 
+            kubectl describe pod <pod-name>
 
-
-                
+            - result has line that starts with Controlled - this names which entity is controlling the pod
 
 
 =======
@@ -816,7 +824,6 @@ on OSX and linux - the same output for:
 ====================
 
 
-
 https://www.mongodb.com/docs/manual/reference/command/
 
 Mongo (just like Elasticsearch) is a document oriented database. 
@@ -896,7 +903,44 @@ Didn't know that mongo-db is used for search; so in what sense there is a equiva
 
     - Example session:
 
-mongo 
+====
+
+mongosh - the mongo shell
+
+Accessing mongo: use the mogosh shell (mongo - that is the old shell, it was deprecated)
+        (installation instructions: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/ )
+
+- in mongosh every map on a collection will return a Cursor object. You can convert it into a javascript array with toArray (big difference!!!)
+    - but toArray() will take a lot of time - the cursor is evaluated just as it is needed, whereas toArray() will walk the whole query!!!
+      (i had to do it, when translating an index from one db into another one, they were using the same index field values, so I had to get them all...)
+
+Reference on db.collection.find - query, projection, etc. etc.
+
+    https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
+
+mongosh
+
+    working with really large datasets
+
+    - makes sense to save a result to file (use node trick)
+        fs.writeFileSync('file_big_array.json', JSON.stringify( variable_you_want_to_store ) )
+
+    - in the new shell mongosh
+        a=fs.readFileSync('file_big_array.json').toString()
+
+---
+
+    # show db names - select a particular db name as the current one
+        show dbs
+        use <dbname>
+
+    # show name of all collections in current db.
+        db.getCollectionNames()
+
+    
+    # other stuff when working in shell.
+
+---
 
 > c=db.createCollection("tst")
 { "ok" : 1 }
@@ -915,36 +959,10 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 > c.find({_id: 123})
 { "_id" : 123, "a" : [ 1 ], "b" : [ 2 ], "c" : [ 3 ], "d" : [ 4 ], "e" : [ 5 ] }
 
-    - mongo operatator reference (very important link) https://www.mongodb.com/docs/manual/reference/operator/
-
-    - now mongo is not the real shell (old and obsolete. use mongosh !!!!
-        (installation instructions: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/ )
-
-    - in mongosh every map on a collection will return a Cursor object. You can convert it into a javascript array with toArray (big difference!!!)
-        - but toArray() will take a lot of time - the cursor is evaluated just as it is needed, whereas toArray() will walk the whole query!!!
-
-        - (i had to do it, when translating an index from one db into another one, they were using the same index field values, so I had to get them all...)
-
-Reference on db.collection.find - query, projection, etc. etc.
-
-    https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
-
-mongosh
-    working with really large datasets
-
-    - makes sense to save a result to file.
-        fs.writeFileSync('file_big_array.json', JSON.stringify( variable_you_want_to_store ) )
-
-
-    - reading the file back (in the old shell: mongo)
-        a=cat('file_big_array.json')
-        big_arr = eval(a)
-
-    - in the new shell
-        a=fs.readFileSync('file_big_array.json').toString()
-
+---
 
 Aggregation queries: (that's what they do for 'join')
+/these get complex, but are terribly important/
     
     https://www.mongodb.com/docs/manual/core/aggregation-pipeline/#std-label-aggregation-pipeline
 
