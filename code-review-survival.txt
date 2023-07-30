@@ -7,7 +7,7 @@ Before submitting your first PR
         - is code written in the same style?
         - study recent commits, is there a change in conventions or change in coding style?
     - ask if there are any expectation on the coding style
-    - ask who will be submitting the code, look at PR's by the same person
+    - ask who will be reviewing the code, look at PR's by the same person
      
 Before submitting any PR
     - if it is of significant size: 
