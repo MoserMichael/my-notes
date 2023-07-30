@@ -35,6 +35,7 @@ kubectl logs pods-with-colors | nocolorfilter | vim -
 It turns out that you can configure log4j to add color codes to the output, sometimes this feature is being used (would never enable it myself)
 
 
+<!--
 ---12/07/23 07:46:26----------------------
 
 I think that 'noodle code' should be the term 'for spaghetti code ++' . Noodle code is the same pastry disguised in object oriented and functional parlance...
@@ -43,6 +44,7 @@ On the other hand: projects in object oriented spaghetti code++ tend to be more 
 
 One way to end up with bad code in a script: a simple script is usually being written in bash/shell script. Now at some point things get complicated, and it needs to be re-written (usually into python). This rewrite is often resulting into some code which is not quite 'pythonic'. Here you are - 'gotcha' !!!
 I don't have a fix for this kind of situation. Maybe it's a better idea to start to write this kind of scripts in python, to begin with.
+//-->
 
 ---06/07/23 12:04:39----------------------
 
