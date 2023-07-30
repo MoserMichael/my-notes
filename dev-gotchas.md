@@ -46,6 +46,13 @@ One way to end up with bad code in a script: a simple script is usually being wr
 I don't have a fix for this kind of situation. Maybe it's a better idea to start to write this kind of scripts in python, to begin with.
 //-->
 
+---31/05/23 05:51:00----------------------
+
+Found an area where ChatGTP/Google Bard can be used with great benefit: I am not an expert in frontend stuff, but now I had to fiddle with CSS style sheets - the LLM knows all the style combinations, and its recommendations worked!
+
+They might have done some specialized training on CSS, I had less success when asking about other API's.
+
+
 ---06/07/23 12:04:39----------------------
 
 Some programming errors creep up again and again. Maybe i will refrain repeating them, by becoming more aware of them - so lets write them down.
