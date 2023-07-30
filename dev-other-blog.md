@@ -102,7 +102,7 @@ Saw a wonderful movie "Those Magnificent men in their flying machines".
 
 I am hardly watching modern movies, somehow got the impression they now have a problem with their script, the script nowadays often looks incomplete with a fragmented narrative (maybe it's just my impression).
 
-Let's ask "Dr. Know" aka Google Bard:
+Let's ask ["Dr. Know"](https://en.wikipedia.org/wiki/A.I._Artificial_Intelligence) who is also known as Google Bard:
 
 > > Movie scripts in contemporary movies often look incoherent, incomplete with a fragmented narrative. Is that a correct impression?
 >
