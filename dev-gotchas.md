@@ -92,12 +92,12 @@ Everything in a language seems to have some purpose. Now not all languages like 
 
 --
 
-Edge cases in a flow! Now one approach to check for them is to have exhaustive, 100% coverage unit tests - this forces you to go through all of the edge conditions. I know it's hard, but it is worth it. One should really go for that for stuff that has to maintain state between calls. 
+Edge cases in a flow! Now one approach to check for them is to have exhaustive, 100% coverage unit tests - this forces you to go through all of the edge conditions. I know it's hard, but it is worth it. One situation that calls for 100% test coverage is when state is maintained between calls.
 
 - what is in a log? what should be logged? 
     - don't take anything for granted, you have something to log whenever a logically related series of steps has completed.
-    - logs save your butt in serverland.
     - on some systems you can't view a sequence of logs as such, only thing you can do is to query the system by some keyword. Always be aware the the key info is part of the log entry (be it a sesion-id or whatever key info is identifying the flow in this particular context)\
+    - logs are your bread and butter in server land
 
 --
 
