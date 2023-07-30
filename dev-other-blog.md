@@ -102,6 +102,8 @@ Saw a wonderful movie "Those Magnificent men in their flying machines".
 
 I am hardly watching modern movies, somehow got the impression they now have a problem with their script, the script nowadays often looks incomplete with a fragmented narrative (maybe it's just my impression).
 
+Let's ask "Dr. Know" aka Google Bard:
+
 > > Movie scripts in contemporary movies often look incoherent, incomplete with a fragmented narrative. Is that a correct impression?
 >
 > It is true that some contemporary movies have incoherent, incomplete, and fragmented narratives. This is due to a number of factors, including the rise of streaming services, the increasing popularity of independent films, and the changing tastes of audiences.
