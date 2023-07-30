@@ -77,6 +77,7 @@ Found an area where ChatGTP/Google Bard can be used with great benefit:  I am no
 
 They might have done some specialized training on CSS, I had less success when asking about other domains.
 
+(so far this was my only real success, got lots of hallucinations when asking about other areas)
 
 ---24/05/23 05:04:20----------------------
 
