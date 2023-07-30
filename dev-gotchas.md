@@ -12,6 +12,29 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 I also got another blog for [stuff that i used to post on twitter](dev-other-blog.md)
 
 
+
+---30/07/23 20:23:26----------------------
+
+
+Sometimes a pod is configured to print its logs with color codes, these are very annoying to look at. So here is how you get rid of them:
+
+This little alias in your .bashrc file can help:
+
+
+```
+alias nocolorfilter="sed -e 's/\x1b\[[0-9;]*m//g'"
+```
+
+Here is how I use this alias:
+
+
+```
+kubectl logs pods-with-colors | nocolorfilter | vim -
+```
+
+It turns out that you can configure log4j to add color codes to the output, sometimes this feature is being used (would never enable it myself)
+
+
 ---12/07/23 07:46:26----------------------
 
 I think that 'noodle code' should be the term 'for spaghetti code ++' . Noodle code is the same pastry disguised in object oriented and functional parlance...
@@ -19,8 +42,7 @@ I think that 'noodle code' should be the term 'for spaghetti code ++' . Noodle c
 On the other hand: projects in object oriented spaghetti code++ tend to be more complex and larger than procedural spaghetti code. You can solve more complex and demanding problems in this way. You tend to end up with something more scalable.
 
 One way to end up with bad code in a script: a simple script is usually being written in bash/shell script. Now at some point things get complicated, and it needs to be re-written (usually into python). This rewrite is often resulting into some code which is not quite 'pythonic'. Here you are - 'gotcha' !!!
-I don't have a fix for this kind of situation. Maybe it's a better idea to start to write these scripts in python...
-
+I don't have a fix for this kind of situation. Maybe it's a better idea to start to write this kind of scripts in python, to begin with.
 
 ---06/07/23 12:04:39----------------------
 
@@ -43,6 +65,8 @@ Not so fast, ```keep_going or process_elem(elem)``` will only be called the firs
 
 - python: if there is a sequence of if statements, where each subsequent clause is ```elif``` - yeah, sometimes i forget about that and write ```if``` instead of ```elif```. Happens again and again - and has to be debugged.
 
+  / same frequent source of errors: switch statements, state machines-transition tables, etc/
+
 - the vanishing log context. One of the main questions in backend-land is: where are the logs?
   Now some systems change the log context over time. For example: jboss and even simple systems like gunicorn are putting their logs in one place during their initialization sequence. However futher down the road they decide otherwise - and put the logs in some other place. 
     
@@ -62,13 +86,18 @@ Not so fast, ```keep_going or process_elem(elem)``` will only be called the firs
         now here is the place to release that log
 ```
 
-    Everything in a language seems to have some purpose (now not all languages like the idea o exceptions - you have a totally differnt mindset in golang. But that's another story...
+Everything in a language seems to have some purpose. Now not all languages like the idea o exceptions - for example golang doesn't have exceptions. Also a good deal of C++ projects don't use exceptions at all.
 
 --
 
 Edge cases in a flow! Now one approach to check for them is to have exhaustive, 100% coverage unit tests - this forces you to go through all of the edge conditions. I know it's hard, but it is worth it. One should really go for that for stuff that has to maintain state between calls. 
 
+- what is in a log? what should be logged? 
+    - don't take anything for granted, you have something to log whenever a logically related series of steps has completed.
+    - logs save your butt in serverland.
+    - on some systems you can't view a sequence of logs as such, only thing you can do is to query the system by some keyword. Always be aware the the key info is part of the log entry (be it a sesion-id or whatever key info is identifying the flow in this particular context)\
 
+--
 
 (To be continued...)
 
