@@ -75,7 +75,7 @@ See more on wikipedia [here](https://en.wikipedia.org/wiki/Literate_programming)
 
 Found an area where ChatGTP/Google Bard can be used with great benefit:  I am not an expert in frontend stuff, but now I had to fiddle with CSS style sheets - the LLM knows all the style combinations, and its recommendations worked!
 
-They might have done some specialized training on CSS, I had less success when asking about other API's.
+They might have done some specialized training on CSS, I had less success when asking about other domains.
 
 
 ---24/05/23 05:04:20----------------------

@@ -50,7 +50,7 @@ I don't have a fix for this kind of situation. Maybe it's a better idea to start
 
 Found an area where ChatGTP/Google Bard can be used with great benefit: I am not an expert in frontend stuff, but now I had to fiddle with CSS style sheets - the LLM knows all the style combinations, and its recommendations worked!
 
-They might have done some specialized training on CSS, I had less success when asking about other API's.
+They might have done some specialized training on CSS, I had less success when asking about other things.
 
 
 ---06/07/23 12:04:39----------------------
