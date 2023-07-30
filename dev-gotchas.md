@@ -29,7 +29,7 @@ Here is how I use this alias:
 
 
 ```
-kubectl logs pods-with-colors | nocolorfilter | vim -
+kubectl logs pods-with-colors 2>&1 | nocolorfilter | vim -
 ```
 
 It turns out that you can configure log4j to add color codes to the output, sometimes this feature is being used (would never enable it myself)
@@ -48,10 +48,12 @@ I don't have a fix for this kind of situation. Maybe it's a better idea to start
 
 ---31/05/23 05:51:00----------------------
 
-Found an area where ChatGTP/Google Bard can be used with great benefit: I am not an expert in frontend stuff, but now I had to fiddle with CSS style sheets - the LLM knows all the style combinations, and its recommendations worked!
+Found an area where ChatGTP/Google Bard can be used to great benefit:  I am not an expert in frontend stuff, but now I had to fiddle with CSS style sheets - the LLM knows all the style combinations, and its recommendations worked!
 
-They might have done some specialized training on CSS, I had less success when asking about other things.
+They might have done some specialized training on CSS, I had less success when asking about other domains.
 
+So far this was my only real success, got lots of hallucinations when asking about other areas.
+Other people are reporting enormous increases in productivity, however I could not reproduce this kind of success - i observed that it is a non trivial task to distinguish between fact and LLM fiction.
 
 ---06/07/23 12:04:39----------------------
 
