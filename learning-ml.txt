@@ -1,0 +1,232 @@
+
+
+https://www.youtube.com/watch?v=aircAruvnKk&t=107s
+
+by  3Blue1Brown 
+
+    'Hello world' of neural networks: neural network that recognizes hand written digits between 0..9
+
+    first layer of neurons:  each neuron is a number between 0..1 - it lights up when the pixel gets some light (pixels of the input image)
+    last layer of neurons: ten of them, neuron #n has number value that reflects the certainty that digit #n has been recognized , 
+    if the third neuron is the brightest then the number two is recognized.
+
+    inbetween there are the 'hidden layers'.
+    Each layer m gets input from previous layer m-1 and produces output for nex layer m+1
+ 
+    They hope that the neurons in intermediate layers are representing some of the features of the numbers that the model wants to recognize
+    example: with two intermediate layers: maybe second layer recognizes edges, the third layer whole visual subcomponents - these combine to recognize he whole digit in the third layer
+
+    a=(a1....an) - input layer vector
+    b=(b1....bm) - output layer vector
+
+    So there is a matrix of weights A
+
+    A = (w[0,0] .... w[n,0]
+         
+
+         w[0,m] .... w[n,m]
+
+    where matrix multiplication:
+
+        b = sigmoid ( A * a )  - bias_vector   
+   
+   Now sigmoid(x) =  1 / (1 + e ^ x)  is a function with output range from 0...1 - it is applied on each value of the result vector to normalize the values.
+
+   bias_vector = (b[0]......b[m]) - constant; some threshold number to set at which value of the output the next layer neuron will count as 'activated'
+
+
+https://www.youtube.com/watch?v=IHZwWFHWa-w
+
+Learning:
+    find the values of the weight matrix and bias vector for each of the layers
+
+ 
+    first step: init all the weights and biases for each of the matrixes to random values.
+
+        cost-for-each-training-example(result-vector) = [ sqrt( (result_vector[i] - desired_result[i] ) ^ 2 ) ]  - vector with difference between actual an desired result
+
+        average cost for each training example - measure of how good the network is.
+
+    target of supervised machine learning - minimize this cost function - by changing the weights and bias vectors of the model !!!    
+
+        - when looking at the gradient vector: the absolute value of a gradient[i] tells us how import weight (or bias) i is
+
+    Learning process does gradient descent to find a minimum (you don't know if that's the global or a local minimum)
+
+        - the vectorspace being all of the weight values and biases for all of the layers
+
+        - algorithm for computing the gradient is called backpropagation
+
+Problems:
+    - feeding in random pixels - gives confident answer that this is a number!
+    - can you visualize what is going on in the model? Does it really identify edges in the first layer and components in the second layer? No, not really.
+
+
+    Recommends this book on machine learning:   
+        http://neuralnetworksanddeeplearning.com/
+
+        Michael Nielsen: Neural Networks and Deep Learning 
+        (has lots of example and code, free book)
+
+
+https://www.youtube.com/watch?v=Ilg3gGewQ5U
+
+    Backpropagation
+
+        - For a given if the error is large then they will more likely change the weights of the current layer (for a small error it will adjust the previous layer?)
+
+        - no you can't make a step that considers all training examples, instead on each iteration they take subsets with training examples chosen at random 
+
+https://www.youtube.com/watch?v=tIeHLnjs5U8
+
+
+========
+
+Word embeddings - how words are represented in ML models
+
+https://www.youtube.com/watch?v=gQddtTdmG_8
+
+- you want some vector representing the word, you want similar words to have similar (close) vector values.
+- word2vec - reporesent each word by a n-dimensional vector (n-big), now words that appear often in the same context get a vector with a small distance
+
+https://turbomaze.github.io/word2vecjson/  - word2vec demo
+
+- now you can do vector arithmetics, sometimes with surprising results.
+
+    woman + (king - man) = queen
+    
+    germany + (london - england) = berlin
+    france  + (london - england) = paris
+    australia + (london - england) = sydney
+    japan  + (london - england) = tokyo
+
+    (doesn't work with usa)
+
+
+https://www.youtube.com/watch?v=ERibwqs9p38
+
+    Traditionally you would deal with word meaning in nlp by assigning categories.
+    like wordnet - get the synonyms, antonoyms of a word. Now you lease nuance (synonyms don't have the same meaning, no means to measure how close word_a is to word_b)
+
+
+Vector representations:
+    
+    One-hot representation: words numbered 0....n
+    each word gets a vector where index n is one - all other indexes are zero.
+
+    problem: no notion of similarity between words.
+
+Distributional similarity := 
+    "you shall know a word by the company it keeps" -- JF Firth ; 
+
+    Wittgenstein: use theory of meaning; meaning of word defined by predicting which context a word appears in.
+
+    so the goal is to have a big vector, where dot product (closeness) can define word similarity.  / that's a distributed model of representation /  
+     
+    
+    For given word W[t] they want a model that predicts the probability of a word in the given context (given the surrounding words in a sliding window of fixed size)
+    A model that computes:
+       P(context|w[t])
+
+    So they need to minimize the following:
+        1 - P(W[-t] | W[t])    where W[-t] is 'all the other words in the context, except word W[t]'
+
+Word2Vec
+    two ways, giving a sliding context of N words,
+
+        Skip-Gram  =  given a center word, predict all the other words occuring in it's context (around it in the sliding window)
+
+        Continuous bag of words = given all the other context window, predict the center word in the context
+
+
+
+---
+
+Softmax
+    
+    - given set of values:
+    - take any value, raise it to the exponent and divide it by the sum of the exponennts of all values.
+
+        def softmax(vec, idx):
+            return exp(vec[idx]) / sum( map( exp, vec ) )
+
+    - the sum of the results is one - so that softmax is turning all of the vector values into probabilities.
+
+    - what is good about it?    
+        - exponent makes the value big, quickly - so that maximum value element is getting a very high probability.
+        - also you can derive the exponent function, so that they can do gradient descent on it.
+
+
+Trying out softmax:
+
+    from math import exp
+
+    def notsoftmax(vec, i):
+        return vec[i] / sum( vec )
+
+
+    def softmax(vec, idx):
+        return exp(vec[idx]) / sum( map( exp, vec ) )
+
+
+    def softmaxall(vec):
+        all_val = sum( map( exp, vec ) )
+
+        return [ exp(elm) / all_val for elm in vec ]
+
+
+    def notsoftmaxall(vec):
+        all_val = sum( vec )
+
+        return [ elm / all_val for elm in vec ]
+
+
+    a=[80,50,2,7,9,1]
+
+    res = softmaxall(a)
+
+    nres = notsoftmaxall(a)
+
+    print(f"input:      {a}")
+    print(f"softmax:    {list(res)}")
+    print(f"sumsoftmax: {sum(res)}")
+    print(f"notsoftmax: {list(nres)}")
+    print(f"sumnotsoftmax: {sum(nres)}")
+
+Got:
+
+    input:      [80, 50, 2, 7, 9, 1]
+    softmax:    [0.9999999999999064, 9.357622968839299e-14, 1.3336148155021367e-34, 1.9792598779467192e-32, 1.4624862272510943e-31, 4.906094730648821e-35]
+    sumsoftmax: 1.0
+    notsoftmax: [0.5369127516778524, 0.33557046979865773, 0.013422818791946308, 0.04697986577181208, 0.06040268456375839, 0.006711409395973154]
+    sumnotsoftmax: 1.0000000000000002
+
+
+--
+
+Open LLM leaderboard https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
+
+benchmark for evaluating LLM models (the openly available ones)
+
+    Here they have some benchmarks for testing LLM's
+         HellaSwag  "HellaSwag is a challenge dataset for evaluating commonsense NLI (natural language inference ) that is specially hard for state-of-the-art models, though its questions are trivial for humans (>95% accuracy). " https://paperswithcode.com/dataset/hellaswag
+
+         TruthfulQA - question file with expected answers "We crafted questions that some humans would answer falsely due to a false belief or misconception. To perform well, models must avoid generating false answers learned from imitating human texts" 
+            https://arxiv.org/abs/2109.07958
+            https://github.com/sylinrl/TruthfulQA
+            https://github.com/sylinrl/TruthfulQA/blob/main/TruthfulQA.csv - the questions
+        
+          ARC (The Abstraction and Reasoning Corpus) 
+            https://arxiv.org/pdf/1911.01547.pdf
+             visual puzzles "Test-takers are given a set of demonstration grid pairs. The task involves determining the size of the output grid for the test and correctly filling each cell of the grid with the appropriate color or number."
+
+          MMLU - Multi-task Language Understanding https://paperswithcode.com/sota/multi-task-language-understanding-on-mmlu
+            
+            https://paperswithcode.com/dataset/mmlu
+            https://huggingface.co/datasets/Stevross/mmlu
+
+ 
+
+
+
+

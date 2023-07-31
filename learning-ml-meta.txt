@@ -1,0 +1,165 @@
+People thinking about thinking (sort of looking at ML more philosophically)
+
+====
+
+https://www.youtube.com/watch?v=Bo8MY4JpiXE
+
+Francois Chollet - he built Keras (high level API used with Tensorflow)
+
+    - He doesn't believe in superintelligence`; all of intelligence is very specialized to some category of problems, Intelligence is expressed when one is forcedto solve a specific kind of problem.
+    - will AI enable exponential progress? He is sceptical:
+        - science is a self improving system, that could stand in as a model of AI super intelligence.
+            We see exponentially more resource consumption (number of scientists, number of papers written / patents)
+            But says we see only a linear amount of progress over time (Nielsen - asked a scientists to rate milestones of progress in science)
+            Science seems to have diminishing returns - as progress goes (less low hanging fruit as a discipline advances)
+                - it is harder to become productive in an established area like quantum physics 
+                - more scientists means more complicated communication and more friction
+                - exponentially more complicated experiments
+
+    - says the dominant theme is that of an intelligence implosion/singuarity
+        - that's more like a believe system, he questions that - and gets a lot of pushback from others...
+
+    - is working on program synthesis, says discrete search over rule based stuff solution is going to be important 1:00:30
+
+    - says data scale + more computation isn't scalable in the long term. Systems need a lot of data to learn something (humans can learn from fewer examples).
+
+    - concerns about AI: use for surveillance (like face recognition). Digital footprint increases, more chance to form behavior by controlling information feed of individuals / and the scale of things.
+      Is concerned about power of recommendation engines to influence the users (or change their politics).
+      Says the user should be in control of the 'optimizing function' for recommendations he receives: like do you want to learn something new? 
+      risks: in a way we are delegating more and more control to algorithms (like recommendation systems) - but says there is an increasing awareness of this.
+
+    - then he gets philosophical about AI, not sure i followed...
+    
+    - later: says people try to oversell ML, that may be damaging. (but doesn't see an AI winter - as ML does solve lots of serious problems)
+      ... here he is trying to define a benchmark for general intelligence.
+
+      says the main criteria for evaluating anything - does it work? Lots of time ago people were looking at scientists in ML as cranks, but then ML started to work, and they are no longer crank.
+      Motivational message: if you believe in something than stick to it and make it work.
+
+
+===========
+Interview with Ilya Sutskever on GTP-4  https://en.wikipedia.org/wiki/Ilya_Sutskever
+
+https://www.youtube.com/watch?v=SjhIlw3Iffs
+
+- I.S: on imagenet: says he thought that a big and deep neural net + lots of data (with the desired solutions) can do complicated stuff.
+  Why? The Brain can do it, and it works like that.
+  
+- 8:07 Intuition behind transformers, self supervised learning?
+    Even with imagenet the idea is: predicting the next small step is all you need.
+    Prediction is compression - the idea is that making the next small step (of predicting the next word) is all you need in order to solve self supervised learning!
+    Transformer paper: says they address the problems of recurrent neural networks.
+    Then they made the stuff bigger - and it worked (somehow).
+
+- Q: Richard S. Sutton says : you just need to scale neural nets, did he have an influence on gtp?
+- I.S: Says no, says it's not just scale, you need to scale some specific feature that can benefit from scaling.
+    Deep learning: says it is one of the first thing that would benefit from large scale computations - throwing more data at neural nets is a computation that benefits from scaling!
+    
+- Q: limitation of language models: all knowledge comes from the text corpus of the training data. Says a lot of knowledge is non linguistic.
+- I.S: Objective of language model: optimize the answers for the target metric. 
+  Says language knowledge doesn't have an understanding of the things that language relates to:
+  Example: ChatGTP invents lots of stuff when talking about the interviewer. 
+  How to address the problem?
+
+  Answer: hard to talk about limitations of language model, because the subject (language models) changes quickly.
+
+  15:04
+  Q: Do they just learn about statistical regularities, without knowing about the nature of the world?
+  I.S: Says doing statistical regularities is a big thing by itself: says that predicting the next step can be interpreted as ... compression. Both are statistical phenomena.
+  Also you somehow need to understand the underlying data in order to predict the next item (same for compression).
+  /also you need to understand more about the data/
+
+  Says understanding and good performance at prediction goes together. Claims: good performant models will have a shocking degree of understanding of the world - as seen through the lense of text.
+
+  16:53
+  Example: Sydney (that's the language model in bing chat), Sydney became aggressive when given a prompt that says that google is the better search engine. WTF?
+  says that you can think about that as "psychology of neural networks".
+
+  Limitations: neural networks invent things/hallucinate - because language model is good in learning about the world, but the output isn't great (this has technical reasons)
+  (in pre-training)
+
+  18:24
+  chatgtp has an additional reinforcement learning process - here it learns: this output is not appropriate, so don't do that again (pre-training doesn't have these constraints, so he says it's great at building internal models about the world)
+
+  19:30  
+  https://www.youtube.com/watch?v=SjhIlw3Iffs&t=1068s
+
+  Says hallucinations are a big problem that 'limits the usefulness of chatgtp', says that can be fixed by strengthening the reinforcement learning step. 
+  Will it work? let's find out!  
+
+  20:36
+  Right now they hire people to teach ChatGTP to behave (to fine-tune the reinforcement learning step). But the ideal would be for the system to incorporate end user feedback into the reinforcement learning step (?)
+
+- Q: ... language model lacks non linguistic knowledge, world model - is that a significant problem?
+- I.S:
+  
+  Says no significant claims.
+    - systems should have multi-modal understanding (not just text). Says incorporating multi-model stuff is desirable, but says it's not essential:
+        why? You can learn the same things effectively from text, even if the learning process is slower.
+        24:00.
+        Example: color: says you can learn about color from text only - it just takes more time than learning it by looking at it.
+            why? every concept in the neural network is represented by some high dimensional vector (embeddings)
+            You can similarities between these high dimensional vectors/embeddings - and can possibly derive facts like 'purple is more similar to the color blue than to color red'
+            claims it is possible to learn this fact from the text alone - it just takes more time & effort.
+        
+   
+28:00
+
+- Q: you have an army of people who fine-tune/guide the reinforcement learning step, is there a better way? Ian Kuhn says there are algorithms for that.
+- I.S: says pretrained model step already knows about reality - knowledge of language and the 'processes that exist in the world and produce the language'
+     says it is a 'compressed representation of the real world processes that produce the data' - and a compressed model of ... everything!
+     The 'army of teachers' also are using AI assistants, but the results need to be reviewed by humans!
+
+  32:00
+  - so the objective is to make the output more accurate?
+    Yes, it's similar to an education process - to tell the model that hallucinations are not ok.
+
+- Q: here do you go now?
+- I.S:  make the model more reliable, less hallucinations. 
+
+34:19
+- Q: Jeff Hinton says: large language models 'hold tremendous amount of data with a modest amount of parameters' - whereas the Human brain has 'trillions of parameters' (neurons?) and modest amounts of data'. 
+- I.S: Says there is a problem: models should be able to learn from less data during data - during the initial stage. In later learning stages the language model needs less data.
+  Says we will get there - in terms of learning more from less data.
+  Says that will allow to teach us new skills to the language models and how to 'behave better'
+
+36:22
+- didn't understand the question.
+
+38:09
+- Q: impact of AI on democracy; can it come up with solutions to satisfy everybody - will it help humans to 'manage society?'
+- I.S:  Says they want to come up with 'solutions to problems of this kind' - but doesn't know how they will be used by governments.
+  Maybe there will be a democratic process where people will provide 'input to the model that will be aggregated' ????
+
+    (me: this song comes to mind.... 'The Doors' https://www.youtube.com/watch?v=4YWPhmduSDQ  
+
+        When I was back there in Seminary School
+        There was a person there
+        Who put forth the proposition
+        That you can petition the Lord with prayer
+        Petition the Lord with prayer
+        Petition the Lord with prayer
+        You cannot petition the Lord with prayer!
+   )      
+
+Bla-bla - (the music starts here)
+
+----
+
+https://www.youtube.com/watch?v=I5xsDMJMdwo
+https://www.youtube.com/watch?v=mBjPyte2ZZo
+
+- both advocate for combined models to solve the halucination problems, where additional models are supposed to check the output of the previous one (additional models as logick checkers)
+
+- Joshua Bengio: AI has potential to undermine democracy, as you can use it to fake mass participation in public discourse. Says legislation/regulation should be in place to regulate use of LLM/AI.
+
+(though about Prigozhin: according to this logic his troll factory was an effective tool to undermine civil society in Russia - in the first decade of the 21st century...)
+    
+
+--------
+
+https://www.youtube.com/watch?v=NWqy_b1OvwQ
+
+Geoffrey Hinton: Unpacking The Forward-Forward Algorithm
+
+

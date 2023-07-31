@@ -261,9 +261,6 @@ Mac/OSX tricks
     don't install via brew (goes wrong) - there is an installer on https://www.wireshark.org/
 
 
-
-
-
 Linux
     # show kernel / cpu architecture / etc.
     uname -a
@@ -290,6 +287,25 @@ Linux
         virt-what
 
         # or check for presence of files: /.dockerenv or /.dockerinit
+
+
+    # what to do in a system without core-utils? (you get that a lot on containers - they like to have a limited runtime system, and you are not allowed to change too much... :-( )
+
+        - no ps? list processes?
+
+            ls -l /proc/*/exe
+
+        - show command line for given PID
+
+            cat /proc/PID/cmdline | xargs --null
+
+           or if no xargs:
+
+            cat /proc/PID/cmdline | tr \\0 \_
+
+           ... and put in space instead of _
+
+
 
 OS agnostic
 
@@ -360,6 +376,14 @@ Get the latest release for a public repository
 ======
 
 Kubernetes:
+
+    - which deployment/replicaset/etc is controlling a given pod?
+
+        kubectl describe pod <pod-name>
+
+        - result has line that starts with Controlled - this names which entity is controlling the pod
+
+
     - extracting interesting fields from a set of pods:
 
 
@@ -384,8 +408,10 @@ Kubernetes:
 
             kubens - setting the default kubectl namespace 
 
-     - configuring a cluster
+     - configuring kubectl access to other clusters
             a bit involved, see here: https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
+
+            use kubectx !!!
 
      - list configured clusteres
 
@@ -421,28 +447,6 @@ Kubernetes:
       - switching namespaces and cluster context: (there is an nice utility for that: kubectx + kubens)
 
             https://github.com/ahmetb/kubectx
-
-       - what to do in a container without core-utils?
-
-            - no ps? list processes?
-
-                ls -l /proc/*/exe
-
-            - show command line for given PID
-    
-                cat /proc/PID/cmdline | xargs --null
-
-               or if no xargs:
-    
-                cat /proc/PID/cmdline | tr \\0 \_
-
-               ... and put in space instead of _
-
-        - which deployment/replicaset/etc is controlling a given pod?
-
-            kubectl describe pod <pod-name>
-
-            - result has line that starts with Controlled - this names which entity is controlling the pod
 
 
 =======
