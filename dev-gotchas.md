@@ -126,6 +126,15 @@ Sometimes you need to denormalize a structure in order to get sufficient lookup 
 
 --
 
+Need to speed up stuff?
+    
+    - examine data structures in use
+    - examine allocation patterns (usually people are not very aware of them)
+    - communication: too many roundtrips? What kind of latencies are there?
+    - storage hierarchy: Is there some sort of caching for hot vs cold areas?
+
+---
+    
 (To be continued...)
 
 ---23/02/23 07:08:35----------------------
