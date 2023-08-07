@@ -225,7 +225,73 @@ benchmark for evaluating LLM models (the openly available ones)
             https://paperswithcode.com/dataset/mmlu
             https://huggingface.co/datasets/Stevross/mmlu
 
- 
+----
+
+DLVVU
+
+https://www.youtube.com/watch?v=KmAISyVvE1Y
+
+Series of videos on transformers - Lennart Svennson
+
+https://www.youtube.com/watch?v=0SmNEp4zTpc&list=PLDw5cZwIToCvXLVY2bSqt7F2gu8y-Rqje
+
+    Transformer = input sentence -> encoder ->  decoder -> output sentence
+                
+        encoder (translates words to feature vectors/embeddings (a vector like what you get from word2vec)
+
+        decoder lots of hidden layers to predict the next word (and then the next word - until end of sequence token) + translation back to output text
+
+        encoder and decoder use self attention :- 
+    
+    The 'Attention' in 'attention is all you need': https://www.youtube.com/watch?v=KmAISyVvE1Y
+
+
+        Simple self attention
+
+            take the feature vectors v[1] ... v[n] that stand in for all words of the input window.
+                                                              t
+                Compute matrix W , where W[i,j]  = v[i] * v[j]  # cell W[i,j] is the  dot matrix product of vector v[i] v[j]
+                Then for each row of W - transform them as softmax (so that the sum o the row values is equal to one - and that they are a bit like probabilities)
+
+                Now transform each vector v[i] : out[o] = W * v
+                    - each of the neighboring vectors had some inluence on the input vector.
+                        (v*v is high value - it's the square of each of he dimension, also v * w if w is close to v (in terms of word2vec), if the value is high, then the 
+
+                                                          t
+            scaled self attention:  W[i,j]  = (v[i] * v[j] ) / sqrt(k) ; k -input dimension. Purpose: keep weights within lower range, so as not to suffer from 'vanishing gradient' upon SOFTMAX
+
+
+            --
+            Problem with this: doesnt take care of the sentence structure: senteces have head words and dependents - these re not linear structures.
+
+                'This restaurant is not too terrible'
+
+                                    not -> too -> terrible
+                      restaurant -------------->              
+                                        
+                'Emma hates games but she is a great friend'
+                                        
+                                        she -------> friend          would like the transformed vector for 'friend' be influenced by 'she' (and 'Emma') 
+            
+            The fix: more complicated computation!
+
+                    compute query vectors for each word in the sentence: (so each sentence gets it's own W-query and W-keys matrixes?)
+
+                        q[i] = W-query v[i]       
+
+                    compute key vectors
+
+                        k[i] = W-keys v[i]
+
+                    Multiply resulting query vectors by key vectors to get the weights 
+
+                                        t
+                        w[i] = q[i] k[i]
+
+                    This gets us the weight matrix
+                        W[i]=[w[0]....w[n]
+                    
+                    Then apply SOFTMAX ove W[i]  | NOTE: each word in the sentence now gets its own weight matrix W[i] !!!
 
 
 

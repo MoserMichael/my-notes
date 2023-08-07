@@ -110,6 +110,22 @@ Edge cases in a flow! Now one approach to check for them is to have exhaustive, 
 
 --
 
+Identical log messages (or near identical log messages) written at two different locations in he code. This leads to confusion on where the log entry comes from...
+
+How to deal with that:   
+    - Now look at the log message: are there additional details like the name of the source file that caused the log message? Match the log message again: is it an exact match or a substring match?
+    - sometimes you can search all of the codebase (spanning different repositories)
+
+--
+
+Sometimes you need to denormalize a structure in order to get sufficient lookup speed (that's a hard one: it is easy to mess up the structure during insertion)
+
+  How to deal with that one?
+    - lots of test
+    - lots of logs during insertion (where the complexity is)
+
+--
+
 (To be continued...)
 
 ---23/02/23 07:08:35----------------------

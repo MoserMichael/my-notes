@@ -34,6 +34,12 @@ Francois Chollet - he built Keras (high level API used with Tensorflow)
       ... here he is trying to define a benchmark for general intelligence.
 
       says the main criteria for evaluating anything - does it work? Lots of time ago people were looking at scientists in ML as cranks, but then ML started to work, and they are no longer crank.
+
+        // fascinating side node: 
+        //  https://twitter.com/ylecun/status/1686320753791160320
+        //      Yann LeCun says that Schroedinger's equation was a revelation/inspiration for him (where it is reduced to a series of matrix multiplications)
+        //      Does he want to say that he always tried to 'reduce it all to matrix multiplication' ?
+
       Motivational message: if you believe in something than stick to it and make it work.
 
 

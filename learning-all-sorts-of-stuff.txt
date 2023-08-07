@@ -939,7 +939,9 @@ mongosh
         use <dbname>
 
     # show name of all collections in current db.
-        db.getCollectionNames()
+        show collections
+
+        db.getCollectionNames() // this one returns an iterator - won't show all of them.
 
     
     # other stuff when working in shell.
