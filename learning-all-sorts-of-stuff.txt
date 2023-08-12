@@ -1150,6 +1150,24 @@ https://en.wikipedia.org/wiki/WebSocket
     List of libraries for working with the docker engine api  : https://docs.docker.com/engine/api/sdk/
 
 ----
+Python has integer division operator ... I would always divide 
+
+    python
+    >>> 9 / 5
+    1.8
+    >>> 9 // 5
+    1
+
+    >>> 10 / 3
+    3.3333333333333335
+    >>> 10 // 3
+    3
+    
+    # this one also works...
+    >>> int(10/3)
+    3
+
+----
 
 https://realpython.com/pytest-python-testing/ (and others)
 

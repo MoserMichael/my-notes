@@ -1,0 +1,518 @@
+- always have a sheet of paper to scribble upon. Write something down, while you read the task (helps focus)
+- Try to be check out things before you start to write things down.
+- hear some relaxing music before the interview, and do some exercising (makes you feel better)
+
+- list of questions that cover most patterns
+    Top 75 LeetCode  -  https://gist.github.com/krishnadey30/88c4e2f601e96597974c00185e479532
+
+TWO POINTERS
+------------
+
+
+                  |  
+           |      |
+  |        |   :  |
+  |     |  |   :  | 
+  __________________
+
+Question: Towers, get the highest square enclosed between any two elements
+
+    l=0, r=len(array-1)
+
+    while
+        - compute the current square, update total if larger
+
+        if arr[l] < arr[r]:
+            l += 1
+        else:
+            if arr[l] > arr[r]:
+                r -= 1
+            else: // a[l] == a[r]
+                l -= 1
+                r -= 1
+        ...
+
+    - compute square loop again, while l < r
+
+
+Question: find cycle in linked list.
+
+   Two pointers, in list, one is going forward two steps, the other one,
+   Either they reach one another -> there is cycle, or one of them reaches the end of list
+
+ Question: The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle values.
+
+    For examples, if arr = [2,3,4], the median is 3.
+    For examples, if arr = [1,2,3,4], the median is (2 + 3) / 2 = 2.5.
+
+    You are given an integer array nums and an integer k. There is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+
+
+    - for first sliding window: sort the sliding window. 
+        
+    - while end of sliding window index is in array
+            - report current median
+            - remove start of sliding window from sorted array
+            - move sliding window onward (break if end of array)
+            - add next char after sliding window to sorted array
+
+    - report current median (for last entry)
+
+
+STACKS
+------
+
+- Question: check if pairing 
+    Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+        An input string is valid if:
+
+            Open brackets must be closed by the same type of brackets.
+            Open brackets must be closed in the correct order.
+            Every close bracket has a corresponding open bracket of the same type.
+
+
+    check('{[()]}', true)
+    check('{[()]}(', false)
+
+Solution:
+    Evaluate the expression on a stack. (if it's a starting symbol - push, if it's an ending symbol - pop (should be a matching one))
+    watch for stack underflows - that's an error.
+
+        build map
+                map[ '(' ] = -1 ...
+
+                map[  ')'] = '('  // map to matching bracket.
+
+        evaluate the resulting string with a stack, each opening bracket is pushed.
+        for each closing bracket - check if top of stack is a matching bracket - and pop it if yes,
+            if stack empty or non matching -> report error
+
+
+MAPS
+====
+
+Question: Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
+
+    Input: s = "cbaebabacd", p = "abc"
+    Output: [0,6]
+
+    - build map[ character-value ] = num-of-ocurrcances-of-character-value-in-string for input string p
+    - pass over s, for each sliding window of size len(p) maintain the same character count array.
+        compare character count array with that for p - if  equal than report match.
+
+
+Question: You are given a string s. We want to partition the string into as many parts as possible so that each letter appears in at most one part.
+  Note that the partition is done so that after concatenating all the parts in order, the resultant string should be s.
+
+  Input: s = "ababcbacadefegdehijhklij"
+  Output: [9,7,8] // "ababcbaca", "defegde", "hijhklij".
+
+
+
+  create a map that counts all occuring characters 
+        map[ character-value ] = number-of-occurances-for-charcter-value
+
+   start_of_word = 0
+   set_of_chars = {}
+
+   foreach ch,idx in word:
+        if ch in set_of_chars:
+            map[ ch ] -= 1
+            if (map[ch] == 0) {
+                set_of_chars.remove(ch)
+            }    
+        else
+            set_of_chars.insert( ch )
+        
+        if set_of_chars.empty() 
+            report string[ start_of_word : idx ]
+            start_of_word = idx + 1
+
+Question: Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+
+    Input: nums = [2,7,11,15], target = 9
+    Output: [0,1]
+
+    for each nums[n] , with index n
+        
+        check if n is in map - if yes then report index of entry and curent entry
+
+        else 
+            add to map:  map[ target  - n ] = index 
+
+        
+Question: Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+    0 <= a, b, c, d < n
+    a, b, c, and d are distinct.
+    nums[a] + nums[b] + nums[c] + nums[d] == target
+
+    --
+
+    Generalization from the previous answer, 
+
+    first pass - insert entries for target-a[i]
+    second pass insert entries for target-a[i]-a[j] where i != j
+    third pass insert entries for  target-a[i]-a[j]-a[k] where i != j != k
+    last pass - check if entry exists with three elements in it.
+
+
+
+Question: Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+    Input: strs = ["eat","tea","tan","ate","nat","bat"]
+    Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+
+    for eacch input word, treat string as character vector, sort vector by charcter value a < b .. < z 
+    canonical = sort result
+
+
+    if exists map [canonical ]
+        map[canonical].push( input_word )
+    else
+        map[canonical] = [ input_word ]
+
+
+
+TREES
+-----
+
+Question: Validate binary search tree
+    - each node should be in a range of valid values,
+    - make a recursive procedure, arguments are the min and max values of the valid range, check if the root node is valid, 
+        - if yes call recursively on child nodes, while adjusting the parameters for valid range
+
+
+Question: Given the roots of two binary trees p and q, write a function to check if they are the same or not.
+   Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+
+
+   compare_trees(left, right)  {
+        if (left == null and right == null) {
+            return true
+        }
+        if (left == null or right == null) {
+            return false;
+        }
+        if (left->value != right->value) {
+            return false;
+        }
+
+        return compare_trees(left.left, right.left) and compare_trees(left.right, right.right)
+    }
+
+Question: Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+    is_symetric_tree( tree )
+    {
+        if tree == null {
+            return true
+        }
+        return compare_tree( tree.left, tree.right)
+    }    
+
+Question: Given a binary tree, determine if it is height-balanced
+  A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
+
+
+.   is_balanced_imp( tree ) {
+        if tree == null 
+            return 0
+         left_res = 1 + is_balanced(tree.left)
+         right_res = 1 + is_balanced(tree.right)
+
+         if left_res == -1 or not right_res == -1
+            return -1
+
+         if max(left_res, right_res) - min(left_res, right_res) > 1
+            return -1
+
+         return max(left_res, right_res)
+     }
+
+Question: Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where the sum of the node values in the path equals targetSum. Each path should be returned as a list of the node values, not node references.
+
+  ? ask: does the tree have negative values  - assume yes
+
+
+        gather_paths( tree, current_sum, target_sum ) // returns list of paths
+            if tree == null 
+                return []
+
+                
+
+            if tree.left == null and tree.right == null {
+                if tree.value + current_sum ==  target_sum
+                    return [ [tree.value] ]
+            }
+
+            res = gather_paths( tree, current_sum + tree.value, target_sum)
+
+            if (len(res) != 0) {
+                foreach elm in res {
+                    elm.prepend( tree.value, res)
+                }       
+            }
+    
+
+
+            paths = gather_paths(tree, current_sum + tree.node, target_sum)     
+
+
+SORT
+----
+
+Question: Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+    Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+    Output: [[1,6],[8,10],[15,18]]
+
+    - sort all invervals by their starting index, 
+
+    - current-larget-interval = []
+
+    - foreach interval in sorted-array
+
+        if interval intersects current-largest-interval
+            current-largest-interval = [ min( current-larget-interval.low, interval.low) ,  min(current-larget-interval.y, interval.high) ]
+
+ 
+- Question: Find All Anagrams in a String
+
+???
+
+HEAPS
+-----
+
+    You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+
+     build max-heap over first sliding window.
+        
+     - while end of sliding window index is in array
+         report max element in heap
+         remove start of sliding window from heap 
+         move sliding window (break if end of array)
+         add nex element after sliding window to heap
+ 
+
+
+Question: Merge k Sorted Lists
+    Input: lists = [[1,4,5],[1,3,4],[2,6]]
+    Output: [1,1,2,3,4,4,5,6]
+
+    From each of the heads take the current minimum and put it to the head of the output list.
+    Maintain a min-heap of the heads, remove head the current head of the list and put it to the output head - insert next after the removed entry to the list.
+    Stop when all lists reached end.
+
+Question: Given an array of strings words and an integer k, return the k most frequent strings.
+        
+    count all strings in array
+        for word in array:
+            if exists map[ word ]
+                map[word] += 1
+            else
+                map[word] = 1
+
+     maintain min-heap with k elements,  (the k largest elements)
+
+     pass over map (key-string, value-count)   
+            if (entry count smaller than top element in heap) { continue }
+
+            if  entry count larger than top element in heap
+                remove top element from heap
+                add entry with count as key and entry string as value
+
+
+LINKED LISTS
+------------
+
+Question: add two numbers
+
+    Input: l1 = [2,4,3], l2 = [5,6,4]
+    Output: [7,0,8]
+    Explanation: 342 + 465 = 807.
+  
+    For each node sum = a + b + previous_next 
+        
+        digit = sum % 10 
+        next = sum / 10
+
+    Now you can do it recursively or not - UNTIL BOTH LISTS ARE ZERO
+
+    If one of them ended before the other than use zero for the current entry.
+
+    Can do recursively
+
+Questio: reverse linked list
+    
+    reverse(node) {
+
+        if (node == null) {
+            return null;
+        }
+
+        next = reverse(node)
+        
+        if (next) {
+            next.next = node;
+        }     
+        node.next = null;
+
+        return node;
+    }    
+
+
+Question: reverse python list
+
+    Input: head = [1,2,3,4,5]
+    Output: [5,4,3,2,1]
+
+
+
+
+BINARY SEARCH
+-------------
+
+Question: You are given an m x n integer matrix matrix with the following two properties:
+    - Each row is sorted in non-decreasing order.
+    - The first integer of each row is greater than the last integer of the previous row.
+    
+
+Map the array to a linear index space, do binary search, while translating the index
+
+
+Question: [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+  Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.    
+
+  You must write an algorithm with O(log n) runtime complexity.
+
+     - can search for pivot point first, and length of list len
+
+        pivot = 4 ( where array[pivot] > array[pivot+1] )
+
+        Then apply  transform
+            t = i - pivot
+            if (t <  0) 
+                t = len - t
+        
+        Problem: that's not  o(log n) - as searching for pivot and end of line is O(n)
+            
+            better:
+                divide the pivoted array in half
+                Look at each half, is the first element less than the last one ? in this case it's sorted,
+                    - check if the target is in this element if yes, recurse into this half. else recurse into the other half
+
+                 
+---
+Question: Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+        for eacch input word, treat string as character vector, sort vector by charcter value a < b .. < z 
+        canonical = sort result
+        if two canonical forms are equal than that's an anagram.
+
+    or
+        have array where 
+            a[ index-of-character ] = count-of-characters-in-string
+        and compare two resulting arrays
+
+
+
+
+
+Question: Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+  An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+        Input: grid = [
+          ["1","1","0","0","0"],
+          ["1","1","0","0","0"],
+          ["0","0","1","0","0"],
+          ["0","0","0","1","1"]
+        ]
+        Output: 3
+                    
+ 
+    search for any 1, 
+        if not found then {break} 
+        paint the whole island recursively with -1
+            paint_island(arr, x,y) {
+                for dx in (-1,1)
+                  for dy in (-1,1)
+                    if (x+dx >=0 and x+dx < width-of-array and y+dy >= 0 and y+dy < width-of-array)
+                        if arr[x+dx][y+dy]==1
+                           arr[x+dx][y+dy]=-1
+                           paint_island(arr, x+dx, y+dy)
+            }
+
+            
+
+   
+                
+
+XOR MAGIC
+---------
+
+https://florian.github.io//xor-trick/
+
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+Input: nums = [4,1,2,1,2]
+Output: 4
+
+    for all numbers in list:
+    if number not in map - add it to map, (occurs once)
+    if number in map - delete it from map (occured twice)
+    The remaining number in map occured only once
+
+    Problem: does not detect if number occured more than once.
+        - you can solve that by introducing 
+            - an additional map for deleted entries, if number occurs in additional map - report errror.
+
+    No they want it faster!!!!
+
+    
+    two numbers occur twice 
+
+        a ^ a == 0
+        
+        res = 0
+        for elm in nums:
+            res = res ^ elm
+
+        # al repeated elements have cancelled each other out ( a ^ b == b ^ b)
+        # the only one left will stand alone.
+
+For non empty rray of integer nums, very element appears once - except for one hole.
+
+    res = 0
+    for i in range(1, max_num):
+        res = res ^ i
+
+    for elm in array:
+        res = res ^ elm
+
+    # the repeated element have caneled each other out (see first loop)\
+    # remaining element stands alone.
+        
+
+
+OTHER STUFF
+-----------
+            
+--- horn form - evaluation of polynomials
+
+    9 * x ^ 4 + 3*x^3 + x^2 + 2x + 5
+
+    9 * x + 3
+
+    x *  (9 * x + 3) + x
+          ---------
+
+    x * (x *  (9 * x + 3) + x) + 2 
+         --------------------
+
+    x * (x * (x *  (9 * x + 3) + x) + 2) + 5
+         ------------------------------
+ 

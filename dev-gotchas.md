@@ -148,6 +148,19 @@ Need to speed up stuff?
         
     - java: do you have to reboot the service often (takes a lot of time untill java is just-in-time compiled - several thousands of iteratiosn over the same basic code block
 
+--
+
+Conflating OS write to file with OS flush. Writing to a file only updates the WRITE CACHE inside the OS - data is not yet stored to disk !!!
+
+
+--
+
+Schemaless DB - if you used to do SQL tables, then you might forget that records in a MONGODB collection may have differen structure; hey are strucured when they are written.
+Now the code that writes these records may change, and you end up with different versions of documents in the same collection of documents .
+(and the code that writes this stuff is a mess, after a few years)
+
+--
+
 (To be continued...)
 
 ---23/02/23 07:08:35----------------------
