@@ -126,27 +126,23 @@ Sometimes you need to denormalize a structure in order to get sufficient lookup 
 
 --
 
-Need to speed up stuff?
+Need to speed up stuff? First of all measure.
     
-    - examine data structures in use
 
-    - is there a better algorithm to get things done?
-
+- examine alogithms in use 
+- examine data structures in use, 
+    - examine memory access patterns: (does it have lots of CPU cache misses?)
+        - can you cache stuff? What kind of caching is in use?
     - examine allocation patterns (usually people are not very aware of them)
-
-    - communication: too many roundtrips? What kind of latencies are there?
-
-    - storage hierarchy: Is there some sort of caching for hot vs cold areas?
-
-    - lock contention (often occurs in conjunction with pooling and threads)
-        - do you need more than x conenctions at a time , and the connection pool only provides for x / 2 connections ?
-
     - memory allocators (more for c/c++)
         - allocation patterns: you need a lot of objects of size x1, x2, x3 
             - do you want to have separate slabs for sizes x1, x2, x3?
-                - depends if access is from differen threads, etc (depending on how your allocator is working)
-        
-    - java: do you have to reboot the service often (takes a lot of time untill java is just-in-time compiled - several thousands of iteratiosn over the same basic code block
+- storage hierarchy: Is there some sort of caching for hot vs cold areas?
+- communication: too many roundtrips? What kind of latencies are there?
+- lock contention (often occurs in conjunction with pooling and threads)
+    - do reader/writer locks make sense?
+    - do you need more than x conenctions at a time , and the connection pool only provides for x / 2 connections ?
+- java: do you have to reboot the service often (takes a lot of time untill java is just-in-time compiled - several thousands of iteratiosn over the same basic code block
 
 --
 

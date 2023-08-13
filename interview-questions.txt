@@ -1,9 +1,18 @@
+- don't do lot's of interview preparation prior to the interview (get's you bogged down) just pass over the notes here.
+
 - always have a sheet of paper to scribble upon. Write something down, while you read the task (helps focus)
 - Try to be check out things before you start to write things down.
 - hear some relaxing music before the interview, and do some exercising (makes you feel better)
 
 - list of questions that cover most patterns
     Top 75 LeetCode  -  https://gist.github.com/krishnadey30/88c4e2f601e96597974c00185e479532
+
+- look at this guy on youtube: https://www.youtube.com/@NeetCode
+
+- design interview question:
+    - trying to learn example systems: see learning-architecture-from-examples.txt
+    - don't tell about projects that are long time ago (never ever), always go with the most recent experience.
+
 
 TWO POINTERS
 ------------
