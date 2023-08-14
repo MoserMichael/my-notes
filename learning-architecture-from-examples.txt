@@ -1,0 +1,245 @@
+
+---
+Hussein Nasser - nice lectures you can listen to, while on the train.
+
+POSTGRES SQL SERVER ARCHITECTURE
+
+    There is a book on the subject: 
+        
+        https://edu.postgrespro.com/postgresql_internals-14_en.pdf
+        Egor Rogov
+        PostgreSQL 14 Internals
+
+    https://www.youtube.com/watch?v=Q56kljmIN14 
+
+    - data in DB tables is stored in tuple format, each tuple has a version.
+    - upon update an new row with a new tuple version is being written (POSTGRES is append only).
+    - the old versions will eventually be cleaned up by the VACUUM process
+
+    Process structure:
+
+        Main postgress: POSTMASTER process, it is listening for new database connection (and it starts all the other worker processes)
+        
+        Upon new connection a BACKEND child process is spawned (that services the DB connection) - this is to isolate processing of client connections from each other. The processes share a lot of stuff via shared memory.
+
+        Per connection child processes does the query processing by default, if PARALLEL PLAN is enabled, then it passes processing of query to BACKGROUND WORKER process (there is a pool of them)
+
+        SQL statement execution involves building an  execution plan, then running it. In any event the output is written to shared memory called WORK-MEM (no disk-IO yet)
+            
+
+        AUXILIARY PROCESSES - helper processes. 
+            
+            BACKGROUND-WRITER - has access to WORK-MEM shared memory. It writes the updated pages to file. (now OS write does not OS flush !!1)
+                (OS write only updates the OS FILE SYSTEM CACHE (inside the OS), made persistent only upon flush)
+
+            CHECKPOINTER - does OS flush, this creates a CHECKPOINT RECORD (all older data must be replayed, if necessary.
+
+            LOGGER PROCESS - also get's it's data from shared memory
+
+            VACUUM - pages that consist of obsolete tuples (which have been overwritten. (wow. Big potential for disk fragmentation?)
+
+            AUTO-VACUUM - watcher or VACUUM workers
+
+            WALL-ARCHIVER - backs up the WALL RECORDS (if a CHECK-POINT is earlier, them upon restart the entries in WALL_ARCHIE are applied to shared memory WORK-MEM shared memory)
+
+            CHECK-POINTER - creates CHECKPOINT (that creates a record that we are consistent)
+
+POSTGRES 
+    Peter Eisentraut
+    https://www.youtube.com/watch?v=OeKbL55OyL0&list=LLjHqZSJGoBvKUdYF6hw6xoA&index=2
+
+    DB client libpq library 
+
+        - general format of messages:
+            [one letter request code]  [NUM-OF-BYTES] [data]
+
+            short sqeuence of messages
+
+                client2Server   Q [num] 'SELECT .... "
+                server2Client   T [num] <tuple defines rows: field and field types>
+                                D [num] <each row is a message>
+                                Z [num] 
+
+        - stages of processing request
+            Parser  https://github.com/postgres/postgres/tree/master/src/backend/rewrite
+                - build parse tree/Abstract syntax tree(AST) with flex/bison
+                - Validation of AST: doe the table names exist? Do column names exist? Do the types of columns match?
+
+            Rewrite https://github.com/postgres/postgres/tree/master/src/backend/rewrite
+
+                - modify AST does stuff like expanding views
+
+        - Planning Optimization - build an execution plan https://github.com/postgres/postgres/tree/master/src/backend/optimizer
+            (EXPLAIN command shows a yaml of this - you put EXPLAIN before the SQL query in the PSQL shell)
+
+            (EXPLAIN with analyse option - this does more than planning, it runs the query and collects statistics to show the cost of each step)
+
+                Uses statistics gathered so far to build an optimal sequence of actions required to service the requst
+                
+                stages of execution plan actually do something with the tables, operations like 
+                    Sort
+                    Aggregate
+                    Hash Join
+                    Seq Scan 
+
+        - execute the plan (prepared statements do the parsing and optimization stages, so that running a prepared statements starts with the execution stage)
+            https://github.com/postgres/postgres/tree/master/src/backend/executor
+
+            says it does a pipeline of stages, and tuples pass through the stages one by one (says there is an effort to batch these, so as to reduce cache misses)
+
+        
+            - Access - lower level to implement the execution stages https://github.com/postgres/postgres/tree/master/src/backend/access
+
+
+             How do filters work in sequntial scan? Need to compare operators, let's say the want to process '>=' on int2 typed values.
+
+               You can find the names of the function in the psql code base - the system catalog tables know this. (says plan processing does some kind of lookup like this!!!)
+        
+                # show all internal tables
+                SELECT * FROM pg_catalog.pg_tables;
+
+                # show all types
+                SELECT * FROM pg_catalog.pg_type;
+
+                #
+                SELECT oid FROM pg_catalog.pg_type WHERE pg_type.typname = 'int2';
+                 oid
+                -----
+                  21
+                (1 row)
+
+
+                postgres=# SELECT * FROM pg_catalog.pg_operator WHERE oprname = '>=' AND oprleft=21 AND oprright=21;
+                 oid | oprname | oprnamespace | oprowner | oprkind | oprcanmerge | oprcanhash | oprleft | oprright | oprresult | oprcom | oprnegate | oprcode |   oprrest   |     oprjoin
+                -----+---------+--------------+----------+---------+-------------+------------+---------+----------+-----------+--------+-----------+---------+-------------+-----------------
+                 524 | >=      |           11 |       10 | b       | f           | f          |      21 |       21 |        16 |    522 |        95 | int2ge  | scalargesel | scalargejoinsel
+                (1 row)
+
+                # int2ge isa C function in the code base, that acts as operator to compare two integer fields.
+            
+                SELECT * FROM pg_catalog.pg_proc WHERE proname = 'int2ge';
+
+                oid | proname | pronamespace | proowner | prolang | procost | prorows | provariadic | prosupport | prokind | prosecdef | proleakproof | proisstrict | proretset | provolatile | proparallel | pronargs | pronargdefaults | prorettype | proargtypes | proallargtypes | proargmodes | proargnames | proargdefaults | protrftypes | prosrc | probin | prosqlbody | proconfig | proacl
+-----+---------+--------------+----------+---------+---------+---------+-------------+------------+---------+-----------+--------------+-------------+-----------+-------------+-------------+----------+-----------------+------------+-------------+----------------+-------------+-------------+----------------+-------------+--------+--------+------------+-----------+--------
+ 151 | int2ge  |           11 |       10 |      12 |       1 |       0 |           0 | -          | f       | f         | t            | t           | f         | i           | s           |        2 |               0 |         16 | 21 21       |                |             |             |                |             | int2ge |        |            |           |
+(
+                
+        - storage management             
+             file: <POSTGRESS DATA DIR>/base/<oid of DB>/<oid of table>
+             file is divided into 8k pages/block (tuple data for DB rows is stored here), these are mapped to shared memory - .
+
+          pgfiledump tool parses these raw database files.    
+
+
+        - WAL logging, each update is changing the audit log (WAL) - if the thing crashes before the shared memory is synced to disk, then it restores the changes from the WAL audit log.   
+          (function XLogInsert - writes to WALL)
+
+          WAL is also used for DB replication.
+
+
+---
+Hussein Nasser
+
+MONGODB ARCHITECTURE https://www.youtube.com/watch?v=ONzdr4SmOng
+    
+    Evolution of MONGODB storage engine - NOSQL (SCHEMALESS) DB
+
+    - JSON records are called 'documents' and stored in 'collections'
+    - each 'document' get's a unique id (globally unique: The first nine bytes in a MongoDB _ID guarantee its uniqueness across machines and processes, in relation to a single second; the last three bytes provide uniqueness within a single second in a single process)
+        
+    - first version: 
+
+        - had a single btree index that maps the document id to a storage location. Storage location consists of two parts, first one identifies the storage file, second part is the index in the file (a bit like ISAM)
+        - they used to have a single lock in the system !!!
+
+    - second version
+        - had a lock per collection
+
+    - third version : wired tigre
+
+        - had a lock per document/record (like almost everyone else)
+        - adds compression of record prior to storage
+        - hidden clustered indexes (clustered index is a btree index, where the leaf nodes of the index store the data of the records, also the leaf node blocks are linked in linked list - so finding a range of records by id is fast.
+            - in a clustered index the btree index nodes are stored on disk, so no more in memory index???       
+        
+            - also they have a secondary index:
+                - first record _id is mapped to internal recordId (64 bits) in it's B-TREE
+                - the record _id is mapped to the record in it's clustered B-TREE index
+
+                Why do they need a secondary index?
+                    - the _id field is bigger than secondary index value (by default 12 bytes) - so they want to safe space.
+                    - the _id field can actually be any kind of data, having that in the index is a problem
+                
+    
+        - afteer 5.3 they did away with the hidden index, now the _id is mappped to record via one B-TREE (but you can still have the double index as an option) 
+
+
+-----
+
+https://www.youtube.com/watch?v=NymIgA7Wa78&list=LLjHqZSJGoBvKUdYF6hw6xoA
+
+REDIS
+
+    - REDIS is single threaded, tens of thousand requests per second (depending on data structure?)
+
+    - is a kind of better MEMCACHED -  has replication built-in.
+        MEMCACHED does o(1) set/get/lookup
+        REDIS has more data structures (sorted sets, bit fields, queues), 
+            for complex stuff that is more than O(1) there are upper bounds on performance
+            has persistence options (configurable)
+                - has optional append only journal file for changes.
+                - options for FSYNC (flushing to disk)
+                    - always (each op)
+                    - once per second, (N seconds)
+                    - no flushing - OS flushes each n-seconds (by cfg)
+                 - RDB saves - current state saves (does fork of service, they do that on the second tiers only)
+
+            Replication
+                - can initiate replication to another node (so that given node can be taken off-line)
+                - primary / secondary tiers, (primary for read/write - then stuff replicated to secondary, so that it stands buy to take over)
+                    - problem: still no guaranteed consistency between tiers
+                    - race conditions, if replication did not complete.
+                
+            REDIS cluster 
+                - horizontally scalable (can add nodes),
+                - has sharding
+                    - each key is hashed, and divided module by 60383 to get hash slot.
+                        (so they can ad nodes and partial replication, without rebuilding all of the shards)    
+                        makes an effort to keep shards with more or less equal amount of keys stored 
+                - fault tolerant (replication and hot swap between nodes)
+                - no single admin node (the REDIS instances exchange configuration through gossip protocol)
+                - need special client lib for cluster mode
+                    - can be configured so that reads/writes go through master nodes only, then these master nodes are replicated to secondary nodes (for active standby)
+
+        - latency issues: sometimes there are peaks (some operation take much longer) 
+
+
+            - there is latency doctor tool in REDIS
+            - redis cli option --intrinsic-latency - reports latencies (sort of like DB EXPLAIN)
+                               --latency option: reports network latencies
+            - redis cfg option: selectively log operations slower than N microseconds
+                REDIS config slowlog-log-slawer-than 10000 
+            
+              they saw slow commands: 
+                PSYNC - partial sync (not done often, done when a replicate subscribes to a master)
+                CLUSTERSLOTS - was slow. This requests gets the layout, which range of cluster slots (HASH(KEY) % 60383) is serviced by which cluster node.
+
+                   They had short lived client processes, so they need to do that often! 
+                   also cluster can reconfigure itself, so that the cluster slot distribution changes and needs to be sent again.
+
+                How they solved it: kept the cluster slots in some local cache accessible from PHP (between the runs of the application?)
+
+        - rate limiting with REDIS - do it by using the 'leaky bucket' algorithm, Doing that on the client library is not atomic, so they uploaded a LUA stored procedure to REDIS, that does the counter updates and comparison in one step.      
+            See https://www.linkedin.com/pulse/lua-script-redis-using-noderedis-vinayak-sharma/
+
+
+
+                
+        
+        
+
+            
+
+
+
+            
