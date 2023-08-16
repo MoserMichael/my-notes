@@ -136,6 +136,95 @@ POSTGRES
 
           WAL is also used for DB replication.
 
+---
+
+https://www.youtube.com/watch?v=URwmzTeuHdk&list=LLjHqZSJGoBvKUdYF6hw6xoA&index=2
+
+Locks in PSQL (reads out this doc: https://www.postgresql.org/docs/current/explicit-locking.html )
+
+    General about locks (true for any locks)
+        - shared locks (reader locks - multiple readers get it - but you can'tget exclusive lock while any one is active)
+        - exclusive locks (writer locks - only one writer gets it, if no readers have it)
+        
+            - usually the DB must lock stuff implicitly, when it does something
+            - turns out that postgress has a LOCK command to get these explicitly
+
+    Postgress type of locks
+    
+        - advisory locks (application locks, this lock is represented by DB object, used to coordinate a whole transaction (or multiple transactions)
+
+        Table locks - so many lock modes!!! (not listing them by order of severity, see document for that)
+
+            ACCESS EXCLUSIVE  - DROP/TRUNCATE table - needs to be sure that no one is touching the table
+                                  (highest level lock, can't get it if any other lock is active)
+            EXCLUSIVE            REFRESH MATERIALIZED VIEW CONCURRENTLY - when the results of a completed query need to be changed from scratch (?)
+                                  (second highest level lock)   
+            ACCESS SHARED     - even SELECT needs it, to access an index (make sure the index disappears if table is dropped)
+                                  (lowest level lock)
+
+            ROW SHARED        - used with modes like FOR UPDATE (that's used when you make sure that no multiple rows are changed in a transaction, and you want to make sure they are not changed)
+
+            ROW EXCLUSIVE     - on changing a row (UPDATE/DELETE/INSERT/MERGE need to take this lock) 
+
+            SHARE UPDATE EXCL - VACCUM (not full) - here only pages where all records are superseeded by newer ones get freed (?)
+
+            SHARE             - CREATE INDEX needs one (but not CREATE INDEX CONCURRENTLY - but that's a tricky option!!)
+
+            SHARE ROW EXCL    - sometimes ALTER TABLE need it.
+
+            Exclusive - if you want to drop/truncate/reindex table/create index/cluster VACCUM FULL (here the index is reordered, as existing blocks are reordered to clean out of old versions of records)
+        
+        Row level locks
+            FOR KEY SHARE - lowest level lock.      A key-shared lock blocks other transactions from performing DELETE or any UPDATE that changes the key values, but not other UPDATE, and neither does it prevent SELECT FOR NO KEY UPDATE, SELECT FOR SHARE, or SELECT FOR KEY SHARE.
+
+            FOR SHARE       - A shared lock blocks other transactions from performing UPDATE, DELETE, SELECT FOR UPDATE or SELECT FOR NO KEY UPDATE on these rows, but it does not prevent them from performing SELECT FOR SHARE or SELECT FOR KEY SHARE. (?)
+
+            FOR NO KEY UPDATE ... This lock mode is also acquired by any UPDATE that does not acquire a FOR UPDATE lock (transaction stuff)
+
+            FOR UPDATE    - highest level lock  ... acquired by any DELETE on a row, and also by an UPDATE that modifies the values of certain columns. 
+        
+
+        Page level locks
+            also has read/write level locks per page. But the docks say 'don't wory - this is so low level'
+
+-----
+Hussein Nasser 
+
+https://www.youtube.com/watch?v=_E43l5EbNI4
+
+uber moving from postgress to mysql (that one happened in 2016 - quite some time ago)
+
+    - say they use microservices, and use rdms for schemaless data format (? Why? Maybe they still needed some combination of ACID not provided by nosql?)
+
+limitations given by uber in article:
+    - on disk format
+        in article example : they have lots of indexes (do they really need so many indexes?)
+        P. writes a new tuple record for any modified record, os this results lots of index updates - so lots of locking on indexes after any record updates (meaning lot's of flushes on indexes)
+        The WAL - write ahead log gets large (because of index updates)
+
+    - replication problems
+        says big WAL - write ahead log makes things bad, and P. does not have write ahead replication out of the box, so locks are retained for longer in PW.
+
+    - consequences of postgres design
+        SSD write amplification because lots of index writes (bad with SSD performance and longivity)
+
+    - claim data corruption during replication of P:9.2
+        ?
+
+    - btree rebalancing (adds to write amplification)
+
+    - no mvcc replication (multi version concurrency control)
+        <didn't understand>
+    
+    - connections: P. keeps process per connection while M. spins up a thread
+        he is right here, but you should not have lots of transient DB .connections in the first place.
+
+    - upgrading postgres 
+        it is a pain..
+
+
+(rocks db - log structured merge tree - special to minizes writes, to keep SSD's alive )
+
 
 ---
 Hussein Nasser
@@ -172,6 +261,7 @@ MONGODB ARCHITECTURE https://www.youtube.com/watch?v=ONzdr4SmOng
                 
     
         - afteer 5.3 they did away with the hidden index, now the _id is mappped to record via one B-TREE (but you can still have the double index as an option) 
+
 
 
 -----

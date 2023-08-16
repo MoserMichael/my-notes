@@ -519,6 +519,20 @@ running a container - with a given image (if image is not present then they try 
         - same as before, just that the entry for the exited docker container gets cleaned up, when the docker exits. (--rm says so)
 
 
+    # or running a shell in the thing
+    docker run -it fedora:latest  bash 
+
+    # if the image has an entry point then you can override it
+    docker run -it --entrypoint bash fedora:latest
+
+    # if you need to copy files between docker and file system: map home dir to /myhome in container  -v $PWD:/myhome
+    docker run -v $PWD:/myhome -it fedora:latest  bash 
+
+    # or running a shell in the thing - and force it to run as root
+    docker run -u 0 -it fedora:latest  bash 
+
+
+
     docker run -d fedora:latest ls /
 8bd31381ae93712414e02c58589a8562be9739ccc01d0d9baf93f39a6ab32505
 
