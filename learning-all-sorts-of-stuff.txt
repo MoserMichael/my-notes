@@ -1,5 +1,14 @@
 git/github
 
+        # github search cheat sheet 
+            https://cheatography.com/cpriest/cheat-sheets/github-search-syntax/
+
+        # github search: limit search of term "miau" in files with file extension:*.py
+        path:*.py miau
+
+        # github serach: limit to root level of repository (can use that to limit to subdirectories)
+        path:/
+
         # 'deleted by us' during merge or cherry-pick
             # file x was added in the commit being cherry-picked
             # file x was deleted in the branch that you cherry-pick into.
@@ -329,6 +338,22 @@ ALPINE - list all installed packages
 
     apk info -vv
 
+
+ALPINE - install rust with rustup
+ 
+ # Newest upgradeables for used base image ... 
+ apk upgrade --no-cache
+
+ # libgcc - compatibility layer for libc (otherwise it searches for stuff that is not present on alpine - this one didn't work without it)
+ apk add curl libgcc
+ 
+ # using -y option, so that it does not ask any questions...
+ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s  -- -y \
+
+ # install specific version of rus ( --defualt-toolchain)
+ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s  -- -y  --default-toolchain=1.65.0 
+
+
 =======
 Ansible
 
@@ -376,6 +401,10 @@ Get the latest release for a public repository
 ======
 
 Kubernetes:
+
+    - show current context details
+
+        kubectl config view --minify --flatten
 
     - which deployment/replicaset/etc is controlling a given pod?
 
@@ -480,6 +509,11 @@ How to build with the Dockerfile in the current directory
        --no-cache       : don't use the cache to pick up something old
        .                : current dir
        -t blalba        : tag the resulting image as blabla
+
+---
+
+    # don't use cached layer - best used to create the 'official build'
+    Docker build --no-cache 
 
 ---
 
