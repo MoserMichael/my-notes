@@ -179,7 +179,8 @@ Mac/OSX tricks
 
     docker run --rm  -p 8082:8081 -it with-nc /bin/bash -c 'while true; do (echo -e "HTTP/1.1 200 OK\r\nConnection: close\r\n\r\nMy website has date function\t$(date)\n") | nc -l 8081; done'
     curl http://localhost:8082/ 
-    
+
+   
     now curl doesn't exit - it doesn't get the FIN ?
 
 ? ssh access keys ?
@@ -555,6 +556,12 @@ running a container - with a given image (if image is not present then they try 
 
     # or running a shell in the thing
     docker run -it fedora:latest  bash 
+
+    # force specific platform
+    docker run --platform linux/amd64  -ti alpine:3.17   sh
+
+    docker run --platform linux/amd64  -ti ubuntu:latest   sh
+
 
     # if the image has an entry point then you can override it
     docker run -it --entrypoint bash fedora:latest

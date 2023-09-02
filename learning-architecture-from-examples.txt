@@ -1,3 +1,171 @@
+https://www.youtube.com/watch?v=lG90LZotrpo
+
+https://alexwlchan.net/a-plumbers-guide-to-git/
+
+How GIT works UNDER the HOOD?
+
+    every object in git:
+        key:    sha1 hash over the content of the content (this identifies the object)
+                This helps with distributed version control:
+                    - other version control systems have version numbers 1, 2, 3 - here the identity is based on the data of the object, so the ids' won't overlap
+
+
+        value:  object content (object data) - is stored zlib compresseed
+
+
+
+ .git/objects - stores the object database
+
+ .git/objects/<hexa value of first byte of sha1 hash>/<file named after remaining hexa value of sha1 hash>  - that's the file that holds object of given hash key   
+    
+    - you don't want to have all of the objects in one directory, accessing files in very big directory is sequential search, gets very slow for very big directories.
+ 
+Git command types
+
+    "Porcelain" commands - high level, user friendly commands
+
+    "Plumbing" commands  - low level commands, commands to directly manipulate the git object store.
+        like:
+            # show type of git object from sha
+            git cat-file -t <sha> 
+
+            # pretty print git object 
+            git cat-file -p <sha>
+
+Session:
+
+    # create new git repo with name 'try' try.git/objects - contains all git objects.
+    > git init try
+
+    # watch changes of .git folder as they occur
+    > fswatch  -d -r try/.git/
+
+    > cd try
+    > echo "ha" >ha.txt
+
+    # add new file into 'stagin' area (a new BLOB object is created for the file)
+    > git add ha.txt
+
+    # file appears for the new BLOB object
+    # (piece the numbers togather to get the object id - won't repeat that again and again)
+    try/.git/objects/05/a98d59e6f083f194480efd00062071a01e54d8
+
+    # show object type (blob)
+    > git cat-file -t 05a98d59e6f083f194480efd00062071a01e54d8  
+    blob
+
+    # show object content - a blob object only stores the contents of a file, not it's name !!!
+    # each revision of a file creates a complete BLOB objects that holds the whole file content (what about duplicated data?)
+    # that's why git checkout is fast - as compared to SVN (where they have to get the top of the branch from applying all diffs for each files)
+    # also that helps distributed colaboration
+
+    > git cat-file -p  05a98d59e6f083f194480efd00062071a01e54d8
+    ha
+
+    # make a commit
+    > git commit -am "first commit"
+
+    # now what is created behind the scenes?
+
+    # a tree object - that is listing the file name and referencing the blob object
+
+    # the tree is always listing the top level directory of a git repository
+    # a subdirectory of the top level directory will be represented by another tree object,
+    # the tree referenced by a commit is therefore a SNAPSHOT - you can get the state of the branch by examining tree of the top level commit only !!!
+    # (in git the checkout command is much faster than in SVN - where they have to replay the whole repo history in the process !!!)
+
+    
+    > git cat-file -t  4c464b23effe5c40149ccffb7aadc4afbf3b7738
+    tree
+
+    # the content of the tree object, each line defines a listed file/directory, the fields: 
+        - file permissions
+        - object type of entry
+        - the content (for files this is a blob object, for directories that's another tree object)
+        - the key of the referenced object
+        - the name of the file system object
+
+    > git cat-file -p  4c464b23effe5c40149ccffb7aadc4afbf3b7738
+    100644 blob 05a98d59e6f083f194480efd00062071a01e54d8	ha.txt
+    
+
+    # if you have a repo with nested directories: $(git ls-tree -r <SHA OF TREE OBJECT>) will traverse all referenced sub trees/directories recursively
+    # that's another plumbing command for you!
+    git ls-tree -r  4c464b23effe5c40149ccffb7aadc4afbf3b7738
+
+    # a commit object - that references the tree. (reminder: the tree is the snapshot of the current state of a branch - for a given point in the commit history)
+    > git cat-file -t c64d35748b2b211f188e01149a538806fbb373f3
+    commit
+
+    # the commit object - references the tree. also has metada on commit (this metadata is displayed by git log)
+
+    > git cat-file -t d9b480dd708c4635c31c76adea6f899989a573a8
+    commit
+
+    > git cat-file -p d9b480dd708c4635c31c76adea6f899989a573a8
+    tree 4c464b23effe5c40149ccffb7aadc4afbf3b7738
+    author mmoser-blaze <mmoser@perforce.com> 1693612392 +0300
+    committer mmoser-blaze <mmoser@perforce.com> 1693612392 +0300
+
+    first commit
+
+    # a branch just points to the last commit.
+
+    cat HEAD
+    ref: refs/heads/main
+
+    cat .git/refs/heads/main
+    d9b480dd708c4635c31c76adea6f899989a573a8
+
+
+    # lets add a second commit that changes the first file !
+    echo  "aaa" >>ha.txt
+
+    git add ha.txt
+
+    # new blob appears for the new revision of the file ,  - new copy of the file in object store!
+    
+    git cat-file -t 1b3e02e5d3ddd7dc5b18511fa4be5479b7773a7f
+    blob
+    
+    git cat-file -p 1b3e02e5d3ddd7dc5b18511fa4be5479b7773a7f
+    ha
+    aaa
+
+    # adding a second commit
+    > git commit -am "second commit"
+
+    # again a tree object appears, which is referencing the blob, and listing it with it's file name
+    > git cat-file -t 8cb4db8de90adf4ef1f344451c840d7d6af659f8
+    tree
+
+    > git cat-file -p 8cb4db8de90adf4ef1f344451c840d7d6af659f8
+    100644 blob 1b3e02e5d3ddd7dc5b18511fa4be5479b7773a7f	ha.txt
+
+    # and
+
+    > git cat-file -t 9ec26f9793513e4cc6396e3ac3da45fab915e508
+    commit
+
+    # and the second commit object
+    # !!! the second commit object has a pointer to the parent commit !!!
+    #  - that's how git log command is following all of the commit objects
+    #  - also note: each git object is immutable, and the key is defined only by the object content - it's the sha1 hash 
+    #    - that's why git is distributed, each node can work independently, as they don't have a shared numbering schema that has to be coordinated (SVN/CVS revisions are numbered 1,2,3, so the server has to determine and merge them)
+    #    - also: each git object is a merkel tree : it contains the hashes of refererred to objects (which are also immutable), so that they can't change underneath.
+    #      In a way that is similar to the bitcoin blockchain !!!
+
+
+    > git cat-file -p 9ec26f9793513e4cc6396e3ac3da45fab915e508
+    tree 8cb4db8de90adf4ef1f344451c840d7d6af659f8
+    parent d9b480dd708c4635c31c76adea6f899989a573a8
+    author mmoser-blaze <mmoser@perforce.com> 1693613310 +0300
+    committer mmoser-blaze <mmoser@perforce.com> 1693613310 +0300
+
+    # and the branch is updated to point to the latest commit.
+    > cat .git/refs/heads/main
+    9ec26f9793513e4cc6396e3ac3da45fab915e508
+
 
 ---
 Hussein Nasser - nice lectures you can listen to, while on the train.
