@@ -23,6 +23,8 @@ How GIT works UNDER the HOOD?
 Git command types
 
     "Porcelain" commands - high level, user friendly commands
+        like:
+            git add/checkout/commit/branch 
 
     "Plumbing" commands  - low level commands, commands to directly manipulate the git object store.
         like:

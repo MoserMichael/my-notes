@@ -562,6 +562,10 @@ running a container - with a given image (if image is not present then they try 
 
     docker run --platform linux/amd64  -ti ubuntu:latest   sh
 
+    # sometimes a docker image comes with an entry point, so you need to override the entry point to run a shell
+    # sad but true
+    docker run -ti --entrypoint sh docker-image-with-explicit-entrypoint 
+
 
     # if the image has an entry point then you can override it
     docker run -it --entrypoint bash fedora:latest
