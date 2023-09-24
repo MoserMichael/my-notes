@@ -16,7 +16,7 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 I was probably wrong in making up all of this stuff, none of it is of any value. (i was using all these projects as a tool to learn stuff, and to write down my thoughts and reflections along the way)
 
-(This was sort of my way of staying afloat in an ever changing landscape of software development, sort of)
+This was sort of my way of staying afloat in an ever changing landscape of software development, sort of.
 
 It turns out that my efforts have little value, the skill of solving Leetcode questions is much more appreciated (Now for whatever reason the most common verb that combines with leetcode is 'to grind')
 
@@ -24,7 +24,7 @@ I never thought of leetcode to be too relevant to my way of doing things, now th
 
 ... Therefore joining the leetcode party and putting up my solutions [here](https://github.com/MoserMichael/my-notes/tree/master/interview-questions) 
 
-After all leetcode stuff is also about programming, so let's go!
+After all leetcode stuff is also about programming, somehow, so let's go!
 
 ---30/07/23 20:23:26----------------------
 
