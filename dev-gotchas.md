@@ -14,7 +14,7 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 ---24/09/23 08:18:53----------------------
 
-I was probably wrong in making up all of this stuff, none of it is of any value. (i was using all these projects as a tool to learn stuff, and to write down my thoughts and reflections along the way)
+I was probably wrong in making up all of this stuff, here on this site, as none of it is of any value. (i was using all these projects as a tool to learn stuff, and to write down my thoughts and reflections along the way)
 
 This was sort of my way of staying afloat in an ever changing landscape of software development, sort of.
 
@@ -24,7 +24,14 @@ I never thought of leetcode to be too relevant to my way of doing things, now th
 
 ... Therefore joining the leetcode party and putting up my solutions [here](https://github.com/MoserMichael/my-notes/tree/master/interview-questions) 
 
-After all leetcode stuff is also about programming, somehow, so let's go!
+After all leetcode stuff has something to do with programming (actually leetcode has more to do with problem solving, whereas programming in my humble understanding is about writing tools for solving problems)
+
+My problem with leetcode:
+
+- You often spend more time at parsing the problem statement than with solving the problem. Well, maybe that's the point of the exercise, who knows...
+- I forget the leetcode exercise when it gets 'accepted' (when the code passes all of the tests). Maybe that's because the problems are often contrived, and have little to do with real world problems. (maybe i should take notes)
+- One is supposed to give a show while interviewing in the leetcode style, and that doesn't go well with looking for a solution to the problem. 
+    - (Maybe the reason is that I am just to slow at solving this kind of problems, at the moment)
 
 ---30/07/23 20:23:26----------------------
 
