@@ -11,8 +11,6 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 
 I also got another blog for [stuff that i used to post on twitter](dev-other-blog.md)
 
-
-
 ---24/09/23 08:18:53----------------------
 
 I was probably wrong in making up all of this stuff, here on this site, as none of it is of any value. (i was using all these projects as a tool to learn stuff, and to write down my thoughts and reflections along the way)
@@ -40,6 +38,9 @@ So let's just follow the instructions!
 
 [![The 'Lego Movie' - 'Instructions to fit in, have everybody like you and always be happy'](https://img.youtube.com/vi/5wuAxZqBuFE/0.jpg)](https://www.youtube.com/watch?v=5wuAxZqBuFE)
 
+
+I am starting with the list of problems:
+    [top-interview-150](https://leetcode.com/studyplan/top-interview-150/) and  [top-interview-75](https://leetcode.com/studyplan/leetcode-75/) These list give a classification of problems, where the classification itself is giving a strong hint as to how to solve the problem. Let's hope it's a good start...
 
 ---30/07/23 20:23:26----------------------
 
