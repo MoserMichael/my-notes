@@ -42,6 +42,8 @@ So let's just follow the instructions!
 I am starting with the list of problems:
     [top-interview-150](https://leetcode.com/studyplan/top-interview-150/) and  [top-interview-75](https://leetcode.com/studyplan/leetcode-75/) These list give a classification of problems, where the classification itself is giving a strong hint as to how to solve the problem. Let's hope it's a good start...
 
+/today i learned that Leetcode exists since 2010, [wiki](https://en.wikipedia.org/wiki/LeetCode) - so much about taking wrong turns... Still I am doing these problems for some time now, and still don't feel that i am getting any faster at solving them, or getting any better at making a show while presenting them. Where it helps: I don't get lost when reading tricky problem statements, so there is some sense in doing all this.../
+
 ---30/07/23 20:23:26----------------------
 
 
