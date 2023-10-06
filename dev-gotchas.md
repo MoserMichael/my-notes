@@ -49,7 +49,14 @@ I am starting with list of problems, here are some problem lists that i found:
 /today i learned that Leetcode exists since 2010, [wiki](https://en.wikipedia.org/wiki/LeetCode) - so much about taking wrong turns... Still I am doing these problems for some time now, and still don't feel that i am getting any faster at solving them, or getting any better at making a show while presenting them. Where it helps: I don't get lost when reading tricky problem statements, so there is some sense in doing all this.../
 //-->
 
-6/10/23 - I am passed a hundred leetcode problems, (hi, [that's me on leetcode](https://leetcode.com/michaelmo123/) Now can still takes me hours to solve a problem, but at least I am over the 'leetcode shock', and I am now reading the problem descriptions thorougly, without getting afraid of them. Some people take Leetcode really hard, however it turns out that it is possible to get past any kind of abuse, as a programmer...
+6/10/23 - I am passed a hundred leetcode problems, (hi, [that's me on leetcode](https://leetcode.com/michaelmo123/) ) 
+
+My observations, so far:
+
+- Now can still takes me hours to solve a problem, that would probably be not very good with a real interview session.
+- I am now reading the problem descriptions with more attention to detail.
+- I have also lost this shock and awe of the interviewing
+- I am over the initial 'leetcode shock', and  Some people take Leetcode really hard. However it turns out, that it is possible to get past any kind of abuse, as a programmer...
 
 ---30/07/23 20:23:26----------------------
 
