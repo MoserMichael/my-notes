@@ -53,10 +53,10 @@ I am starting with list of problems, here are some problem lists that i found:
 
 My observations, so far:
 
-- Now can still takes me hours to solve a problem, that would probably be not very good with a real interview session.
+- Now can still takes me hours to solve a problem. This is probably not very good for a real interview session.
 - I am now reading the problem descriptions with more attention to detail.
-- I have also lost this shock and awe of the interviewing
-- I am over the initial 'leetcode shock', and  Some people take Leetcode really hard. However it turns out, that it is possible to get past any kind of abuse, as a programmer...
+- I have also lost this shock and awe of the interview process. 
+- I am over the initial 'leetcode shock'. Some people take Leetcode really hard. However it turns out, that it is possible to get past any kind of abuse, as a programmer... (programmers are used to abusive tools and working environments)
 
 ---30/07/23 20:23:26----------------------
 
