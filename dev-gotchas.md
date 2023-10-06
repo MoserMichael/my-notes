@@ -39,8 +39,11 @@ So let's just follow the instructions!
 [![The 'Lego Movie' - 'Instructions to fit in, have everybody like you and always be happy'](https://img.youtube.com/vi/5wuAxZqBuFE/0.jpg)](https://www.youtube.com/watch?v=5wuAxZqBuFE)
 
 
-I am starting with the list of problems:
-    [top-interview-150](https://leetcode.com/studyplan/top-interview-150/) and  [top-interview-75](https://leetcode.com/studyplan/leetcode-75/) These list give a classification of problems, where the classification itself is giving a strong hint as to how to solve the problem. Let's hope it's a good start...
+I am starting with list of problems, here are some problem lists that i found:
+
+- [top-interview-150](https://leetcode.com/studyplan/top-interview-150/) and  [top-interview-75](https://leetcode.com/studyplan/leetcode-75/) These list give a classification of problems, where the classification itself is giving a strong hint as to how to solve the problem. Let's hope it's a good start...
+- [top 100 liked questions](https://leetcode.com/problem-list/top-100-liked-questions/)
+- [Leetcode patterns](https://mm1705.github.io/leetcode-patterns/) 
 
 /today i learned that Leetcode exists since 2010, [wiki](https://en.wikipedia.org/wiki/LeetCode) - so much about taking wrong turns... Still I am doing these problems for some time now, and still don't feel that i am getting any faster at solving them, or getting any better at making a show while presenting them. Where it helps: I don't get lost when reading tricky problem statements, so there is some sense in doing all this.../
 
