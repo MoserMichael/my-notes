@@ -32,14 +32,38 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         outPermutations = []
-        Solution.permuteRec(nums, [], outPermutations)
+        #Solution.permuteRec(nums, [], outPermutations)
+        Solution.permuteFast(nums, [False] * len(nums),  [], outPermutations)
         return outPermutations
 
     @staticmethod
-    def permuteRec(nums, res, out):
-        if not len(nums):
+    def permuteFast(nums, inUseArray, res, out):
+
+        #print(f"nums {nums} res {res}")
+        if len(res) == len(nums):
+            #print(f"-> {res}")
             out.append(res.copy())
             return
+
+
+        for i in range(0, len(nums)):
+            if not inUseArray[i]:
+                inUseArray[i] = True
+                res.append(nums[i])
+                Solution.permuteFast( nums, inUseArray, res, out)
+                res.pop()
+                inUseArray[i] = False
+
+
+    @staticmethod
+    def permuteRec(nums, res, out):
+
+        #print(f"nums {nums} res {res}")
+        if not len(nums):
+            #print(f"-> {res}")
+            out.append(res.copy())
+            return
+
 
         for i in range(0, len(nums)):
             rem = nums.pop(i)
@@ -47,4 +71,5 @@ class Solution:
             Solution.permuteRec( nums, res, out)
             res.pop()
             nums.insert(i, rem)
+
 
