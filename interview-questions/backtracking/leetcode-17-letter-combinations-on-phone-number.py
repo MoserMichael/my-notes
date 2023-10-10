@@ -31,35 +31,30 @@
 
 class Solution:
     keyboard = {
-"2": "abc",
-"3": "def",
-"4": "ghi",
-"5": "jkl",
-"6": "mno",
-"7": "pqrs",
-"8": "tuv",
-"9": "wxyz"
-}
+        "2": "abc",
+        "3": "def",
+        "4": "ghi",
+        "5": "jkl",
+        "6": "mno",
+        "7": "pqrs",
+        "8": "tuv",
+        "9": "wxyz"
+    }
 
     def letterCombinations(self, digits: str) -> List[str]:
-        ret = []
+        ret = []        
         if len(digits) != 0:
             Solution.combine(digits, 0, ret, [])
         return ret
 
     def combine(digit_str, pos, ret, stack):
-            if pos >= len(digit_str):
-                ret.append( "".join(stack) )
-                return
+        if pos >= len(digit_str):
+            ret.append( "".join(stack) )
+            return
+        
+        cur_digit = digit_str[pos]
 
-            cur_digit = digit_str[pos]
-
-            for ch in Solution.keyboard[ cur_digit ]:
-                stack.append(ch)
-                Solution.combine(digit_str, pos+1, ret, stack)
-                stack.pop()
-
-
-
-
-
+        for ch in Solution.keyboard[ cur_digit ]:
+            stack.append(ch)
+            Solution.combine(digit_str, pos+1, ret, stack)
+            stack.pop()
