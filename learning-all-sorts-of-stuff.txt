@@ -413,6 +413,10 @@ Kubernetes:
 
         - result has line that starts with Controlled - this names which entity is controlling the pod
 
+    - get pods sorted by start time
+
+        kubectl get pods --sort-by=.status.startTime
+
 
     - extracting interesting fields from a set of pods:
 
