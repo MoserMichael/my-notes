@@ -2,7 +2,7 @@
 
 I think that talking to an LLM can give leads for further research. Sort of like giving directions, if you don't anything about a given subject.
 
-One benefit: you can come back later and ask it more questions (more difficult with real persons). 
+One benefit: you can come back later and ask it more questions (more difficult with real persons). I think this kind of habit can turn into a kind of training - a training for asking deeper questions.
 
 -------
 
@@ -108,6 +108,26 @@ Finally, there is a growing movement among Japanese youth to learn more about th
 Of course, there are still many Japanese people who want to forget about the war. Some people may feel that it is time to move on and to focus on the future. Others may feel ashamed of Japan's past and want to avoid talking about it. However, as the factors mentioned above continue to contribute to a growing awareness of the war, it is likely that the Japanese people will continue to grapple with their country's past in the years to come.
 
 Overall, it is difficult to say definitively whether the tendency to forget about the war or the tendency to remember it is stronger in Japan today. However, there are a number of factors that are contributing to a growing awareness of the war, particularly among younger generations.
+
+Me: Is uncertainty seen as an exceptional traumatic situation in Japanese culture?
+
+GoogleBard
+
+Whether uncertainty is seen as an exceptional traumatic situation in Japanese culture depends on a number of factors, including the individual's perspective, the specific context of the uncertainty, and the severity of the uncertainty.
+
+In general, Japanese culture values planning and preparation, and uncertainty can be seen as a threat to this value. For some Japanese people, uncertainty can be a source of stress and anxiety, and it can even lead to physical symptoms such as insomnia, headaches, and stomachaches.
+
+However, it is important to note that not all Japanese people view uncertainty in a negative light. Some Japanese people may see uncertainty as an opportunity for growth and change. For example, some Japanese entrepreneurs may see uncertainty in the marketplace as an opportunity to innovate and develop new products and services.
+
+Ultimately, whether or not uncertainty is seen as an exceptional traumatic situation in Japanese culture depends on the individual's perspective and the specific context of the uncertainty.
+
+Here are some specific examples of how uncertainty is perceived in Japanese culture:
+
+    Natural disasters: Japan is a country that is prone to natural disasters such as earthquakes, tsunamis, and typhoons. This uncertainty about the natural world can be a source of stress and anxiety for many Japanese people.
+    Economic uncertainty: Japan has experienced a period of economic stagnation in recent years. This economic uncertainty has led to job losses and financial hardship for many Japanese people.
+    Social uncertainty: Japan is a rapidly changing society, and this social uncertainty can be unsettling for some Japanese people. For example, the changing role of women in society and the increasing number of immigrants in Japan can be sources of uncertainty for some Japanese people.
+
+It is important to note that the Japanese people are a diverse group with a wide range of opinions and beliefs. There is no single answer that will apply to everyone when it comes to the perception of uncertainty in Japanese culture. However, it is clear that uncertainty can be a source of stress and anxiety for many Japanese people.
 
 ---------
 
