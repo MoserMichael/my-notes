@@ -2,7 +2,7 @@
 
 I think that talking to an LLM can give leads for further research. Sort of like giving directions, if you don't anything about a given subject.
 
-One benefit: you can come back later and ask it more questions (more difficult with real persons). That's another reason why to leave the browser tabs with the chat session open - this sort of keeps the context of the conversation alive. (lifehack)
+One benefit: you can come back later and ask it more questions (more difficult with real persons). 
 
 -------
 
