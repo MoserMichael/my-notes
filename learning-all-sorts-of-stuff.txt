@@ -1,407 +1,9 @@
-git/github
-
-        # github search cheat sheet 
-            https://cheatography.com/cpriest/cheat-sheets/github-search-syntax/
-
-        # github search: limit search of term "miau" in files with file extension:*.py
-        path:*.py miau
-
-        # github serach: limit to root level of repository (can use that to limit to subdirectories)
-        path:/
-
-        # 'deleted by us' during merge or cherry-pick
-            # file x was added in the commit being cherry-picked
-            # file x was deleted in the branch that you cherry-pick into.
-                git add x  # if you want to keep the file
-                git rm  x  # if you want to delete the file.
-
-        # 'deleted by us' during rebase - now 'us' and 'them' is reversed !!!!
-            # file x was added in the branch that is being rebased
-            # file x was removed in the branch that is brought in
-            
-
-        # shallow clone of linux kernel (--depth 1 - get commit history of the last commit) (much faster to clone)
-        git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux-git --depth 1
-
-        # sort files by extension (rev - reverts each line of the output, so that the extension (in reverse) comes first)
-        git ls-files | rev | sort | rev
-
-        # Get all commits by user (that can be useful during performance reviews...)
-        # select all commits done by user
-
-        git log --author=<user name that appears in commit messages>
-
-        # get the commit message of all commits by user.
-        git log --author=<user name that appears in commit messages> --format=%s 
-
-        # in case that the first string is the name of the issue - get all the issues that the user did.
-        git log --author=<user name that appears in commit messages> --format=%s | awk '{print $1}' | sort | uniq
-
-
-        # github.com ::: open a pull request on some other repository https://github.com/AwesomeUser/AwesomeProject
-
-        - on original repo page: create a fork (press the 'fork' button)
-        - after forking: you have that repository under your own github user  https://github.com/YourOwnUser/AwesomeProject
-
-        - clone that forked repository.
-        - create a new branch of the main branch.
-            git branch -m my_new_pr
-        - add your changes and commit
-        - set the UPSTREAM of the branch: 
-            git remote add upstream https://github.com/AwesomeUser/AwesomeProject
-        - push the new branch:
-             git push -u origin my_new_pr
-        - push command writes a long text to the console, that text includes a link to open the new pull request.   
-    
-vimdiff
-     - space insensitive comparison:
-
-        :set diffopt+=iwhiteall
-
-
-Mac/OSX tricks
-
-? remove colorcodes from text ? 
-
-    # kubectl get logs  - this one is returning text with color codes (i think that's very confusing). 
-    # kubectl logs POD_NAME - color escape sequences everywhere...
-
-    cat blabla.txt | sed -e 's/\x1b\[[0-9;]*m//g'
-
-? built-in something is very different from what you expect ?
-
-    # very true for sed - will install gsed 
-    brew install gnu-sed
-
-    gsed -i 's/blabla/blublu/g' foo.txt
-
-    # to set it up as sed - instead of gsed (still figure the path)
-    brew install --default-names gnu-sed
-
-? force quit an application
-
-    command + option + escape - brings up a 'task manager'
-
-    'Activity monitor' - a better 'task manager' that shows cpu utilization, etc. (or use top)
-
-? can't install an old php version - because it's not supported by brew ?
-
-    brew install shivammathur/php/php@7.4
-
-    this installs it based on https://github.com/shivammathur/homebrew-php (got a list of supported versions).
-
-? Always show the scroll bar ?
-    In the Menu bar, click Apple Menu > System Preferences.
-    Click General.
-    Next to the "Show scroll bars" heading, select "Always."
-
-? Mirror displays - on Monterey ?
-    
-    Apple > System Preferences > Displays > select Display settings > click on Use as: "Choose Mirror As"
-
-? who is listening on port ?
-
-    # on Mnterey (from here: https://stackoverflow.com/questions/4421633/who-is-listening-on-a-given-tcp-port-on-mac-os-x )
-
-    sudo lsof -iTCP -sTCP:LISTEN -n -P
-
-? osx - find all executable blabla files (not symlinks ?
-
-    find . -perm +111 -type f  -name blabla
-
-? osx - find all executable blabla files or symlinks ?
-
-    find . -perm +111 -type f -or -type l -name blabla
-
-? sort processes by virtual memory consumption /low memory does strange things on the mac.../
-
-   
-    On Osx:
-        # can use Activity Monitor - a gui app.
-
-        # top - start and sort by memory column
-        top -o mem 
-
-        # top - batch mode: write the table once and exit
-        top -b
-
-    On Linux:
-        Better: inside top, press M to sort by memory 
-        press c to show command line arguments of processes.
-
-
-? regular expression editor (online) ?
-
-    https://regex101.com/
-
-? show process tree (on both osx and linux) ?
-
-    htop -t
-
-? netstat - show process names, who is listening on a given port ?
-
-    sudo lsof -iTCP -sTCP:LISTEN -n -P
-    sudo lsof -iUDP -sTCP:LISTEN -n -P
-
-? disk space
-    
-    Show disk usage:
-        df -a -H
-
-    Show disk usage in directory
-        du -ah  /usr/ | tail -1
-
-
-    ? https://apple.stackexchange.com/questions/267165/why-is-devfs-full    
-        devfs - is always full
-
-? show memory usage in friendly terms
-
-        # option -h is for Human friendly output !!!
-        free -h
-
-? http server with nc
-
-    in bash shell:
-        bash -c 'while true; do (echo -e "HTTP/1.1 200 OK\r\nConnection: close\r\n\r\nMy website has date function\t$(date)\n") | nc -l 8081; done'
-        curl http://localhost:8081/
-
-? hosted in docker
-    with-nc : my docker image with bash and nc :
-       
-    Dockerfile-with-nc 
-        FROM alpine:latest
-
-        RUN apk update && apk upgrade --no-cache
-        RUN apk add -y --no-cache bash netcat-openbsd 
-            
-    docker build -f Dockerfile-with-nc -t with-nc .
-
-    docker run --rm  -p 8082:8081 -it with-nc /bin/bash -c 'while true; do (echo -e "HTTP/1.1 200 OK\r\nConnection: close\r\n\r\nMy website has date function\t$(date)\n") | nc -l 8081; done'
-    curl http://localhost:8082/ 
-
-   
-    now curl doesn't exit - it doesn't get the FIN ?
-
-? ssh access keys ?
-
-    # generate the keypair. (entery empty keyphrase
-    ssh-keygen -t rsa -b 4096 -f id_rsa -C "mmoser@perforce.com"
-    # you get id_rsa (private key) id_rsa.pub (public key)
-
-    # put the public key in authorized keys
-    cat id_rsa.pub >>${HOME}/.ssh/authorized_keys
-
-    # check that permission is 0600
-    stat $HOME/.ssh/authorized_keys
-
-    # save the keys somewhere in your reach. (id_rsa and id_rsa.pub)
-
-    # write down the ip admin address - (gcp tells that in the console), hostname and user $USER
-
-    # can connect with 
-    ssh -i id_rsa <user>@<admin_ip>
-
-? install docker on ubuntu ?  https://docs.docker.com/engine/install/ubuntu/
-
-    sudo apt-get update -y
-    sudo apt-get install -y \
-        ca-certificates \
-        curl \
-        gnupg \
-        lsb-release
-
-    # docker gpg key    
-    sudo mkdir -p /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-    # set up the repository:
-    echo \
- "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-
-    sudo apt-get update -y
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-    # make current user able to access docker 
-    sudo setfacl -m user:$USER:rw /var/run/docker.sock
-
-    #check that it is alive from non-root user
-    docker run hello-world
-    docker ps -a
-    docker container prune -f
-
-? list installed brew packages
-
-    brew list
-
-    # show the stuff with a gui
-    brew list --cask
-
-? install a second version of node
-
-    brew install node@18
-
-    # where is the installed version?
-
-    /opt/homebrew/opt/node@18/bin/node
-    Welcome to Node.js v18.15.0.
-    Type ".help" for more information.
-    >
-
-    # or set up as the default version
-    brew link --overwrite node@18
-    node --version
-    v18.15.0
-
-
-? tcpdump ?
-
-    # just show the packets on screen (without payload)
-    sudo tcpdump -i any port 9010
-
-    # -X adds payload
-    sudo tcpdump -X -i any port 9010
-
-    # dump packets into pcap file (can view them in wireshark, or read the file with tcpdump)
-    sudo tcpdump -i any port 9010 -s 65535 -w out.pcap
-
-
-? wireshark ?
-    don't install via brew (goes wrong) - there is an installer on https://www.wireshark.org/
-
-
-Linux
-    # show kernel / cpu architecture / etc.
-    uname -a
-
-    # show which distro/distribution is on the current machine
-    ls  /etc/*-release
-
-    # get netstat on ubuntu
-    apt-get install net-tools
-
-    # fedora: they all call that package net-tools!
-    dnf install net-tools
-
-    # get external ip address
-    dig +short txt ch whoami.cloudflare @1.0.0.1
-
-    #get external ipv6
-    dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com
-
-
-    # check if running under docker?
-
-        apk add virt-what
-        virt-what
-
-        # or check for presence of files: /.dockerenv or /.dockerinit
-
-
-    # what to do in a system without core-utils? (you get that a lot on containers - they like to have a limited runtime system, and you are not allowed to change too much... :-( )
-
-        - no ps? list processes?
-
-            ls -l /proc/*/exe
-
-        - show command line for given PID
-
-            cat /proc/PID/cmdline | xargs --null
-
-           or if no xargs:
-
-            cat /proc/PID/cmdline | tr \\0 \_
-
-           ... and put in space instead of _
-
-
-
-OS agnostic
-
-    # also gets external ip address
-    curl ifconfig.me
-    curl icanhazip.com
-    curl ipecho.net/plain
-    curl ident.me
-    curl bot.whatismyipaddress.com
-    curl https://diagnostic.opendns.com/myip
-    curl http://checkip.amazonaws.com
-    curl http://whatismyip.akamai.com
-
-
-
-
-======
-Linux
-
-ALPINE - list all installed packages
-
-    apk info -vv
-
-
-ALPINE - install rust with rustup
- 
- # Newest upgradeables for used base image ... 
- apk upgrade --no-cache
-
- # libgcc - compatibility layer for libc (otherwise it searches for stuff that is not present on alpine - this one didn't work without it)
- apk add curl libgcc
- 
- # using -y option, so that it does not ask any questions...
- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s  -- -y \
-
- # install specific version of rus ( --defualt-toolchain)
- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s  -- -y  --default-toolchain=1.65.0 
-
-
-=======
-Ansible
-
-    https://www.digitalocean.com/community/tutorial_series/how-to-write-ansible-playbooks
-
-Terminology:
-    Playbook: yaml file that defines the script of what is being done. Includes a sequence of Tasks (unit of execution)
-
-    Modules: reusable entities for doing common tasks
-
-    Tasks: you write these to specify what the playbook is doing.
-
-Examples:
-
-    Playbook yaml that sets up variables, the first task prints them ('hosts: all' - the task act on all defined 'hosts' - these are machines that we can control)
-
-        ---
-        - hosts: all
-          vars:
-            - username: sammy
-            - home: /home/sammy   
-          tasks:
-            - name: print variables
-              debug:
-                msg: "Username: {{ username }}, Home dir: {{ home }}"
-
-
-======
-
-Get all artifact names for a public repository using the GITHUB rest api
-
-    USER="robxu9"
-    REPO="bash-static"
-
-    curl -L -s -H "Accept: application/vnd.github+json" https://api.github.com/repos/${USER}/${REPO}/actions/artifacts | jq '.artifacts[].name' | sort | uniq
-
-Get names of all artifacts that are not of expired state
-
-    curl -L -s -H "Accept: application/vnd.github+json" https://api.github.com/repos/${USER}/${REPO}/actions/artifacts | jq --raw-output '.artifacts[] | select(.expired==false) | .name'
-
-
-Get the latest release for a public repository
-
-    curl -L -s  -H "Accept: application/json" https://github.com/${USER}/${REPO}/releases/latest | jq --raw-output .tag_name
 ======
 
 Kubernetes:
+
+    -- show name and image for pods
+        kubectl get pods -o=custom-columns='NAME:metadata.name,IMAGE:status.containerStatuses[0].imageID'
 
     - show current context details
 
@@ -887,6 +489,412 @@ on OSX and linux - the same output for:
       }
     }
 
+
+
+---
+
+git/github
+
+        # github search cheat sheet 
+            https://cheatography.com/cpriest/cheat-sheets/github-search-syntax/
+
+        # github search: limit search of term "miau" in files with file extension:*.py
+        path:*.py miau
+
+        # github serach: limit to root level of repository (can use that to limit to subdirectories)
+        path:/
+
+        # 'deleted by us' during merge or cherry-pick
+            # file x was added in the commit being cherry-picked
+            # file x was deleted in the branch that you cherry-pick into.
+                git add x  # if you want to keep the file
+                git rm  x  # if you want to delete the file.
+
+        # 'deleted by us' during rebase - now 'us' and 'them' is reversed !!!!
+            # file x was added in the branch that is being rebased
+            # file x was removed in the branch that is brought in
+            
+
+        # shallow clone of linux kernel (--depth 1 - get commit history of the last commit) (much faster to clone)
+        git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux-git --depth 1
+
+        # sort files by extension (rev - reverts each line of the output, so that the extension (in reverse) comes first)
+        git ls-files | rev | sort | rev
+
+        # Get all commits by user (that can be useful during performance reviews...)
+        # select all commits done by user
+
+        git log --author=<user name that appears in commit messages>
+
+        # get the commit message of all commits by user.
+        git log --author=<user name that appears in commit messages> --format=%s 
+
+        # in case that the first string is the name of the issue - get all the issues that the user did.
+        git log --author=<user name that appears in commit messages> --format=%s | awk '{print $1}' | sort | uniq
+
+
+        # github.com ::: open a pull request on some other repository https://github.com/AwesomeUser/AwesomeProject
+
+        - on original repo page: create a fork (press the 'fork' button)
+        - after forking: you have that repository under your own github user  https://github.com/YourOwnUser/AwesomeProject
+
+        - clone that forked repository.
+        - create a new branch of the main branch.
+            git branch -m my_new_pr
+        - add your changes and commit
+        - set the UPSTREAM of the branch: 
+            git remote add upstream https://github.com/AwesomeUser/AwesomeProject
+        - push the new branch:
+             git push -u origin my_new_pr
+        - push command writes a long text to the console, that text includes a link to open the new pull request.   
+    
+vimdiff
+     - space insensitive comparison:
+
+        :set diffopt+=iwhiteall
+
+
+Mac/OSX tricks
+
+
+
+? remove colorcodes from text ? 
+
+    # kubectl get logs  - this one is returning text with color codes (i think that's very confusing). 
+    # kubectl logs POD_NAME - color escape sequences everywhere...
+
+    cat blabla.txt | sed -e 's/\x1b\[[0-9;]*m//g'
+
+? built-in something is very different from what you expect ?
+
+    # very true for sed - will install gsed 
+    brew install gnu-sed
+
+    gsed -i 's/blabla/blublu/g' foo.txt
+
+    # to set it up as sed - instead of gsed (still figure the path)
+    brew install --default-names gnu-sed
+
+? force quit an application
+
+    command + option + escape - brings up a 'task manager'
+
+    'Activity monitor' - a better 'task manager' that shows cpu utilization, etc. (or use top)
+
+? can't install an old php version - because it's not supported by brew ?
+
+    brew install shivammathur/php/php@7.4
+
+    this installs it based on https://github.com/shivammathur/homebrew-php (got a list of supported versions).
+
+? Always show the scroll bar ?
+    In the Menu bar, click Apple Menu > System Preferences.
+    Click General.
+    Next to the "Show scroll bars" heading, select "Always."
+
+? Mirror displays - on Monterey ?
+    
+    Apple > System Preferences > Displays > select Display settings > click on Use as: "Choose Mirror As"
+
+? who is listening on port ?
+
+    # on Mnterey (from here: https://stackoverflow.com/questions/4421633/who-is-listening-on-a-given-tcp-port-on-mac-os-x )
+
+    sudo lsof -iTCP -sTCP:LISTEN -n -P
+
+? osx - find all executable blabla files (not symlinks ?
+
+    find . -perm +111 -type f  -name blabla
+
+? osx - find all executable blabla files or symlinks ?
+
+    find . -perm +111 -type f -or -type l -name blabla
+
+? sort processes by virtual memory consumption /low memory does strange things on the mac.../
+
+   
+    On Osx:
+        # can use Activity Monitor - a gui app.
+
+        # top - start and sort by memory column
+        top -o mem 
+
+        # top - batch mode: write the table once and exit
+        top -b
+
+    On Linux:
+        Better: inside top, press M to sort by memory 
+        press c to show command line arguments of processes.
+
+
+? regular expression editor (online) ?
+
+    https://regex101.com/
+
+? show process tree (on both osx and linux) ?
+
+    htop -t
+
+? netstat - show process names, who is listening on a given port ?
+
+    sudo lsof -iTCP -sTCP:LISTEN -n -P
+    sudo lsof -iUDP -sTCP:LISTEN -n -P
+
+? disk space
+    
+    Show disk usage:
+        df -a -H
+
+    Show disk usage in directory
+        du -ah  /usr/ | tail -1
+
+
+    ? https://apple.stackexchange.com/questions/267165/why-is-devfs-full    
+        devfs - is always full
+
+? show memory usage in friendly terms
+
+        # option -h is for Human friendly output !!!
+        free -h
+
+? http server with nc
+
+    in bash shell:
+        bash -c 'while true; do (echo -e "HTTP/1.1 200 OK\r\nConnection: close\r\n\r\nMy website has date function\t$(date)\n") | nc -l 8081; done'
+        curl http://localhost:8081/
+
+? hosted in docker
+    with-nc : my docker image with bash and nc :
+       
+    Dockerfile-with-nc 
+        FROM alpine:latest
+
+        RUN apk update && apk upgrade --no-cache
+        RUN apk add -y --no-cache bash netcat-openbsd 
+            
+    docker build -f Dockerfile-with-nc -t with-nc .
+
+    docker run --rm  -p 8082:8081 -it with-nc /bin/bash -c 'while true; do (echo -e "HTTP/1.1 200 OK\r\nConnection: close\r\n\r\nMy website has date function\t$(date)\n") | nc -l 8081; done'
+    curl http://localhost:8082/ 
+
+   
+    now curl doesn't exit - it doesn't get the FIN ?
+
+? ssh access keys ?
+
+    # generate the keypair. (entery empty keyphrase
+    ssh-keygen -t rsa -b 4096 -f id_rsa -C "mmoser@perforce.com"
+    # you get id_rsa (private key) id_rsa.pub (public key)
+
+    # put the public key in authorized keys
+    cat id_rsa.pub >>${HOME}/.ssh/authorized_keys
+
+    # check that permission is 0600
+    stat $HOME/.ssh/authorized_keys
+
+    # save the keys somewhere in your reach. (id_rsa and id_rsa.pub)
+
+    # write down the ip admin address - (gcp tells that in the console), hostname and user $USER
+
+    # can connect with 
+    ssh -i id_rsa <user>@<admin_ip>
+
+? install docker on ubuntu ?  https://docs.docker.com/engine/install/ubuntu/
+
+    sudo apt-get update -y
+    sudo apt-get install -y \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release
+
+    # docker gpg key    
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+    # set up the repository:
+    echo \
+ "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+
+    sudo apt-get update -y
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    # make current user able to access docker 
+    sudo setfacl -m user:$USER:rw /var/run/docker.sock
+
+    #check that it is alive from non-root user
+    docker run hello-world
+    docker ps -a
+    docker container prune -f
+
+? list installed brew packages
+
+    brew list
+
+    # show the stuff with a gui
+    brew list --cask
+
+? install a second version of node
+
+    brew install node@18
+
+    # where is the installed version?
+
+    /opt/homebrew/opt/node@18/bin/node
+    Welcome to Node.js v18.15.0.
+    Type ".help" for more information.
+    >
+
+    # or set up as the default version
+    brew link --overwrite node@18
+    node --version
+    v18.15.0
+
+
+? tcpdump ?
+
+    # just show the packets on screen (without payload)
+    sudo tcpdump -i any port 9010
+
+    # -X adds payload
+    sudo tcpdump -X -i any port 9010
+
+    # dump packets into pcap file (can view them in wireshark, or read the file with tcpdump)
+    sudo tcpdump -i any port 9010 -s 65535 -w out.pcap
+
+
+? wireshark ?
+    don't install via brew (goes wrong) - there is an installer on https://www.wireshark.org/
+
+
+Linux
+    # show kernel / cpu architecture / etc.
+    uname -a
+
+    # show which distro/distribution is on the current machine
+    ls  /etc/*-release
+
+    # get netstat on ubuntu
+    apt-get install net-tools
+
+    # fedora: they all call that package net-tools!
+    dnf install net-tools
+
+    # get external ip address
+    dig +short txt ch whoami.cloudflare @1.0.0.1
+
+    #get external ipv6
+    dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com
+
+
+    # check if running under docker?
+
+        apk add virt-what
+        virt-what
+
+        # or check for presence of files: /.dockerenv or /.dockerinit
+
+
+    # what to do in a system without core-utils? (you get that a lot on containers - they like to have a limited runtime system, and you are not allowed to change too much... :-( )
+
+        - no ps? list processes?
+
+            ls -l /proc/*/exe
+
+        - show command line for given PID
+
+            cat /proc/PID/cmdline | xargs --null
+
+           or if no xargs:
+
+            cat /proc/PID/cmdline | tr \\0 \_
+
+           ... and put in space instead of _
+
+
+
+OS agnostic
+
+    # also gets external ip address
+    curl ifconfig.me
+    curl icanhazip.com
+    curl ipecho.net/plain
+    curl ident.me
+    curl bot.whatismyipaddress.com
+    curl https://diagnostic.opendns.com/myip
+    curl http://checkip.amazonaws.com
+    curl http://whatismyip.akamai.com
+
+
+
+
+======
+Linux
+
+ALPINE - list all installed packages
+
+    apk info -vv
+
+ALPINE - install rust with rustup
+ 
+ # Newest upgradeables for used base image ... 
+ apk upgrade --no-cache
+
+ # libgcc - compatibility layer for libc (otherwise it searches for stuff that is not present on alpine - this one didn't work without it)
+ apk add curl libgcc
+ 
+ # using -y option, so that it does not ask any questions...
+ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s  -- -y \
+
+ # install specific version of rust ( --defualt-toolchain)
+ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s  -- -y  --default-toolchain=1.65.0 
+
+
+=======
+Ansible
+
+    https://www.digitalocean.com/community/tutorial_series/how-to-write-ansible-playbooks
+
+Terminology:
+    Playbook: yaml file that defines the script of what is being done. Includes a sequence of Tasks (unit of execution)
+
+    Modules: reusable entities for doing common tasks
+
+    Tasks: you write these to specify what the playbook is doing.
+
+Examples:
+
+    Playbook yaml that sets up variables, the first task prints them ('hosts: all' - the task act on all defined 'hosts' - these are machines that we can control)
+
+        ---
+        - hosts: all
+          vars:
+            - username: sammy
+            - home: /home/sammy   
+          tasks:
+            - name: print variables
+              debug:
+                msg: "Username: {{ username }}, Home dir: {{ home }}"
+
+
+======
+
+Get all artifact names for a public repository using the GITHUB rest api
+
+    USER="robxu9"
+    REPO="bash-static"
+
+    curl -L -s -H "Accept: application/vnd.github+json" https://api.github.com/repos/${USER}/${REPO}/actions/artifacts | jq '.artifacts[].name' | sort | uniq
+
+Get names of all artifacts that are not of expired state
+
+    curl -L -s -H "Accept: application/vnd.github+json" https://api.github.com/repos/${USER}/${REPO}/actions/artifacts | jq --raw-output '.artifacts[] | select(.expired==false) | .name'
+
+
+Get the latest release for a public repository
+
+    curl -L -s  -H "Accept: application/json" https://github.com/${USER}/${REPO}/releases/latest | jq --raw-output .tag_name
 
 ====================
 
