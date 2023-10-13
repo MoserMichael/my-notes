@@ -2,6 +2,8 @@
 
 I think that talking to an LLM can give leads for further research. Sort of like giving directions, if you don't anything about a given subject.
 
+One benefit: you can come back later and ask it more questions (more difficult with real persons). That's another reason why to leave the browser tabs with the chat session open - this sort of keeps the context of the conversation alive. (lifehack)
+
 -------
 
 Me: did the animated film "the hedgehog in the fog" gain popularity in Japan?
@@ -91,6 +93,21 @@ In the years since the war, there has been much debate about the role of the Jap
 
 It is important to note that the Japanese people are not a monolithic group. There is a wide range of opinions and beliefs among Japanese people, and there is no single answer that will apply to everyone. However, it is clear that the Japanese people were deeply affected by World War II, and that the war left a lasting legacy on the country.
 
+Me: Which tendency is stronger in Japan, the tendency to forget about the war or to remember it?
+
+GoogleBard
+
+Both the tendency to forget about the war and the tendency to remember it can be observed in Japan today. However, there are a number of factors that are contributing to a growing awareness of the war, particularly among younger generations.
+
+One factor is the rise of the internet and social media. These platforms have made it easier for people to learn about the war and to connect with others who are interested in the topic. As a result, there is now a more open and informed discussion about the war in Japan than there was in the past.
+
+Another factor is the increasing number of Japanese people who are traveling abroad. As Japanese people come into contact with people from other countries, they are learning more about the war and its impact on the world. This is helping to break down the taboo that has surrounded the war in Japan for many years.
+
+Finally, there is a growing movement among Japanese youth to learn more about the war and to come to terms with Japan's past. This movement is being driven by a desire to understand the war and to prevent future conflicts.
+
+Of course, there are still many Japanese people who want to forget about the war. Some people may feel that it is time to move on and to focus on the future. Others may feel ashamed of Japan's past and want to avoid talking about it. However, as the factors mentioned above continue to contribute to a growing awareness of the war, it is likely that the Japanese people will continue to grapple with their country's past in the years to come.
+
+Overall, it is difficult to say definitively whether the tendency to forget about the war or the tendency to remember it is stronger in Japan today. However, there are a number of factors that are contributing to a growing awareness of the war, particularly among younger generations.
 
 ---------
 
