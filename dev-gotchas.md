@@ -54,7 +54,7 @@ I am starting with list of problems, here are some problem lists that i found:
 My observations, so far:
 
 - Now it can still take me hours to solve a problem. 
-    - when stuck with a problem: It really helps to stop and then return to the same problem later. (however you can't do that with an interview...)
+    - when stuck with a problem: It really helps to stop and then return to the same problem later, with a fresh perspective. (However you can't do that with a job interview...)
 - I am now reading the problem descriptions with more attention to detail.
 - I have also lost this shock and awe of the interview process. 
 - I am over the initial 'leetcode shock'. Some people take Leetcode really hard. However it turns out, that it is possible to get past any kind of abuse, as a programmer... (programmers are used to abusive tools and working environments)
