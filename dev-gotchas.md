@@ -58,7 +58,7 @@ My observations, so far:
 - I am now reading the problem descriptions with more attention to detail.
 - I have also lost this shock and awe of the interview process. 
 - I am over the initial 'leetcode shock'. Some people take Leetcode really hard. However it turns out, that it is possible to get past any kind of abuse, as a programmer... (programmers are used to abusive tools and working environments)
-- it makes sense to return to a problem, while asking follow up questions like: how could you make things faster? If submission isn't along the top submissions in terms of the desired trait, then there is much room for improvement.  The n-queen problem isn't a very hard problem, now you can ask a follow up question like: can you make it faster?
+- it makes sense to return to a problem, while asking follow up questions like: how could you make things faster? If a submission isn't along the top submissions in terms of the desired trait, then there usually is much room for improvement.  For example: the [n-queen problem](https://leetcode.com/problems/n-queens-ii/) isn't a very hard problem, however they could also ask follow up questions like: can you make it faster?
 (I managed to used symmetries along the x-axis for this case, but there are probably more tricks in the book...)
 
 ---30/07/23 20:23:26----------------------
