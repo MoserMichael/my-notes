@@ -24,23 +24,44 @@
 #    1 <= n <= 9
 #
 
+
 class Solution:
+
     def totalNQueens(self, n: int) -> int:
-        Solution.num_solutions = 0
-        Solution.imp(n, 0, [])
-        return Solution.num_solutions
+        return Solution.imp(n, 0, [])
 
     @staticmethod
     def imp(size_n, n_pos, stack):
         if n_pos == size_n:
-            Solution.num_solutions += 1
-            return
+            return 1
 
-        for idx in range(0, size_n, 1):
-            stack.append(idx)
-            if Solution.conflict(stack):
-                Solution.imp(size_n, n_pos+1, stack)
-            stack.pop()
+        sum = 0
+
+        if n_pos == 0:
+
+            # use symmetry along the x axis.
+            m_size = half = size_n // 2
+
+            if size_n % 2 == 1:
+                m_size += 1
+
+            for idx in range(0, m_size, 1):
+                stack.append(idx)
+                if Solution.conflict(stack):
+                    res = Solution.imp(size_n, n_pos+1, stack)
+                    if idx < half:
+                        res *= 2
+                    sum += res
+                stack.pop()
+
+        else:
+            for idx in range(0, size_n, 1):
+                stack.append(idx)
+                if Solution.conflict(stack):
+                    sum += Solution.imp(size_n, n_pos+1, stack)
+                stack.pop()
+
+        return sum
 
     @staticmethod
     def conflict(stack):
@@ -49,8 +70,9 @@ class Solution:
 
         for idx in range(0, len(stack)-1):
             pos = stack[idx]
-
             if abs(pos-pos_last) == abs(idx_last - idx) or pos_last == pos:
                 return False
 
         return True
+
+
