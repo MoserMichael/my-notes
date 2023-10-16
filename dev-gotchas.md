@@ -55,13 +55,13 @@ My observations, so far:
 
 - Now it can still take me hours to solve a problem. 
     - when stuck with a problem: It really helps to stop and then return to the same problem later, with a fresh perspective. (However you can't do that with a job interview...)
-- I am over the initial 'leetcode shock'. Some people take Leetcode really hard. However it turns out, that it is possible to get past any kind of abuse, as a programmer... (programmers are used to abusive tools and working environments)
+- I am over the initial 'leetcode shock'. Some people take Leetcode really hard. However it can also be fun.
 - it makes sense to return to a problem, while asking follow up questions (that's what they like to do at job interviews)
     - One follow up question is: how could you make things faster? If a submission isn't along the top submissions in terms of the desired trait, then there usually is much room for improvement. For example: the [n-queen problem](https://leetcode.com/problems/n-queens-ii/) isn't a very hard problem, however they could also ask follow up questions like: can you make it faster?
-(I managed to used symmetries along the x-axis for this case, but there are probably more tricks in the book.)
+(I managed to used symmetries along the x-axis for this case, but there are probably more tricks in the book).
     - Some problems are easier to solve recursively, one follow up question would be: solve the same problem without recursion.
 - Don't take shortcuts. Example: if a function returns more than two return values, then make an object out of the return value - otherwise it's easy to loose track. (same reason: avoid tuples that are standing in for records, it's easy to loose track)
-
+- I need to get better at coming up with test cases for my solution. Usually I follow the examples given in an exercise, frequently there are cases that are not described in the problem statement.
 
 ---30/07/23 20:23:26----------------------
 
