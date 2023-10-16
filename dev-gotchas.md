@@ -49,7 +49,7 @@ I am starting with list of problems, here are some problem lists that i found:
 /today i learned that Leetcode exists since 2010, [wiki](https://en.wikipedia.org/wiki/LeetCode) - so much about taking wrong turns... Still I am doing these problems for some time now, and still don't feel that i am getting any faster at solving them, or getting any better at making a show while presenting them. Where it helps: I don't get lost when reading tricky problem statements, so there is some sense in doing all this.../
 //-->
 
-6/10/23 - I am passed a hundred leetcode problems, (hi, [that's me on leetcode](https://leetcode.com/michaelmo123/) ) 
+6/10/23 - I am past a hundred leetcode problems, (hi, [that's me on leetcode](https://leetcode.com/michaelmo123/) ) 
 
 My observations, so far:
 
