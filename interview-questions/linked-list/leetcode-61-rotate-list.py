@@ -31,6 +31,33 @@
 #         self.next = next
 class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        return Solution.norecursion(head, k)
+        #return self.recursive(head, k)
+
+    def norecursion(head, k):
+        # count entries
+        count = 0
+        count_link = head
+        while count_link:
+            count += 1
+            if not count_link.next:
+                count_link.next = head
+                break
+            count_link = count_link.next
+
+        if not count:
+            return head
+
+        break_at = count - k % count
+        cur = head
+        for idx in range(1, break_at):
+            cur = cur.next
+
+        ret = cur.next
+        cur.next = None
+        return ret
+
+    def recursive(self, head, k):
 
         #if k == 0 or head is None:
         #    return head
@@ -67,3 +94,5 @@ class Solution:
             self.last_node = node
 
         return level, count, ret_before_rotate
+
+
