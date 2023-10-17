@@ -43,7 +43,6 @@ I am starting with list of problems, here are some problem lists that i found:
 
 - [top-interview-150](https://leetcode.com/studyplan/top-interview-150/) and  [top-interview-75](https://leetcode.com/studyplan/leetcode-75/) These list give a classification of problems, where the classification itself is giving a strong hint as to how to solve the problem. Let's hope it's a good start...
 - [top 100 liked questions](https://leetcode.com/problem-list/top-100-liked-questions/)
-- [Curated Algo 170](https://leetcode.com/problem-list/leetcode-curated-algo-170/)
 - [all problems](https://leetcode.com/problemset/all/?page=1)
 - [google interview questions](https://leetcode.com/problem-list/top-google-questions/)
 
