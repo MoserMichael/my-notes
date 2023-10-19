@@ -70,8 +70,7 @@
 
 class Solution:
     WAITING_FOR_SIGN = 0
-    WAITING_FOR_DIGIT = 1
-    PARSING_DIGIT = 2
+    PARSING_DIGIT = 1
 
     def myAtoi(self, s: str) -> int:
         sign = 1
@@ -86,15 +85,13 @@ class Solution:
                     state = Solution.PARSING_DIGIT
                 elif ch =='-':
                     sign = -1
-                    state = Solution.WAITING_FOR_DIGIT
+                    state = Solution.PARSING_DIGIT
+                    continue
                 elif ch == '+': # +1 -> 1
-                    state = Solution.WAITING_FOR_DIGIT
+                    state = Solution.PARSING_DIGIT
+                    continue
                 else:
                     return 0
-            elif state == Solution.WAITING_FOR_DIGIT:
-                if not ch.isdigit():
-                    return 0
-                state = Solution.PARSING_DIGIT
 
             if state == Solution.PARSING_DIGIT:
                 if ch.isdigit():
