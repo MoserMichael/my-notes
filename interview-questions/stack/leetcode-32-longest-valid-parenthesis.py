@@ -31,8 +31,8 @@
 #    s[i] is '(', or ')'.
 
 
+# solution in one pass: (slow and inefficient)
 
-# solution in one pass: (not very fast and memory efficient)
 # From starting position: validate the expression by maintaining a counter of open brackets. Pass over the input from left to right.
 # - increment counter upon '('
 # - decremet counter upon ')'
@@ -46,7 +46,10 @@
 #   - examine stack of incomplete expressions, return maximum of parsed length
 
 # in most cases it would be faster to solve the last incomplete expression by another pass from right to left (reverse direction), which would stop upon validation of the first complete expression, then take the maximum.
-# this way you don't have to maintain that stack
+# this way you don't have to maintain that stack, but may have to pass over the input twice (in the worst case)
+
+# it is much more simple to keep a stack of open parenthesis+position, then adjust the max length when the parenthesis closes.
+# (my solution is just overcomplicated, to see how to overcomplicate things)
 
 class StackLevel:
     def __init__(self, pos):
