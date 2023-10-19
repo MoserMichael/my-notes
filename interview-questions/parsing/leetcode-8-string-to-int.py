@@ -77,36 +77,32 @@ class Solution:
         sign = 1
         state = 0
         num = 0
-        i = 0
-        lens = len(s)
 
-        while i < lens:
+        for ch in s:
             if state == Solution.WAITING_FOR_SIGN: # waiting for sign
-                if s[i].isspace():
-                    i += 1
+                if ch.isspace():
                     continue
-                if s[i].isdigit():
+                if ch.isdigit():
                     state = Solution.PARSING_DIGIT
-                elif s[i]=='-':
+                elif ch =='-':
                     sign = -1
                     state = Solution.WAITING_FOR_DIGIT
-                elif s[i] == '+': # +1 -> 1
+                elif ch == '+': # +1 -> 1
                     state = Solution.WAITING_FOR_DIGIT
                 else:
                     return 0
             elif state == Solution.WAITING_FOR_DIGIT:
-                if not s[i].isdigit():
+                if not ch.isdigit():
                     return 0
                 state = Solution.PARSING_DIGIT
 
             if state == Solution.PARSING_DIGIT:
-                if s[i].isdigit():
-                    dig = int(s[i]) - int('0')
+                if ch.isdigit():
+                    dig = int(ch) - int('0')
                     num = num * 10 + dig
                 else:
                     break
 
-            i += 1
 
         ret = sign * num
         if ret < - (1 << 31):
