@@ -64,6 +64,8 @@ My observations, so far:
 - Don't take shortcuts. Example: if a function returns more than two return values, then make an object out of the return value - otherwise it's easy to loose track. (same reason: avoid tuples that are standing in for records, it's easy to loose track)
 - I need to get better at coming up with test cases for my solution. Usually I follow the examples given in an exercise, frequently there are cases that are not described in the problem statement.
 
+20/10/23 - Now starting to write leetcod submissions. Here you have to write some explanation of what has been done. Hope that this will improve my presentation skills at those job interviews...
+
 ---30/07/23 20:23:26----------------------
 
 
