@@ -43,7 +43,6 @@
 #
 
 
-
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
 
@@ -51,17 +50,18 @@ class Solution:
             return ""
 
         ret = []
-        first=last=0
 
-        idx = 1
-        while idx < len(nums):
-            if nums[idx] == nums[idx-1] + 1:
-                last = idx
-                idx += 1
+        first=0
+        last=1
+
+        while last < len(nums):
+            if nums[last] == nums[last-1] + 1:
+                last += 1
             else:
-                Solution.add(ret, first, idx, nums)
-                first = idx
-                last = idx = idx + 1
+                Solution.add(ret, first, last, nums)
+
+                first = last
+                last += 1
 
         Solution.add(ret, first, len(nums), nums)
 
@@ -72,3 +72,5 @@ class Solution:
             ret_arr.append(str(nums[first]))
         else:
             ret_arr.append(f"{nums[first]}->{nums[last-1]}")
+
+

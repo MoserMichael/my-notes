@@ -51,6 +51,24 @@
 #    board[i][j] is a digit 1-9 or '.'.
 
 
+#
+#    # Intuition
+#    The same check for repetitions, but multiple ways to iterate over the board (by row, by column, by square)
+#
+#    # Approach
+#    Have one iterator function (function iter), pass the kind of iteration as argument (argument mode) the number of row/column/square is the second argument (argument num)
+#
+#    For each iteration: reset the same set object, check for repetition by adding to the set (supposedly O(1))
+#
+#    # Complexity
+#    - Time complexity:
+#    Passing over the same board nime times, each check for repetition is O(1). Therefore complexity is - $$O(m*n)$$ m - rows n - columns;
+#
+#    - Space complexity:
+#    The set can have at most nine entries, so it's constant.
+#
+#    # Code
+#
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
 
