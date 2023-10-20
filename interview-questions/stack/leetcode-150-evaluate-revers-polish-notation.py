@@ -95,19 +95,59 @@
 #    # Code
 #
 
+
+
+class EntryNonRecursive:
+    def __init__(self, op):
+        self.op = op
+        self.left = None
+
+    def __repr__(self):
+        return f"[{self.op}({self.left})]"
+
 class Solution:
 
-    map_op_to_handle = { '*' : lambda a,b : int(a * b),
+    map_op_to_handle = { '*' : lambda a,b : int(a * b), 
                          '/' : lambda a,b : int(b / a),
                          '+' : lambda a,b : a + b,
                          '-' : lambda a,b : b - a
                         }
 
     def evalRPN(self, tokens: List[str]) -> int:
-        return Solution.eval_rec(tokens)
+        #return Solution.eval_rec(tokens)
+        return Solution.eval_no_rec(tokens)
 
+    
     def eval_no_rec(token_list):
         eval_stack = []
+
+        while True:
+            if len(token_list) != 0:
+                token = token_list.pop()
+                #print(f"token {token} stack {repr(eval_stack)}")
+                if token in Solution.map_op_to_handle:
+                    eval_stack.append( EntryNonRecursive( token ) )
+                else:
+                    num = int(token)
+
+                    if not len(eval_stack):
+                        return num
+
+                    while True:
+                        top_entry = eval_stack[-1]
+                        if top_entry.left is None:
+                            top_entry.left = num
+                            break
+
+                        func = Solution.map_op_to_handle[ top_entry.op ]
+                        num = func( top_entry.left, num )
+                        eval_stack.pop()
+
+                        if len(eval_stack) == 0:
+                            return num
+            else:
+                assert False        
+
 
 
 
@@ -119,4 +159,3 @@ class Solution:
         arg2 = Solution.eval_rec(token_list)
 
         return Solution.map_op_to_handle[token] (arg1, arg2)
-
