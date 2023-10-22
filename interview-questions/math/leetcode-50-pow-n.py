@@ -32,18 +32,34 @@
 #
 
 
-class Solution:
 
+class Solution:
 
     def myPow(self, x: float, n: int) -> float:
         if n == 0:
             return 1
 
-        y = Solution.byExp(x, abs(n))
+        y = Solution.expShort(x, abs(n))
+        #y = Solution.byExp(x, abs(n))
+        #y = Solution.byExpNotFaster(x, abs(n))
 
         if n < 0:
             y = 1 / y
         return y
+
+    # i copied this one. it's not mine...
+    def expShort(x, n):
+
+        ret = 1
+        while n > 0:
+            if n % 2 == 0:
+                x *= x
+                n //= 2
+            else:
+                ret *= x
+                n-=1
+
+        return ret
 
     def byExp(x, n):
 
@@ -78,7 +94,7 @@ class Solution:
             prev_pw += 1
         return prev_ex
 
-    # thought that would be faster. No, it isn't.
+    # thought that would be faster. Now it isn't.
     def byExpNotFaster(x, n):
         prev_pw = 1
         pw = 1
@@ -89,7 +105,7 @@ class Solution:
         arr = []
 
         # find neares power of two
-        while pw < abs(n):
+        while pw < n:
            prev_ex = ex
            ex *= ex
 
@@ -100,10 +116,10 @@ class Solution:
 
 
         # check if exact match
-        if pw == abs(n):
+        if pw == n:
             return ex
 
-        while pw > abs(n):
+        while pw > n:
             left = pw - abs(n)
 
             n_add, num_div = Solution.findNearestGrow(arr, left, 0, len(arr)-1)
@@ -132,12 +148,5 @@ class Solution:
                 return entry
             return Solution.findNearestGrow(arr, fnd, low+1, high)
         return Solution.findNearestGrow(arr, fnd, 0, low-1)
-
-
-
-
-
-
-
 
 
