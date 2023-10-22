@@ -42,7 +42,6 @@ class Solution:
 
         ret = []
         Solution.level([root], ret)
-        print(ret)
         return ret
 
     def level(level, ret):
