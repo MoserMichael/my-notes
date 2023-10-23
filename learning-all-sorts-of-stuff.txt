@@ -13,7 +13,8 @@ Kubernetes:
 
         kubectl describe pod <pod-name>
 
-        - result has line that starts with Controlled - this names which entity is controlling the pod
+        - result has line that starts with 'Controlled by' - this names which entity is controlling the pod (usually a replicaset, and that one is controlled by a pod)
+         
 
     - get pods sorted by start time
 
