@@ -33,6 +33,26 @@
 #
 
 
+#    # Intuition
+#    Description doesn't tell you: you don't know which node is the root, need to find that out.
+#
+#    # Approach
+#    Each node can be the root of a subtree. The function ```Solution.dfs``` traverses such a subtree, It returns two return values, first a boolean  value - ```True``` if no cycles have been found - that means this node is the root of a valid subtree; the second return value is the number of nodes in that subtree. 
+#
+#    The function ```Solution.dfs``` is traversing a tree in depth first search order, upon each call a ```visited``` set is maintained. The ```visited``` set helps to exclude cycles - if a node has already been visited, then we have a cycle. The solution also maintains a map ```part_of_tree``` that maps the node value to the number of nodes in the tree. If a node has already been visited by a previous call to ```Solution.dfs``` then we can tell the number of nodes in tht subtree. (this trick is called memoization)
+#
+#    the main function is ```Solution.validateBinaryTreeNodes```. It calls ```Solution.dfs``` on each node. If a cycle has been found (fist return value of Solution.dfs is False) then this is clearly not a tree, return ```False```. If no cycles have been found, and the number of nodes in the tree is equal to the total number of nodes, then we just found and traversed the root node. If none of the nodes is a root that covers all of the nodes, then return ```False```
+#
+#
+#    # Complexity
+#    - Time complexity:
+#    O(n) - visiting each node
+#
+#    - Space complexity:
+#    O(n) the meoization map has an entry for each node
+#
+#    # Code
+
 class Solution:
 
     def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
