@@ -25,29 +25,27 @@
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
 
-
         dirs = [ (1,0), (0,1), (-1,0), (0,-1) ]
         rev =  [ 2, 3, 0, 1]
 
-        row = [0] * n
-        mat = [row.copy() for i in range(0,n)]
-
+        #row = [0] * n
+        #mat = [row.copy() for i in range(0,n)]
+        mat = [[0 for j in range(n)] for i in range(n)]
 
         x = -1
         y = 0
         direction = 0
-        one_side = 0
         count = 1
+        d = dirs[direction]
 
         while True:
-            x += dirs[direction][0]
-            y += dirs[direction][1]
+            x += d[0]
+            y += d[1]
 
             if 0<=x<n and 0<=y<n and mat[y][x] == 0:
 
                 mat[y][x] = count
                 count += 1
-                one_side += 1
 
                 if count > (n * n):
                     return mat
@@ -58,13 +56,8 @@ class Solution:
                 x += dirs[ rev[direction] ][0]
                 y += dirs[ rev[direction] ][1]
 
-                one_side = 0
                 direction = (direction+1) % len(dirs)
-
-
-
-
-
+                d = dirs[direction]
 
 
 
