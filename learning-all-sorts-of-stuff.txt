@@ -512,6 +512,18 @@ on OSX and linux - the same output for:
 
 git/github
 
+        # fixing divergent feature branches 
+
+            # rename branch to temporary name
+            git branch -m thisfeature-tmp 
+
+        
+            git checkout develop
+            git branch -m thisfeature
+
+            # merge --squash  - get changes in one commit! solve all merge conflicts in one step!
+            git merge --squash thisfeature-temp
+
         # github search cheat sheet 
             https://cheatography.com/cpriest/cheat-sheets/github-search-syntax/
 
