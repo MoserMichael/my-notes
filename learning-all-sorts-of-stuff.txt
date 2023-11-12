@@ -18,8 +18,9 @@ Jenkins: life-saving tip:
 
 Kubernetes:
 
-    -- show name and image for pods
-        kubectl get pods -o=custom-columns='NAME:metadata.name,IMAGE:status.containerStatuses[0].imageID'
+    -- show name and image for pods  - status.containerStatuses[*].imageID lists all of the images for all containers.
+
+        kubectl get pods -o=custom-columns='NAME:metadata.name,IMAGE:status.containerStatuses[*].imageID'
 
     - show current context details
 
