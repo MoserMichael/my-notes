@@ -127,7 +127,7 @@ https://docs.docker.com/engine/reference/commandline/docker/
 
 ---
 
-How to build with the Dockerfile in the current directory
+Docker build doesn't show what it is doing?  How to build with the Dockerfile in the current directory
 
     docker build --progress=plain --no-cache . -t resulting-image-tag
        --progress=plain : show output on the screen! old-style! you see what is happening!
