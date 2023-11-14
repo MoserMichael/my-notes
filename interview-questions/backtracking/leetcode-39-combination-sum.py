@@ -45,29 +45,28 @@ class Solution:
         Solution.res = []
         Solution.cur_res = []
 
-        Solution.rec(candidates, target, 0, 0)
+        Solution.rec(candidates, target, 0)
 
         return Solution.res
 
-    def rec(cand, target, pos, path_sum):
+    def rec(cand, target, pos):
 
         if pos >= len(cand):
             return
 
-        cur_num = 0
         orig_len = len(Solution.cur_res)
 
-        while target >= cur_num:
+        while target > 0:
 
-            if target ==  cur_num:
-                Solution.res.append(Solution.cur_res.copy())
-                break
-
-            Solution.rec(cand, target - cur_num, pos+1, path_sum + cur_num)
+            Solution.rec(cand, target, pos+1)
 
             Solution.cur_res.append(cand[pos])
-            cur_num += cand[pos]
+            target -= cand[pos]
+
+        if target == 0:
+            Solution.res.append(Solution.cur_res.copy())
 
         if orig_len != len(Solution.cur_res):
             Solution.cur_res = Solution.cur_res[0 : orig_len ]
+
 
