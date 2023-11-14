@@ -393,11 +393,12 @@ Overall, while it can be tempting to resist or reject change, especially when it
 
 I was wasting a lot of time with building dockerfiles - files for building a docker. Here is a better approach:
 
-- To start a docker with the base image, let's assume that the base image is fedora::latest -  ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc fedora:latest /bin/sleep infinity) ```   -  the main process of the docker does not do much,  it just keeps the docker container in a 'running' state. (an alternative would be ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc  fedora:latest /bin/sh -c 'while [ true ]; do sleep 100; done') ```
+- To start a docker with the base image, let's assume that the base image is fedora::latest -  ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc --name dcont-dbg fedora:latest /bin/sleep infinity) ```   -  the main process of the docker does not do much,  it just keeps the docker container in a 'running' state. (an alternative would be ```DID=$(docker run -d -p 9000:8000 -v $PWD:/mnt/loc  --name dcont-dbg fedora:latest /bin/sh -c 'while [ true ]; do sleep 100; done') ```
     - ```-o 9000:8000```  external port 9000 will be mapped to port 8000 - that's handy if you need to install and test a server that listens on port 8000 (within the container)
     - ```-v $PWD:/mnt/loc``` the current directory will be seens as /mnt/loc within the container
+    - ```--name dcont-dbg``` give the contaienr a name (for the next step)
 - check that the container is running.
-- attach a shell to the base imager, run the commands required to set up the desired environment, and then take the command history to write the Dockerfile  ```docker exec -ti $DID /bin/sh``` - you can copy the needed stuff via the mounted directory, and you can check if the installed service works, as the required port is reachable from the host.
+- attach a shell to the base imager, run the commands required to set up the desired environment, and then take the command history to write the Dockerfile  ```docker exec -ti dcont-dbg /bin/sh``` - you can copy the needed stuff via the mounted directory, and you can check if the installed service works, as the required port is reachable from the host.
 
 That's much better then starting to write the ```Dockerfile``` by means of trial and error!!!
 You can try out stuff in the shell, interactively, then look at the command history and that that as the basis for writing the RUN commands in the dockerfile.
