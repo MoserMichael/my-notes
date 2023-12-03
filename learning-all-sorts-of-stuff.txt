@@ -1,5 +1,16 @@
 ======
 
+
+Tunnelblick VPN
+
+VPN doesn't work from home, but works from the office?
+
+    - ask internet provider to change DNS settings.
+    - In Configuration dialog: 
+        Set DNS Server/WINS: choose 'Set nameserve (alternate 2)' or something like that.
+
+======
+
 Jenkins: life-saving tip:
 
     Say you have a failed build like:   
