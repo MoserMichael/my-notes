@@ -80,31 +80,31 @@ While LeetCode remains the dominant platform for interview preparation for tech 
 
 Direct Competitors:
 
-    HackerRank: Offers a similar experience to LeetCode, with a vast library of coding challenges, contests, and interview preparation resources. Its strengths include a strong community, active discussions, and a focus on specific job roles.
-    Codility: Geared specifically towards interview preparation, Codility provides personalized learning paths, mock interviews, and feedback from real engineers. It also integrates with various applicant tracking systems, making it popular among recruiting teams.
-    Interview Cake: Focuses on high-quality, in-depth coding challenges designed to simulate real-world interview scenarios. It offers detailed solutions and explanations, helping users understand the thought process behind solving problems.
-    Pramp: Provides a platform for conducting mock interviews with other users, allowing for real-time feedback and practice in a simulated interview environment.
+- HackerRank: Offers a similar experience to LeetCode, with a vast library of coding challenges, contests, and interview preparation resources. Its strengths include a strong community, active discussions, and a focus on specific job roles.
+- Codility: Geared specifically towards interview preparation, Codility provides personalized learning paths, mock interviews, and feedback from real engineers. It also integrates with various applicant tracking systems, making it popular among recruiting teams.
+- Interview Cake: Focuses on high-quality, in-depth coding challenges designed to simulate real-world interview scenarios. It offers detailed solutions and explanations, helping users understand the thought process behind solving problems.
+- Pramp: Provides a platform for conducting mock interviews with other users, allowing for real-time feedback and practice in a simulated interview environment.
 
 Emerging Alternatives:
 
-    Codewars: Offers a gamified approach to learning, with challenges presented in the form of "katas" that users can solve and earn points and ranks. This makes learning more engaging and interactive.
-    AlgoExpert: Provides structured learning paths for specific coding topics, along with video explanations, quizzes, and practice problems. It's particularly helpful for beginners who need a more guided learning experience.
-    NeetCode 150: Offers a curated list of 150 essential coding problems for cracking FAANG interviews. It focuses on high-impact problems with detailed solutions and explanations.
-    Grind75: Offers a structured 75-day LeetCode challenge program designed to improve coding skills and prepare for interviews. It provides a daily schedule and community support to keep users motivated.
+- Codewars: Offers a gamified approach to learning, with challenges presented in the form of "katas" that users can solve and earn points and ranks. This makes learning more engaging and interactive.
+- AlgoExpert: Provides structured learning paths for specific coding topics, along with video explanations, quizzes, and practice problems. It's particularly helpful for beginners who need a more guided learning experience.
+- NeetCode 150: Offers a curated list of 150 essential coding problems for cracking FAANG interviews. It focuses on high-impact problems with detailed solutions and explanations.
+- Grind75: Offers a structured 75-day LeetCode challenge program designed to improve coding skills and prepare for interviews. It provides a daily schedule and community support to keep users motivated.
 
 Other Resources:
 
-    MIT OpenCourseware: Offers free access to video lectures and materials from MIT's computer science courses, providing a solid foundation in programming concepts.
-    GeeksForGeeks: Provides a wealth of articles, tutorials, and practice problems on various computer science topics, including algorithms, data structures, and operating systems.
+- MIT OpenCourseware: Offers free access to video lectures and materials from MIT's computer science courses, providing a solid foundation in programming concepts.
+- GeeksForGeeks: Provides a wealth of articles, tutorials, and practice problems on various computer science topics, including algorithms, data structures, and operating systems.
 
 Choosing the Right Platform:
 
 The best platform for you depends on your individual needs and learning style. Consider factors like:
 
-    Your level of experience: If you're a beginner, platforms like AlgoExpert or Pramp might be helpful.
-    Your specific goals: If you're aiming for FAANG companies, NeetCode 150 or Grind75 could be good options.
-    Your preferred learning style: If you enjoy gamification, Codewars might be a good fit. If you prefer video explanations, Interview Cake or AlgoExpert might be better.
-    Cost: LeetCode offers a free tier with limited features, while other platforms require paid subscriptions.
+- Your level of experience: If you're a beginner, platforms like AlgoExpert or Pramp might be helpful.
+- Your specific goals: If you're aiming for FAANG companies, NeetCode 150 or Grind75 could be good options.
+- Your preferred learning style: If you enjoy gamification, Codewars might be a good fit. If you prefer video explanations, Interview Cake or AlgoExpert might be better.
+- Cost: LeetCode offers a free tier with limited features, while other platforms require paid subscriptions.
 
 Ultimately, it's recommended to try out different platforms and see which one works best for you. You can also combine several platforms to maximize your learning experience.
 
