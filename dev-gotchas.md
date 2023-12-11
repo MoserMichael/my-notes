@@ -66,11 +66,12 @@ My observations, so far:
 
 20/10/23 - Now starting to write leetcod submissions. Here you have to write some explanation of what has been done. Hope that this will improve my presentation skills at those job interviews...
 
-Some gripes: sometimes the difficulty ranking of a leetcode problem doesn't make sense, but i guess there is no use in bothering with this problem; I think part of the problem is the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them are ranked as Medium. 
-Also some of the problems are only available to payed accounts, which is bad. 
+Some gripes: 
+- some of the problems are only available to payed accounts, which is bad. 
+- for some of the problems the performance indicator is relevant, performance ranking jumps up and down if you rerun the same test (in theory they could just measure CPU time instead of total time, to fix that)
+- nitpick: sometimes the difficulty ranking of a leetcode problem doesn't make sense, but i guess there is no use in bothering with this problem; I think part of the problem is the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them are ranked as Medium.
 
-I asked GoogleBard about alternative services, maybe it's time to check them out:
-
+I asked GoogleBard about alternative services, maybe it's time to check them out (still, it may be that the free tier of Leetcode is optimal, in terms of value for ...money)
 
 Q: which sites are successfully competing with leetcode?
 
