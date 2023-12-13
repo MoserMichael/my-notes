@@ -1,5 +1,13 @@
 ======
 
+Chrome devtools:
+
+    Can save the current requestas a curl command!!! 
+        - right click on request
+        - in the copy menu item there is a submenu, here choose 'copy as cUrl'.
+        - now you have the command in the clipboard...
+
+====
 
 Tunnelblick VPN
 
