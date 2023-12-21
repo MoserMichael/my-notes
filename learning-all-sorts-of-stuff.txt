@@ -929,7 +929,7 @@ Examples:
 
 ======
 
-Get all artifact names for a public repository using the GITHUB rest api
+github: Get all artifact names for a public repository using the GITHUB rest api
 
     USER="robxu9"
     REPO="bash-static"
@@ -947,6 +947,25 @@ Get the latest release for a public repository
 
 ====================
 
+prisma security scan (json report)
+
+    # get overview of reported vulnerabilities
+    cat prisma-report.json | jq '.results[]|.entityInfo.vulnerabilityDistribution'
+    {
+      "critical": 0,
+      "high": 5,
+      "medium": 1,
+      "low": 1,
+      "total": 7
+    }
+
+
+    # fish out details of reports with priority 'high' 
+    cat prisma-report.json | jq '.results[]|.entityInfo|.vulnerabilities|map(select(.severity=="high"))|map(.cve, .severity, .packageName, .description)'
+
+
+====================
+mongodb
 
 https://www.mongodb.com/docs/manual/reference/command/
 
