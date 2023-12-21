@@ -179,7 +179,10 @@ docker image ls -a  :: shows all docker images (including intermediate images)
 
 
 ---
+
+
 running a container - with a given image (if image is not present then they try to pull it from the docker registry)
+
 
     docker run fedora:latest ls / 
 
@@ -226,9 +229,15 @@ running a container - with a given image (if image is not present then they try 
 
         -d option says not to show the docker command output to screen, instead it prints the id of the docker container. You can now use that id to stop/resume/kill the container (or to $(docker wait CONTAINER_ID) until it exits)
 
+    
+    # listing the tags for fedora image
+    curl 'https://registry.hub.docker.com/v2/repositories/library/fedora/tags/'|jq '."results"[]["name"]'
 
-    docker run -d -p 9000:8000 -v $PWD:/mnt/loc fedora:latest /bin/sleep infinity
+    docker run --name fedora-cnt -d -v $HOME:/mnt/loc  fedora:latest  /bin/sleep infinity
 
+    docker run --name fedora-cnt -d -p 9000:8000 -v $PWD:/mnt/loc fedora:latest /bin/sleep infinity
+
+        --name fedora-cnt   : the container will have the name fedora-cnt (docker exec can reference that name)
         -d                  : runs as daemon (you get the docker container id in stdout)
         -p 9000:8000        : maps tcp port 9000 (outside the container) to port 8000 (inside the container)
         -v $PWD:/mnt/loc    : mounts current directory to /mnt/loc inside container
@@ -240,12 +249,12 @@ running a container - with a given image (if image is not present then they try 
     # attach to the running container (it will not loose it's stuff - while the container is running!) 
     # (you can't attach to a stopped container - naturally)
 
-    docker exec -it fedora:latest bash
+        docker exec -it fedora-cnt bash
 
-    # may use the following to run a container, maybe that's more general.
+    # may use the following to run a container, maybe that's more general. (they don't always have sleep with ininity option)
     # sh -c 'while [ true ]; do sleep 5m; done'
     
-    docker run -d -p 9000:8000 -v $PWD:/mnt/loc alpine:latest  sh -c 'while [ true ]; do sleep 5m; done'  
+    docker run --name alpine-cnt -d -p 9000:8000 -v $PWD:/mnt/loc alpine:latest  sh -c 'while [ true ]; do sleep 5m; done'  
 
         for bridge network mode: -p 9000:8000 - port 9000 on the host is mapped to port 8000 inside the container. (listening port inside container can accept connections from the outside!)
         -v $PWD:/mnt/loc    :: map the home directory on host to /mnt/loc inside the container
@@ -880,6 +889,15 @@ OS agnostic
 
 ======
 Linux
+
+
+package search/searching for stuff.
+
+    https://pkgs.alpinelinux.org/packages - great search for alpine!!! (which every distro had a search page like this)
+
+    fedora: don't know which package provides the top command???
+        
+        yum whatprovides top
 
 ALPINE - list all installed packages
 
