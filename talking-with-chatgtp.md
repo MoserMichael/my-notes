@@ -14,10 +14,11 @@ That's a good way, if the chat session contains figures or formulas, these are h
 
 ------
 
-https://chat.openai.com/share/c0ca72f2-7790-439d-8973-a85384ee8ae1
+ChatGTP explains the self-attention stage of transformers. (and it does a better job than all of the tutorials that i have read, at least for me)
 
+[link to shared chat session](https://chat.openai.com/share/c0ca72f2-7790-439d-8973-a85384ee8ae1)
 
-[local copy](chat-talks/self-a.html)
+[local copy](https://htmlpreview.github.io/?https://github.com/MoserMichael/my-notes/blob/master/chat-talks/self-a.html)
 
 ---------
 
