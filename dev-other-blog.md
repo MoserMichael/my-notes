@@ -331,7 +331,7 @@ Therefore welcome to the ... new blog for [stuff that i used to post on twitter]
 ---04/05/23 06:34:50----------------------
 
 me talking with ChatGTP on classical AI and the attempts to combine classical AI with ML
-[link to the talk](talking-with-chatgtp.md)
+[link to the talk](talking-with-chatgtp-b.md)
 
 I have come to think that ChatGTP is very good at this kind of general discussions.
 
