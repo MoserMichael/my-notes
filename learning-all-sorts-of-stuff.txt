@@ -615,6 +615,13 @@ vimdiff
 Mac/OSX tricks
 
 
+? using wi-fi and no network?
+    - had that I can ping 1.1.1.1 and ping 8.8.8.8  (these are very public DNS servers), but can't resolve any address (ping google.com - times out)
+    - go to Settings / DNS server
+        - first write down all of the configured DNS server (you may need them in some other network)
+        - delete all DNS entries.
+    
+    worked!
 
 ? remove colorcodes from text ? 
 
@@ -623,9 +630,9 @@ Mac/OSX tricks
 
     cat blabla.txt | sed -e 's/\x1b\[[0-9;]*m//g'
 
-? built-in something is very different from what you expect ?
+? built-in command line program does something very different from what you expect ?
 
-    # very true for sed - will install gsed 
+    # very true for sed - will install gsed - gnu sed
     brew install gnu-sed
 
     gsed -i 's/blabla/blublu/g' foo.txt
