@@ -260,7 +260,39 @@ Now the code that writes these records may change, and you end up with different
 
 ---23/02/23 10:08:35----------------------
 
-Python catch #425 - if you have a list/map/object and want to display the string representation of each object, use repr. (str and __str__ won't cut it...)
+Python catch #426 - the map function returns an iterator. the next entry is only generated upon calling ```___next___``` - so  that the map is generating new entries lazily, upon demand...
+
+
+```
+>>> def sq(x):
+...     print(f"{x}")
+...     return x
+...
+>>> m = map(sq, range(1,20))
+
+>>> m.__next__()
+1
+1
+>>> m.__next__()
+2
+2
+>>> m.__next__()
+3
+3
+>>> m.__next__()
+4
+4
+```
+
+This iterator thing is sometimes very confusing:
+
+- ```sorted``` receives any iterator, returns a sorted list
+- ```heapq.heapify``` dosn't receive an iterator, it needs to receive a list as argument.
+
+( there are proably more of these around... )
+
+
+Python catch #425 - if you have a list/map/object and want to display the string representation of each object, use repr. (str and ```__str__``` won't cut it...) - bt ```___repr___``` does the job just fine!
 
 ```
 class Foo:
