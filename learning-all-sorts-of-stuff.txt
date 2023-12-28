@@ -1314,6 +1314,16 @@ https://en.wikipedia.org/wiki/WebSocket
     List of libraries for working with the docker engine api  : https://docs.docker.com/engine/api/sdk/
 
 ----
+
+Python recursion stack
+    default maximum recursion depth of 1000, can be increased using the sys.setrecursionlimit(n)  https://docs.python.org/3/library/sys.html#sys.setrecursionlimit
+
+    python
+    Python 3.7.13 (default, Sep 29 2022, 10:34:32)
+    >>> import sys
+    >>> sys.getrecursionlimit()
+    1000
+
 Python has integer division operator ... I would always divide 
 
     python

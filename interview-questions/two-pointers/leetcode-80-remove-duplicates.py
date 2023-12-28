@@ -51,6 +51,61 @@
 #
 
 
+#        # Intuition
+#        two indexes move through the array, the slow index points at the area removed of duplicates, the fast index points at the next input number
+#
+#        # Approach
+#        - check for duplicates: while the ```nums[fast]==nums[slow]``` - increment fast.
+#        - copy the first repeating element
+#        - advance slow to the next byte that has not been set,
+#        - copy the current fast pointer to new slow location ```nums[slow] = nums[fast]```
+#        - increment fast pointer to the next input number
+#        # Complexity
+#        - Time complexity:
+#        $$O(n)$$ - one pass over the input
+#
+#        - Space complexity:
+#        $$O(1)$$ - the solution does not require the addition of any collection, just scalars.
+#         
+#        # Code
+#        ```
+#        class Solution:
+#            def removeDuplicates(self, nums: List[int]) -> int:
+#                if len(nums) < 2:
+#                    return len(nums)
+#                
+#                low = 0
+#                high = 1
+#                while high < len(nums):
+#                    if nums[low] == nums[high]:
+#                        # check for duplicates:
+#                        while nums[low] == nums[high]:
+#                            high += 1
+#                            if high >= len(nums):
+#                                break
+#
+#                        low+=1
+#
+#                        # copy the first repeating element
+#                        nums[low] = nums[low-1]
+#
+#                        if high >= len(nums):
+#                            return low+1
+#                    
+#                    # advance slow to the next byte that has not been set,
+#                    low += 1
+#                    if high > low:
+#                        # copy the current fast pointer to new slow location
+#                        nums[low] = nums[high]
+#                    high += 1
+#                     
+#                return low+1
+#                
+#
+#                        
+#        ```
+
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) < 2:
