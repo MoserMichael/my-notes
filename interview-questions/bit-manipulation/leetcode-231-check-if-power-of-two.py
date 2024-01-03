@@ -35,30 +35,37 @@
 #
 
 
+
+# here they have other tricks as well:
+# https://en.wikipedia.org/wiki/Hamming_weight
+
 class Solution:
-    def isPowerOfTwo(self, n: int) -> bool:
-        return Solution.fast(n)
-        #return Solution.slow(n)
+    def hammingWeight(self, n: int) -> int:
+        #return Solution.oneBit(n)
+        return Solution.bitOp(n)
 
-    def fast(n):
-        if n <=0:
-            return False
+    def bitOp(n):
+        ret = 0
+        while n != 0:
+            # n & (n-1)
 
-        # if 2 ^ 3  ==  1000
-        # if (2 ^ 3) - 1 == 111
-        return n & (n-1) == 0
+            # he bitwise AND of x with x − 1 differs from x only in zeroing out the least significant nonzero bit: subtracting 1 changes the rightmost string of 0s to 1s, and changes the rightmost 1 to a 0
 
-    def slow(n):
-        if n == 0:
-            return False
-        if n < 0:
-            return False
+            n = n & (n-1)
+            ret += 1
+        return ret
 
-        while True:
-            if n == 1:
-                return True
-            if n & 1 != 0:
-                return False
-            n = n // 2
+
+    def oneBit(n):
+        ret = 0
+        while n != 0:
+            ret += n & 1
+
+            #if is a big slow down!!!
+            #if n & 1:
+            #  ret += 1
+
+            n >>=1
+        return ret
 
 
