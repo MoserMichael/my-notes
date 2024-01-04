@@ -30,7 +30,8 @@ After all leetcode stuff has something to do with programming (actually leetcode
 My problem with leetcode:
 
 - You often spend more time at parsing the problem statement than with solving the problem. Well, maybe that's the point of the exercise, who knows...
-- I forget the leetcode exercise when it gets 'accepted' (when the code passes all of the tests). Maybe that's because the problems are often contrived, and have little to do with real world problems. (maybe i should take notes)
+- Now always aware of all possible test cases, I need to be more careful while reading the problem description. Sometimes there are hints in the _Constraints_ section.
+- I tend to forget the leetcode exercise when it gets 'accepted' (when the code passes all of the tests). Maybe that's because the problems are often contrived, and have little to do with real world problems. (maybe i should take notes)
 - One is supposed to give a show while interviewing in the leetcode style, and that doesn't go well with looking for a solution to the problem. 
     - (Maybe the reason is that I am just to slow at solving this kind of problems, at the moment)
     - Maybe the whole point is to go through the problem description and spell out a solution, before starting to code.
