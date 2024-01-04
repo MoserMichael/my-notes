@@ -294,7 +294,9 @@ This iterator thing is sometimes very confusing:
 ( there are proably more of these around... )
 
 
-Python catch #425 - if you have a list/map/object and want to display the string representation of each object, use repr. (str and ```__str__``` won't cut it...) - bt ```___repr___``` does the job just fine!
+Python catch #425 - if you have a list/map/object and want to display the string representation of each object, use repr. (str and ```__str__``` won't cut it...) - but ```___repr___``` does the job just fine!
+
+[here](https://realpython.com/python-repr-vs-str/) they say  that ```__str__``` is a human friendly output for users or for printing output to a log file, while ```___repr___``` is supposed to be more detailed format, one that includes all the details required to know everything about the object. (I think that this distinction is a bit confusing).
 
 ```
 class Foo:
@@ -304,15 +306,21 @@ class Foo:
     def __str__(self):
         return f"[s: {self.s} num: {self.num}]"
 
+f = Foo(123, "aaa")
+
+# __str__  is only called when converting the object directly to the string: output '[s: aaa num: 123]'
+print(str(f))
 
 a = [ Foo(1,"one"), Foo(2, "two") ]
 
+# __str__ is not called when converting a collection that holds Foo to a string
 # output: show-list-with-str [<__main__.Foo object at 0x10287e208>, <__main__.Foo object at 0x10287e0c8>]
 print(f"show-list-with-str {str(a)}")
 
 
 b = { "1" : Foo(1, 'one'),  "2" : Foo(2, 'two') }
 
+# same for maps
 # output: show-map-with-str {'1': <__main__.Foo object at 0x10287e088>, '2': <__main__.Foo object at 0x10287e148>}
 print(f"show-map-with-str {str(b)}")
 
