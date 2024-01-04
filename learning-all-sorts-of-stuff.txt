@@ -614,6 +614,11 @@ vimdiff
 
 Mac/OSX tricks
 
+? merge two pdf files - page1.pdf and page2.pdf into page-all.pdf ?
+
+    brew install pdftk-java
+
+    pdftk page1.pdf page2.pdf cat output page-all.pdf
 
 ? using wi-fi and no network?
     - had that I can ping 1.1.1.1 and ping 8.8.8.8  (these are very public DNS servers), but can't resolve any address (ping google.com - times out)
