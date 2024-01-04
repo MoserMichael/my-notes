@@ -13,6 +13,8 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 ---24/09/23 08:18:53----------------------
 
+Since October 7th we do have a war in Israel, where I am living. Now I started to do leetcode exercises in order to keep my sanity.
+
 I was probably wrong in making up all of this stuff, here on this site, as none of it is of any value. (i was using all these projects as a tool to learn stuff, and to write down my thoughts and reflections along the way)
 
 This was sort of my way of staying afloat in an ever changing landscape of software development, sort of.
