@@ -41,6 +41,17 @@
 #
 
 
+#  
+#  Use a stack to follow through the serialization process. 
+#  A stack entry stands for a tree node that is being restored. It pushes a new entry, whenever a new tre nodes appears in the input.
+#  The state of a stack entry is VISIT_LEFT, when it is pushed to the stack.
+#  An stack entry is popped off the stack, when a tree node in the input is followed by two null entries (#).
+#  in this case we examine the top of the stack repeatedly, if the state of the stack entry is VISIT_LEFT then it is changed to VISIT_RIGHT, and break from loop
+#  if the state of the stack is VISIT_RIGHT, then it means that right subtree has been completed, in this case the last stack entry is popped off the stack.
+#  This process is repeated in a loop.
+#  Also take care of input tokens trailing after the end of input or token stream ending prematurely, before the stack has been reduced to empty.
+
+
 class Solution:
     VISIT_LEFT=1
     VISIT_RIGHT=2

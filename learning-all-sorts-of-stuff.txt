@@ -1348,6 +1348,37 @@ Python has integer division operator ... I would always divide
 
 ----
 
+Missing dictionary entries in python give a Key error exception
+
+Now you can avoid that with d.setdefault('key', --default-value-- ) - that one creates a default value on each access.
+
+Now there is 
+
+    >>> from collections import defaultdict
+    >>> d = defaultdict(list)
+    >>> d['key-not-present']
+    []
+    >>> d['another-not-present'].append(42)
+    >>> d
+    defaultdict(<class 'list'>, {'key-not-present': [], 'another-not-present': [42]})
+
+
+----
+
+Python has a string buffer, just like java!
+
+    >>> b = io.StringIO()
+    >>> b.write("a")
+    1
+    >>> b.write("b")
+    1
+    >>> b.write("c")
+    1
+    >>> b.getvalue()
+    'abc'
+
+----
+
 https://realpython.com/pytest-python-testing/ (and others)
 
     - standard library comes with unittest framework ( https://docs.python.org/3/library/unittest.html ) - very much like JUnit (with setUp and tearDown methods)
