@@ -20,6 +20,75 @@ ChatGTP explains the self-attention stage of transformers. (and it does a better
 [local copy](https://htmlpreview.github.io/?https://github.com/MoserMichael/my-notes/blob/master/chat-talks/self-a.html)
 
 
+----
+
+Talking with ChatGTP about the meaning of the term opinionated in software development  [link](https://chat.openai.com/share/563bec22-cdf7-49ae-a518-1d3c9f4bc7f2)
+
+User
+what is the meaning of the term of 'being opinionated' in programming?
+
+ChatGPT
+In programming, the term "being opinionated" refers to having a strong and specific set of preferences, principles, or conventions about how code should be written, structured, and organized. An opinionated approach in programming typically involves adhering to a particular coding style, design patterns, and frameworks that the developer or a community considers best practices.
+
+Being opinionated can be contrasted with a more "unopinionated" or "flexible" approach, where developers have more freedom to make choices about the structure and design of their code. Opinionated frameworks or libraries often come with a set of conventions and guidelines that developers are encouraged or required to follow, promoting consistency and a shared understanding among the development team.
+
+For example, a framework might be opinionated about the project directory structure, naming conventions, coding style, or the use of certain design patterns. While opinionated frameworks can make certain decisions for you and provide a more streamlined development experience, they may not be suitable for every project or developer preference. It often depends on the specific requirements and goals of the project, as well as the preferences of the development team.
+
+User
+that's very different to the mantra of 'there is no one right way to solve a problem'
+
+ChatGPT
+
+You're absolutely correct. The idea that "there is no one right way to solve a problem" is often associated with a more flexible and unopinionated approach to programming. This philosophy suggests that different problems may have different solutions, and developers should have the freedom to choose the tools, languages, and approaches that best suit the specific requirements of their projects.
+
+On the other hand, an opinionated approach emphasizes a more prescriptive set of guidelines and best practices, advocating for a specific way of doing things to maintain consistency and often to simplify decision-making.
+
+Both approaches have their merits, and the choice between an opinionated or unopinionated approach often depends on the nature of the project, the preferences of the development team, and the trade-offs that need to be considered. Some projects benefit from the structure and conventions provided by opinionated frameworks, while others thrive on the flexibility and adaptability offered by unopinionated tools and languages. It's important for developers to be aware of these different philosophies and choose the one that aligns with their goals and the requirements of the project at hand.
+
+User
+When and how did the switch from 'there is no one right way' toward opinionated designs happen?
+
+ChatGPT
+
+The transition from a mindset of "there is no one right way" to more opinionated designs in software development has occurred gradually over time and can be attributed to several factors and trends in the industry. It's essential to note that these shifts are not binary, and there is still a diversity of approaches in different areas of programming. Here are some key factors contributing to the rise of opinionated designs:
+
+-  Community Standards and Best Practices: As programming communities and ecosystems matured, certain standards and best practices emerged. Opinionated frameworks and libraries often encapsulate these best practices and provide a set of conventions that help developers create more consistent and maintainable code.
+
+-   Increasing Complexity of Software: Modern software development involves dealing with complex systems and architectures. Opinionated frameworks can help manage this complexity by providing predefined structures and patterns that guide developers in building scalable and robust applications.
+
+-   Productivity and Developer Experience: Opinionated frameworks aim to enhance developer productivity by making certain decisions on behalf of the developers. By reducing the number of decisions a developer needs to make, these frameworks can speed up development, especially for common use cases.
+
+-   Focus on Convention over Configuration: Opinionated designs often follow the principle of "convention over configuration," meaning that they come with sensible defaults and assumptions. This approach reduces the need for extensive configuration and allows developers to start coding quickly.
+
+-   Rise of Frameworks and Libraries: The popularity of opinionated frameworks and libraries has grown, with many becoming widely adopted in the development community. Examples include Ruby on Rails, Django, and Angular, which provide a set of conventions to guide developers.
+
+-   Team Collaboration and Code Maintainability: In larger development teams, having a shared set of conventions and practices can facilitate collaboration and make it easier for team members to understand and maintain each other's code.
+
+It's important to note that the shift towards opinionated designs doesn't imply that the unopinionated approach is obsolete. Unopinionated tools and languages still play a significant role, especially in situations where flexibility and customization are crucial. The choice between opinionated and unopinionated approaches often depends on the specific needs and preferences of developers and the nature of the projects they are working on.
+
+User
+Does the opinionated approach imply a more centralized decision making process?
+
+ChatGPT
+
+Yes, the opinionated approach in software development often implies a more centralized decision-making process. In an opinionated framework or system, certain decisions about architecture, conventions, and best practices are made by the framework or a central authority. These decisions are then enforced or strongly encouraged throughout the development process.
+
+Here are some characteristics of a centralized decision-making process in opinionated designs:
+
+    Prescriptive Guidelines: Opinionated frameworks come with prescriptive guidelines, conventions, and best practices that developers are expected to follow. These guidelines are typically set by the creators of the framework or a central governing body.
+
+    Defaults and Conventions: The framework often provides default settings and conventions for common tasks. Developers can start working with the framework immediately, benefiting from these defaults, and only deviate when necessary.
+
+    Reduced Configuration: Opinionated frameworks often aim to minimize configuration by making decisions on behalf of the developer. This is in contrast to more unopinionated systems, where developers have greater freedom in making configuration choices.
+
+    Built-in Features: Opinionated frameworks often come with a set of built-in features and tools that are considered essential for a specific type of application. These features are integrated into the framework to streamline development.
+
+    Community Consensus: The decision-making process might also involve input from the development community, where a set of conventions is established through discussion and consensus. In such cases, the central authority may be a community-driven process.
+
+While a centralized decision-making process can provide benefits such as consistency, rapid development, and ease of onboarding for new developers, it may also limit flexibility and customization. Developers using opinionated frameworks need to adhere to the established conventions, which may not be suitable for all project requirements.
+
+In contrast, unopinionated approaches, such as using certain programming languages or minimalistic frameworks, often allow developers more freedom to make their own decisions about project structure, design patterns, and configurations. This flexibility can be beneficial in situations where customization and adaptability are critical.
+
 
 -------
 
@@ -36,8 +105,6 @@ The film is also popular among Japanese anime fans. It has been released on DVD 
 In addition to its popularity among anime fans, "The Hedgehog in the Fog" is also appreciated by Japanese audiences for its poetic imagery and its atmospheric soundtrack. The film has been praised for its ability to capture the beauty and mystery of the natural world.
 
 Overall, "The Hedgehog in the Fog" is a well-respected and beloved animated film in Japan. It is considered to be a classic of the genre, and it continues to be enjoyed by audiences of all ages.
-profile picture
-
 
 Me: why is this movie so popular in Japan?
 
