@@ -181,6 +181,39 @@ Not so fast, ```keep_going or process_elem(elem)``` will only be called the firs
 
   / same frequent source of errors: switch statements, state machines-transition tables, etc/
 
+- python if statement problem. I do that a lot. Both None and zero evaluate to false, in a boolean check, for example:
+
+```
+>>> if None:
+...     print("is-true")
+... else:
+...     print("is-false")
+...
+is-false
+>>> if 0:
+...     print("is-true")
+... else:
+...     print("is-false")
+...
+is-false
+```
+
+Now if you check for the presence of a key in a map like this,
+```
+>>> m={'zero':0,'one':1}
+
+>>> rt=m.get('zero')
+>>> print(m.get('zero'))
+0
+
+>>> print(m.get('not-in-map'))
+None
+>>>
+```
+As you see, the case of the key mapping to zero is handled the same as the case of the key not being present in the map.
+Of course you can compare with None, or you can do check for ```'not-in-map' in m```, still this kind of scenario happens often, as it is easy to conflate.
+        
+
 - the vanishing log context. One of the main questions in backend-land is: where are the logs?
   Now some systems change the log context over time. For example: jboss and even simple systems like gunicorn are putting their logs in one place during their initialization sequence. However futher down the road they decide otherwise - and put the logs in some other place. 
     

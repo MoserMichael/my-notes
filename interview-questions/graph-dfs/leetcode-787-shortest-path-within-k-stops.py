@@ -48,6 +48,33 @@
 #
 #
 
+#
+#    # Intuition
+#
+#    breadth first search, with memoization.
+#    You keep a map that maps the node to an entry of the last best result.
+#    if current result is worse then the last best result then don't continue with the traversal of the graph.
+#
+#    Now the memozation check that checks if the current result is worse than the previous one is tricky:
+#     - the last best result is a pair of numbers ( <cost of last best result>, <current number of remaining steps at visit> )
+#     - if the current traversal costs less than the last best result - continue with the traversal
+#     - if the number of remaining steps is bigger then number of remaining steps of last big result - continue with the traversal (it might be, that this will give you the advantage of reaching the target node!)
+#     Upon passing this check: set the memoization state:
+#       - the first number of the entry is the minimum of the last best result and the current one
+#       - the second number is set to the maximum of of the remaining step value for last best result and the current one.
+#
+#
+#    # Approach
+#    <!-- Describe your approach to solving the problem. -->
+#
+#    # Complexity
+#    - Time complexity:
+#    Works case may visit all edges and vertexes, so it is: $$O(V + E)$$
+#
+#    - Space complexity:
+#    keep an entry for each vertex $$O(V)$$
+#
+
 
 
 import math
