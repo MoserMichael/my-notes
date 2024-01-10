@@ -612,6 +612,14 @@ vimdiff
         :set diffopt+=iwhiteall
 
 
+Windows trics
+? always show scrollbars ?
+    Settings
+    Search for 'Visual effects'
+        'always show scrollbars' check
+
+
+
 Mac/OSX tricks
 
 ? merge two pdf files - page1.pdf and page2.pdf into page-all.pdf ?

@@ -1,0 +1,22 @@
+
+Tree traversal (remember the terms)
+    
+    pre-order 
+        visit node
+        traverse left subtree
+        traverse righ subree
+
+    post-order 
+        traverse left subtree
+        traverse righ subtree
+        visit node
+
+    in-order
+        traverse left subtree
+        visit node
+        traverse right subtree
+
+
+Graph DFS and BFS
+    time complexity O(V + E) (visit all vertexes and edges)
+    space complexity O(V) (if recursive, may need a frame for each vertex)
