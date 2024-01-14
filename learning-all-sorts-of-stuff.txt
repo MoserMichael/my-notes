@@ -613,11 +613,36 @@ vimdiff
 
 
 Windows trics
+
 ? always show scrollbars ?
     Settings
     Search for 'Visual effects'
         'always show scrollbars' check
 
+? WSL: Windows system for linux: don't make sound on tab completion?
+    sudo vim /etc/inputrc
+    add 'set bell-style none'
+
+? where are must have sysinternals utilities ?
+    https://learn.microsoft.com/en-us/sysinternals/downloads/     
+
+? can't access docker from WSL ?
+    
+    https://github.com/rancher-sandbox/rancher-desktop/issues/1156
+
+    # need group with current user in it.
+    sudo addgroup --system docker
+    sudo adduser $USER docker
+    newgrp docker
+    
+    # i already had the group, this was lacking
+    sudo chmod g+w /var/run/docker.sock 
+
+? Display the graphics card (and GPU, if available), from command line ?
+
+    # see: https://superuser.com/questions/723506/get-the-video-card-model-via-command-line-in-windows
+
+    wmic path win32_VideoController get name
 
 
 Mac/OSX tricks
@@ -913,7 +938,7 @@ Linux
 
 package search/searching for stuff.
 
-    https://pkgs.alpinelinux.org/packages - great search for alpine!!! (which every distro had a search page like this)
+    https://pkgs.alpinelinux.org/packages - great search for alpine!!! (whish every distro had a search page like this)
 
     fedora: don't know which package provides the top command???
         
@@ -1387,6 +1412,19 @@ Python has a string buffer, just like java!
 
 ----
 
+people like to do several assignments in one line, so they do the following:
+(which is considered to be concise and pythonic, for whatever reasons... )
+
+    >>> a, b, c = 3, "aaa", [1,2,3]
+    >>> a
+    3
+    >>> b
+    'aaa'
+    >>> c
+    [1, 2, 3]
+
+----
+
 https://realpython.com/pytest-python-testing/ (and others)
 
     - standard library comes with unittest framework ( https://docs.python.org/3/library/unittest.html ) - very much like JUnit (with setUp and tearDown methods)
@@ -1818,6 +1856,9 @@ https://faq.whatsapp.com/539178204879377
 ======
 
 Python virtual environments
+
+    # for virtual environments: on ubuntu you first need to install the following package (beats me)
+    apt install python3.10-venv
 
     # create the virtual env
     python -m venv myvenv

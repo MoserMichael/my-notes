@@ -20,3 +20,8 @@ Tree traversal (remember the terms)
 Graph DFS and BFS
     time complexity O(V + E) (visit all vertexes and edges)
     space complexity O(V) (if recursive, may need a frame for each vertex)
+
+
+Dijkstra for shortest path is popular!    
+    
+    
