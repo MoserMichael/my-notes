@@ -614,6 +614,9 @@ vimdiff
 
 Windows trics
 
+? PgUp,PgDown with the laptop keys ?
+  Fn + down -> PgDown
+
 ? always show scrollbars ?
     Settings
     Search for 'Visual effects'
@@ -628,15 +631,11 @@ Windows trics
 
 ? can't access docker from WSL ?
     
-    https://github.com/rancher-sandbox/rancher-desktop/issues/1156
+    # here is some advice: https://github.com/rancher-sandbox/rancher-desktop/issues/1156
 
-    # need group with current user in it.
-    sudo addgroup --system docker
-    sudo adduser $USER docker
-    newgrp docker
-    
-    # i already had the group, this was lacking
-    sudo chmod g+w /var/run/docker.sock 
+    # for me this one works (need to apt-get install acl)
+    sudo setfacl -m user:$USER:rw /var/run/docker.sock
+
 
 ? Display the graphics card (and GPU, if available), from command line ?
 
