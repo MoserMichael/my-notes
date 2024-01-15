@@ -617,6 +617,11 @@ Windows trics
 ? PgUp,PgDown with the laptop keys ?
   Fn + down -> PgDown
 
+? rightclick on windows is a bit awkward, without a mouse... (strange but true) ?
+   ??? 
+
+? ctrl + click on browser link -> opens in new tab ?
+
 ? always show scrollbars ?
     Settings
     Search for 'Visual effects'
@@ -729,9 +734,12 @@ Mac/OSX tricks
         press c to show command line arguments of processes.
 
 
-? regular expression editor (online) ?
+? regex: regular expression editor (online) ?
 
     https://regex101.com/
+
+    # summary of differences in syntax for regex - for different tools/languages
+    https://www.greenend.org.uk/rjk/tech/regexp.html
 
 ? show process tree (on both osx and linux) ?
 
@@ -801,35 +809,6 @@ Mac/OSX tricks
     # can connect with 
     ssh -i id_rsa <user>@<admin_ip>
 
-? install docker on ubuntu ?  https://docs.docker.com/engine/install/ubuntu/
-
-    sudo apt-get update -y
-    sudo apt-get install -y \
-        ca-certificates \
-        curl \
-        gnupg \
-        lsb-release
-
-    # docker gpg key    
-    sudo mkdir -p /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-    # set up the repository:
-    echo \
- "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-
-    sudo apt-get update -y
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-    # make current user able to access docker 
-    sudo setfacl -m user:$USER:rw /var/run/docker.sock
-
-    #check that it is alive from non-root user
-    docker run hello-world
-    docker ps -a
-    docker container prune -f
-
 ? list installed brew packages
 
     brew list
@@ -871,6 +850,60 @@ Mac/OSX tricks
 
 
 Linux
+
+? do people still use fedora, or redhat managed to alienate everyone ?
+
+    https://www.theregister.com/2023/07/10/fedora_privacy_telemetry/
+    OMG: 'Fedora Project mulls 'privacy preserving' usage telemetry'
+    Yeah, they are pushing it through: https://fedoraproject.org/wiki/Changes/Telemetry
+    Sayonara fedora!
+
+    ... and ubuntu displays ads? (didn't see any so far, i have it in terminal only)
+    https://www.linuxquestions.org/questions/general-10/your-thought-on-ubuntu-starting-to-display-advertisements-on-its-terminals-4175718102/
+
+    ... so people are swiching to arch linux...
+
+? ubuntu package manager weirdness ?
+    ubuntu has both snap and apt. (snap is developed by canonical!)
+    why?
+        - snap has a store (like the big guys)
+        - is supposed to work on multiple distros.
+        - well, it depends on systemd (no alpine)
+    
+    -- everything changes, nothing stays the same ---
+
+    See: https://en.wikipedia.org/wiki/Snap_(software)
+
+? install docker on ubuntu ?  https://docs.docker.com/engine/install/ubuntu/
+
+    sudo apt-get update -y
+    sudo apt-get install -y \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release
+
+    # docker gpg key
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+    # set up the repository:
+    echo \
+ "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+
+    sudo apt-get update -y
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    # make current user able to access docker
+    sudo setfacl -m user:$USER:rw /var/run/docker.sock
+
+    #check that it is alive from non-root user
+    docker run hello-world
+    docker ps -a
+    docker container prune -f
+
+
     # show kernel / cpu architecture / etc.
     uname -a
 
@@ -1902,7 +1935,7 @@ Force upgrade a package to latest?
 
 =========
 
-Workign with binary data.
+Working with binary data. - Python
 
 (Perl and Python are similar to this respect - they pack/unpack the fields - according to some printf-like text spec (the spec is called 'the template')
 Nodejs/Javascript doesn't do that - they have java like readUint8, writeUint8 functions for binary de-serialisation.
