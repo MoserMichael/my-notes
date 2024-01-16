@@ -12,6 +12,14 @@ Good way to copy a ChatGTP chat session:
     - save the resulting page.
 That's a good way, if the chat session contains figures or formulas, these are hard to export.
 
+----
+Prompt engineering/Prompting is pretty scary - looks like some kind of magic, so lets learn more about it.
+
+https://en.wikipedia.org/wiki/Prompt_engineering
+
+"Prompt engineering is enabled by in-context learning, defined as a model's ability to temporarily learn from prompts." 
+
+https://huggingface.co/docs/transformers/main/tasks/prompting
 
 ----
 
