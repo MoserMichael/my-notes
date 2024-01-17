@@ -35,10 +35,7 @@ class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
         countNums = {}
         for num in arr:
-            if countNums.get(num):
-                countNums[num] += 1
-            else:
-                countNums[num] = 1
+            countNums[num] = countNums.setdefault(num, 0) + 1
 
         uniqueCheck = set()
         for v in countNums.values():

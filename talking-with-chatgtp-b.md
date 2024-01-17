@@ -18,8 +18,38 @@ Prompt engineering/Prompting is pretty scary - looks like some kind of magic, so
 https://en.wikipedia.org/wiki/Prompt_engineering
 
 "Prompt engineering is enabled by in-context learning, defined as a model's ability to temporarily learn from prompts." 
+    in-context learning: within the token context that is analysed (which is several thousand tokens, depending on model). 
+        (??? lots of questions: 
+            - is the effect gone if conversation is longer than context window? 
+            - does a long and elaborate prompt reduce the effective context window available for conversation? 
+            - nature of context learning: is it just adjusting the scope of considered corpus, or is there more to it?
+            - meta level: how does the prompt adjust the output style - is there a inference process happening ?
+        ???)    
 
 https://huggingface.co/docs/transformers/main/tasks/prompting
+    
+    - explains different styles of models variants, usage pipelines on huggingface repos.
+
+https://www.youtube.com/watch?v=jC4v5AS4RIM
+
+Why all this prompting business? Says the aim of the prompt is to constraint the possible answers (since the LLM has been trained on lots of data)
+
+Says components of a good prompt have:
+
+    task            (presence mandatory) - always start with an action verb (Generate, write, analyze...)   
+    context         (important)         should answer: what is the users background? what does success look like? what environment?
+                        
+    exemplar        (important)         says that improves the quality of the output, like 'let's think step by step', or 'use STAR framework of Situation, Task, action, result' - and give an example.
+                        
+    persona         (nice to have)      the LLM should impersonate this persona, like 'you are a hiring manager looking to fill a position on your team' or name specific famous individuals (???)
+    
+    format          (nice to have)      How the end result should look like? (like table - with column description,  markdown, 
+
+    tone            (nice to have)      (use clear and concise language, use a formal tone, use witty output - tell it the feeling you want to achieve)
+
+
+
+Example: (I'm a 70kb male) (context) (give me a 3 month training program) (task) 
 
 ----
 
