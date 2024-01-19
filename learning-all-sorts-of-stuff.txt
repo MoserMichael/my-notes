@@ -656,6 +656,7 @@ Windows trics
 
 
 Mac/OSX tricks
+==============
 
 ? merge two pdf files - page1.pdf and page2.pdf into page-all.pdf ?
 
@@ -856,6 +857,11 @@ Mac/OSX tricks
 
 
 Linux
+=====
+
+? strace - get file read/writes on all files for all threads for given command ?
+
+    strace  -e write=all -e read=all  -f  docker images 2>&1 | less
 
 ? do people still use fedora, or redhat managed to alienate everyone ?
 
