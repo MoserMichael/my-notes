@@ -614,6 +614,12 @@ vimdiff
 
 Windows trics
 
+? docker ps in windows runs slow ? 
+  
+  well, they use virtualization on windows, no lightweight containers here... maybe that's inevitable.
+    
+  (docker consumes a lot of power on intel cpus. the vent is spinning constantly. Hyper-V doesn't have this problem, also quite responsive...)
+
 ? PgUp,PgDown with the laptop keys ?
   Fn + down -> PgDown
 
