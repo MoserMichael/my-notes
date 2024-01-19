@@ -2,7 +2,9 @@
 
 I think that talking to an LLM can give leads for further research. Sort of like giving directions, if you don't anything about a given subject (sometimes these discussions get interesting, at least for someone with my limited level of knowledge)
 
-Some people say that ChatGTP is a [confirmation bias machine](https://www.linkedin.com/pulse/chatgpt-perfect-confirmation-bias-machine-roman-naumenko/) in the sense that it tells you already think. I hope that's not all of it: these conversations can teach how to ask questions. How have the chance to examine the answers at your own leasure and ask further question, and return to the same conversation later (you don't always have this chance with a real persons).
+Some people say that ChatGTP is a [confirmation bias machine](https://www.linkedin.com/pulse/chatgpt-perfect-confirmation-bias-machine-roman-naumenko/) in the sense that it tells you already think. I hope that's not all of it: these conversations can teach how to ask questions. How have the chance to examine the answers at your own leisure and ask further question, and return to the same conversation later (you don't always have this chance with a real persons).
+
+(also I asked ChatGTP if it is a confirmation bias machine, here is a [link to the conversation](https://chat.openai.com/share/e0639c28-2651-4eed-87f3-fee37f7c735f) )
 
 Maybe it's stupid to put up these chat sessions, as i will probably appear to be quite clueless. Still i like to ask questions.
 
