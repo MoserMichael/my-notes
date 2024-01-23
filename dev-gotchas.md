@@ -212,7 +212,32 @@ None
 ```
 As you see, the case of the key mapping to zero is handled the same as the case of the key not being present in the map.
 Of course you can compare with None, or you can do check for ```'not-in-map' in m```, still this kind of scenario happens often, as it is easy to conflate.
-        
+  
+There is another shortcut (non obvious to me)
+
+A list variable can be accessed like this, when a list variable is evaluated in a boolean context it is a check if the list is empty!
+The same applies to dictionaries - they are evaluated to false if the map is empty, evaluated to true if not.
+
+(and if you are not aware of all that then your code is not pythonic... :-( )
+
+```
+>>> a=[]
+>>> a
+[]
+>>> if a:
+...     print('true')
+... else:
+...     print('false')
+...
+false
+>>> a.append(1)
+>>> if a:
+...     print('true')
+... else:
+...     print('false')
+...
+true
+```
 
 - the vanishing log context. One of the main questions in backend-land is: where are the logs?
   Now some systems change the log context over time. For example: jboss and even simple systems like gunicorn are putting their logs in one place during their initialization sequence. However futher down the road they decide otherwise - and put the logs in some other place. 

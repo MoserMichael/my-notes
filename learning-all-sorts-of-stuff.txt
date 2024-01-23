@@ -614,6 +614,10 @@ vimdiff
 
 Windows trics
 
+? windows 11 has a factory reset option. very convenient (apple also has one) ?
+
+    Start > Settings > System > Recovery . Next to Reset this PC , select Reset PC.
+
 ? docker ps in windows runs slow ? 
   
   well, they use virtualization on windows, no lightweight containers here... maybe that's inevitable.
@@ -663,6 +667,22 @@ Mac/OSX tricks
     brew install pdftk-java
 
     pdftk page1.pdf page2.pdf cat output page-all.pdf
+
+    
+    or imagemagick
+
+        # on ubuntu
+        sudo apt install imagemagick
+
+        convert image1.jpg image2.png text.txt PDFfile.pdf outputFileName.pdf
+
+        # here: https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion
+        # had to add the following tag to 
+        # sudo vim /etc/ImageMagick-6/policy.xml 
+        <policy domain="coder" rights="read | write" pattern="PDF" />
+        #right before
+        </policymap>
+
 
 ? using wi-fi and no network?
     - had that I can ping 1.1.1.1 and ping 8.8.8.8  (these are very public DNS servers), but can't resolve any address (ping google.com - times out)

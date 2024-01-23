@@ -15,6 +15,17 @@ Good way to copy a ChatGTP chat session:
 That's a good way, if the chat session contains figures or formulas, these are hard to export.
 
 ----
+
+Google Bard seems to be very knowledgable on the history of Coca-Cola advertising.  [link](https://g.co/bard/share/34cdad4e3637) ChatGTP3.5 had less to say on this subject...
+
+Another chat comparison, asked the question 'The movie 'the live of Brian' has a sketch named 'what have the Romans ever done for us?'. Has this sketch ever been criticized as being disrespectful of the Jews of Judaea?'
+
+Bard had more to say on this subject: [link](https://g.co/bard/share/49251d1884b2) Compared to [ChatGTP 3.5]( https://chat.openai.com/share/658d01dd-c331-479a-969c-d197bb7631e7)
+
+... but maybe I am comparing apples to oranges, just because I don't want to pay for ChatGTP4 ...
+(on other questions I got a better answer from ChatGTP)
+
+----
 Prompt engineering/Prompting is pretty scary - looks like some kind of magic, so lets learn more about it.
 
 https://en.wikipedia.org/wiki/Prompt_engineering
