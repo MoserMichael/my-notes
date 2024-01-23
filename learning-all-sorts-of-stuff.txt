@@ -879,6 +879,20 @@ Mac/OSX tricks
 Linux
 =====
 
+? need to make a presentation while using the bash shell ?
+    - you would like to have all of the required commands in the history of the current shell.
+    - so do a following file
+
+        # clear history for current session
+        history -c
+    
+        # add the command $(./blabla -foo -moo) to history of the current shell!
+        history -s "./blabla -foo -moo"
+
+    - then source that file, and use the fresh command history!
+    
+     
+
 ? strace - get file read/writes on all files for all threads for given command ?
 
     strace  -e write=all -e read=all  -f  docker images 2>&1 | less
