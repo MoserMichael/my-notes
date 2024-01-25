@@ -553,6 +553,13 @@ git/github
             # merge --squash  - get changes in one commit! solve all merge conflicts in one step!
             git merge --squash thisfeature-temp
 
+        # github: put link to youtube video into github README
+            https://www.linkedin.com/pulse/how-add-embedded-video-github-readme-file-cengiz-toru/
+           
+            # for me it goes as follows:::
+
+            [<img src="https://i.ytimg.com/vi/3vnq1ltptZA/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=3vnq1ltptZA&t=2s "youtube video: dockerdashphp - managing your local docker engine: 55")
+
         # github search cheat sheet 
             https://cheatography.com/cpriest/cheat-sheets/github-search-syntax/
 
