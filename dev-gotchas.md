@@ -198,29 +198,26 @@ is-false
 is-false
 ```
 
-Now if you check for the presence of a key in a map like this,
-```
->>> m={'zero':0,'one':1}
+Now the same syntax is also checking if a map or list value is empty.
 
->>> rt=m.get('zero')
->>> print(m.get('zero'))
-0
-
->>> print(m.get('not-in-map'))
-None
->>>
-```
-As you see, the case of the key mapping to zero is handled the same as the case of the key not being present in the map.
-Of course you can compare with None, or you can do check for ```'not-in-map' in m```, still this kind of scenario happens often, as it is easy to conflate.
-  
-There is another shortcut (non obvious to me)
-
-A list variable can be accessed like this, when a list variable is evaluated in a boolean context it is a check if the list is empty!
-The same applies to dictionaries - they are evaluated to false if the map is empty, evaluated to true if not.
-
-(and if you are not aware of all that then your code is not pythonic... :-( )
+This kind of overloading can be a source of problems, you may have intended one thing, but the code is actually doing something different.
 
 ```
+>>> m={}
+>>> if m:
+...     print("is-true")
+... else:
+...     print("is-false")
+...
+is-false
+>>> m['a']=1
+>>> if m:
+...     print("is-true")
+... else:
+...     print("is-false")
+...
+is-true
+
 >>> a=[]
 >>> a
 []
@@ -237,7 +234,40 @@ false
 ...     print('false')
 ...
 true
+
 ```
+
+Example case that causes problem: if you check for the presence of a key in a map like this:
+
+```
+>>> m={'zero':0,'one':1}
+
+>>> rt=m.get('zero')
+>>> print(m.get('zero'))
+0
+
+>>> print(m.get('not-in-map'))
+None
+>>>
+```
+
+One can avoid this kind of check for a missing map key with ```setdefault``` or ```defaultdict``` - still you will get this problem...
+
+--- 
+
+As you see, the case of the key mapping to zero is handled the same as the case of the key not being present in the map.
+Of course you can compare with None, or you can do check for ```'not-in-map' in m```, still this kind of scenario happens often, as it is easy to conflate.
+ 
+Now there are other classes like ```defaultdict``` - here lookup of a missing key will return a default value
+
+```
+>>> from collections import defaultdict
+>>>
+>>> d=defaultdict(list)
+>>> d['missing-key']
+[]
+```
+
 
 - the vanishing log context. One of the main questions in backend-land is: where are the logs?
   Now some systems change the log context over time. For example: jboss and even simple systems like gunicorn are putting their logs in one place during their initialization sequence. However futher down the road they decide otherwise - and put the logs in some other place. 
@@ -258,7 +288,19 @@ true
         now here is the place to release that log
 ```
 
-Everything in a language seems to have some purpose. Now not all languages like the idea o exceptions - for example golang doesn't have exceptions. Also a good deal of C++ projects don't use exceptions at all.
+Now ```finally``` will catch all kind of errors - so you also need to catch all other exceptions as well - in order to notice that something bad happened..
+
+```
+    try:
+        do something of great importance
+    catch ValueError, ex:
+        do the stuff supposed to happen if that something specific failed
+    catch ex:
+        log that something bad happened - otherwise no way to know.
+    finally:
+        now here is the place to release that log
+```
+
 
 --
 
