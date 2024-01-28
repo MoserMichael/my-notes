@@ -32,11 +32,55 @@
 #
 
 
-
-
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        return Solution.faster(intervals, newInterval)
+        #return Solution.slow(intervals, newInterval)
 
+    def faster(intervals, newInterval):
+        ret = []
+        added = False
+
+        for idx in range(len(intervals)):
+            if  newInterval[0] < intervals[idx][0]:
+                ret.append(newInterval)
+                added = True
+                break
+
+            if Solution.is_overlap(newInterval, intervals[idx]):
+                assert intervals[idx][0] <= newInterval[0]
+                ret.append([intervals[idx][0], max(intervals[idx][1],newInterval[1])])
+                added = True
+                break
+            
+            ret.append(intervals[idx])
+        
+        if not added:
+            ret.append(newInterval)
+            return ret
+
+
+    
+        sidx = len(ret)-1
+        # compare if overlap with any remaining
+        cidx = idx 
+        
+        while cidx < len(intervals):
+            if ret[sidx][1] < intervals[cidx][0]:
+                ret += intervals[cidx:]
+                break
+            
+            if Solution.is_overlap(ret[sidx], intervals[cidx]):
+                #assert intervals[idx][0] <= intervals[cidx][0] 
+                ret[sidx][1] = max(ret[sidx][1], intervals[cidx][1])
+            else:
+                ret.append(intervals[cidx])
+            
+            cidx += 1
+
+        return ret
+    
+    def slow(intervals, newInterval):
         added = False
         for idx in range(len(intervals)):
 
@@ -50,22 +94,22 @@ class Solution:
                 intervals[idx][1] = max(intervals[idx][1],newInterval[1])
                 added = True
                 break
-
+            
 
         if not added:
             intervals.append(newInterval)
             return intervals
-
+        
 
         # compare if overlap with any remaining
         cidx = idx + 1
-
+        
         while cidx < len(intervals):
             if intervals[idx][1] < intervals[cidx][0]:
                 break
-
+            
             if Solution.is_overlap(intervals[idx], intervals[cidx]):
-                #assert intervals[idx][0] <= intervals[cidx][0]
+                #assert intervals[idx][0] <= intervals[cidx][0] 
                 intervals[idx][1] = max(intervals[idx][1], intervals[cidx][1])
                 intervals.pop(cidx)
             else:
@@ -75,3 +119,5 @@ class Solution:
     def is_overlap(int1, int2): #  x1,x2,y1,y2):
         return max(int1[0],int2[0]) <= min(int1[1], int2[1])
         #return max(x1,y1) <= min(x2,y2)
+
+
