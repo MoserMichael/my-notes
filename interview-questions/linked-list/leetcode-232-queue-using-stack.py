@@ -46,8 +46,8 @@
 #    Follow-up: Can you implement the queue such that each operation is amortized O(1) time complexity? In other words, performing n operations will take overall O(n) time even if one of those operations may take longer.
 #
 
-class MyQueue:
 
+class MyQueue:
     def __init__(self):
         self.stack_active = []
         self.stack_tmp = []
@@ -64,20 +64,17 @@ class MyQueue:
     def _imp(self, doPop):
         ret = None
 
-        for n in range(0, len(self.stack_active)):
-            tmp = self.stack_active[0]
-            self.stack_active = self.stack_active[1:]
+        for n in range(0, len(self.stack_active)-1):
+            val = self.stack_active.pop()
+            self.stack_tmp.append(val)
 
-            if n == 0:
-                ret = tmp
-                if doPop:
-                    continue
+        ret = self.stack_active.pop()
+        if not doPop:
+            self.stack_tmp.append(ret)
 
-            self.stack_tmp.append(tmp)
-
-        tmp = self.stack_active
-        self.stack_active =self.stack_tmp
-        self.stack_tmp = tmp
+        for n in range(0, len(self.stack_tmp)):
+            val = self.stack_tmp.pop()
+            self.stack_active.append(val)
 
         return ret
 
