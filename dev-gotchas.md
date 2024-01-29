@@ -253,6 +253,20 @@ None
 
 One can avoid this kind of check for a missing map key with ```setdefault``` or ```defaultdict``` - still you will get this problem...
 
+-- the // operator does not always truncate towards zero - if the result is negative then it rounds down towards negative infinity (why?)
+
+```
+>>> 6 // 132
+0
+>>> 6 // -132
+-1
+>>> int(6 / -132)
+0
+>>> int(6 / 132)
+0
+```
+
+
 --- 
 
 As you see, the case of the key mapping to zero is handled the same as the case of the key not being present in the map.
