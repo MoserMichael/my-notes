@@ -864,8 +864,10 @@ Some say that adding another script like this one is just about adding another d
 
 Remembering the details of golang, i wasn't exposed to this language for quite some time now...
 [here](https://github.com/MoserMichael/rzgrep) is my exercise on the subject.
+/
+- It's the same syntax for accessing a struct field a struct instance and via a reference to a struct. That's a bit confusing for someone who is coming from the land of C.
 
-- It's the same syntax for accessing a struct field via and via a struct instance and via a reference to a struct. That's very confusing for someone who is coming from the land of C (or from the land of Java, where everything is a reference) However some entitites are treated more equal than others, in other contexts: if you pass a map or a sequence as a function argument, then these are always passed by reference! They did that, because the authors of the language realized, that nobody is getting the difference.... [link](https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go) Yes, and vectors are also passed by reference, but structs are passed by value!  Now if you have an collection (map or sequence) that contains a different collection as value, then accessing the outer collection will return ... a reference to the inner value. However a loopkup in an array/map of structs will make a copy of the contained struct instance. This is my example that shows you the all of the gory details [here you go](checkit.go) (I think that the 'tour of go' doesn't tell you this...)
+- Now some things are treated more equal than others: if you pass a map or a sequence as a function argument, then these are always passed by reference! (passing struct values to a function makes a copy, it is passed by value) They did that, because the authors of the language realized, that nobody is getting the difference.... [link](https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go) Yes, and vectors are also passed by reference, but structs are passed by value!  Now if you have an collection (map or sequence) that contains a different collection as value, then accessing the outer collection will return ... a reference to the inner value. However a loopkup in an array/map of structs will make a copy of the contained struct instance. This is my example that shows you the all of the gory details [here you go](checkit.go) (I think that the 'tour of go' doesn't tell you this...)
 
 - an interface can be either implemented over a structure type [see iface.go](iface.go) or on a reference to a structure [see iface2.go](iface2.go)
     - implementing on a struct type is more flexible: both the reference and the instance type support a given interface!!!
@@ -910,7 +912,8 @@ b.names: []
 
 - append on arrays: works on nil slice as first argument slice; there is no point in defining an empty slice for the sake of appending something to it. Creating an empty slice still requires an allocation (the nil value doesn't)
 
-- concat strings (like java StringBuffer) - you don't need to allocate an object
+- concat strings (like java StringBuffer) - you don't need to allocate an object, that's because the variable declaration sets it all to zero, and that's OK.
+
 ```
 // It's ready to use from the get-go.
 // You don't need to initialize it.
@@ -926,10 +929,11 @@ fmt.Println(sb.String())
 
 - never use println, it just happens to be there, in order to have a print thing without dependencies... use fmt.Printf instead
 
-- the second statement re-assigns the variable err, despite the := sign.
+- the second statement just re-assigns the variable err, despite the := syntax.
 
 ```
         f, err := os.Open(name)
+
         d, err := f.Stat()
 ```
 
@@ -1021,6 +1025,41 @@ func (e * echoer) Read(p []byte) (int, error) {
 "The first advantage to this is that you can rely on functions that use the NewX idiom returning a struct by-pointer to do initialization. The second advantage is that you can embed all the functionality of a type without needing to know when it is instantiated." says the link...
 
 I think that very often this "syntactic sugar" business is about building a following for your language ... at the expense of aggravating the actual user of the language..
+
+
+---
+
+In golang is very 'opinionated' this means that conventions are very important (often turns into a go or no-go decission during code review, pun intended). 
+
+So it's time to look at the [go style guide](https://google.github.io/styleguide/go/guide) and [effective go](https://go.dev/doc/effective_go)
+
+For example: the rules are to have multiple return statement in a function. that is more readable.
+
+The norm for checking for errors is:
+```
+if err := doSomething(); err != nil {
+```
+
+Whereas one is advised by the [go style guide](https://google.github.io/styleguide/go/guide) to comment any deviation from the norm:
+
+```
+if err := doSomething(); err == nil { // if NO error
+```
+
+One is also strongly advised to use the ```defer``` statements (otherwise you end up with complicated cleanup stuff) - makes sense, as if they are trying to say that 'we have this defer statement for a purpose, use it everywhere'.
+
+```
+f, err := os.Open(filename)
+    if err != nil {
+        return "", err
+    }
+    defer f.Close()  // f.Close will run when we're finished.
+
+```
+
+
+- now I don't quite understand why [named return values with 'naked' return](https://go.dev/tour/basics/7) are more readable - but that's my problem...
+
 
 
 ---20/03/22 00:06:13----------------------
