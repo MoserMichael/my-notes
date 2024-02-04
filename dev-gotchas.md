@@ -164,6 +164,30 @@ Some programming errors creep up again and again. Maybe i will refrain repeating
 
 --
 
+In python: you often need to harden your python script by handling all possible errors with the finally clause. Now this has the unfortunate side effect of throwing all possible errors under the carpet, this makes it harder to debug the script. Here is a trick to fix this situation (however it adds a few more statements)
+ 
+```
+import traceback
+
+def this_one_has_a_problem():
+    a = {}
+    print(a['a'])
+
+
+try:
+    this_one_has_a_problem()
+except:
+    tb = traceback.format_exc()
+else:
+    tb = None
+finally:
+    if tb:
+        print(f"not everything is ok {tb}")
+
+```
+
+--
+
 I thought that the following will run, and return True, if for at least one of the elements the function ```process_elem``` will return True,
 Not so fast, ```keep_going or process_elem(elem)``` will only be called the first time, if ```keep_going``` is True then ```process_elem``` will not be called at all! (That's shortcut evaluation, but I keep forgetting about that, although it is pretty elementarry)
 
