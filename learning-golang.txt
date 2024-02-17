@@ -1,0 +1,109 @@
+Standard library reference: https://pkg.go.dev/std
+
+--
+
+- arithmetics: need to cast both operands to the same type (no implicit conversion)
+
+- values:
+    There are immutable types:
+        numbers, strings
+
+    mutable types:
+        slices, maps
+
+- functions: parameters are passed by value.
+  Therefore mutable value (such as maps,slices) refer to the same content when passed to a function, so you can modify the content of the map from insde the function
+  (here they say that a map value is just a pointer to an implementation object https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go )
+
+    package main
+
+    import "fmt"
+
+    func foo(num_map map[string]int) {
+        num_map["a"] = 42
+
+        fmt.Printf("in function %p %v %T\n", &num_map, num_map, num_map)
+    }
+
+    /*
+    in function 0xc00004e028 map[a:42 b:2] map[string]int
+    out function 0xc00004e020 map[a:42 b:2] map[string]int
+    */
+    func main() {
+
+        a := map[string]int{
+            "a": 1,
+            "b": 2,
+        }
+
+        foo(a)
+
+        fmt.Printf("out function %p %v %T\n", &a, a, a)
+    }
+
+
+
+
+--
+structures:
+
+syntax for structure methods that get a pointer to vs copy of self/this object is the same.
+Same for usage!
+
+Reason: when structure is small: copying it is faster than fiddling with pointers! (redirection costs more than copy)
+
+Now: this doesn't apply for regular arguments (other than receiver - argument delcared as pointer must be passed as pointer!)
+
+Example:
+
+    package main
+
+    import  (
+        "math"
+        "fmt"
+    )
+
+    type Point struct {
+        X int
+        Y int
+    }
+
+    //
+    // argument structure is small: copying it is faster than fiddling with pointers! (redirection costs more than copy)
+    //
+    // It's the same syntax for accessing a struct field in a variable that holds a struct value vs accessing a struct field in a reference to a struct. That's a bit confusing for someone who is coming from the land of C.
+    //
+    func (self Point) Dist(other Point) float64 {
+        arg := (other.X - self.X) * (other.X - self.X) + (other.Y - self.Y) * (other.Y - self.Y)
+        return math.Sqrt( float64(arg) )
+    }
+
+    func (self *Point) Add(other Point) {
+        self.X += other.X
+        self.Y += other.Y
+    }
+
+    // implement the Stringer interface - this way fmt.Println can show the object!
+    func (self Point) String() string {
+        return fmt.Sprintf("x: %d y: %d", self.X, self.Y)
+    }
+
+    func main() {
+        p := Point{10, 20}
+        other := Point{30, 40}
+
+        fmt.Println("distance between points: ", p.Dist(other))
+        p.Add(other)
+
+        fmt.Println("after moving point: ",p)
+    }
+
+--
+
+
+--
+
+golang panicks if you have someone listening to channel, but no fiber is writing to it!
+
+> fatal error: all goroutines are asleep - deadlock!
+

@@ -25,7 +25,7 @@
 #
 #    If all assertions pass, then your solution will be accepted.
 #
-#     
+#
 #
 #    Example 1:
 #
@@ -41,7 +41,7 @@
 #    Explanation: Your function should return k = 7, with the first seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively.
 #    It does not matter what you leave beyond the returned k (hence they are underscores).
 #
-#     
+#
 #
 #    Constraints:
 #
@@ -66,14 +66,14 @@
 #
 #        - Space complexity:
 #        $$O(1)$$ - the solution does not require the addition of any collection, just scalars.
-#         
+#
 #        # Code
 #        ```
 #        class Solution:
 #            def removeDuplicates(self, nums: List[int]) -> int:
 #                if len(nums) < 2:
 #                    return len(nums)
-#                
+#
 #                low = 0
 #                high = 1
 #                while high < len(nums):
@@ -91,18 +91,18 @@
 #
 #                        if high >= len(nums):
 #                            return low+1
-#                    
+#
 #                    # advance slow to the next byte that has not been set,
 #                    low += 1
 #                    if high > low:
 #                        # copy the current fast pointer to new slow location
 #                        nums[low] = nums[high]
 #                    high += 1
-#                     
-#                return low+1
-#                
 #
-#                        
+#                return low+1
+#
+#
+#
 #        ```
 
 

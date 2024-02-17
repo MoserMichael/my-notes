@@ -36,11 +36,11 @@ func passStringStruct(m StrStruct) {
 /*
 The actual output:
 
-function parameters that are maps are passed by reference
-function parameters that are arrays are passed by reference
+function parameters that are maps are passed as reference
+function parameters that are arrays are passed as reference
 function parameters that are structs are passed by value !!!
 
-map lookup of sequence, the value is returned by reference!
+map lookup of sequence, the value is returned as reference!
 you got a string from map to scalar lookup
 map lookup of scalar, the value is returned by value
 map lookup of struct, the value is returned by value
@@ -61,7 +61,7 @@ func main() {
 	passStringMap(mapArg)
 
 	if mapArg["first_key"] != "first_key" {
-		fmt.Print("function parameters that are maps are passed by reference\n")
+		fmt.Print("function parameters that are maps are passed as reference (but not as reference, caller doesn't know if you reassigned from within the function)\n")
 	} else {
 		panic("You thought maps are passed by value? wrong!")
 	}
@@ -73,7 +73,7 @@ func main() {
 	passStringVec(vecStr)
 
 	if vecStr[0] != "first" {
-		fmt.Printf("function parameters that are arrays are passed by reference\n")
+		fmt.Printf("function parameters that are arrays are passed as reference\n")
 	} else {
 		panic("You thought arrays are passed by value? wrong!")
 	}
@@ -85,7 +85,7 @@ func main() {
 	if structStr.firstVal == "first" {
 		fmt.Printf("function parameters that are structs are passed by value !!!\n\n")
 	} else {
-		panic("You thought structs are passed by reference? Wrong, this is not java!")
+		panic("You thought structs are passed as reference? Wrong, this is not java!")
 	}
 
 	mapToVector := map[string]StrVec{
@@ -97,7 +97,7 @@ func main() {
 	val[0] = "changed_it"
 
 	if mapToVector["first"][0] != "one" {
-		fmt.Printf("map lookup of sequence, the value is returned by reference!\n")
+		fmt.Printf("map lookup of sequence, the value is returned as reference!\n")
 	} else {
 		panic("You were wrong, the lookup returned a reference value!\n")
 	}

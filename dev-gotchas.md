@@ -888,9 +888,10 @@ Some say that adding another script like this one is just about adding another d
 
 Remembering the details of golang, i wasn't exposed to this language for quite some time now...
 [here](https://github.com/MoserMichael/rzgrep) is my exercise on the subject.
-/
-- It's the same syntax for accessing a struct field a struct instance and via a reference to a struct. That's a bit confusing for someone who is coming from the land of C.
 
+other notes on golang [here](https://github.com/MoserMichael/learning-golang.txt)
+
+<!--
 - Now some things are treated more equal than others: if you pass a map or a sequence as a function argument, then these are always passed by reference! (passing struct values to a function makes a copy, it is passed by value) They did that, because the authors of the language realized, that nobody is getting the difference.... [link](https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go) Yes, and vectors are also passed by reference, but structs are passed by value!  Now if you have an collection (map or sequence) that contains a different collection as value, then accessing the outer collection will return ... a reference to the inner value. However a loopkup in an array/map of structs will make a copy of the contained struct instance. This is my example that shows you the all of the gory details [here you go](checkit.go) (I think that the 'tour of go' doesn't tell you this...)
 
 - an interface can be either implemented over a structure type [see iface.go](iface.go) or on a reference to a structure [see iface2.go](iface2.go)
@@ -1084,7 +1085,7 @@ f, err := os.Open(filename)
 
 - now I don't quite understand why [named return values with 'naked' return](https://go.dev/tour/basics/7) are more readable - but that's my problem...
 
-
+//-->
 
 ---20/03/22 00:06:13----------------------
 
@@ -2106,3 +2107,8 @@ Command B   ::: go to declaration.
 
 Command L   ::: go to line number
 
+
+VisualStudioCode
+    F12     ::: Jump to definition/declaration.
+
+    VS Code got auto save disabled by default !!! IntelliJ has autosave on by default.
