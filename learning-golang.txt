@@ -41,8 +41,8 @@ Standard library reference: https://pkg.go.dev/std
         fmt.Printf("out function %p %v %T\n", &a, a, a)
     }
 
-
-
+-
+  pointers: No pointer arithmetics in golang!!!
 
 --
 structures:
@@ -100,10 +100,199 @@ Example:
 
 --
 
+Some objects/structure explicitly deal with null receivers!!!
+You can append write a string to a null strings.Builder
+also null slices can be appended to!!!
 
+    package main
+
+    import (
+        "fmt"
+        "strings"
+    )
+
+    func main() {
+
+        // golang doesn'thave a char class - for unicode characters it's 'rune'.
+        var slc []rune
+
+        for i := 0; i < 10; i++ {
+            // you can append something to an empty null slice!!!
+            slc = append(slc, rune('b'))
+        }
+        fmt.Println(string(slc))
+
+        var sb strings.Builder
+
+        for i := 0; i < 1000; i++ {
+            // method WriteString of strings.Builder can cope with null receiver !!!
+            sb.WriteString("a")
+        }
+        fmt.Println(sb.String())
+
+    }
 --
 
-golang panicks if you have someone listening to channel, but no fiber is writing to it!
+Don't write to channel, if no-one is listening. You get panick, when the channel isfull:
 
-> fatal error: all goroutines are asleep - deadlock!
+    package main
+
+    // writing a channel to full capacity. If no one is listening - panick, deadlock
+    func main() {
+
+        /*
+        ch := make(chan int)
+        ch <- 1  // /*fatal error: all goroutines are asleep - deadlock! */
+        */
+
+        ch := make(chan int, 2)
+        ch <- 1
+        ch <- 2
+
+        ch <- 3
+        /*fatal error: all goroutines are asleep - deadlock!
+
+        goroutine 1 [chan send]:
+        main.main()
+        /home/user/mystuff/my-notes/gostuff/chan1.go:15 +0x56
+        */
+    }
+
+You can write to a channel capacity + two items
+
+    package main
+
+    import (
+        "log"
+        "os"
+    )
+
+    func makeFib(ch chan int64) {
+        logger := log.New(os.Stderr, "", 0)
+
+        n_1 := int64(0)
+        n_2 := int64(1)
+
+        idx := 0
+
+        for idx < 20 {
+            logger.Println("ch <- :: post: ", idx, n_1)
+            ch <- n_1
+
+            num := n_1 + n_2
+            n_1 = n_2
+            n_2 = num
+            idx += 1
+        }
+        ch <- -1
+
+    }
+
+    /*
+    output with capacity == 0 (default)
+
+    Channel capacity: 0
+    ch <- :: post:  0 0
+    ch <- :: post:  1 1
+    <-ch :: received:  0
+    <-ch :: received:  1
+    ch <- :: post:  2 1
+    ch <- :: post:  3 2
+    <-ch :: received:  1
+    <-ch :: received:  2
+    ch <- :: post:  4 3
+    ch <- :: post:  5 5
+    <-ch :: received:  3
+    <-ch :: received:  5
+    ch <- :: post:  6 8
+    ch <- :: post:  7 13
+    <-ch :: received:  8
+    <-ch :: received:  13
+    ch <- :: post:  8 21
+    ch <- :: post:  9 34
+    <-ch :: received:  21
+    <-ch :: received:  34
+    ch <- :: post:  10 55
+    ch <- :: post:  11 89
+    <-ch :: received:  55
+    <-ch :: received:  89
+    ch <- :: post:  12 144
+    ch <- :: post:  13 233
+    <-ch :: received:  144
+    <-ch :: received:  233
+    ch <- :: post:  14 377
+    ch <- :: post:  15 610
+    <-ch :: received:  377
+    <-ch :: received:  610
+    ch <- :: post:  16 987
+    ch <- :: post:  17 1597
+    <-ch :: received:  987
+    <-ch :: received:  1597
+    ch <- :: post:  18 2584
+    ch <- :: post:  19 4181
+    <-ch :: received:  2584
+    <-ch :: received:  4181
+    <-ch :: received:  -1
+
+    output with capacity == 2 
+
+    Channel capacity: 2
+    ch <- :: post:  0 0
+    ch <- :: post:  1 1
+    ch <- :: post:  2 1
+    ch <- :: post:  3 2
+    <-ch :: received:  0
+    <-ch :: received:  1
+    <-ch :: received:  1
+    <-ch :: received:  2
+    ch <- :: post:  4 3
+    ch <- :: post:  5 5
+    ch <- :: post:  6 8
+    ch <- :: post:  7 13
+    <-ch :: received:  3
+    <-ch :: received:  5
+    <-ch :: received:  8
+    <-ch :: received:  13
+    ch <- :: post:  8 21
+    ch <- :: post:  9 34
+    ch <- :: post:  10 55
+    ch <- :: post:  11 89
+    <-ch :: received:  21
+    <-ch :: received:  34
+    <-ch :: received:  55
+    <-ch :: received:  89
+    ch <- :: post:  12 144
+    ch <- :: post:  13 233
+    ch <- :: post:  14 377
+    ch <- :: post:  15 610
+    <-ch :: received:  144
+    <-ch :: received:  233
+    <-ch :: received:  377
+    <-ch :: received:  610
+    ch <- :: post:  16 987
+    ch <- :: post:  17 1597
+    ch <- :: post:  18 2584
+    ch <- :: post:  19 4181
+    <-ch :: received:  987
+    <-ch :: received:  1597
+    <-ch :: received:  2584
+    <-ch :: received:  4181
+    <-ch :: received:  -1
+    */
+    func main() {
+        logger := log.New(os.Stderr, "", 0)
+
+        capacity := 0
+        logger.Print("Channel capacity: ", capacity)
+        ch := make(chan int64, capacity)
+
+        go makeFib(ch)
+
+        var res int64
+        for res != -1 {
+            res = <-ch
+            logger.Println("<-ch :: received: ", res)
+        }
+
+    }
 

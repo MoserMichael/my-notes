@@ -1,6 +1,6 @@
 package main
 
-// writing a channel to full capacityif no one is listening - panick, deadlock
+// writing a channel to full capacity. If no one is listening - panick, deadlock
 func main() {
 
 	/*
