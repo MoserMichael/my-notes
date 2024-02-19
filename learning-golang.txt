@@ -50,6 +50,11 @@ Go playground: https://go.dev/play/
             fmt.Printf("%v %v\n", one, &one) // 0 0xc000012028
         }
 
+- string values
+
+    A string holds a byte array, this maps one-to-one for english and a few other languages, but if the string contains unicode then things are more much more complex.
+    (don't know why they did it this way, maybe they wanted to remain 'low level' or use a byte array read from the network directly as a string - which is not a very good idea for other reasons...)
+
 
 - functions: parameters are always passed by value.
 

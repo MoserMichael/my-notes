@@ -891,7 +891,31 @@ Remembering the details of golang, i wasn't exposed to this language for quite s
 
 other notes on golang [here](https://github.com/MoserMichael/learning-golang.txt)
 
-Golang has some very confusing semantics, paired with very strong opinions on how a program should be written. Interesting that the same authors of golang were the authors of C, which is much less opinionated.
+Golang has some very confusing semantics, paired with very strong opinions on how a program should be written. Interesting that the same authors of golang were the authors of C, which is much less opinionate
+
+later: asked ChatGTP about this problem: [link](https://chat.openai.com/share/66c65fcd-e0b8-4c61-a4f2-47d607cb6fb3)
+
+/i find myself talking a lot to ChatGTP. Maybe that's a sign of ... old age :) /
+
+```
+How is it that the same authors of C wrote golang, which is a very opinionated programming language.
+
+ChatGPT
+The authors of the C programming language, Ken Thompson and Rob Pike, were indeed involved in the creation of Go (Golang), but it's important to understand that Go's development involved a larger team of contributors and designers as well. While Ken Thompson and Rob Pike brought their experience and insights from working on C, Go was developed with different goals and priorities in mind.
+
+Go was designed to address certain shortcomings and challenges that developers were facing, particularly in the context of concurrent programming and large-scale systems development. To achieve these goals, the designers of Go made deliberate decisions to introduce certain opinions and conventions into the language. These opinions and conventions include things like:
+
+    A preference for simplicity and readability in code.
+    Built-in support for concurrency primitives like goroutines and channels.
+    A standard formatting tool (gofmt) to enforce a consistent code style.
+    A package management system (modules) to manage dependencies.
+    A strong emphasis on performance and efficiency.
+
+These opinions and conventions help shape the way Go code is written and organized, making it more opinionated compared to C. However, it's worth noting that Go still allows for flexibility in many areas and doesn't enforce opinions as strongly as some other languages like Ruby or Python.
+
+In summary, while the creators of C were involved in the development of Go, the two languages have different design goals and priorities, leading to differences in their level of opinionation.
+```
+
 
 <!--
 - Now some things are treated more equal than others: if you pass a map or a sequence as a function argument, then these are always passed by reference! (passing struct values to a function makes a copy, it is passed by value) They did that, because the authors of the language realized, that nobody is getting the difference.... [link](https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go) Yes, and vectors are also passed by reference, but structs are passed by value!  Now if you have an collection (map or sequence) that contains a different collection as value, then accessing the outer collection will return ... a reference to the inner value. However a loopkup in an array/map of structs will make a copy of the contained struct instance. This is my example that shows you the all of the gory details [here you go](checkit.go) (I think that the 'tour of go' doesn't tell you this...)
