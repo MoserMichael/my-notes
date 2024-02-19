@@ -1,4 +1,15 @@
 Standard library reference: https://pkg.go.dev/std
+Source for standard librarypackages: https://github.com/golang/go/tree/master/src
+
+Tutorials:
+
+Tour of go: https://go.dev/tour/welcome/1
+
+Effective go https://go.dev/doc/effective_go
+
+Go playground: https://go.dev/play/
+
+50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs http://golang50shad.es/
 
 --
 
@@ -11,9 +22,40 @@ Standard library reference: https://pkg.go.dev/std
     mutable types:
         slices, maps
 
-- functions: parameters are passed by value.
-  Therefore mutable value (such as maps,slices) refer to the same content when passed to a function, so you can modify the content of the map from insde the function
-  (here they say that a map value is just a pointer to an implementation object https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go )
+- assign with declaration :=
+
+    if left hand side of multiple assign-with-declaration is having one of the variables already declared, then that one is just reassigned (purpose - to simplify code with error object return value)
+
+    func main() {
+        one := 0
+        //0xc000012028
+        fmt.Printf("%v\n", &one)
+
+        //0xc000012028 0xc000012060
+        one, two := 1, 2
+        fmt.Printf("%v %v\n", &one, &two)
+    }
+
+    But: you can't have a struct field access on left hand side of :=  - that is verboten.
+
+    Now this whole := business is a source of shaddowing problems !!!
+
+        func main() {
+            one := 0
+            fmt.Printf("%v %v\n", one, &one) // 0 0xc000012028
+            {
+                one := 1
+                fmt.Printf("%v %v one got shaddowed when redefined in nested scope! it is a different variable!!!\n", one, &one) // 1 0xc000012058
+            }
+            fmt.Printf("%v %v\n", one, &one) // 0 0xc000012028
+        }
+
+
+- functions: parameters are always passed by value.
+
+  Therefore mutable value (such as maps) refer to the same content when passed to a function, so you can modify the content of the map, slice content.
+
+  a map value is just a pointer to an implementation object https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go source: https://go.dev/src/runtime/map.go )
 
     package main
 
@@ -41,14 +83,164 @@ Standard library reference: https://pkg.go.dev/std
         fmt.Printf("out function %p %v %T\n", &a, a, a)
     }
 
--
+    A slice value is a struct of three values https://go.dev/src/runtime/slice.go
+        type slice struct {
+            array unsafe.Pointer // pointer to data
+            len   int            // length (how many elements have been assigned value in array)  
+            cap   int            // capacity (number of elements allocated in array)
+        }
+    You can change allocated values in the slice, when passing it by value (both copies point to same array)
+    But you can't change the size of a slice in a function - that will not be visisble to the caller
+
+        func foo(slc []int) {
+
+            slc[0] = 42
+
+            fmt.Printf("in function %p %v %T\n", &slc, slc, slc)
+        }
+
+        /*
+        in function 0xc000010030 [42 2 3] []int
+        out function 0xc000010018 [42 2 3] []int
+         */
+        func main() {
+
+            a := make([]int, 3)
+            a[0] = 1
+            a[1] = 2
+            a[2] = 3
+
+            foo(a)
+
+            fmt.Printf("out function %p %v %T\n", &a, a, a)
+        }
+    
+
+  But beware: the slice value contains the length of the slice, so appending to a slice within a function will not change it (that's why append always returns the updated value - which includes the updated length!!!)
+
+
+        func foo(slc []int) int {
+            slc = append(slc, 420) // always reassign the return value of append !!!
+
+            fmt.Printf("in function %p %v %T\n", &slc, slc, slc)
+
+            return len(slc)
+        }
+
+        /*
+        in function 0xc000010030 [42 420] []int
+        out function 0xc000010018 [42] []int
+        */
+        func main() {
+
+            a := make([]int, 0)
+
+            a = append(a, 42) // always reassign the return value of append !!!
+
+            foo(a)
+
+            fmt.Printf("out function %p %v %T\n", &a, a, a)
+        }
+
+  Now arrays are different: passing an array to the function will copy that array including its data!
+
+        func foo(slc [3]int) {
+
+            slc[0] = 42
+
+            fmt.Printf("in function %p %v %T\n", &slc, slc, slc)
+        }
+
+        /*
+        in function 0xc000010030 [42 2 3] []int
+        out function 0xc000010018 [42 2 3] []int
+        */
+        func main() {
+
+            a := [3]int{1, 2, 3}
+
+            foo(a)
+
+            fmt.Printf("out function %p %v %T\n", &a, a, a)
+        }
+
+
   pointers: No pointer arithmetics in golang!!!
+  But you can work around it with something like this:
+
+    unsafe.Pointer(uintptr(p) + offset) // see https://pkg.go.dev/unsafe
+                                        // unsafe.Pointer checks if the argument pointer value is valid...
+  
+  Also you can access struct fields f in struct value s like this:
+
+    f := unsafe.Pointer(uintptr(unsafe.Pointer(&s)) + unsafe.Offsetof(s.f))
+
+--
+maps
+
+    - keys can be values that have == and hash (you can't set your own comparison or hash !!!)
+    - comparable types:
+        - basic types
+        - structs where all fields are comparable
+        - array of comparable type (but no slices of comparable type - maybe because slice is a view on a array, where the referenced array content can change at any moment)
+        - pointers  (it seems to map from the pointer value, does not dereference the pointer)
+
+            func main() {
+                k1 := "a"
+                k2 := "b"
+                m := map[*string]int{&k1: 3, &k2: 10}
+                
+                // map[0xc000014070:3 0xc000014080:10] 2
+                fmt.Printf("%v %d", m, len(m))
+            }
+
+    
+    can allocate a map with new (optional param to set size of map - num of elements it can hold before reallocation) -- aka. bucket size.
+
+        m := make(map[string]int, 42) // now you can't use cap to tell you this number - no getter for it.
+
+    or create a map instance - here you can't set the 'size'
+        
+        m := map[string]int {"a":3,"b":10 } // this way you can set the contnet, but not the 'num of elements before realloc' - 'bucket size'
 
 --
 structures:
 
 syntax for structure methods that get a pointer to vs copy of self/this object is the same.
 Same for usage!
+
+
+Allocating a new struct and get a pointer to it (memory is garbage collected)
+
+    package main
+
+    import "fmt"
+
+    type Foo struct {
+        Name2count map[string]int
+    }
+
+    func main() {
+
+        a := new(Foo) // get pointer to allocated Foo - equivalent to &Foo{}, all fields are nil
+
+        // map, slice or channel members need to be created - make can do it 
+        // by default the map field is a nill value - using that gives panic.
+        //
+        a.Name2count = make(map[string]int)
+        a.Name2count["la"] = 1
+
+        fmt.Printf("%v %T\n", a, a)
+
+        // returns pointer to allocated Foo struct, allows you to init struct members, can't do that with new
+        b := &Foo{Name2count: make(map[string]int)}
+        b.Name2count["lala"] = 1
+
+        fmt.Printf("%v %T\n", b, b)
+    }
+
+Struct receiver can be both pointer of value, still calling the method is the same for both values and pointers!!!
+(for regular function parameters you must explicitly either pass a value or a pointer - unlike receivers)
 
 Reason: when structure is small: copying it is faster than fiddling with pointers! (redirection costs more than copy)
 
@@ -100,9 +292,8 @@ Example:
 
 --
 
-Some objects/structure explicitly deal with null receivers!!!
 You can append write a string to a null strings.Builder
-also null slices can be appended to!!!
+also null slices can be appended to!!! 
 
     package main
 
@@ -117,20 +308,68 @@ also null slices can be appended to!!!
         var slc []rune
 
         for i := 0; i < 10; i++ {
-            // you can append something to an empty null slice!!!
+            // you can append something to an empty slice value !!!
             slc = append(slc, rune('b'))
         }
         fmt.Println(string(slc))
 
+        // the values of the fields  for struct strings.Builder are all nil
+        // see: https://github.com/golang/go/blob/master/src/strings/builder.go
+        //
         var sb strings.Builder
 
         for i := 0; i < 1000; i++ {
-            // method WriteString of strings.Builder can cope with null receiver !!!
+            // method WriteString of strings.Builder can cope with uninitialized fields in its struct.
+            // they check if the buffer is nill and init it.
             sb.WriteString("a")
         }
         fmt.Println(sb.String())
 
     }
+
+but you can't do that with a map variable that is not assigned a map value (happens a lot if a struct member of type map has not been set to a map value!)
+
+    func main() {
+        var m map[string]int
+
+        m["this-one-panics"] = 1 // panic here!
+    }
+    
+
+--
+Some objects/structure explicitly deal with nil receivers!!!
+(unlike Java you don't get an exception/panic on calling a method with null value for this)
+
+
+    package main
+
+    import (
+        "fmt"
+        "math"
+    )
+
+    type Circle struct {
+        r float64
+    }
+
+    func (c *Circle) area() float64 {
+        if c == nil {
+        // initalize nil receiver
+        // (only for this method)
+            c = new(Circle)
+            c.r = 10
+        }
+        return math.Pi * c.r * c.r
+    }
+
+    func main() {
+        var c *Circle
+        fmt.Println(c.area()) // returns area
+
+        // will throw panic for c.r, after calling c.area() the object has still nil fields.
+        //fmt.Println(c.r)
+    }
+
 --
 
 Don't write to channel, if no-one is listening. You get panick, when the channel isfull:

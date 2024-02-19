@@ -891,6 +891,8 @@ Remembering the details of golang, i wasn't exposed to this language for quite s
 
 other notes on golang [here](https://github.com/MoserMichael/learning-golang.txt)
 
+Golang has some very confusing semantics, paired with very strong opinions on how a program should be written. Interesting that the same authors of golang were the authors of C, which is much less opinionated.
+
 <!--
 - Now some things are treated more equal than others: if you pass a map or a sequence as a function argument, then these are always passed by reference! (passing struct values to a function makes a copy, it is passed by value) They did that, because the authors of the language realized, that nobody is getting the difference.... [link](https://stackoverflow.com/questions/40680981/are-maps-passed-by-value-or-by-reference-in-go) Yes, and vectors are also passed by reference, but structs are passed by value!  Now if you have an collection (map or sequence) that contains a different collection as value, then accessing the outer collection will return ... a reference to the inner value. However a loopkup in an array/map of structs will make a copy of the contained struct instance. This is my example that shows you the all of the gory details [here you go](checkit.go) (I think that the 'tour of go' doesn't tell you this...)
 

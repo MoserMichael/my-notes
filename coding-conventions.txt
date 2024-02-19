@@ -19,17 +19,25 @@ Python
     constants: ALL_CAPITAL_WITH_UNDERSCORE
     (private functions variables start with underscore)
 
+    null is: None
+
 Golang
 ------
     See: https://go.dev/doc/effective_go#names 
 
     No Tabs for indenatation!!! (they are religious about that...)
     package names: single-word, lower case 
-    MixedCase rules - for functions and structure names (first capital letter for names exported from package)
+
+    MixedCase rules - for everything: functions and structure names (first capital letter for names exported from package)
     Interface names: Writer, Notifier (-er suffix)
+
     Don't use underscore for function/class names - they prefer mixedCaseNames for everything! (don't forget that!)
     Braces: c-like braces (because the compiler inserts ; by some implicit rules)
     Remember: exported symbols must have a capital letter as first letter (OMG)
+
+
+
+    null is: nil
 
 Java
 ----    
@@ -41,12 +49,16 @@ Java
     function variable names: firstCharLowerWithMixedCase
     constants: UPPER_CASE_WITH_UNDERSCORES
 
+    null is: null 
+
 Rust
 ----
     See: https://doc.rust-lang.org/1.0.0/style/style/naming/README.html
 
     Types: CamelCase
     function parameters variables: snake_case
+
+    rust doesn't have a null value ;-)
 
 C++ (google style guide)
 ------------------------
@@ -58,6 +70,8 @@ C++ (google style guide)
     Class members variables: have_trailing_underscore_
     struct members: dont_have_trailing_underscore
     constant names, enumeration constants: kMixedCase (must have prefix k)
+    
+    null is : nullptr or NULL (from C)
 
 PHP
 ---
@@ -71,5 +85,5 @@ PHP
         if (.. ) {
           echo "blabla";
         }
-
+    null is: NULL
 
