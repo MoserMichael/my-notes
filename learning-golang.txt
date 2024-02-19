@@ -540,3 +540,34 @@ You can write to a channel capacity + two items
 
     }
 
+- interfaces:
+
+Converting a type to a runtime is performed during runtime. Asked google bard about the details, here:   https://g.co/gemini/share/c66468dd3bc0 (Google bard/gemini knows a lot about golang, maybe because both of them come from google ;-) )
+
+
+checking for an interface dynamically
+
+    // this guy is built-in in 
+    type Stringer interface {
+        String() string
+    }
+
+  
+    // interface{} is empty method set  meaning any interface will match
+    // that's how fmt.Printf does it see: https://github.com/golang/go/blob/master/src/fmt/print.go
+    //
+    func ToString(any interface{}) string {
+
+        // dynamic check at runtime: check if any parameter is supporting the Stringer interface.
+        if v, ok := any.(Stringer); ok {
+            return v.String()
+        }
+        // deal with int / float type directly, by switching on the type.
+        switch v := any.(type) {
+        case int:
+            return strconv.Itoa(v)
+        case float:
+            return strconv.Ftoa(v, 'g', -1)
+        }
+        return "???"
+    }

@@ -1003,7 +1003,7 @@ fmt.Println(sb.String())
         - why? the designers of go didn't like to add special keywords like 'private' 'public', so they choose to do visibility as a convention.
           not nice to the poor programmer, who has to remember yet another incantation...
 
-- I finally got the purpose of golang embedding.
+- I finally got the purpose of golang structure embedding.
 
 Here the type Parent is a member of struct Child, that means that all the members of struct Parent are added into the struct Child.
 
