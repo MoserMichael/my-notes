@@ -1165,6 +1165,25 @@ The micro service architecture can be understood as an attempt to standardize th
 
 In a sense I am also grasping that light bulb, here in this blog entry, and waiting for the universe to revolve around it ;-)
 
+... on a related note: it takes even fewer Zen masters to screw in a light bulb, but the Zen master has the same approach as the Harward MBA...
+
+<pre>
+ _________________________________________
+/ Q: How many Zen masters does it take to \
+| screw in a light bulb? A: None. The     |
+| Universe spins the bulb, and the Zen    |
+| master stays out                        |
+|                                         |
+\ of the way.                             /
+ -----------------------------------------
+         \   ^__^
+          \  (..)\_______
+             (__)\       )\/\
+              -- ||----w |
+                 ||     ||
+nltk score: 0 '(from -100..100) state: 'neutral' eye: .. tongue: --
+</pre> 
+
 ---
 
 I found some resources, to get some hint of what I am talking about: [awesome datascience](https://github.com/academic/awesome-datascience) and [datascience for beginners](https://github.com/amrrs/For-Data-Science-Beginners), it seems that searching for 'awesome anything' on github will give you a great intro to any topic...
