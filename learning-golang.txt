@@ -1,4 +1,7 @@
-/my opinion: you think go is easy, comes from the same guys who wrote C and looks like C. No - it is a very confusing mess../
+
+/my opinion: you think go is easy and straigtforward, as it comes from the same guys who wrote C and looks like C. No - it is a very confusing mess../
+/i think the mascot of golang should rather be a Pepelatz from the movie Kin-dza-dza - a bit strange, but works (see this awe inspiring talk: https://www.youtube.com/watch?v=-K11rY57K7k&list ) /
+
 --
 
 Standard library reference: https://pkg.go.dev/std
@@ -480,6 +483,53 @@ checking for an interface dynamically
     }
 
 --
+Embedding: all of the members of the embedded struct/interface are copied verbatim into the embedding struct/interface.
+
+That's subclassing in golang!  https://go.dev/doc/effective_go#embedding
+
+For interfaces:
+
+    type Reader interface {
+        Read(p []byte) (n int, err error)
+    }
+
+    type Writer interface {
+        Write(p []byte) (n int, err error)
+    }
+
+    // ReadWriter is the interface is the union of Reader and Writer interfaces. (has methods of both interfaces)
+    type ReadWriter interface {
+        Reader
+        Writer
+    }
+
+Exmple for struct embedding in bufio packagex:, here:  https://cs.opensource.google/go/go/+/master:src/bufio/bufio.go
+
+// bufio.Reader implements buffering for an io.Reader object.
+type Reader struct {
+    ...
+
+// bufio.Writer implements buffering for an [io.Writer] object. ... 
+type Writer struct {
+    ...
+
+// ReadWriter stores pointers to a [bufio.Reader] and a [bufio.Writer].
+// It implements [io.ReadWriter].
+type ReadWriter struct {
+	*Reader
+	*Writer
+}
+
+// Now the catch: calling the embedded Read method on ReaderWriter receiver will FORWARD THE EMBEDDED *buifIo.Read STRUCTURE TO THE READ METHOD
+
+
+--
+
+// NewWriterSize returns a new [Writer] whose buffer has at least the specified
+// size. If the argument io.Writer is already a [Writer] with large enough
+// size, it returns the underlying [Writer].
+func NewWriterSize(w io.Writer, size int) *Writer {
+....
 
 Go routines 
 
@@ -648,4 +698,18 @@ You can write to a channel capacity + two items
 
     }
 
+----
+
+Go scheduler talk:  
+
+Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurrency :: https://www.youtube.com/watch?v=-K11rY57K7
+
+- requirements:
+     - support millions of go routines per process.
+     - minimal api (create go routine), no means to specify priority, stack size - runtime has to figure it out.
+     - infinite stack size for go routine/  
+- How to solve it? go routines - user mode thread (m:n threading n user mode threads running on m OS threads; m < n)
+    os threads are expensive
+    user mode threads are less expensive,
+    Now we need a scheduler to organize the user mode threads
 

@@ -14,6 +14,14 @@ Good way to copy a ChatGTP chat session:
     - save the resulting page.
 That's a good way, if the chat session contains figures or formulas, these are hard to export.
 
+-----
+
+An example of the confirmation bias machine is this interesting discussion:  [ Post war Britain's Nationalization](https://g.co/gemini/share/7b55f4aa9fdb)
+
+... just ask your questions persistently, and Google bard/Gemini will follow with an explanation that suits your line of inquiry.
+
+(still interesting that Bard/ChatGTP can effectively replace half of the experts on https://www.reddit.com/r/AskHistorians/ - at least for me...)
+
 ----
 
 Google Bard seems to be very knowledgable on the history of Coca-Cola advertising.  [link](https://g.co/bard/share/34cdad4e3637) ChatGTP3.5 had less to say on this subject...
