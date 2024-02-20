@@ -712,4 +712,10 @@ Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurren
     os threads are expensive
     user mode threads are less expensive,
     Now we need a scheduler to organize the user mode threads
+        - scheduler needs a run queue (scheduled go routines waiting to run), need to synch on it
+        - do need to keep track of blocked go-routines? says no: the channel keeps track of go-routines that are blocked on channel with its own wait queue, same for mutexes, timers, network IO.
+        - what about blocking on syscalls?  
+
+
+
 
