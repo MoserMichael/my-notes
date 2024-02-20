@@ -1,5 +1,8 @@
+/my opinion: you think go is easy, comes from the same guys who wrote C and looks like C. No - it is a very confusing mess../
+--
+
 Standard library reference: https://pkg.go.dev/std
-Source for standard librarypackages: https://github.com/golang/go/tree/master/src
+Source for standard library packages: https://github.com/golang/go/tree/master/src
 
 Tutorials:
 
@@ -10,6 +13,48 @@ Effective go https://go.dev/doc/effective_go
 Go playground: https://go.dev/play/
 
 50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs http://golang50shad.es/
+
+--
+
+error handling / defer statement. (a bit confusing - if you aske me, in a language with a 'focus on readability'...)
+ 
+- defer statement has a function call: this function call will be called at the end of the function, not the enclosing block (this one is function oriented, not block oriented)
+- when defer statement is executed: all argumens to the function (the one that will be called at function exit) are evaluated now!
+ the result of these evaluations is stored (behind the scene).
+- on function exit: the most recen defer statement is run firs (in last to first order)
+- also don't do a defer call in a loop - it will be called in referse order for each iteration...
+
+    package main
+
+    import "fmt"
+
+    func deferedAction(arg int) {
+
+        fmt.Printf("Deferred action. Argument %d\n", arg)
+    }
+
+    func prepareDeferedArgument() int {
+        fmt.Println("prepareDeferedArgument called")
+        return 42
+    }
+
+    /* output:
+
+    prepareDeferedArgument called
+    code After defer
+    Deferred action. Argument 100
+    Deferred action. Argument 42
+    Deferred action. Argument 1
+
+    */
+    func main() {
+
+        defer deferedAction(1)
+        defer deferedAction(prepareDeferedArgument())
+        defer deferedAction(100)
+        fmt.Println("code After defer")
+    }
+
 
 --
 
@@ -50,6 +95,7 @@ Go playground: https://go.dev/play/
             fmt.Printf("%v %v\n", one, &one) // 0 0xc000012028
         }
 
+
 - string values
 
     A string holds a byte array, this maps one-to-one for english and a few other languages, but if the string contains unicode then things are more much more complex.
@@ -80,7 +126,7 @@ Go playground: https://go.dev/play/
 
         a := map[string]int{
             "a": 1,
-            "b": 2,
+            "b": 2
         }
 
         foo(a)
@@ -170,6 +216,14 @@ Go playground: https://go.dev/play/
         }
 
 
+----
+General question: is data for array allocated on stack or the heap?
+
+They do escape analysis - if they figure that the pointer is not stored in a global variable then it is kept on the stack!!! ( see https://www.youtube.com/watch?v=x87Cs9vU4Fk at 15:25 onwards )
+
+Actually the data values of an array are mostly kept linearly in the allocated array chunk (unlike java, where GC mandates to have another indirection, for every array entry)
+
+----
   pointers: No pointer arithmetics in golang!!!
   But you can work around it with something like this:
 
@@ -183,12 +237,16 @@ Go playground: https://go.dev/play/
 --
 maps
 
-    - keys can be values that have == and hash (you can't set your own comparison or hash !!!)
-    - comparable types:
+    Map internals: "Internals of Maps in Golang" by  Sreekanth -  https://www.youtube.com/watch?v=ACQs6mdylxo
+    "GopherCon 2016: Keith Randall - Inside the Map Implementation" -  https://www.youtube.com/watch?v=Tl7mi9QmLns
+
+    - keys can be values that have == operation, and a hash function (you can't set your own comparison or hash on given type - Keith Randall says they don't want denial of service attacks due to hash collisions (adversary safe is the right term), so they do it all themselves, also each hash map instance has a random seeds added to the hahs value, to make the hash function less predictable)
+
+    - comparable types
         - basic types
         - structs where all fields are comparable
-        - array of comparable type (but no slices of comparable type - maybe because slice is a view on a array, where the referenced array content can change at any moment)
-        - pointers  (it seems to map from the pointer value, does not dereference the pointer)
+        - array is of comparable type - that have an == operation (but slices are not of comparable type - maybe because slice is a view on a array, where the referenced array content can change at any moment)
+        - pointers  (they take the pointer value as key, does not dereference the pointer)
 
             func main() {
                 k1 := "a"
@@ -208,6 +266,18 @@ maps
         
         m := map[string]int {"a":3,"b":10 } // this way you can set the contnet, but not the 'num of elements before realloc' - 'bucket size'
 
+
+    
+    ====
+
+    map implementation:
+        - linear table, divided into buckets (bucket layout - 8 consecutive entries of key, value pairs, and a pointer to an overflow bucket - if there are more than 8 entries in a bucket)
+        - growing the map: if a bucket gets to 6.5 entries they decide to grow the table
+            - allocate a new bucket, now they don't copy all of the entries from the old bucket to the new bucket at once (big break)
+              they copy it incrementally upon each action (what to do with updates, when they have a copy of an entry in both places ?)
+        - runtime of map lookup returns pointer to value, but compiler ensures this value is not kept for long (so the vpointer is no longer irrelevant)
+    
+    
 --
 structures:
 
@@ -375,7 +445,45 @@ Some objects/structure explicitly deal with nil receivers!!!
         //fmt.Println(c.r)
     }
 
+- interfaces:
+
+Converting a type to a runtime is performed during runtime. Asked google bard about the details, here:  https://g.co/gemini/share/c66468dd3bc0 (Google bard/gemini knows a lot about golang, maybe because both of them come from google ;-) )
+
+Also see this video: "Internals of Interfaces in Golang" by  Sreekanth - https://www.youtube.com/watch?v=x87Cs9vU4Fk
+
+
+checking for an interface dynamically
+
+    // this guy is built-in in
+    type Stringer interface {
+        String() string
+    }
+
+
+    // interface{} is empty method set  meaning any interface will match
+    // that's how fmt.Printf does it see: https://github.com/golang/go/blob/master/src/fmt/print.go
+    //
+    func ToString(any interface{}) string {
+
+        // dynamic check at runtime: check if any parameter is supporting the Stringer interface.
+        if v, ok := any.(Stringer); ok {
+            return v.String()
+        }
+        // deal with int / float type directly, by switching on the type.
+        switch v := any.(type) {
+        case int:
+            return strconv.Itoa(v)
+        case float:
+            return strconv.Ftoa(v, 'g', -1)
+        }
+        return "???"
+    }
+
 --
+
+Go routines 
+
+Channels (for communication between go routines)
 
 Don't write to channel, if no-one is listening. You get panick, when the channel isfull:
 
@@ -540,34 +648,4 @@ You can write to a channel capacity + two items
 
     }
 
-- interfaces:
 
-Converting a type to a runtime is performed during runtime. Asked google bard about the details, here:   https://g.co/gemini/share/c66468dd3bc0 (Google bard/gemini knows a lot about golang, maybe because both of them come from google ;-) )
-
-
-checking for an interface dynamically
-
-    // this guy is built-in in 
-    type Stringer interface {
-        String() string
-    }
-
-  
-    // interface{} is empty method set  meaning any interface will match
-    // that's how fmt.Printf does it see: https://github.com/golang/go/blob/master/src/fmt/print.go
-    //
-    func ToString(any interface{}) string {
-
-        // dynamic check at runtime: check if any parameter is supporting the Stringer interface.
-        if v, ok := any.(Stringer); ok {
-            return v.String()
-        }
-        // deal with int / float type directly, by switching on the type.
-        switch v := any.(type) {
-        case int:
-            return strconv.Itoa(v)
-        case float:
-            return strconv.Ftoa(v, 'g', -1)
-        }
-        return "???"
-    }
