@@ -22,6 +22,8 @@ An example of the confirmation bias machine is this interesting discussion:  [ P
 
 (still interesting that Bard/ChatGTP can effectively replace half of the experts on https://www.reddit.com/r/AskHistorians/ - at least for me...)
 
+/well, sooner or later the LLM will start to talk funny rubbish, like mentioning cyberwarfare in the context of the Clement Attlee government.../
+
 ----
 
 Google Bard seems to be very knowledgable on the history of Coca-Cola advertising.  [link](https://g.co/bard/share/34cdad4e3637) ChatGTP3.5 had less to say on this subject...
