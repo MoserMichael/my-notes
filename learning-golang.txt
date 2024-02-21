@@ -702,8 +702,7 @@ You can write to a channel capacity + two items
 
 Go scheduler talk:  
 
-Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurrency :: https://www.youtube.com/watch?v=-K11rY57K7
-
+Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurrency :: https://www.youtube.com/watch?v=-K11rY57K7k
 - requirements:
      - support millions of go routines per process.
      - minimal api (create go routine), no means to specify priority, stack size - runtime has to figure it out.
@@ -711,10 +710,77 @@ Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurren
 - How to solve it? go routines - user mode thread (m:n threading n user mode threads running on m OS threads; m < n)
     os threads are expensive
     user mode threads are less expensive,
-    Now we need a scheduler to organize the user mode threads
+    Simplified scheduler to organize the user mode threads: (will be refined later)
         - scheduler needs a run queue (scheduled go routines waiting to run), need to synch on it
         - do need to keep track of blocked go-routines? says no: the channel keeps track of go-routines that are blocked on channel with its own wait queue, same for mutexes, timers, network IO.
-        - what about blocking on syscalls?  
+        - what about blocking on syscalls - these are handled by kernel and go user mode scheduler looses track.
+            - lots of potential: real deadlocks, 
+            - fake deadlocks: all active OS threads are blocked, waiting for additional thread to wake them up - but all OS threads are all busya`
+              Says they fix this way: when an OS threads starts to block on syscall then it wakes up another OS thread (this is called "handoff" - also add another thread one if all threads are exhausted (to prevent fake deadlocks)  later: adjust number of active OS threads, if it grew too large) 
+
+   
+   Refining the schedule design:
+        - single run queue is bad, too much locking.
+            - lock free queue? says no, contention remains (on CPU cache level), as they are looking on the same resource.
+            - instead have a run queue per OS thread. (still the global run queue remains - for special cases, it is used less frequently)
+            - now we got several run queues, what does an OS thread do when it wants to run the next go routine?
+                - first look at per OS thread run queue (local queue)
+                - if local run queue is empty: check the global run queue
+                - next check network poller for free tasks to run.
+                - if nothing in in network poller: works stealing (check run queue of another OS thread and take half of its queued tasks)
+                    (this avoids situation where some threads have long queue, others are idle)
+               
+        - remaining problem:
+            - work steeling can be expensive, as lots of local thread queues may need to be checkedd.
+            - they have a memalloc cache per CPU, so if a go routine has allocated stuff of that cache then it has to be moved somehow to a new OS thread!
+            - Numa problems/CPU local cache problems: sharing memory between CPU's is expensive (due to CPU cache sync)
+            
+        - says they add another entity to solve this: The Processor object (per CPU core),  
+            - the Processor keeps its own per CPU malloc cache (and other caches - didn't say which), 
+            - Processor object also keeps the run queue (this means work stealing has fewer queues to check. as the processor is per core (and not per thread)) (what do they do with the cached per CPU allocations upon moving a queue entry upon work stealing, or do they handle that during garbage collection???)
+            - so the current thread does a handoff when it is about to do a syscall, this handoff calls another thread and passes the Processor object (work stealing can be done during this handoff!) 
+
+    
+    Fairness problem: fairness means that a go routine will _eventually_ run if it is runnable.
+        - a single shared run queue is very fair - but it is bad due to lots of locks/contention (last in first out is the opposite of fair)
+        - other problems: a thread that is stuck in infinite loop would prevent all the other locally queued go routines to never run (starve)
+            - they solve that by preemption of go routine that is running for too long (later they explain how they do that with 
+              Now preemted go routines are put to the end of the global run queue (this one is used when the local run queue is exhausted while searching for next task)    
+        - the per OS thread local run queue: it is FIFO/queu (not quite: there is one element LIFO/stack buffer at the top of the queue) !!!     . 
+            - why? scenario: go routine A creates go routine B and waits for B to finish (to get the return value). This is very common, so they need that FIFO element (also this restricts work stealing for the last element)
+                - now problem: go routine A respawns go routine B again and again - everyone else starves/doesn't get scheduled.
+                  Solution: time slice inheritance: if go routine A spawns go routine B - B gets the same time slice as A (meaning upon end of time slice it will be preemted - will be put to global run queue)
+        - problem: global run queue is checked infrequently? fix: if ++Processor.next_tick_counter % 61 == 0 - then check global run queue instead of local run queue. 
+        - problem of network poller starvation (network poller services does epoll on connections with pending network request)
+            - occasional invocation of epoll by go scheduler is not enough, so they have additional background thread that does epoll (if not invoked by go scheduler)
+            
+
+    
+    Infinite stacks for go routines
+        - cant' assign large chunk of continious virtual address range for a stack, they want millions of go routines, would run out of virtual space..
+        - use split stack instead. Function prologue code needs to check if current linked area will overflow (compiler computes required stack space for function), if yes, then call runtime to allocate the next split stack portion.
+        - problem: function prolog can take 2ns (no need to allocate next split stack portion) to 60ns (need to do that). Function call in hot loop can get lots of allocation/deallocation of split stack portion. Same for slight changes in stack space required for a function (impossible to predict that!)
+        - solution: also use growable stacks, a stack portion is not fixed size - the size can grow (such a reallocation requires to copy the stack frame to the new location - if the address changed)
+
+    Preemption - sometimes the go scheduler needs to tell the go thread to stop right now.
+        - they did not want to force a go-thread to quit with signals because this is OS dependent, and it may kill if you do it during GC or something.
+        - instead 'ask nicely' :: still don't want to add any more stuff to function prologue. Now they do a clever trick: set the stack limit to very low, so that to force regular prologue check for segmented stack will call into runtime upon next function call!
+
+    How to improve that beast of a scheduler, what's next?
+        - maybe do premtive preemption with signals (still some rough edges here)
+        - timers : move them from network poller to processor object
+        - scaling to lots of cores
+        - NUMA awareness (as of 2019 it was not)
+
+    questions:
+        when do they shrink a stack? Part of GC cycle right now
+        what about memory fragmentation with variable length stack segments? Says they use allocator with fixed size chunks, so that takes care of it.
+
+    
+        
+                
+                
+        
 
 
 
