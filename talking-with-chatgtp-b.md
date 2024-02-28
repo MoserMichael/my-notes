@@ -22,6 +22,9 @@ I just realized: there is no way to tell natural stupidity from artificial stupi
 
 So our machines somehow managed to move into the realm of science fiction, given that they have started to talk (some) sense. Still i hope that we are moving into a  realm described by Stanislav Lem rather than into one described by Philip K. Dick, the stories of the second author are much more disturbing... 
 
+... also the irony of using our collective drivel for the training of our replacement is worth a sci-fi story of its own [see link](https://arstechnica.com/ai/2024/02/reddit-has-already-booked-203m-in-revenue-licensing-data-for-ai-training/)
+
+
 -----
 
 An example of the confirmation bias machine is this interesting discussion:  [ Post war Britain's Nationalization](https://g.co/gemini/share/7b55f4aa9fdb)
