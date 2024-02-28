@@ -43,55 +43,59 @@
 #
 
 
-
 class Solution:
-    def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        #return Solution.count_trust_and_trusted(n, trust)
-        return Solution.count_trusted(n, trust) # this one is faster
-
-    def count_trusted(n, trust):
-
-        map_id_to_trust_count = {}
-
-        # that's a second pass to create this one - but it is relatively fast.
-        trusts_no_one = set(range(1,n+1))
-
-        candidate = -1
-        for t in trust:
-            if t[0] in trusts_no_one:
-                trusts_no_one.remove(t[0])
-            #trusts_no_one.discard(t[0])
-
-            tcount = map_id_to_trust_count.setdefault(t[1], 0) + 1
-            map_id_to_trust_count[t[1]] = tcount
-            if tcount == n - 1:
-                candidate = t[1]
-
-        if len(trusts_no_one) != 1:
-            return -1
-        if len(map_id_to_trust_count) == 0:
-            return 1
-        return candidate
+    def findJudge(self, n_size: int, trust: List[List[int]]) -> int:
+        """
+        :type n: int
+        :type trust: List[List[int]]
+        :rtype: int
+        """
+        return Solution.findJudgeFast(n_size, trust)
+        #return Solution.findJudgeSlow(n_size, trust)
 
 
-    def count_trust_and_trusted(n, trust):
-        if n == 1 and len(trust) == 0:
-            return 1
-        map_id_to_person = {}
+    # i had to look this one up!
+    def findJudgeFast(n, trust):
 
-        for t in trust:
-            from_p = map_id_to_person.setdefault( t[0], [0, 0])
-            to_p = map_id_to_person.setdefault( t[1], [0, 0])
+        trust_me = [0] * n
 
-            from_p[0] += 1 # trusts a persons
-            to_p[1] += 1 # is being trusted by a person
+        for rec in trust:
+            src = rec[0]-1
+            trg = rec[1]-1
+            trust_me[src] -= 1
+            trust_me[trg] += 1
 
-        to_trust = n - 1
-        for k, entry in map_id_to_person.items():
-            if entry[0] == 0 and  entry[1] == to_trust:
-                return k
+        for idx, score in enumerate(trust_me):
+            if score == (n-1):
+                return idx+1
 
+        return -1 
+
+    def findJudgeSlow(n_size: int, trust: List[List[int]]) -> int:
+
+        graph = Solution.makeArray(n_size, trust)
+        
+        zero_row = [0] * n_size
+        for n in range(n_size):
+            if graph[n] == zero_row:
+                is_solution = True
+                for m in range(n_size):
+                    if m != n and graph[m][n] != 1:
+                        is_solution = False
+                        break
+                if is_solution:            
+                    return n+1
         return -1
+            
 
+    def makeArray(n, trust):
+        res = []
+        for idx in range(n):
+            res.append( [0] * n)
+        
+        for elm in trust:
+            res[elm[0]-1][elm[1]-1] = 1
 
+        return res
 
+       
