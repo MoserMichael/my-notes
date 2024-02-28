@@ -776,7 +776,39 @@ Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurren
         when do they shrink a stack? Part of GC cycle right now
         what about memory fragmentation with variable length stack segments? Says they use allocator with fixed size chunks, so that takes care of it.
 
-    
+
+Generics
+--------
+See: Advanced Golang: Generics Explained / Code with Ryan https://www.youtube.com/watch?v=WpTKqnfp5dY
+
+
+Example:
+
+    package main
+
+    import (
+        "fmt"
+
+        // see https://pkg.go.dev/golang.org/x/exp/constraints
+        //  
+        "golang.org/x/exp/constraints"
+    )
+
+    func minn[T constraints.Ordered](x, y T) T {
+        if x < y {
+            return x
+        }
+        return y
+    }
+
+    func main() {
+        fmt.Println("Minimum", minn[int](2, 3))
+
+        // same as...
+
+        fmt.Println("Minimum", minn(2, 3))
+    }
+        
         
                 
                 

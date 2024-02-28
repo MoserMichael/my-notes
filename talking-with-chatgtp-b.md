@@ -16,6 +16,14 @@ That's a good way, if the chat session contains figures or formulas, these are h
 
 -----
 
+I just realized: there is no way to tell natural stupidity from artificial stupidity. I guess that people will spend more time and effort to tell one from the other. At some stage people will try to automate this process, and create a tool that tells artificial stupidity from natural stupidity; it might even try to solve a greater problem of telling stupidity from something that makes sense. Now this machine might try to automate a fact checking effort, however this fact check will be based on some kind of web search, and will need to tell the authenticity of the content retrieved from the web ... (recursion may start here)  
+
+(Now see [this story on hacker news](https://news.ycombinator.com/item?id=39423949), and my comment to it)    
+
+So our machines somehow managed to move into the realm of science fiction, given that they have started to talk (some) sense. Still i hope that we are moving into a  realm described by Stanislav Lem rather than into one described by Philip K. Dick, the stories of the second author are much more disturbing... 
+
+-----
+
 An example of the confirmation bias machine is this interesting discussion:  [ Post war Britain's Nationalization](https://g.co/gemini/share/7b55f4aa9fdb)
 
 ... just ask your questions persistently, and Google bard/Gemini will follow with an explanation that suits your line of inquiry.

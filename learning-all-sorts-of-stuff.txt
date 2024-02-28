@@ -621,6 +621,7 @@ vimdiff
 
 Windows trics
 
+
 ? windows 11 has a factory reset option. very convenient (apple also has one) ?
 
     Start > Settings > System > Recovery . Next to Reset this PC , select Reset PC.
@@ -647,7 +648,12 @@ Windows trics
 ? WSL: Windows system for linux: don't make sound on tab completion?
     sudo vim /etc/inputrc
     add 'set bell-style none'
+    
+     - windows root dir (it mounts /mnt/: /mnt/c/
 
+? MSYS: a bash shell that runs natively on Windows  https://www.msys2.org/ ?
+    - access the windows directories /c/ -- the root directory of C disk; 
+    
 ? where are must have sysinternals utilities ?
     https://learn.microsoft.com/en-us/sysinternals/downloads/     
 
@@ -664,6 +670,11 @@ Windows trics
     # see: https://superuser.com/questions/723506/get-the-video-card-model-via-command-line-in-windows
 
     wmic path win32_VideoController get name
+
+? video sucks on youtube in firefox? - use chrome (best result), or edge (its a shame, really!)
+
+   from years ago, still not fixed: https://www.reddit.com/r/firefox/comments/tpk2m2/comment/i3uy8d5/
+
 
 
 Mac/OSX tricks
