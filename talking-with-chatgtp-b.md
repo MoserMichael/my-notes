@@ -1,6 +1,6 @@
 " Set text width as 72.
 
-I think that talking to an LLM can give leads for further research. Sort of like giving directions, if you don't anything about a given subject (sometimes these discussions get interesting, at least for someone with my limited level of knowledge)
+Is ChatGTP a search engine replacement? I think that talking to an LLM can give further directions, if you don't anything about a given subject (sometimes these discussions get interesting, at least for someone with my limited level of knowledge)
 
 Some people say that ChatGTP is a [confirmation bias machine](https://www.linkedin.com/pulse/chatgpt-perfect-confirmation-bias-machine-roman-naumenko/) in the sense that it tells you already think. I hope that's not all of it: these conversations can teach how to ask questions. How have the chance to examine the answers at your own leisure and ask further question, and return to the same conversation later (you don't always have this chance with a real persons).
 
