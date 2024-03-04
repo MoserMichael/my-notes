@@ -91,7 +91,7 @@ I have asked ChatGTP to produce a prompt, that will instruct it to answer like M
 
 There might be a chance that the prompt writing business will be see reductions due to replacement by the LLM... :-)
 
-Here is a conversation with ChatGTP's impersonation of Marvin ...  [link]( https://chat.openai.com/share/b827075e-1783-431d-b935-2bfe4f90a6e2)
+Here is a conversation with ChatGTP's impersonation of Marvin ...  [link]( https://chat.openai.com/share/b827075e-1783-431d-b935-2bfe4f90a6e2 )
 
 ----
 
