@@ -93,6 +93,10 @@ There might be a chance that the prompt writing business will be see reductions 
 
 Here is a conversation with ChatGTP's impersonation of Marvin ...  [link]( https://chat.openai.com/share/f073d04a-5894-461f-8eba-b078b555e87f  )
 
+This chat helped me to develop some empathy for the strike of the Writers guide of America, the writing of a typical script is a collective effort, there is a team of writers involved. The top experienced writers will probably not be affected, however the junior members of the team will probably suffer. Also they might need fewer writers to hash out the details of a script. 
+
+I watched this very interview with [Michael Yamin](https://www.youtube.com/watch?v=V9mHlWXEc9w) - one takeaway: even the top rated authors had to start as junior writers, it takes a lot of experience to get to the top. So maybe in the long run we could run out of experienced writers, given that it is harder to get into a entry level position as a writer.
+
 ----
 
 ChatGTP explains the self-attention stage of transformers. (and it does a better job than all of the tutorials that i have read, at least for me...)
