@@ -85,6 +85,14 @@ Says components of a good prompt have:
 
 Example: (I'm a 70kb male) (context) (give me a 3 month training program) (task) 
 
+
+-----
+I have asked ChatGTP to produce a prompt, that will instruct it to answer like Marvin, the paranoid android [here](https://chat.openai.com/share/a0bc2bab-003e-4135-aa9b-c0c48465408f)
+
+There might be a chance that the prompt writing business will be see reductions due to replacement by the LLM... :-)
+
+Here is a conversation with ChatGTP's impersonation of Marvin ...  [link]( https://chat.openai.com/share/b827075e-1783-431d-b935-2bfe4f90a6e2)
+
 ----
 
 ChatGTP explains the self-attention stage of transformers. (and it does a better job than all of the tutorials that i have read, at least for me...)
@@ -92,7 +100,6 @@ ChatGTP explains the self-attention stage of transformers. (and it does a better
 [link to shared chat session](https://chat.openai.com/share/c0ca72f2-7790-439d-8973-a85384ee8ae1)
 
 [local copy](https://htmlpreview.github.io/?https://github.com/MoserMichael/my-notes/blob/master/chat-talks/self-a.html)
-
 
 ----
 
