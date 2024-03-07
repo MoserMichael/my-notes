@@ -48,17 +48,19 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
+        if not head:
+            return False
 
         slow = head
-        fast = head
+        fast = head.next
 
-        while fast:
+        while slow and fast:
+            #if id(slow) == id(fast):
+            if slow == fast:
+                return True
             slow = slow.next
             fast = fast.next
             if fast:
                 fast = fast.next
-                if slow == fast:
-                    return True
 
         return False
-
