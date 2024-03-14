@@ -2160,3 +2160,5 @@ VisualStudioCode
     F12     ::: Jump to definition/declaration.
 
     VS Code got auto save disabled by default !!! IntelliJ has autosave on by default.
+
+    Ctrl+G  - goto line number

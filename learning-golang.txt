@@ -810,7 +810,14 @@ Example:
     }
         
         
-                
+=====
+
+mapping a global variable to the contnt of a file. Usefull for unit tests.
+
+import _ "embed"
+
+//go:embed hello.txt
+var s string
                 
         
 

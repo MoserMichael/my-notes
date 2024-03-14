@@ -622,6 +622,8 @@ vimdiff
 Windows trics
 
 
+? Fn+Esc - function lock; now you can press F10 without having to press Fn+F10 ?
+
 ? windows 11 has a factory reset option. very convenient (apple also has one) ?
 
     Start > Settings > System > Recovery . Next to Reset this PC , select Reset PC.

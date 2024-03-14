@@ -16,6 +16,11 @@ That's a good way, if the chat session contains figures or formulas, these are h
 
 -----
 
+An interesting discussion on the nature of thinking with google bard/gemini [link](https://github.com/MoserMichael/my-notes/blob/master/talking-with-chatgtp-b.md)   
+
+This was all prompted by a discussion on hackers [news](https://news.ycombinator.com/item?id=39696856#39699587) 
+
+-----
 I just realized: there is no way to tell natural stupidity from artificial stupidity. I guess that people will spend more time and effort to tell one from the other. At some stage people will try to automate this process, and create a tool that tells artificial stupidity from natural stupidity; it might even try to solve a greater problem of telling stupidity from something that makes sense. Now this machine might try to automate a fact checking effort, however this fact check will be based on some kind of web search, and will need to tell the authenticity of the content retrieved from the web ... (recursion may start here)  
 
 (Now see [this story on hacker news](https://news.ycombinator.com/item?id=39423949), and my comment to it)    
