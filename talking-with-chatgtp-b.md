@@ -31,10 +31,9 @@ ChatGTP explains the self-attention stage of transformers. (and it does a better
 -----
 
 
-Google is not prioritising hackers news in the result. I thought that may be an attempt to differentiate between geniune discussions and machine generate answers. See this discussion  [link](https://news.ycombinator.com/item?id=39423949#39427148)
+Google is now prioritising hackers news in its search result. I thought that may be an attempt to differentiate between genuine discussions and machine generate answers. See this discussion  [link](https://news.ycombinator.com/item?id=39423949#39427148) Maybe they want to guard the future input for LLM training, by focusing on sites with a strong moderation policies.
 
 me: Is it possible that google is now turning to sites that have a strong moderation policy, as a vetting strategy against LLM generated posts? (Maybe November 2022 is turning out to be a new kind of Eternal September for the rest of the Web...)
-
 
 ------
 I just realized: there is no way to tell natural stupidity from artificial stupidity. I guess that people will spend more time and effort to tell one from the other. At some stage people will try to automate this process, and create a tool that tells artificial stupidity from natural stupidity; it might even try to solve a greater problem of telling stupidity from something that makes sense. Now this machine might try to automate a fact checking effort, however this fact check will be based on some kind of web search, and will need to tell the authenticity of the content retrieved from the web ... (recursion may start here)  
@@ -44,7 +43,6 @@ I just realized: there is no way to tell natural stupidity from artificial stupi
 So our machines somehow managed to move into the realm of science fiction, given that they have started to talk (some) sense. Still i hope that we are moving into a  realm described by Stanislav Lem rather than into one described by Philip K. Dick, the stories of the second author are much more disturbing... 
 
 ... also the irony of using our collective drivel for the training of our replacement is worth a sci-fi story of its own [see link](https://arstechnica.com/ai/2024/02/reddit-has-already-booked-203m-in-revenue-licensing-data-for-ai-training/)
-
 
 -----
 
@@ -56,16 +54,6 @@ An example of the confirmation bias machine is this interesting discussion:  [ P
 
 /well, sooner or later the LLM will start to talk funny rubbish, like mentioning cyberwarfare in the context of the Clement Attlee government.../
 
-----
-
-Google Bard seems to be very knowledgable on the history of Coca-Cola advertising.  [link](https://g.co/bard/share/34cdad4e3637) ChatGTP3.5 had less to say on this subject...
-
-Another chat comparison, asked the question 'The movie 'the live of Brian' has a sketch named 'what have the Romans ever done for us?'. Has this sketch ever been criticized as being disrespectful of the Jews of Judaea?'
-
-Bard had more to say on this subject: [link](https://g.co/bard/share/49251d1884b2) Compared to [ChatGTP 3.5]( https://chat.openai.com/share/658d01dd-c331-479a-969c-d197bb7631e7)
-
-... but maybe I am comparing apples to oranges, just because I don't want to pay for ChatGTP4 ...
-(on other questions I got a better answer from ChatGTP)
 
 ----
 Prompt engineering/Prompting is pretty scary - looks like some kind of magic, so lets learn more about it.
@@ -117,6 +105,17 @@ Here is a conversation with ChatGTP's impersonation of Marvin ...  [link]( https
 This chat helped me to develop some empathy for the strike of the Writers guide of America, the writing of a typical script is a collective effort, there is a team of writers involved. The top experienced writers will probably not be affected, however the junior members of the team will probably suffer. Also they might need fewer writers to hash out the details of a script. 
 
 I watched this very interview with [Michael Yamin](https://www.youtube.com/watch?v=V9mHlWXEc9w) - one takeaway: even the top rated authors had to start as junior writers, it takes a lot of experience to get to the top. So maybe in the long run we could run out of experienced writers, given that it is harder to get into a entry level position as a writer.
+
+----
+
+Google Bard seems to be very knowledgable on the history of Coca-Cola advertising.  [link](https://g.co/bard/share/34cdad4e3637) ChatGTP3.5 had less to say on this subject...
+
+Another chat comparison, asked the question 'The movie 'the live of Brian' has a sketch named 'what have the Romans ever done for us?'. Has this sketch ever been criticized as being disrespectful of the Jews of Judaea?'
+
+Bard had more to say on this subject: [link](https://g.co/bard/share/49251d1884b2) Compared to [ChatGTP 3.5]( https://chat.openai.com/share/658d01dd-c331-479a-969c-d197bb7631e7)
+
+... but maybe I am comparing apples to oranges, just because I don't want to pay for ChatGTP4 ...
+(on other questions I got a better answer from ChatGTP)
 
 ----
 
