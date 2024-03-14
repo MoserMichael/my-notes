@@ -20,7 +20,23 @@ An interesting discussion on the nature of thinking with google bard/gemini [lin
 
 This was all prompted by a discussion on hackers [news](https://news.ycombinator.com/item?id=39696856#39699587) 
 
+----
+
+ChatGTP explains the self-attention stage of transformers. (and it does a better job than all of the tutorials that i have read, at least for me...)
+
+[link to shared chat session](https://chat.openai.com/share/c0ca72f2-7790-439d-8973-a85384ee8ae1)
+
+[local copy](https://htmlpreview.github.io/?https://github.com/MoserMichael/my-notes/blob/master/chat-talks/self-a.html)
+
 -----
+
+
+Google is not prioritising hackers news in the result. I thought that may be an attempt to differentiate between geniune discussions and machine generate answers. See this discussion  [link](https://news.ycombinator.com/item?id=39423949#39427148)
+
+me: Is it possible that google is now turning to sites that have a strong moderation policy, as a vetting strategy against LLM generated posts? (Maybe November 2022 is turning out to be a new kind of Eternal September for the rest of the Web...)
+
+
+------
 I just realized: there is no way to tell natural stupidity from artificial stupidity. I guess that people will spend more time and effort to tell one from the other. At some stage people will try to automate this process, and create a tool that tells artificial stupidity from natural stupidity; it might even try to solve a greater problem of telling stupidity from something that makes sense. Now this machine might try to automate a fact checking effort, however this fact check will be based on some kind of web search, and will need to tell the authenticity of the content retrieved from the web ... (recursion may start here)  
 
 (Now see [this story on hacker news](https://news.ycombinator.com/item?id=39423949), and my comment to it)    
@@ -101,14 +117,6 @@ Here is a conversation with ChatGTP's impersonation of Marvin ...  [link]( https
 This chat helped me to develop some empathy for the strike of the Writers guide of America, the writing of a typical script is a collective effort, there is a team of writers involved. The top experienced writers will probably not be affected, however the junior members of the team will probably suffer. Also they might need fewer writers to hash out the details of a script. 
 
 I watched this very interview with [Michael Yamin](https://www.youtube.com/watch?v=V9mHlWXEc9w) - one takeaway: even the top rated authors had to start as junior writers, it takes a lot of experience to get to the top. So maybe in the long run we could run out of experienced writers, given that it is harder to get into a entry level position as a writer.
-
-----
-
-ChatGTP explains the self-attention stage of transformers. (and it does a better job than all of the tutorials that i have read, at least for me...)
-
-[link to shared chat session](https://chat.openai.com/share/c0ca72f2-7790-439d-8973-a85384ee8ae1)
-
-[local copy](https://htmlpreview.github.io/?https://github.com/MoserMichael/my-notes/blob/master/chat-talks/self-a.html)
 
 ----
 
