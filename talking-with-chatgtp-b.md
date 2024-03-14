@@ -50,9 +50,9 @@ An example of the confirmation bias machine is this interesting discussion:  [ P
 
 ... just ask your questions persistently, and Google bard/Gemini will follow with an explanation that suits your line of inquiry.
 
-(still interesting that Bard/ChatGTP can effectively replace half of the experts on https://www.reddit.com/r/AskHistorians/ - at least for me...)
+(still interesting that Bard/ChatGTP can effectively replace half of the experts on https://www.reddit.com/r/AskHistorians/ - it turns out that human historians can also be quite biased, just like an LLM ;-) )
 
-/well, sooner or later the LLM will start to talk funny rubbish, like mentioning cyberwarfare in the context of the Clement Attlee government.../
+/well, sooner or later the LLM will start to talk funny rubbish, like mentioning cyberwarfare in the context of the Clement Attlee government, before they had any fancy computers to begin with/
 
 
 ----
