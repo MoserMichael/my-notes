@@ -4,7 +4,7 @@ Is ChatGTP a search engine replacement? I think that talking to an LLM can give 
 
 Some people say that ChatGTP is a [confirmation bias machine](https://www.linkedin.com/pulse/chatgpt-perfect-confirmation-bias-machine-roman-naumenko/) in the sense that it doesn't work too hard to correct/challenge your believes. I hope that's not all of it: these conversations can teach how to ask questions. How have the chance to examine the answers at your own leisure and ask further question, and return to the same conversation later (you don't always have this chance with a real persons).
 
-(also I asked ChatGTP if it is a confirmation bias machine, here is a [link to the conversation](https://chat.openai.com/share/e0639c28-2651-4eed-87f3-fee37f7c735f) )
+(also I asked ChatGTP if it is a confirmation bias machine, here is a [link to the conversation](  https://chat.openai.com/share/e0639c28-2651-4eed-87f3-fee37f7c735f) )
 
 Maybe it's stupid to put up these chat sessions, as i will probably appear to be quite clueless. Still i like to ask questions.
 
@@ -16,7 +16,7 @@ That's a good way, if the chat session contains figures or formulas, these are h
 
 -----
 
-An interesting discussion on the nature of thinking with google bard/gemini [link](https://github.com/MoserMichael/my-notes/blob/master/talking-with-chatgtp-b.md)   
+An interesting discussion on the nature of thinking with google bard/gemini [link](https://gemini.google.com/share/67da9e441ad9)   
 
 This was all prompted by a discussion on hackers [news](https://news.ycombinator.com/item?id=39696856#39699587) 
 
