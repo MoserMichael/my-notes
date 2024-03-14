@@ -79,23 +79,21 @@ Why all this prompting business? Says the aim of the prompt is to constraint the
 
 Says components of a good prompt have:
 
-    task            (presence mandatory) - always start with an action verb (Generate, write, analyze...)   
-    context         (important)         should answer: what is the users background? what does success look like? what environment?
-                        
-    exemplar        (important)         says that improves the quality of the output, like 'let's think step by step', or 'use STAR framework of Situation, Task, action, result' - and give an example.
-                        
-    persona         (nice to have)      the LLM should impersonate this persona, like 'you are a hiring manager looking to fill a position on your team' or name specific famous individuals (???)
-    
-    format          (nice to have)      How the end result should look like? (like table - with column description,  markdown, 
-
-    tone            (nice to have)      (use clear and concise language, use a formal tone, use witty output - tell it the feeling you want to achieve)
-
+- task            (presence mandatory) - always start with an action verb (Generate, write, analyze...)   
+- context         (important)         should answer: what is the users background? what does success look like? what environment?
+- exemplar        (important)         says that improves the quality of the output, like 'let's think step by step', or 'use STAR framework of Situation, Task, action, result' - and give an example.
+- persona         (nice to have)      the LLM should impersonate this persona, like 'you are a hiring manager looking to fill a position on your team' or name specific famous individuals (???)
+- format          (nice to have)      How the end result should look like? (like table - with column description,  markdown, 
+- tone            (nice to have)      (use clear and concise language, use a formal tone, use witty output - tell it the feeling you want to achieve)
 
 
 Example: (I'm a 70kb male) (context) (give me a 3 month training program) (task) 
 
+Seems plausible, that a focused prompt will direct the focus of the model to some relevant portion of its training data.
+Now I wonder if you can tell the LLM invent a nice prompt, given these rules.
 
 -----
+
 I have asked ChatGTP to produce a prompt, that will instruct it to answer like Marvin, the paranoid android [here](https://chat.openai.com/share/a0bc2bab-003e-4135-aa9b-c0c48465408f)
 
 There might be a chance that the prompt writing business will be see reductions due to replacement by the LLM... :-)
