@@ -113,7 +113,8 @@ Another chat comparison, asked the question 'The movie 'the live of Brian' has a
 Bard had more to say on this subject: [link](https://g.co/bard/share/49251d1884b2) Compared to [ChatGTP 3.5]( https://chat.openai.com/share/658d01dd-c331-479a-969c-d197bb7631e7)
 
 ... but maybe I am comparing apples to oranges, just because I don't want to pay for ChatGTP4 ...
-(on other questions I got a better answer from ChatGTP)
+(however on some occasions i got a better answer from ChatGTP3.5, each of them has its own biases. However google has less clout than openai, so we get something comparable to ChatGTP4 for free)
+
 
 ----
 
