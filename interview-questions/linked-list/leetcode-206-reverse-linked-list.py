@@ -36,8 +36,29 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # non recursive solution. still not much faster
+        cur, ret = head, None
+        while cur:
+            #old_next = cur.next
+            #cur.next = ret
+            old_next, cur.next = cur.next, ret
+
+            #ret = cur
+            #cur = old_next
+            ret, cur = cur, old_next
+
+        return ret
+
+    # recursive solution
+    def rec(head):
         if not head:
             return None
         head, _ = Solution.imp(head)
@@ -54,4 +75,5 @@ class Solution:
         head.next = None
 
         return newHead, head
+
 
