@@ -55,6 +55,8 @@ An example of the confirmation bias machine is this interesting discussion:  [ P
 /well, sooner or later the LLM will start to talk funny rubbish, like mentioning cyberwarfare in the context of the Clement Attlee government, before they had any fancy computers to begin with/
 
 
+Confirmation bias can have a good point - having a political discussion with a Robot is much less adversarial! See [this discussion](https://gemini.google.com/share/5fce6f425939), where i asked Google bard/gemini if the internet isn't just helping dictators more than it helped civil society.
+
 ----
 Prompt engineering/Prompting is pretty scary - looks like some kind of magic, so lets learn more about it.
 
@@ -105,6 +107,10 @@ This chat helped me to develop some empathy for the strike of the Writers guide 
 I watched this very interview with [Michael Yamin](https://www.youtube.com/watch?v=V9mHlWXEc9w) - one takeaway: even the top rated authors had to start as junior writers, it takes a lot of experience to get to the top. So maybe in the long run we could run out of experienced writers, given that it is harder to get into a entry level position as a writer.
 
 ----
+
+Talking with Google bard/gemini about the curious case of the [Tuareg and survial in the desert](https://gemini.google.com/share/9f9ff2dcfcd7)
+
+-----
 
 Google Bard seems to be very knowledgable on the history of Coca-Cola advertising.  [link](https://g.co/bard/share/34cdad4e3637) ChatGTP3.5 had less to say on this subject...
 
