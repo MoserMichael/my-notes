@@ -6,7 +6,7 @@ Some people say that ChatGTP is a [confirmation bias machine](https://www.linked
 
 (also I asked ChatGTP if it is a confirmation bias machine, here is a [link to the conversation](  https://chat.openai.com/share/e0639c28-2651-4eed-87f3-fee37f7c735f) )
 
-Maybe it's stupid to put up these chat sessions, as i will probably appear to be quite clueless. Still i like to ask questions.
+Maybe it's stupid to put up these chat sessions, as i will probably appear to be quite clueless. Still i like to ask questions (usually get a beating due to this tendency - now the LLM does not do any of this, so far :-)
 
 Good way to copy a ChatGTP chat session:
     - right most top corner there is a link, choose 'Share link to chat', press Update and Copy link (this link can be shared, provided that the receiver is logged into a ChatGTP account)
@@ -53,10 +53,12 @@ An example of the confirmation bias machine is this interesting discussion:  [ P
 (still interesting that Bard/ChatGTP can effectively replace half of the experts on https://www.reddit.com/r/AskHistorians/ - it turns out that human historians can also be quite biased, just like an LLM ;-) )
 
 /well, sooner or later the LLM will start to talk funny rubbish, like mentioning cyberwarfare in the context of the Clement Attlee government, before they had any fancy computers to begin with/
+ 
 
+    Confirmation bias can have a good point - having a political discussion with a Robot is much less adversarial! See [this discussion](https://g.co/gemini/share/214380331623), where i asked Google bard/gemini if the internet isn't just helping dictators more than it is helped civil society.
 
-Confirmation bias can have a good point - having a political discussion with a Robot is much less adversarial! See [this discussion](https://gemini.google.com/share/5fce6f425939), where i asked Google bard/gemini if the internet isn't just helping dictators more than it helped civil society.
-
+... got the impression that one is talking with a wall of all political cliches that have been invented so far, while arguing with an LLM ...
+ 
 ----
 Prompt engineering/Prompting is pretty scary - looks like some kind of magic, so lets learn more about it.
 
