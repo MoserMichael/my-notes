@@ -150,6 +150,7 @@ I am trying to test the PYX programming language by implementing leetcode proble
 I have also started to keep most of my notes on various subjects in the following file now: [here it is](https://github.com/MoserMichael/my-notes/blob/master/learning-all-sorts-of-stuff.txt) . Most of my work involves some sort of navigation through diverse software environments. Now these environments are all different - but they do have similarities. The most important part seems to be: not getting lost.
 
 
+<!--
 ---22/02/23 17:27:35----------------------
 
 I somehow got over the state of ChatGPT induced shock. Now i have come to think of the following:
@@ -178,10 +179,11 @@ I am wondering, how this will affect education, in the long run:
 - What about the value of being an expert? Will it get harder to tell a real expert from a fake one?
 
 We are living in interesting times, let's see how it all plays out.
+//-->
 
 ---18/02/23 19:46:03----------------------
 
-I had a chat with ChatGPT about the book "Future Shock" by Alvin Toffler. Science fiction gone real, wow...
+I had a chat with ChatGPT about the book "Future Shock" by Alvin Toffler. Science fiction gone real, wow... (more of me talking with the robot [here](https://github.com/MoserMichael/my-notes/blob/master/talking-with-chatgtp-b.md) )
 
 Me: 'please summarize the book "Future shock" by "Alvin Toffler"'
 
@@ -278,7 +280,8 @@ Almost like in the real world ;-)
 
 .. Now i got a problem: where do i get any news from?
 
-(Later update: you can ask google bard - it doesn't have it in its knowledge base, but they run a query on google news, and make a summary of it!)
+
+(updated in 2024) 
 
 
 ---18/08/22 09:20:39----------------------
