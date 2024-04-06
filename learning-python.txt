@@ -1,0 +1,433 @@
+
+
+Slice trick for iterating over reversed list:
+
+    >>> a=[1,2,3]
+    >>> a[::-1]
+    [3, 2, 1]
+    >>> type(a[::-1])
+    <class 'list'>
+
+The trick is not so good - it returns a copy of the list!
+
+So reversed is faster, because it returnes an iterator rather than a list copy?
+
+    >>> a=[1,2,3]
+    >>> list(reversed(a))
+    [3, 2, 1]
+    >>> type(reversed(a))
+    <class 'list_reverseiterator'>
+
+----
+
+Python recursion stack
+    default maximum recursion depth of 1000, can be increased using the sys.setrecursionlimit(n)  https://docs.python.org/3/library/sys.html#sys.setrecursionlimit
+
+    python
+    Python 3.7.13 (default, Sep 29 2022, 10:34:32)
+    >>> import sys
+    >>> sys.getrecursionlimit()
+    1000
+
+Python has integer division operator ... I would always divide 
+
+    python
+    >>> 9 / 5
+    1.8
+    >>> 9 // 5
+    1
+
+    >>> 10 / 3
+    3.3333333333333335
+    >>> 10 // 3
+    3
+    
+    # this one also works...
+    >>> int(10/3)
+    3
+
+----
+
+Missing dictionary entries in python give a Key error exception
+
+Now you can avoid that with d.setdefault('key', --default-value-- ) - that one creates a default value on each access.
+
+Now there is 
+
+    >>> from collections import defaultdict
+    >>> d = defaultdict(list)
+    >>> d['key-not-present']
+    []
+    >>> d['another-not-present'].append(42)
+    >>> d
+    defaultdict(<class 'list'>, {'key-not-present': [], 'another-not-present': [42]})
+
+
+----
+
+Python has a string buffer, just like java!
+
+    >>> b = io.StringIO()
+    >>> b.write("a")
+    1
+    >>> b.write("b")
+    1
+    >>> b.write("c")
+    1
+    >>> b.getvalue()
+    'abc'
+
+----
+
+people like to do several assignments in one line, so they do the following:
+(which is considered to be concise and pythonic, for whatever reasons... )
+
+    >>> a, b, c = 3, "aaa", [1,2,3]
+    >>> a
+    3
+    >>> b
+    'aaa'
+    >>> c
+    [1, 2, 3]
+
+----
+
+
+In python: you often need to harden your python script by handling all possible errors with the finally clause. Now this has the unfortunate side effect of throwing all possible errors under the carpet, this makes it harder to debug the script. Here is a trick to fix this situation (however it adds a few more statements)
+ 
+```
+import traceback
+
+def this_one_has_a_problem():
+    a = {}
+    print(a['a'])
+
+
+try:
+    this_one_has_a_problem()
+except:
+    tb = traceback.format_exc()
+else:
+    tb = None
+finally:
+    if tb:
+        print(f"not everything is ok {tb}")
+
+```
+
+--
+
+I thought that the following will run, and return True, if for at least one of the elements the function ```process_elem``` will return True,
+Not so fast, ```keep_going or process_elem(elem)``` will only be called the first time, if ```keep_going``` is True then ```process_elem``` will not be called at all! (That's shortcut evaluation, but I keep forgetting about that, although it is pretty elementarry)
+
+```
+    keep_going = False
+
+    for elem in elements:
+        keep_going = keep_going or process_elem(elem)
+
+    return keep_going    
+```
+ 
+
+- python: if there is a sequence of if statements, where each subsequent clause is ```elif``` - yeah, sometimes i forget about that and write ```if``` instead of ```elif```. Happens again and again - and has to be debugged.
+
+  / same frequent source of errors: switch statements, state machines-transition tables, etc/
+
+- python if statement problem. I do that a lot. Both None and zero evaluate to false, in a boolean check, for example:
+
+```
+>>> if None:
+...     print("is-true")
+... else:
+...     print("is-false")
+...
+is-false
+>>> if 0:
+...     print("is-true")
+... else:
+...     print("is-false")
+...
+is-false
+```
+
+Now the same syntax is also checking if a map or list value is empty.
+
+This kind of overloading can be a source of problems, you may have intended one thing, but the code is actually doing something different.
+
+```
+>>> m={}
+>>> if m:
+...     print("is-true")
+... else:
+...     print("is-false")
+...
+is-false
+>>> m['a']=1
+>>> if m:
+...     print("is-true")
+... else:
+...     print("is-false")
+...
+is-true
+
+>>> a=[]
+>>> a
+[]
+>>> if a:
+...     print('true')
+... else:
+...     print('false')
+...
+false
+>>> a.append(1)
+>>> if a:
+...     print('true')
+... else:
+...     print('false')
+...
+true
+
+```
+
+Example case that causes problem: if you check for the presence of a key in a map like this:
+
+```
+>>> m={'zero':0,'one':1}
+
+>>> rt=m.get('zero')
+>>> print(m.get('zero'))
+0
+
+>>> print(m.get('not-in-map'))
+None
+>>>
+```
+
+One can avoid this kind of check for a missing map key with ```setdefault``` or ```defaultdict``` - still you will get this problem...
+
+-- the // operator does not always truncate towards zero - if the result is negative then it rounds down towards negative infinity (why?)
+
+```
+>>> 6 // 132
+0
+>>> 6 // -132
+-1
+>>> int(6 / -132)
+0
+>>> int(6 / 132)
+0
+```
+
+
+--- 
+
+As you see, the case of the key mapping to zero is handled the same as the case of the key not being present in the map.
+Of course you can compare with None, or you can do check for ```'not-in-map' in m```, still this kind of scenario happens often, as it is easy to conflate.
+ 
+Now there are other classes like ```defaultdict``` - here lookup of a missing key will return a default value
+
+```
+>>> from collections import defaultdict
+>>>
+>>> d=defaultdict(list)
+>>> d['missing-key']
+[]
+```
+
+
+- the vanishing log context. One of the main questions in backend-land is: where are the logs?
+  Now some systems change the log context over time. For example: jboss and even simple systems like gunicorn are putting their logs in one place during their initialization sequence. However futher down the road they decide otherwise - and put the logs in some other place. 
+    
+  A sure sign of this happening: you have several instances of the same service, and the logs stop at the same moment. I spent some time wondering if a given component stopped receiving any requests - checked all sort of possibilities. The confusing aspect is that you see *some* log, however that's only part of the picture...   
+
+  My error was that I looked at the command line of the process that was running the whole show. Once upon a time one would specify the configuration in the command line of the main process.
+  Now this is a simplified understanding o what is actually happening....
+
+- working with locks: if you have got hold of a lock, then you really have to make sure to release it, now in python you have the ```finally``` clause:
+
+```
+    try:
+        do something of great importance
+    catch ex:
+        do the stuff supposed to happen if that something failed
+    finally:
+        now here is the place to release that log
+```
+
+Now ```finally``` will catch all kind of errors - so you also need to catch all other exceptions as well - in order to notice that something bad happened..
+
+```
+    try:
+        do something of great importance
+    catch ValueError, ex:
+        do the stuff supposed to happen if that something specific failed
+    catch ex:
+        log that something bad happened - otherwise no way to know.
+    finally:
+        now here is the place to release that log
+```
+
+
+--
+
+Edge cases in a flow! Now one approach to check for them is to have exhaustive, 100% coverage unit tests - this forces you to go through all of the edge conditions. I know it's hard, but it is worth it. One situation that calls for 100% test coverage is when state is maintained between calls.
+
+- what is in a log? what should be logged? 
+    - don't take anything for granted, you have something to log whenever a logically related series of steps has completed.
+    - on some systems you can't view a sequence of logs as such, only thing you can do is to query the system by some keyword. Always be aware the the key info is part of the log entry (be it a sesion-id or whatever key info is identifying the flow in this particular context)\
+    - logs are your bread and butter in server land
+
+--
+
+Identical log messages (or near identical log messages) written at two different locations in he code. This leads to confusion on where the log entry comes from...
+
+How to deal with that:   
+    - Now look at the log message: are there additional details like the name of the source file that caused the log message? Match the log message again: is it an exact match or a substring match?
+    - sometimes you can search all of the codebase (spanning different repositories)
+
+--
+
+Sometimes you need to denormalize a structure in order to get sufficient lookup speed (that's a hard one: it is easy to mess up the structure during insertion)
+
+  How to deal with that one?
+    - lots of test
+    - lots of logs during insertion (where the complexity is)
+
+--
+
+Need to speed up stuff? First of all measure.
+    
+
+- examine alogithms in use 
+- examine data structures in use, 
+    - examine memory access patterns: (does it have lots of CPU cache misses?)
+        - can you cache stuff? What kind of caching is in use?
+    - examine allocation patterns (usually people are not very aware of them)
+    - memory allocators (more for c/c++)
+        - allocation patterns: you need a lot of objects of size x1, x2, x3 
+            - do you want to have separate slabs for sizes x1, x2, x3?
+- storage hierarchy: Is there some sort of caching for hot vs cold areas?
+- communication: too many roundtrips? What kind of latencies are there?
+- lock contention (often occurs in conjunction with pooling and threads)
+    - do reader/writer locks make sense?
+    - do you need more than x conenctions at a time , and the connection pool only provides for x / 2 connections ?
+- java: do you have to reboot the service often (takes a lot of time untill java is just-in-time compiled - several thousands of iteratiosn over the same basic code block
+
+--
+
+Conflating OS write to file with OS flush. Writing to a file only updates the WRITE CACHE inside the OS - data is not yet stored to disk !!!
+
+
+--
+
+Schemaless DB - if you used to do SQL tables, then you might forget that records in a MONGODB collection may have differen structure; hey are strucured when they are written.
+Now the code that writes these records may change, and you end up with different versions of documents in the same collection of documents .
+(and the code that writes this stuff is a mess, after a few years)
+
+--
+
+(To be continued...)
+
+Python catch #426 - the map function returns an iterator. the next entry is only generated upon calling ```___next___``` - so  that the map is generating new entries lazily, upon demand...
+
+
+```
+>>> def sq(x):
+...     print(f"{x}")
+...     return x
+...
+>>> m = map(sq, range(1,20))
+
+>>> m.__next__()
+1
+1
+>>> m.__next__()
+2
+2
+>>> m.__next__()
+3
+3
+>>> m.__next__()
+4
+4
+```
+
+This iterator thing is sometimes very confusing:
+
+- ```sorted``` receives any iterator, returns a sorted list
+- ```heapq.heapify``` dosn't receive an iterator, it needs to receive a list as argument.
+
+( there are proably more of these around... )
+
+
+Python catch #425 - if you have a list/map/object and want to display the string representation of each object, use repr. (str and ```__str__``` won't cut it...) - but ```___repr___``` does the job just fine!
+
+[here](https://realpython.com/python-repr-vs-str/) they say  that ```__str__``` is a human friendly output for users or for printing output to a log file, while ```___repr___``` is supposed to be more detailed format, one that includes all the details required to know everything about the object. (I think that this distinction is a bit confusing).
+
+```
+class Foo:
+    def __init__(self, num, s):
+        self.num = num
+        self.s = s
+    def __str__(self):
+        return f"[s: {self.s} num: {self.num}]"
+
+f = Foo(123, "aaa")
+
+# __str__  is only called when converting the object directly to the string: output '[s: aaa num: 123]'
+print(str(f))
+
+a = [ Foo(1,"one"), Foo(2, "two") ]
+
+# __str__ is not called when converting a collection that holds Foo to a string
+# output: show-list-with-str [<__main__.Foo object at 0x10287e208>, <__main__.Foo object at 0x10287e0c8>]
+print(f"show-list-with-str {str(a)}")
+
+
+b = { "1" : Foo(1, 'one'),  "2" : Foo(2, 'two') }
+
+# same for maps
+# output: show-map-with-str {'1': <__main__.Foo object at 0x10287e088>, '2': <__main__.Foo object at 0x10287e148>}
+print(f"show-map-with-str {str(b)}")
+
+
+class Bar:
+    def __init__(self, num, s):
+        self.num = num
+        self.s = s
+    def __repr__(self):
+        return f"[s: {self.s} num: {self.num}]"
+
+
+a = [ Bar(1,"one"), Bar(2, "two"), Foo(3, "foo") ]
+
+# output: show-list-with-repr-and-one-__str__ [[s: one num: 1], [s: two num: 2], <__main__.Foo object at 0x1028cde88>]
+print(f"show-list-with-repr-and-one-__str__ {a}")
+
+b = { "1" : Bar(1, 'one'),  "2" : Bar(2, 'two') }
+# output: show-map-with-str {'1': [s: one num: 1], '2': [s: two num: 2]}
+print(f"show-map-with-str {str(b)}")
+
+
+# https://stackoverflow.com/questions/44595218/python-repr-for-all-member-variables
+def repr_helper(obj):
+    return "{}({!r})".format(type(obj).__name__, obj.__dict__)
+
+class Big:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    # if you want to show all members of an object, upon call to repr - something like this
+    def __repr__(self):
+        return repr_helper(self)
+
+c = Big(a, b)
+
+# big: Big({'a': [[s: one num: 1], [s: two num: 2], <__main__.Foo object at 0x10509c3c8>], 'b': {'1': [s: one num: 1], '2': [s: two num: 2]}})
+print(f"big: {c}")
+
+```
+
+
