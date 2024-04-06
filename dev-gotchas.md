@@ -280,9 +280,9 @@ Almost like in the real world ;-)
 
 .. Now i got a problem: where do i get any news from?
 
-
 (updated in 2024) 
 
+The final nail to my online participation came with the Israel–Hamas war of 2023... I was especially touched by the fact, that the HN crowd managed to look over/ignore the Hamas atrocities. Maybe they are all just echoing the biases of philg, their master, who knows...
 
 ---18/08/22 09:20:39----------------------
 
