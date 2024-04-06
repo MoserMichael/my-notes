@@ -116,29 +116,6 @@ Ultimately, it's recommended to try out different platforms and see which one wo
 
 //-->
 
-
----30/07/23 20:23:26----------------------
-
-
-Sometimes a pod is configured to print its logs with color codes, these are very annoying to look at. So here is how you get rid of them:
-
-This little alias in your .bashrc file can help:
-
-
-```
-alias nocolorfilter="sed -e 's/\x1b\[[0-9;]*m//g'"
-```
-
-Here is how I use this alias:
-
-
-```
-kubectl logs pods-with-colors 2>&1 | nocolorfilter | vim -
-```
-
-It turns out that you can configure log4j to add color codes to the output, sometimes this feature is being used (would never enable it myself)
-
-
 <!--
 ---12/07/23 07:46:26----------------------
 
