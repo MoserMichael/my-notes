@@ -16,12 +16,12 @@ That's a good way, if the chat session contains figures or formulas, these are h
 
 -----
 
-Is an LLM a kind of search engine replacement? Now i asked Google Bard/Gemin some politically [sensitive question](https://gemini.google.com/share/55ef0877aaf6) and it refused to discuss it and told me to search in google... ChatGTP3.5 was more inclined to discuss, but further on told me that my question is violating the usage policies. I wonder if they decremented some social credit score like metric that will affect my user account...
+Is an LLM a kind of search engine replacement? Now i asked Google Bard/Gemin some question it classified as [politically sensitive](https://gemini.google.com/share/55ef0877aaf6) and it refused to discuss it and told me to search in google... ChatGTP3.5 was more inclined to discuss, but at some stage my question was 'violating the usage policies'. I wonder if they decremented some social credit score like metric that will affect my user account...
 
 Interesting that [YandexGTP](https://ya.ru/alisa_davay_pridumaem?utm_source=landing) is much more touchy, probably due to some regulation of the Russian government...
 
-In any event: There is a point in running an LLM locally, now that i thing of it. Unfortunately this is very slow for me, as i don't have a suitable GPU installed on my machine. Modern times (those liberal nineties, where one would bitch about Microsoft, but they weren't calling home on anything back then, things are increasingly control oriented, no doubt about that)
-
+In any event: There is a point in running an LLM locally, now that i thing of it. Unfortunately [ollama with lama2](https://ollama.com/) is very slow on my machine, as i don't have a suitable GPU installed on my machine. Modern times...
+ 
 -----
 
 An interesting discussion on the nature of thinking with google bard/gemini [link](https://gemini.google.com/share/67da9e441ad9)   
