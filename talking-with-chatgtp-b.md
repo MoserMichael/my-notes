@@ -92,7 +92,7 @@ https://huggingface.co/docs/transformers/main/tasks/prompting
 
 https://www.youtube.com/watch?v=jC4v5AS4RIM
 
-Why all this prompting business? Says the aim of the prompt is to constraint the possible answers (since the LLM has been trained on lots of data)
+Why all this prompting business? Says the aim of the prompt is to put up some filter / constraint on the possible answers so as to guide the LLM towards some more relevant portion of the training data (since the LLM has been trained on lots of data)
 
 Says components of a good prompt have:
 
@@ -107,7 +107,7 @@ Says components of a good prompt have:
 Example: (I'm a 70kb male) (context) (give me a 3 month training program) (task) 
 
 Seems plausible, that a focused prompt will direct the focus of the model to some relevant portion of its training data.
-Now I wonder if you can tell the LLM invent a nice prompt, given these rules.
+Now I wonder if you can tell the LLM to invent a nice prompt, given these rules.
 
 -----
 
@@ -119,7 +119,7 @@ Here is a conversation with ChatGTP's impersonation of Marvin ...  [link]( https
 
 This chat helped me to develop some empathy for the strike of the Writers guide of America, the writing of a typical script is a collective effort, there is a team of writers involved. The top experienced writers will probably not be affected, however the junior members of the team will probably suffer. Also they might need fewer writers to hash out the details of a script. 
 
-I watched this very interview with [Michael Yamin](https://www.youtube.com/watch?v=V9mHlWXEc9w) - one takeaway: even the top rated authors had to start as junior writers, it takes a lot of experience to get to the top. So maybe in the long run we could run out of experienced writers, given that it is harder to get into a entry level position as a writer.
+I watched this very interview with script writer [Michael Yamin](https://www.youtube.com/watch?v=V9mHlWXEc9w) - one takeaway: even the top rated authors had to start as junior writers, it takes a lot of experience to get to the top. So maybe in the long run we could run out of experienced writers, given that it is harder to get into a entry level position as a writer.
 
 ----
 
