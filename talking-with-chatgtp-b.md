@@ -20,7 +20,7 @@ Is an LLM a kind of search engine replacement? Now i asked Google Bard/Gemin som
 
 Interesting that [YandexGTP](https://ya.ru/alisa_davay_pridumaem?utm_source=landing) is much more touchy, probably due to some regulation of the Russian government - or in order to protect the customers, as there are lots of [policial prisoners in Russia](https://memohrc.org/ru/pzk-list) 
 
-In any event: There is a point in running an LLM locally, now that i think of it. Unfortunately [ollama with lama2](https://ollama.com/) is very slow on my machine, as i don't have a suitable GPU installed on my machine. Modern times... (I still can't get used to using the [word 'compute' as a noun](https://g.co/gemini/share/5a30ec7f7af5) 
+In any event: There is a point in running an LLM locally, now that i think of it. Unfortunately [ollama with lama2](https://ollama.com/) is very slow on my machine, as i don't have a suitable GPU installed on my machine. Modern times... /I still can't get used to using the [word 'compute' as a noun](https://g.co/gemini/share/5a30ec7f7af5) /
  
 -----
 
