@@ -68,9 +68,9 @@ An example of the confirmation bias machine is this interesting discussion:  [ P
 
 /well, sooner or later the LLM will start to talk funny, like mentioning cyberwarfare in the context of the Clement Attlee government, before they had any fancy computers to begin with/
  
-    Confirmation bias can have a good point - having a political discussion with a Robot is much less adversarial! See [this discussion](https://g.co/gemini/share/214380331623), where i asked Google bard/gemini if the internet isn't just helping dictators more than it is helped civil society.
+Confirmation bias can have a good point - having a political discussion with a Robot is much less adversarial! See [this discussion](https://g.co/gemini/share/214380331623), where i asked Google bard/gemini if the internet isn't just helping dictators more than it is helped civil society.
 
-... got the impression that one is talking with a wall of all political cliches that have been invented so far, while arguing with an LLM ...
+When discussing such matters you get the impression that one is talking with a wall of all political cliches that have been invented so far, while arguing with an LLM ...
  
 ----
 Prompt engineering/Prompting is pretty scary - looks like some kind of magic, so lets learn more about it.
