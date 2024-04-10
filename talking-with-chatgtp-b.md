@@ -192,15 +192,15 @@ Yes, the opinionated approach in software development often implies a more centr
 
 Here are some characteristics of a centralized decision-making process in opinionated designs:
 
-    Prescriptive Guidelines: Opinionated frameworks come with prescriptive guidelines, conventions, and best practices that developers are expected to follow. These guidelines are typically set by the creators of the framework or a central governing body.
+- Prescriptive Guidelines: Opinionated frameworks come with prescriptive guidelines, conventions, and best practices that developers are expected to follow. These guidelines are typically set by the creators of the framework or a central governing body.
 
-    Defaults and Conventions: The framework often provides default settings and conventions for common tasks. Developers can start working with the framework immediately, benefiting from these defaults, and only deviate when necessary.
+- Defaults and Conventions: The framework often provides default settings and conventions for common tasks. Developers can start working with the framework immediately, benefiting from these defaults, and only deviate when necessary.
 
-    Reduced Configuration: Opinionated frameworks often aim to minimize configuration by making decisions on behalf of the developer. This is in contrast to more unopinionated systems, where developers have greater freedom in making configuration choices.
+- Reduced Configuration: Opinionated frameworks often aim to minimize configuration by making decisions on behalf of the developer. This is in contrast to more unopinionated systems, where developers have greater freedom in making configuration choices.
 
-    Built-in Features: Opinionated frameworks often come with a set of built-in features and tools that are considered essential for a specific type of application. These features are integrated into the framework to streamline development.
+- Built-in Features: Opinionated frameworks often come with a set of built-in features and tools that are considered essential for a specific type of application. These features are integrated into the framework to streamline development.
 
-    Community Consensus: The decision-making process might also involve input from the development community, where a set of conventions is established through discussion and consensus. In such cases, the central authority may be a community-driven process.
+- Community Consensus: The decision-making process might also involve input from the development community, where a set of conventions is established through discussion and consensus. In such cases, the central authority may be a community-driven process.
 
 While a centralized decision-making process can provide benefits such as consistency, rapid development, and ease of onboarding for new developers, it may also limit flexibility and customization. Developers using opinionated frameworks need to adhere to the established conventions, which may not be suitable for all project requirements.
 
