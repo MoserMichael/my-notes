@@ -37,7 +37,6 @@
 #
 
 
-
 class Solution:
     def islandPerimeter(self, grid: List[List[int]]) -> int:
         dy = len(grid)
@@ -48,21 +47,23 @@ class Solution:
         for y in range(dy):
             prev = 0
             for x in range(dx):
-                if grid[y][x] != prev:
+                nxt = grid[y][x]
+                if nxt != prev:
                     ret += 1
-                prev = grid[y][x]
+                prev = nxt
             if prev:
                 ret += 1
 
         for x in range(dx):
             prev = 0
             for y in range(dy):
-                if grid[y][x] != prev:
+                nxt = grid[y][x]
+                if nxt != prev:
                     ret += 1
-                prev = grid[y][x]
-
+                prev = nxt
             if prev:
                 ret += 1
 
         return ret
+
 

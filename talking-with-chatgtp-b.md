@@ -16,6 +16,14 @@ That's a good way, if the chat session contains figures or formulas, these are h
 
 -----
 
+Discussing the question of the potential for an Industrial revolution during the Roman empire. One often hears that there was great potential but lack of incentive for innovation, because slavery led to low costs of labor.
+
+Was all of the Roman empire the same to this respect? Well not entirely! One province of indomitable Jews still holds out against the system. Slavery was less widespread in Judae romana, and they had big ports in [Caesarea Maritima](https://en.wikipedia.org/wiki/Caesarea_Maritima) with shipbuilding and glass production. Also King Herod had quite big construction projects, so the lack of big slave armies would create considerable incentives for innovation for this particular province...but in the end there was no Industrial revolution here, so it is hard to prove a point...
+
+[link to discussion](https://g.co/gemini/share/c658765e2f5d)
+
+-----
+
 Is an LLM a kind of search engine replacement? Now i asked Google Bard/Gemin some question it classified as [politically sensitive](https://gemini.google.com/share/55ef0877aaf6) and it refused to discuss it... ChatGTP3.5 was more inclined to discuss, but at some stage my question was 'violating the usage policies'. I am beginning to wonder if they then decremented some invisible metric that is similar to the famous social credit score...
 
 Interesting that [YandexGTP](https://ya.ru/alisa_davay_pridumaem?utm_source=landing) is much more touchy, probably due to some regulation of the Russian government - or in order to protect the customers, as there are lots of [policial prisoners in Russia](https://memohrc.org/ru/pzk-list) 
