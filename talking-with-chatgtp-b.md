@@ -133,6 +133,14 @@ I watched this very interview with script writer [Michael Yamin](https://www.you
 
 Talking with Google bard/gemini about the curious case of the [Tuareg and survial in the desert](https://gemini.google.com/share/9f9ff2dcfcd7)
 
+----
+
+Talking about the phrase  "A society without color differentiation of pants is having no purpose" with Google Bard/Gemini in [Russian](https://g.co/gemini/share/02911cb774e0) and [English](https://g.co/gemini/share/b7142f5c0d02)
+
+The phrase comes from the movie [Kin Dza Dza](https://en.wikipedia.org/wiki/Kin-dza-dza!) - it is on [youtube with English subtitles](https://www.youtube.com/watch?v=j3287mOEOVU)
+
+Now the Russian answer is very different from the English one, so I don't know what to think of 'transfer learning' and all that stuff... It is hard to know what they are really doing, and I don't have the inclination to pay for Gpt-4 access...
+
 -----
 
 Google Bard seems to be very knowledgable on the history of Coca-Cola advertising.  [link](https://g.co/bard/share/34cdad4e3637) ChatGTP3.5 had less to say on this subject...
@@ -143,7 +151,6 @@ Bard had more to say on this subject: [link](https://g.co/bard/share/49251d1884b
 
 ... but maybe I am comparing apples to oranges, just because I don't want to pay for ChatGTP4 ...
 (however on some occasions i got a better answer from ChatGTP3.5, each of them has its own biases. However google has less clout than openai, so we get something comparable to ChatGTP4 for free)
-
 
 ----
 
