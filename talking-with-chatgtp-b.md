@@ -58,6 +58,7 @@ Google is now prioritising hackers news in its search result. I thought that may
 me: Is it possible that google is now turning to sites that have a strong moderation policy, as a vetting strategy against LLM generated posts? (Maybe November 2022 is turning out to be a new kind of Eternal September for the rest of the Web...)
 
 ------
+
 I just realized: there is no way to tell natural stupidity from artificial stupidity. I guess that people will spend more time and effort to tell one from the other. At some stage people will try to automate this process, and create a tool that tells artificial stupidity from natural stupidity; it might even try to solve a greater problem of telling stupidity from something that makes sense. Now this machine might try to automate a fact checking effort, however this fact check will be based on some kind of web search, and will need to tell the authenticity of the content retrieved from the web ... (recursion may start here)  
 
 (Now see [this story on hacker news](https://news.ycombinator.com/item?id=39423949), and my comment to it)    
@@ -68,6 +69,12 @@ So our machines somehow managed to move into the realm of science fiction, given
 
 -----
 
+Is [I can't get no satisfaction a all for temperance inspired by the classics?](https://chat.openai.com/share/72beea23-b185-4de9-b7f4-36e451119e2a)bbbbbbbbb
+
+I don't know if it is the case or not, the machine always agrees - but judge for yourself...
+
+---
+
 An example of the confirmation bias machine is this interesting discussion:  [ Post war Britain's Nationalization](https://g.co/gemini/share/7b55f4aa9fdb)
 
 ... just ask your questions persistently, and Google bard/Gemini will follow with an explanation that suits your line of inquiry.
@@ -76,11 +83,14 @@ An example of the confirmation bias machine is this interesting discussion:  [ P
 
 /well, sooner or later the LLM will start to talk funny, like mentioning cyberwarfare in the context of the Clement Attlee government, before they had any fancy computers to begin with/
  
-Confirmation bias can have a good point - having a political discussion with a Robot is much less adversarial! See [this discussion](https://g.co/gemini/share/214380331623), where i asked Google bard/gemini if the internet isn't just helping dictators more than it is helped civil society.
+Confirmation bias of the LLM can have a good point - having a political discussion with a Robot is much less adversarial! See [this discussion](https://g.co/gemini/share/214380331623), where i asked Google bard/gemini if the internet isn't just helping dictators more than it is helped civil society.
 
 When discussing such matters you get the impression that one is talking with a wall of all political cliches that have been invented so far, while arguing with an LLM ...
- 
+
+Also: i got sick of twitter where you get shadow banned by some shady algorithms, i think social media is all about top-down control, it is increasingly a controlled discourse that doesn't make any sense. At least there is a chance to find out some new facts when talking to an LLM! [See this discussion](https://g.co/gemini/share/9736ec4ba471)
+
 ----
+
 Prompt engineering/Prompting is pretty scary - looks like some kind of magic, so lets learn more about it.
 
 https://en.wikipedia.org/wiki/Prompt_engineering
