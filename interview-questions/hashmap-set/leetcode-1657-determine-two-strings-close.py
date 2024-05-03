@@ -45,30 +45,66 @@
 #
 
 
+import collections
+
 class Solution:
     def closeStrings(self, word1: str, word2: str) -> bool:
+
         if len(word1) != len(word2):
             return False
-  
-        freq1, vals1 = self.countFreq(word1)
-        freq2, vals2 = self.countFreq(word2)
 
-        return freq1 == freq2 and vals1 == vals2
+        chmap1 = Solution.countChars(word1)
+        chmap2 = Solution.countChars(word2)
 
-    
-    def countFreq(self, word):
-        freq = {}
-        for ch in word:
-            if ch in freq:
-                freq[ch] += 1
-            else:
-                freq[ch] = 1
-        
-        vals = list(freq.values())
-        vals.sort()
+        cnt1=list(chmap1.values())
+        cnt2=list(chmap2.values())
+        cnt1.sort()
+        cnt2.sort()
+        if cnt1 != cnt2:
+            return False
 
-        keys = list(freq.keys())
-        keys.sort()
+        if set(chmap1.keys()) != set(chmap2.keys()):
+            return False
+        return True
 
-        return vals, keys
+    def countChars(word):
+        return collections.Counter(word)
+
+        #ret = collections.defaultdict(int)
+        #for ch in word:
+        #    ret[ch] += 1
+
+        #ret={}
+        #for ch in word:
+        #    ret[ch]=ret.setdefault(ch, 0) + 1
+        return ret
+
+
+#class Solution:
+#    def closeStrings(self, word1: str, word2: str) -> bool:
+#        if len(word1) != len(word2):
+#            return False
+#
+#        freq1, vals1 = self.countFreq(word1)
+#        freq2, vals2 = self.countFreq(word2)
+#
+#        return freq1 == freq2 and vals1 == vals2
+#
+#
+#    def countFreq(self, word):
+#        freq = {}
+#        for ch in word:
+#            if ch in freq:
+#                freq[ch] += 1
+#            else:
+#                freq[ch] = 1
+#
+#        vals = list(freq.values())
+#        vals.sort()
+#
+#        keys = list(freq.keys())
+#        keys.sort()
+#
+#        return vals, keys
+#
 
