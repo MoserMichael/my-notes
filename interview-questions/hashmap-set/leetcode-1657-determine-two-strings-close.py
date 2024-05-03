@@ -47,28 +47,21 @@
 
 import collections
 
+import collections
+
 class Solution:
     def closeStrings(self, word1: str, word2: str) -> bool:
 
         if len(word1) != len(word2):
             return False
 
-        chmap1 = Solution.countChars(word1)
-        chmap2 = Solution.countChars(word2)
+        cnt1, keys1 = Solution.countChars(word1)
+        cnt2, keys2 = Solution.countChars(word2)
 
-        cnt1=list(chmap1.values())
-        cnt2=list(chmap2.values())
-        cnt1.sort()
-        cnt2.sort()
-        if cnt1 != cnt2:
-            return False
-
-        if set(chmap1.keys()) != set(chmap2.keys()):
-            return False
-        return True
+        return cnt1 == cnt2 and keys1 == keys2
 
     def countChars(word):
-        return collections.Counter(word)
+        ret = collections.Counter(word)
 
         #ret = collections.defaultdict(int)
         #for ch in word:
@@ -77,7 +70,10 @@ class Solution:
         #ret={}
         #for ch in word:
         #    ret[ch]=ret.setdefault(ch, 0) + 1
-        return ret
+
+        cret = list(ret.values())
+        cret.sort()
+        return cret, set(ret.keys())
 
 
 #class Solution:
