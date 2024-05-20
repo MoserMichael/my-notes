@@ -4,203 +4,27 @@
     "type": "split",
     "children": [
       {
-        "id": "3ce10bfd41a7dda8",
+        "id": "893e4a1b2eaeee7c",
         "type": "tabs",
         "children": [
           {
-            "id": "fc95cfadf49067f3",
+            "id": "1984f8a3ab6cb002",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docker stuff.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           },
           {
-            "id": "5fafc8c25cef9f5b",
+            "id": "8659a5347e439290",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "git - github.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6b5e033e031e5c10",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "using windows.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5ec09b5cb391f6ef",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "using osx.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f651c5b16a553b48",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "git - github.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c712f70dbca3754f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "kubernetes.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "af90730d89ccf316",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "mongo.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c98ce2419dbcf21e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "redis.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "132686be58dc6dc6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Jenkins.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0de4af825283d975",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "python - turtle.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ac0c1acceefedaab",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "devtools.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "aaa76c14519e63e4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "python-scripting.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ecb23841c3247b41",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "git - github.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e9606f9b1de9c759",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "websock.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5e0bf3905ca9879f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "chatgtp-api.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6a744ad35e0793f5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "misc.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ],
-        "currentTab": 15
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -266,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "misc.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -283,7 +106,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "misc.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -305,9 +127,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "misc.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -327,24 +147,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6a744ad35e0793f5",
+  "active": "8659a5347e439290",
   "lastOpenFiles": [
-    "chatgtp-api.md",
     "misc.md",
+    "chatgtp-api.md",
     "websock.md",
     "git - github.md",
-    "javascript - node.md",
     "python-scripting.md",
-    "redis.md",
-    "mongo.md",
-    "minecraft for dummys.md",
     "devtools.md",
-    "kubernetes.md",
     "python - turtle.md",
     "Jenkins.md",
-    "using linux.md",
+    "redis.md",
+    "mongo.md",
+    "kubernetes.md",
     "using osx.md",
     "using windows.md",
-    "docker stuff.md"
+    "docker stuff.md",
+    "javascript - node.md",
+    "minecraft for dummys.md",
+    "using linux.md"
   ]
 }
