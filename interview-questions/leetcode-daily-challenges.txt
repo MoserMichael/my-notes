@@ -1,0 +1,30 @@
+
+Daily challenges are nice - usually tasks on consequtive days are following the same themem. The first day of this sequence are easier, then it gets more complicated.
+    
+I am a fan of this, think it is very deductive approach. Writing down a log of these tasks...
+
+---
+
+Finding the combination of all 
+            
+- 78. Subsets (powerset) -  https://leetcode.com/problems/subsets/description/
+
+https://leetcode.com/problems/the-number-of-beautiful-subsets/description/        
+
+- missed a few days
+
+24/5/  https://leetcode.com/problems/maximum-score-words-formed-by-letters/description 
+
+25/5
+https://leetcode.com/problems/maximum-score-words-formed-by-letters/description
+
+26/5
+https://leetcode.com/problems/student-attendance-record-ii/description/
+
+27/5
+https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/description/
+
+28/5
+https://leetcode.com/problems/get-equal-substrings-within-budget/description/
+
+
