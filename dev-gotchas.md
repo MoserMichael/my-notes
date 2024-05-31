@@ -24,7 +24,7 @@ So let's just follow the instructions!
 [![The 'Lego Movie' - 'Instructions to fit in, have everybody like you and always be happy'](https://img.youtube.com/vi/5wuAxZqBuFE/0.jpg)](https://www.youtube.com/watch?v=5wuAxZqBuFE)
 
 
-I am starting with list of problems, here are some problem lists that i found:
+I am starting with list of problems, here are some problem lists on leetcode: (the good part is that problems are divided into problem sets, the name of the problem set is a hint on how to solve the problem - there are problem sets like "sliding window" or "dynamic programming")
 
 - [top-interview-150](https://leetcode.com/studyplan/top-interview-150/) and  [top-interview-75](https://leetcode.com/studyplan/leetcode-75/) These list give a classification of problems, where the classification itself is giving a strong hint as to how to solve the problem. Let's hope it's a good start...
 - [top 100 liked questions](https://leetcode.com/problem-list/top-100-liked-questions/)
@@ -46,50 +46,9 @@ My observations, so far:
 - I need to get better at coming up with test cases for my solution. Usually I follow the examples given in an exercise, frequently there are cases that are not described in the problem statement.
 
 Some gripes: 
-- some of the problems are only available to payed accounts, which is bad. 
-- for some of the problems the performance indicator is relevant, performance ranking jumps up and down if you rerun the same test (in theory they could just measure CPU time instead of total time, to fix that)
-- nitpick: sometimes the difficulty ranking of a leetcode problem doesn't make sense, but i guess there is no use in bothering with this problem; I think part of the problem is the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them are ranked as Medium.
-
-<!--
-I asked GoogleBard about alternative services, maybe it's time to check them out (still, it may be that the free tier of Leetcode is optimal, in terms of value for ...money)
-
-Q: which sites are successfully competing with leetcode?
-
-GoogleBard:
-
-While LeetCode remains the dominant platform for interview preparation for tech roles, several other sites are gaining traction and offering compelling alternatives:
-
-Direct Competitors:
-
-- HackerRank: Offers a similar experience to LeetCode, with a vast library of coding challenges, contests, and interview preparation resources. Its strengths include a strong community, active discussions, and a focus on specific job roles.
-- Codility: Geared specifically towards interview preparation, Codility provides personalized learning paths, mock interviews, and feedback from real engineers. It also integrates with various applicant tracking systems, making it popular among recruiting teams.
-- Interview Cake: Focuses on high-quality, in-depth coding challenges designed to simulate real-world interview scenarios. It offers detailed solutions and explanations, helping users understand the thought process behind solving problems.
-- Pramp: Provides a platform for conducting mock interviews with other users, allowing for real-time feedback and practice in a simulated interview environment.
-
-Emerging Alternatives:
-
-- Codewars: Offers a gamified approach to learning, with challenges presented in the form of "katas" that users can solve and earn points and ranks. This makes learning more engaging and interactive.
-- AlgoExpert: Provides structured learning paths for specific coding topics, along with video explanations, quizzes, and practice problems. It's particularly helpful for beginners who need a more guided learning experience.
-- NeetCode 150: Offers a curated list of 150 essential coding problems for cracking FAANG interviews. It focuses on high-impact problems with detailed solutions and explanations.
-- Grind75: Offers a structured 75-day LeetCode challenge program designed to improve coding skills and prepare for interviews. It provides a daily schedule and community support to keep users motivated.
-
-Other Resources:
-
-- MIT OpenCourseware: Offers free access to video lectures and materials from MIT's computer science courses, providing a solid foundation in programming concepts.
-- GeeksForGeeks: Provides a wealth of articles, tutorials, and practice problems on various computer science topics, including algorithms, data structures, and operating systems.
-
-Choosing the Right Platform:
-
-The best platform for you depends on your individual needs and learning style. Consider factors like:
-
-- Your level of experience: If you're a beginner, platforms like AlgoExpert or Pramp might be helpful.
-- Your specific goals: If you're aiming for FAANG companies, NeetCode 150 or Grind75 could be good options.
-- Your preferred learning style: If you enjoy gamification, Codewars might be a good fit. If you prefer video explanations, Interview Cake or AlgoExpert might be better.
-- Cost: LeetCode offers a free tier with limited features, while other platforms require paid subscriptions.
-
-Ultimately, it's recommended to try out different platforms and see which one works best for you. You can also combine several platforms to maximize your learning experience.
-
-//-->
+    - some of the problems are only available to payed accounts, which is bad. 
+- for some of the problems the performance indicator is relevant, this is not always the case (they are measure total test time, apparently, however they should be measuringing CPU, as this would give you a more consistent indication)
+- nitpick: sometimes the difficulty ranking of a leetcode problem doesn't make sense, but i guess there is no use in bothering with this problem; I think part of the problem is the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them are therefore ranked as Medium.
 
 <!--
 ---12/07/23 07:46:26----------------------
@@ -104,7 +63,7 @@ I don't have a fix for this kind of situation. Maybe it's a better idea to start
 
 ---31/05/23 05:51:00----------------------
 
-While doing this side project [a WEB dashboaord for managing docker containers](https://github.com/MoserMichael/dockerdashphp)
+While doing this side project [a WEB dashboard for managing docker containers](https://github.com/MoserMichael/dockerdashphp)
 
 Found an area where ChatGTP/Google Bard can be used to great benefit:  I am not an expert in frontend stuff, but now I had to fiddle with CSS style sheets - the LLM knows all the style combinations, and its recommendations worked!
 
