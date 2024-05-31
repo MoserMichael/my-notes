@@ -15,13 +15,9 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 Since October 7th we do have a war in Israel, where I am living. Now I started to do leetcode exercises in order to keep my sanity.
 
-I was probably wrong in making up all of the projects, here on this site - as none of it is of any value (In a way it was a good way to learn new stuff, my way of staying afloat in an ever changing landscape of software development, sort of)
+Also turns out, that the skill of solving Leetcode questions is much more appreciated than writing open source code on your github page...  /Well, development of my other open source projects was a good way to learn new stuff, as my way of staying afloat in an ever changing landscape of software development, sort of/
 
-It turns out that my efforts have little value, the skill of solving Leetcode questions is much more appreciated (Now for whatever reason the most common verb that combines with leetcode is 'to grind')
-
-... Therefore joining the leetcode party and putting up my solutions [here](https://github.com/MoserMichael/my-notes/tree/master/interview-questions) 
-
-Leetcode does test your problem solving skills, whereas programming in my humble opinion is more about writing tools for solving problems.
+.. Therefore I am now joining the leetcode party and putting up my solutions [here on this site](https://github.com/MoserMichael/my-notes/tree/master/interview-questions) /Leetcode does test your problem solving skills, whereas programming in my humble opinion is more about writing tools for solving problems (but that's a different story)/
 
 So let's just follow the instructions!   
 
