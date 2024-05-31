@@ -17,7 +17,7 @@ Since October 7th we do have a war in Israel, where I am living. Now I started t
 
 Also turns out, that the skill of solving Leetcode questions is much more appreciated than writing open source code on your github page...  /Well, development of my other open source projects was a good way to learn new stuff, as my way of staying afloat in an ever changing landscape of software development, sort of/
 
-.. Therefore I am now joining the leetcode party and putting up my solutions [here on this site](https://github.com/MoserMichael/my-notes/tree/master/interview-questions) /Leetcode does test your problem solving skills, whereas programming in my humble opinion is more about writing tools for solving problems (but that's a different story)/
+.. Therefore I am now joining the leetcode party and putting up some of my solutions [here on this site](https://github.com/MoserMichael/my-notes/tree/master/interview-questions) /Leetcode does test your problem solving skills, whereas programming in my humble opinion is more about writing tools for solving problems (but that's a different story)/
 
 So let's just follow the instructions!   
 
@@ -33,6 +33,8 @@ I am starting with list of problems, here are some problem lists on leetcode: (t
 
 6/10/23 - I am past a hundred leetcode problems, (hi, [that's me on leetcode](https://leetcode.com/michaelmo123/) ) 
 
+Later: they have a daily leetcode challenge, started to do these (recently started to log the leetcode challenges [here](/interview-questions/leetcode-daily-challenges.txt)
+
 My observations, so far:
 
 - I am over the initial 'leetcode shock'. Some people take Leetcode really hard. However it can also be fun.
@@ -40,15 +42,17 @@ My observations, so far:
 - When stuck with a problem: It really helps to stop and then return to the same problem later, with a fresh perspective. (However you can't do that with a job interview... :-) )
 - it makes sense to return to a problem, while asking follow up questions (that's what they like to do at job interviews)
 - One follow up question is: how could you make things faster? If a submission isn't along the top submissions in terms of the desired trait, then there usually is much room for improvement. (don't overdo it, they measure total time and not the  CPU time, so performance can differ between test runs!)
-- if your initial solution passed and is not among the fastest then you can just see faster submissions when pressing on the x-axis of the graph that compares your solution to others, sometimes the better solution tells you how to do it better.
+- if your initial solution passed and is not among the fastest then you can just see faster submissions when pressing on the x-axis of the graph that compares your solution to others, sometimes the faster solution tells you how solve the problem in a better way. This possibility of comparing your solution to those of others is a big deal, this is a strong reality check!
 - Some problems are easier to solve recursively, one follow up question would be: solve the same problem without recursion
 - Don't take shortcuts. Example: if a function returns more than two return values, then make an object out of the return value - otherwise it's easy to loose track. (same reason: avoid tuples that are standing in for records, it's easy to loose track)
 - I need to get better at coming up with test cases for my solution. Usually I follow the examples given in an exercise, frequently there are cases that are not described in the problem statement. (now I am also looking at the problem constraint section, as a check, before starting to write a solution)
 
 Some gripes: 
     - some of the problems are only available to payed accounts, which is bad. 
-- for some of the problems the performance indicator is relevant, this is not always the case (they are measure total test time, apparently, however they should be measuringing CPU, as this would give you a more consistent indication)
+- for some of the problems the performance indicator is relevant, this is not always the case (they are measure total test time, apparently, however they should be measuring CPU, as this would give you a more consistent indication)
 - nitpick: sometimes the difficulty ranking of a leetcode problem doesn't make sense, but i guess there is no use in bothering with this problem; I think part of the problem is the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them are therefore ranked as Medium.
+
+
 
 <!--
 ---12/07/23 07:46:26----------------------
