@@ -15,28 +15,13 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 Since October 7th we do have a war in Israel, where I am living. Now I started to do leetcode exercises in order to keep my sanity.
 
-I was probably wrong in making up all of this stuff, here on this site, as none of it is of any value. (i was using all these projects as a tool to learn stuff, and to write down my thoughts and reflections along the way)
-
-This was sort of my way of staying afloat in an ever changing landscape of software development, sort of.
+I was probably wrong in making up all of the projec, here on this site - as none of it is of any value (In a way it was a good way to learn new stuff, my way of staying afloat in an ever changing landscape of software development, sort of)
 
 It turns out that my efforts have little value, the skill of solving Leetcode questions is much more appreciated (Now for whatever reason the most common verb that combines with leetcode is 'to grind')
 
-I never thought of leetcode to be too relevant to my way of doing things, now that was apparently wrong; 
-
 ... Therefore joining the leetcode party and putting up my solutions [here](https://github.com/MoserMichael/my-notes/tree/master/interview-questions) 
 
-After all leetcode stuff has something to do with programming (actually leetcode has more to do with problem solving, whereas programming in my humble understanding is about writing tools for solving problems)
-
-My problem with leetcode:
-
-- You often spend more time at parsing the problem statement than with solving the problem. Well, maybe that's the point of the exercise, who knows...
-- Now always aware of all possible test cases, I need to be more careful while reading the problem description. Sometimes there are hints in the _Constraints_ section.
-- I tend to forget the leetcode exercise when it gets 'accepted' (when the code passes all of the tests). Maybe that's because the problems are often contrived, and have little to do with real world problems. (maybe i should take notes)
-- One is supposed to give a show while interviewing in the leetcode style, and that doesn't go well with looking for a solution to the problem. 
-    - (Maybe the reason is that I am just to slow at solving this kind of problems, at the moment)
-    - Maybe the whole point is to go through the problem description and spell out a solution, before starting to code.
-    - another big issue: you are supposed to understand the problem description thoroughly before you start to code. That also means going through all of the example cases, asking questions about edge conditions, thinking before programming. I am more used to a hacky approach, my guess is that this doesn't go well with interviews. At least this is a chance to become better at it...
-
+Leetcode does test your problem solving skills, whereas programming in my humble opnion is about writing tools for solving problems.
 
 So let's just follow the instructions!   
 
@@ -50,25 +35,19 @@ I am starting with list of problems, here are some problem lists that i found:
 - [all problems](https://leetcode.com/problemset/all/?page=1)
 - [google interview questions](https://leetcode.com/problem-list/top-google-questions/)
 
-<!--
-/today i learned that Leetcode exists since 2010, [wiki](https://en.wikipedia.org/wiki/LeetCode) - so much about taking wrong turns... Still I am doing these problems for some time now, and still don't feel that i am getting any faster at solving them, or getting any better at making a show while presenting them. Where it helps: I don't get lost when reading tricky problem statements, so there is some sense in doing all this.../
-//-->
-
 6/10/23 - I am past a hundred leetcode problems, (hi, [that's me on leetcode](https://leetcode.com/michaelmo123/) ) 
 
 My observations, so far:
 
-- Now it can still take me hours to solve a problem. 
-    - when stuck with a problem: It really helps to stop and then return to the same problem later, with a fresh perspective. (However you can't do that with a job interview...)
 - I am over the initial 'leetcode shock'. Some people take Leetcode really hard. However it can also be fun.
+- Now it can still take me a lot of time to solve a problem (probably more than it is supposed to take)
+- When stuck with a problem: It really helps to stop and then return to the same problem later, with a fresh perspective. (However you can't do that with a job interview... :-) )
 - it makes sense to return to a problem, while asking follow up questions (that's what they like to do at job interviews)
-    - One follow up question is: how could you make things faster? If a submission isn't along the top submissions in terms of the desired trait, then there usually is much room for improvement. For example: the [n-queen problem](https://leetcode.com/problems/n-queens-ii/) isn't a very hard problem, however they could also ask follow up questions like: can you make it faster?
-(I managed to used symmetries along the x-axis for this case, but there are probably more tricks in the book). /Note: performance measurement numbers in leetcode runs are sometimes erratic/
-    - Some problems are easier to solve recursively, one follow up question would be: solve the same problem without recursion
+- One follow up question is: how could you make things faster? If a submission isn't along the top submissions in terms of the desired trait, then there usually is much room for improvement. (don't overdo it, they measure total time and no CPU time, so performance can differ between test runs!)
+- if your initial solution passed and is not among the fastest then you can just see faster submissions when pressing on the x-axis of the graph that compares your solution to others!
+- Some problems are easier to solve recursively, one follow up question would be: solve the same problem without recursion
 - Don't take shortcuts. Example: if a function returns more than two return values, then make an object out of the return value - otherwise it's easy to loose track. (same reason: avoid tuples that are standing in for records, it's easy to loose track)
 - I need to get better at coming up with test cases for my solution. Usually I follow the examples given in an exercise, frequently there are cases that are not described in the problem statement.
-
-20/10/23 - Now starting to write leetcod submissions. Here you have to write some explanation of what has been done. Hope that this will improve my presentation skills at those job interviews...
 
 Some gripes: 
 - some of the problems are only available to payed accounts, which is bad. 

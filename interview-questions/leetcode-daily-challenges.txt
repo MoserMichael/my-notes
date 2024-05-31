@@ -27,4 +27,11 @@ https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equa
 28/5
 https://leetcode.com/problems/get-equal-substrings-within-budget/description/
 
+29/5 
+https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/description/
 
+30/5
+https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/description/
+
+31/5
+https://leetcode.com/problems/single-number-iii/description/

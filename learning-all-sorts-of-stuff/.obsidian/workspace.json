@@ -19,8 +19,12 @@
             "id": "8659a5347e439290",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "python-scripting.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ],
@@ -90,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "python-scripting.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,6 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "python-scripting.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "python-scripting.md"
+              }
             }
           }
         ]
@@ -149,13 +157,13 @@
   },
   "active": "8659a5347e439290",
   "lastOpenFiles": [
+    "python - turtle.md",
     "misc.md",
     "chatgtp-api.md",
     "websock.md",
     "git - github.md",
     "python-scripting.md",
     "devtools.md",
-    "python - turtle.md",
     "Jenkins.md",
     "redis.md",
     "mongo.md",
