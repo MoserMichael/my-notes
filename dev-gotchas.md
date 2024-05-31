@@ -50,7 +50,7 @@ My observations, so far:
 Some gripes: 
     - some of the problems are only available to payed accounts, which is bad. 
 - for some of the problems the performance indicator is relevant, this is not always the case (they are measure total test time, apparently, however they should be measuring CPU, as this would give you a more consistent indication)
-- nitpick: sometimes the difficulty ranking of a leetcode problem doesn't make sense, but i guess there is no use in bothering with this problem; I think part of the problem is the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them are therefore ranked as Medium.
+- nitpick: sometimes the difficulty ranking of a leetcode problem doesn't make sense, but i guess there is no use to bother; Maybe that is explained by the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them need to be ranked as Medium in order to fit the curve.
 
 
 
