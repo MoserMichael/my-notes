@@ -13,7 +13,7 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 ---24/09/23 08:18:53----------------------
 
-Since October 7th we do have a war in Israel, where I am living. Now I started to do leetcode exercises in order to keep my sanity.
+Since October 7th we do have a war in Israel, my home country. Now I started to do leetcode exercises in order to keep my sanity.
 
 Also turns out, that the skill of solving Leetcode questions is much more appreciated than writing open source code on your github page...  /Well, development of my other open source projects was a good way to learn new stuff, as my way of staying afloat in an ever changing landscape of software development, sort of/
 
