@@ -15,13 +15,13 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 Since October 7th we do have a war in Israel, where I am living. Now I started to do leetcode exercises in order to keep my sanity.
 
-I was probably wrong in making up all of the projec, here on this site - as none of it is of any value (In a way it was a good way to learn new stuff, my way of staying afloat in an ever changing landscape of software development, sort of)
+I was probably wrong in making up all of the projects, here on this site - as none of it is of any value (In a way it was a good way to learn new stuff, my way of staying afloat in an ever changing landscape of software development, sort of)
 
 It turns out that my efforts have little value, the skill of solving Leetcode questions is much more appreciated (Now for whatever reason the most common verb that combines with leetcode is 'to grind')
 
 ... Therefore joining the leetcode party and putting up my solutions [here](https://github.com/MoserMichael/my-notes/tree/master/interview-questions) 
 
-Leetcode does test your problem solving skills, whereas programming in my humble opnion is about writing tools for solving problems.
+Leetcode does test your problem solving skills, whereas programming in my humble opinion is more about writing tools for solving problems.
 
 So let's just follow the instructions!   
 
