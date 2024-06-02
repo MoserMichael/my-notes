@@ -35,3 +35,7 @@ https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-x
 
 31/5
 https://leetcode.com/problems/single-number-iii/description/
+
+1/6
+https://leetcode.com/problems/score-of-a-string/solutions/5238298/python3-reduce-one-liner-with-explanation/
+

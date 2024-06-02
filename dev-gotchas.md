@@ -48,9 +48,10 @@ My observations, so far:
 - I need to get better at coming up with test cases for my solution. Usually I follow the examples given in an exercise, frequently there are cases that are not described in the problem statement. (now I am also looking at the problem constraint section, as a check, before starting to write a solution)
 
 Some gripes: 
-    - some of the problems are only available to payed accounts, which is bad. 
-- for some of the problems the performance indicator is relevant, this is not always the case (they are measure total test time, apparently, however they should be measuring CPU, as this would give you a more consistent indication)
-- nitpick: sometimes the difficulty ranking of a leetcode problem doesn't make sense, but i guess there is no use to bother; Maybe that is explained by the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them need to be ranked as Medium in order to fit the curve.
+
+- some of the problems are only available to payed accounts only. 
+- for some of the problems the performance indicator is relevant, this is not always the case (they seem to be measuring total test time, however they should be measuring CPU time instead, as this would give you a more consistent indication)
+- nitpick: sometimes an easy leetcode problem is ranked as medium - sometimes the rank of a problem doesn't make sense. Maybe that is explained by the requirement to have a bell-shaped curve for the difficulty levels of questions, so that most of them need to be ranked as Medium in order to fit the curve.
 
 
 

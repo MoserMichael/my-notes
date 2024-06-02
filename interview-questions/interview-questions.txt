@@ -465,6 +465,16 @@ XOR MAGIC
 
 https://florian.github.io//xor-trick/
 
+
+a ^ a = 0 (same bit appears twice == 0)
+
+a ^ b = b ^ a (bitwise operations are symmetric)
+
+a ^ b = c 
+
+a = c ^ b
+
+
 Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
 Input: nums = [4,1,2,1,2]
