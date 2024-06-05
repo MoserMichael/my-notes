@@ -1,4 +1,21 @@
 	
+vim
+		 :%s/\\n/\r/g
+		
+
+<pre>
+		"aaa\nbbb\n\ccc"  
+        to 
+          aaa
+          bbb
+          ccc"
+</pre>
+`						
+
+			
+		
+		
+
 vimdiff
      - space insensitive comparison:
 

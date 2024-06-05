@@ -21,7 +21,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "python-scripting.md",
+                "file": "devtools.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "python-scripting.md",
+                "file": "devtools.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "python-scripting.md",
+                "file": "devtools.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "python-scripting.md"
+                "file": "devtools.md"
               }
             }
           }
@@ -157,22 +157,22 @@
   },
   "active": "8659a5347e439290",
   "lastOpenFiles": [
-    "python - turtle.md",
-    "misc.md",
+    "docker stuff.md",
     "chatgtp-api.md",
+    "misc.md",
     "websock.md",
-    "git - github.md",
+    "using windows.md",
+    "using osx.md",
+    "using linux.md",
     "python-scripting.md",
+    "python - turtle.md",
+    "git - github.md",
     "devtools.md",
     "Jenkins.md",
     "redis.md",
     "mongo.md",
     "kubernetes.md",
-    "using osx.md",
-    "using windows.md",
-    "docker stuff.md",
     "javascript - node.md",
-    "minecraft for dummys.md",
-    "using linux.md"
+    "minecraft for dummys.md"
   ]
 }

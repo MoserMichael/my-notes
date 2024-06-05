@@ -3,6 +3,8 @@ Daily challenges are nice - usually tasks on consequtive days are following the 
     
 I am a fan of this, think it is very deductive approach. Writing down a log of these tasks...
 
+A month starts with simple questions, then they graually make them harder.
+
 ---
 
 Finding the combination of all 
@@ -11,7 +13,7 @@ Finding the combination of all
 
 https://leetcode.com/problems/the-number-of-beautiful-subsets/description/        
 
-- missed a few days
+- missed a few days -
 
 24/5/  https://leetcode.com/problems/maximum-score-words-formed-by-letters/description 
 
@@ -27,7 +29,7 @@ https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equa
 28/5
 https://leetcode.com/problems/get-equal-substrings-within-budget/description/
 
-29/5 
+29/5
 https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/description/
 
 30/5
@@ -37,5 +39,16 @@ https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-x
 https://leetcode.com/problems/single-number-iii/description/
 
 1/6
-https://leetcode.com/problems/score-of-a-string/solutions/5238298/python3-reduce-one-liner-with-explanation/
+https://leetcode.com/problems/score-of-a-string/
 
+2/6
+https://leetcode.com/problems/reverse-string/description/
+
+3/6
+https://leetcode.com/problems/append-characters-to-string-to-make-subsequence/
+
+4/6
+https://leetcode.com/problems/longest-palindrome/description/
+
+5/6
+https://leetcode.com/problems/find-common-characters
