@@ -1,7 +1,6 @@
 ---
 
 
-
         # fixing divergent feature branches 
 
             # rename branch to temporary name
@@ -14,12 +13,6 @@
             # merge --squash  - get changes in one commit! solve all merge conflicts in one step!
             git merge --squash thisfeature-temp
 
-        # github: put link to youtube video into github README
-            https://www.linkedin.com/pulse/how-add-embedded-video-github-readme-file-cengiz-toru/
-           
-            # for me it goes as follows:::
-
-            [<img src="https://i.ytimg.com/vi/3vnq1ltptZA/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=3vnq1ltptZA&t=2s "youtube video: dockerdashphp - managing your local docker engine: 55")
 
         # github search cheat sheet 
             https://cheatography.com/cpriest/cheat-sheets/github-search-syntax/
@@ -101,3 +94,9 @@ Want to submit a pull request to some repository other than your own stuff?
 
     - need to fork that repository first.
 
+# github: put link to youtube video into github README
+	https://www.linkedin.com/pulse/how-add-embedded-video-github-readme-file-cengiz-toru/
+   
+	# for me it goes as follows:::
+
+	[<img src="https://i.ytimg.com/vi/3vnq1ltptZA/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=3vnq1ltptZA&t=2s "youtube video: dockerdashphp - managing your local docker engine: 55")
