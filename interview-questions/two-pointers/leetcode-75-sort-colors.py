@@ -31,39 +31,58 @@
 #    Follow up: Could you come up with a one-pass algorithm using only constant extra space?
 #
 
+
+#    ## two pointer
 #
-#    # Intuition
+#    counter `low` for the range `nums[0:low]` that is set with zero values
+#    counter `high` for the range `nums[high:]` that will be set with two values.
 #
-#    Count the number of zeros, ones and twos, set the elements to these values, according to their count.
+#    determine these two values in the following loop, note that the zeros are also set, as the low pointer advances.
 #
-#    # Approach
-#    Do both in one and in two passes, with O(1) in memory:
+#    <pre><code>
+#    low, high = 0, len(nums)-1
+#    for val in nums:
+#        if val == 0:
+#            nums[low] = 0
+#            low += 1
+#        elif val == 2:
+#            high -= 1
+#    </code></pre>
 #
-#    - function sortColorsTwoPass
-#    - Two passes: pass over the input and count the nunbmer of zeros, ones and twos.
-#    - Second passes, if number of counted zeros is equal to n, set the first n elements to zero, if number of counted ones is m - set the next m elements to one, if number of counted zeros is equal to o, set the next o elements to two.
+#    Next, set all values between `low` and `high` to one and all remaining values to two.
 #
-#    Now in one pass
+#    ## two liner based on count
 #
-#    - function sortColorsOnePass
-#    - maintain count low_read=0 and high_read=len(nums-1), elements at these counters is read and the value of zeros,ones and twos at these indexes is counted.
-#    - maintain index low_write=0 and high_write=len(nums)-1, while low_read < high_read
-#       - while low_write is smaller than low_read and number of written zeros is smaller than the count of written zeroes, write another batch of zeros at low_write and increment the low_write value
-#       - while high_write is larger than high_read, and number of twos is smaller than the count of written twos, write another batch of twos at high_write and decrement the value of high_write.
-#    - after the end of loop, if low_read == high_read then count the current value at this index (otherwise we didn't count the last number.)
-#    - write the remaining count of ones and twos, the rest of the number is written as one.
+#    Count the occurances of zero, ones and twos.
+#    The resulting array is of the form `[0]*cnt[0]+[1]*cnt[1]+[2]*cnt[2]`
 #
-#    # Complexity
-#    - Time complexity: O(n) - one pass over the input for the second solution (for low_write and high_write that follow low_read and high_read)
+#    Now copy this array in place into the argument array.
 #
-#    - Space complexity: O(1) - three counters are maintained.
+#    `for idx, val in enumerate([0]*cnt[0]+[1]*cnt[1]+[2]*cnt[2]): nums[idx]=val`
 #
-#
+# Code
 
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        return Solution.sortColorsOnePass(nums)
-        #return Solution.sortColorsTwoPass(nums)
+        low, high = 0, len(nums)-1
+        for val in nums:
+            if val == 0:
+                nums[low] = 0
+                low += 1
+            elif val == 2:
+                high -= 1
+
+        while low <= high:
+            nums[low] = 1
+            low += 1
+        while low < len(nums):
+            nums[low] = 2
+            low += 1
+
+    def oneLiner(nums):
+        cnt = Counter(nums)
+        for idx, val in enumerate([0]*cnt[0]+[1]*cnt[1]+[2]*cnt[2]): nums[idx]=val
+
 
     def sortColorsOnePass(nums):
         if len(nums) == 0:
