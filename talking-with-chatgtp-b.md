@@ -17,7 +17,7 @@ That's a good way, if the chat session contains figures or formulas, these are h
 -----
 
 
-I have the hobby of solving leetcode questions. Now I gave the code of my solution to a 'hard' question [here]( https://leetcode.com/problems/binary-tree-maximum-path-sum/solutions/5309235/python-recursive-solution-computing-the-max-path-length-for-each-node/) to google Gemini, and asked it to explain the solution. The explanation of the code is quite good! Then asked it how to improve/optimize the given solution - here it started to talk thrash. See this [chat session](https://g.co/gemini/share/253eb3f17c40)
+I have the hobby of solving leetcode questions. Now I gave the code of my solution to a 'hard' question [here]( https://leetcode.com/problems/binary-tree-maximum-path-sum/solutions/5309235/python-recursive-solution-computing-the-max-path-length-for-each-node/) to the free version of google Gemini, and asked it to explain the solution. The explanation of the code is quite good! Then asked it how to improve/optimize the given solution - here it started to talk thrash. See this [chat session](https://g.co/gemini/share/253eb3f17c40)
 
 So as a programmer i don't have to despair, yet... (however i don't know for how long - and if the payed version of chatgtp/gemini/copilot would do better, also: i never worked with copilot, don't know much about it.
 
