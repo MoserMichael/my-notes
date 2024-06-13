@@ -21,7 +21,9 @@ I have the hobby of solving leetcode questions. Now I gave the code of my soluti
 
 So as a programmer i don't have to despair, yet... (however i don't know for how long - and if the payed version of chatgtp/gemini/copilot would do better, also: i never worked with copilot, don't know much about it.
 
+<!--
 Also: i used to write explanations with my leetcode submissions - now i can't find the drive to do this... i am still doing the leetcode exercises, paradoxically...
+//-->
 
 The register says, that expectations on generative AI are being scaled back now. However: code generation tools, like copilot, are among the big success stories in this field of endeavor. [link to story](https://www.theregister.com/2024/06/12/survey_ai_projects/)
 
