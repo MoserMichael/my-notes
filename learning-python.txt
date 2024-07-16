@@ -1,7 +1,20 @@
 
 ---
 
-Slice trick for iterating over reversed list:
+>>> a=[set()] * 8
+>>> a
+[set(), set(), set(), set(), set(), set(), set(), set()]
+>>> a[0].add(1)
+
+>>> a
+[{1}, {1}, {1}, {1}, {1}, {1}, {1}, {1}]
+
+The thing is that after [set()] * 8 all elements of the resulting array are referring to the same object! (For me that was not obvious)
+
+---
+Need to iterate over a list from last element to first, in inverse order?
+
+Slice trick that returns the  reversed list:
 
     >>> a=[1,2,3]
     >>> a[::-1]
@@ -9,9 +22,9 @@ Slice trick for iterating over reversed list:
     >>> type(a[::-1])
     <class 'list'>
 
-The trick is not so good - it returns a copy of the list!
+Now this trick is not very good - it returns a copy of the list!
 
-So reversed is faster, because it returnes an iterator rather than a list copy?
+So reversed is faster, because it returnes an iterator rather than a list copy!
 
     >>> a=[1,2,3]
     >>> list(reversed(a))

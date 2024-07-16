@@ -16,6 +16,17 @@ That's a good way, if the chat session contains figures or formulas, these are h
 
 -----
 
+A talk with Chatgtp/gemini about the book "The dawn of everything" by  David Graeber and  David Wengrow, and how i found interesting similarities with 'der Zauberberg/The Magic Mountin' by Thomas Mann...
+
+[chatgtp](https://chatgpt.com/share/cc5ff175-0120-46a7-b836-5c0652a15bf2) [gemini/bard](https://gemini.google.com/share/80be462477bd)
+
+Intellectual debates with a large language model are fun, because the robot is actually listening (or rather simulating to listen...)
+
+/does that make me two thousand man?.../
+
+[link](https://www.youtube.com/watch?v=4DLKoOs3IpU)
+
+-----
 
 I have the hobby of solving leetcode questions. Now I gave the code of my solution to a 'hard' question [here]( https://leetcode.com/problems/binary-tree-maximum-path-sum/solutions/5309235/python-recursive-solution-computing-the-max-path-length-for-each-node/) to the free version of google Gemini, and asked it to explain the solution. The explanation of the code is quite good! Then asked it how to improve/optimize the given solution - here it started to talk thrash. See this [chat session](https://g.co/gemini/share/253eb3f17c40)
 
