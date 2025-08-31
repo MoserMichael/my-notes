@@ -1,5 +1,12 @@
 ---
 
+        # make a git archive -format zip of branch: main into file: zip.zip
+        git archive --format=zip --output zip.zip main
+
+        # make a git archive -format tar.gz of branch: main into file: repo.tar.gz
+        git archive --format=tar.gz  --output repo.tar.gz main
+
+
 
         # fixing divergent feature branches 
 

@@ -2,6 +2,14 @@
 
 Kubernetes:
 
+    -- describe all pods from a namespace
+
+        kubectl describe pod -n mynamespace $(k get pods -n mynamespace --no-headers -o custom-columns=":metadata.name" )
+
+        get just the image names
+
+        kubectl get pods -n mynamespace --no-headers -o custom-columns=":metadata.name"
+
     -- show name and image for pods  - status.containerStatuses[*].imageID lists all of the images for all containers.
 
         kubectl get pods -o=custom-columns='NAME:metadata.name,IMAGE:status.containerStatuses[*].imageID'
@@ -23,7 +31,6 @@ Kubernetes:
 
 
     - extracting interesting fields from a set of pods:
-
 
          Pod name and pod IP addreess
 
@@ -86,6 +93,32 @@ Kubernetes:
 
             https://github.com/ahmetb/kubectx
 
+------
+
+secrets
+
+# show kubernetes 'secret' 
+kubectl get secret secret-name -n netace -o json | jq '.data | map_values(@base64d)'
+
+
+# in deployment descriptor: set up environment variables M_USER that take their value from a k8s secret object nm-secret
+
+
+     43     spec:
+     44       containers:
+     45       - env:
+
+     50         - name: M_USER
+     51           valueFrom:
+     52             secretKeyRef:
+     53               key: username
+     54               name: nm-secret
+     55         - name: M_PASSWORD
+     56           valueFrom:
+     57             secretKeyRef:
+     58               key: password
+     59               name: nm-secret
+
 
 =======
 
@@ -96,11 +129,39 @@ Show logs of all pods (name of pod/container is in each line) - and grep through
     kubectl get pods | tail -n +2  | awk '{ print $1 }' | xargs -I{} kubectl logs --prefix=true {} | grep -i error
 
 
+Where are kubernetes logs stored?
+    = on the node. !!
+    - kuebelet stores them. May also do log rotation
+    
+
+
 =====
 
 Need to know which node a pod is running on?
     
     # -o wide shows a column with the node
     kubectl get pods -o wide
+
+
+Nodes:
+
+    # what container engine is in use? (is it docker?)
+    
+    kubectl describe node 172.18.14.21 | grep Runtime
+    Container Runtime Version:  docker://20.10.17
+
+    # need to access node? ssh to it - if you know the cluster credentials
+
+    # otherwise - create temp pod on node that can access the nodes file system.
+
+    k get nodes
+    NAME           STATUS   ROLES                      AGE    VERSION
+    172.18.14.21   Ready    controlplane,etcd,worker   443d   v1.22.13
+
+    k debug -it node/172.18.14.21 -it --image=ubuntu
+    cd /host/var/lib/docker/containers
+    <all the running dockers have subdirectories for each container, each one has the logs of that container>
+
+
 
 
