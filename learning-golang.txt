@@ -98,6 +98,9 @@ error handling / defer statement. (a bit confusing - if you aske me, in a langua
             fmt.Printf("%v %v\n", one, &one) // 0 0xc000012028
         }
 
+- variables that have not been assigned have a default value (in java you get a syntax error, i think that is the better approach)
+    var notAssigned int // is 0
+    var notAssignedB bool // is false, etc.
 
 - string values
 
@@ -482,6 +485,18 @@ checking for an interface dynamically
         return "???"
     }
 
+    Beware!
+
+    func clasifyFoo(foo interface()) bool {
+    switch err.(type) {
+	case types.A:
+	case types.B:
+	case types.C: // only types.C will return true; case for types.A..C is a seperate case with nothing in it - so return false!
+		return true
+	}
+	return false
+
+
 --
 Embedding: all of the members of the embedded struct/interface are copied verbatim into the embedding struct/interface.
 
@@ -820,7 +835,80 @@ import _ "embed"
 var s string
                 
         
+----
+
+Unit Testing:
+    name of test file: XXX_test.go
+
+    test function:
+        import (
+            "testing"
+        )
+
+        func TestXXXYYY(t *testing.T) {
+ 
+
+# run just one test in paralell (by default they run them in paralell)
+go test -p 1 
+
+# also: it appears that the following will cause all tests in a file to run serially.
+
+    func TestMain(m *testing.M) {
+        // Do your stuff here
+        os.Exit(m.Run())
+    }
+
+---
+logging:
+
+go has log package in its stdlib, but it sucks (doesn't even have log levels).
+People use github.com/sirupsen/logrus instead:
+
+-----
+
+// this guy will be called only once for this file. It is called before the main() function 
+// usually this is also causing trouble...
+// you can even have multiple init functions in the same file (here the function on top is called first)
+func init() {
+    // do your init stuff here
+}
+
+You can import a module like this
+
+import _ "<package path>"
+
+The _ means the import is never used. This is done, so that the init() method of that package will be called...
 
 
+-----
 
+Recursing into a closure
+
+func fofo() {
+
+    var matchType func(t reflect.Type)
+
+    // you can't do matchType := - when you try to call the recursion, compiler does yet know the type of matchType!
+	matchType = func(t reflect.Type) {
+
+        ...
+        matchType(t)
+    }
+
+    ...
+}
+
+-----
+
+
+# stand in  directory with go.mod - to force download / check of all referenced libraries.
+go mod tidy
+
+------
+
+golang regex
+
+Here is a test tool: https://www.lddgo.net/en/string/golangregex
+
+Here is the regex 'reference' https://pkg.go.dev/regexp/syntax
 

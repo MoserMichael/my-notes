@@ -1,6 +1,5 @@
 " Set text width as 72.
 
-
 ===
 
 Bauhaus documentary from the BBC
@@ -40,10 +39,6 @@ Bauhaus documentary from the BBC
          -  - After the 'foundation year' come the workshops, specialization starts
             
             
-                
-
-
-
 
     Fundamental shapes - circle, triangle, square
     
