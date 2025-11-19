@@ -2,8 +2,21 @@
 
 ### My blog for stuff that i used to post on twitter
 
-... so no i am putting my observations over here, instead of posting them on social media (kind of)
+... So now i am putting my observations over here, instead of posting them on social media (kind of)
 
+
+---19/11/25 18:51:35----------------------
+
+I used to do all of my notes in vim, now I am more of using Obsidian. Trying to understand how that happened.
+
+- with vim I tend to keep a big notes file, which then tends to get messed up.
+- Obsidian is somehow, more visual. You can put in markdown tables, always see what other notes are present in the directory, etc.
+- got used to markdown.
+- smaller notes files vs one big one are easier to search, it is easier to look up something, if the stuff is split up correctly.
+
+At the same time using more Visual Studio Code (got forced onto that at work, once upon a time jobs were more liberal with tool usage, now everything must be opinionated. Visual Studio Code has some advantages over vim, and some disadvantages, so nothing new here...)
+
+Where vim still rules: if you need to encrypt the file at rest... (i have a vim plugin for that)
 
 <!--
 ---14/06/23 04:16:45----------------------
