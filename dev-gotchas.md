@@ -12,6 +12,19 @@ Maybe someone will find this to be of any use, at least it is useful to me, so a
 I also got another blog for [stuff that i used to post on twitter](dev-other-blog.md)
 
 
+---19/11/25 05:53:11----------------------
+
+I am kind of less active around here, for multiple reasons.
+
+- I have too much to do at work, so not too much time for my hobbies online
+- All of my stuff here can be used by LLM's a training data, somehow. I am kind of aware of these possibilities and not quite welcoming them, as such. (that's a kind of contradiction for me, doing this stuff is the best kind of training at doing new stuff, at least for me)
+- Everything is much more politicised, nowadays, so I don't quite want to take part in any politically based social networking activity, i am not good at any of it (That's why I left all other social networks, like facebook, HN and reddit...)
+
+So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) Now that is left, as some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
+
+Still, thinking and talking about stuff increases many desirable traits, it gives you such traits as eloquence and training at doing new stuff, so best not to drop off...
+
+
 ---13/06/24 06:33:35----------------------
 
 I have the hobby of solving leetcode questions. Now I gave the code of my solution to a 'hard' question [here]( https://leetcode.com/problems/binary-tree-maximum-path-sum/solutions/5309235/python-recursive-solution-computing-the-max-path-length-for-each-node/) to the free version of google Gemini, and asked it to explain the solution. The explanation of the code is quite good! Then asked it how to improve/optimize the given solution - here it started to talk thrash. See this [chat session](https://g.co/gemini/share/253eb3f17c40)
