@@ -5,11 +5,13 @@
 My [linkedin profile](https://www.linkedin.com/in/michael-moser-32211b1/) 
 
 This is a log, here I am listing the gotchas that I stepped upon as a developer.
-Maybe someone will find this to be of any use, at least it is useful to me, so as not to step onto the same rake twice; Some of the fun in programming is to have your assumptions invalidated; this is not just a cause for grieve, it is an opportunity to re-examine your assumptions, which is a good thing.
+Maybe someone will find this to be of any use, at least it is useful to me, so as not to step into the same rake twice; Some of the fun in programming is to have your assumptions invalidated; this is not just a cause for grieve, it is an opportunity to re-examine your assumptions, which is a good thing.
 
 (should have started a log like this ages ago. Writing stuff down helps with clarifying subject matters) 
 
+<!--
 I also got another blog for [stuff that i used to post on twitter](dev-other-blog.md)
+//-->
 
 
 ---19/11/25 05:53:11----------------------
@@ -20,7 +22,7 @@ I am kind of less active around here, for multiple reasons.
 - All of my stuff here can be used by LLM's a training data, somehow. I am kind of aware of these possibilities and not quite welcoming them, as such. (that's a kind of contradiction for me, doing this stuff is the best kind of training at doing new stuff, at least for me)
 - Everything is much more politicised, nowadays, so I don't quite want to take part in any politically based social networking activity, i am not good at any of it (That's why I left all other social networks, like facebook, HN and reddit...)
 
-So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) Now that is left, as some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
+So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room, it is now some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
 
 Still, thinking and talking about stuff increases many desirable traits, it gives you such traits as eloquence and training at doing new stuff, so best not to drop off...
 
