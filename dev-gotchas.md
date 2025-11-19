@@ -20,7 +20,7 @@ I am kind of less active around here, for multiple reasons.
 
 - I have too much to do at work, so not too much time for my hobbies online
 - All of my stuff here can be used by LLM's a training data, somehow. I am kind of aware of these possibilities and not quite welcoming them, as such. (that's a kind of contradiction for me, doing this stuff is the best kind of training at doing new stuff, at least for me)
-- Everything is much more politicised, nowadays, so I don't quite want to take part in any politically based social networking activity, i am not good at any of it (That's why I left all other social networks, like facebook, HN and reddit...)
+- Everything is much more politicised, nowadays. I think telling your own opinion is not quite welcomed. (in unrelated news: I don't quite want to take part in any politically based social networking activity, i am not good at any of it  - that's why I left all other social networks, like facebook, HN and reddit...)
 
 So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room, it is now some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
 
