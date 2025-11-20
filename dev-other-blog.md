@@ -7,16 +7,18 @@
 
 ---19/11/25 18:51:35----------------------
 
-I used to do all of my notes in vim, now I am more of using Obsidian. Trying to understand how that happened.
+I used to do all of my notes in vim, now I am using Obsidian for my note-taking. Here I am trying to understand how that happened:
 
-- with vim I tend to keep a big notes file, which then tends to get messed up.
+- with vim: I tend to keep a big notes file, which then tends to get messed up, over time.
 - Obsidian is somehow, more visual. You can put in markdown tables, always see what other notes are present in the directory, etc.
 - got used to markdown.
-- smaller notes files vs one big one are easier to search, it is easier to look up something, if the stuff is split up correctly.
+- smaller note files vs one big one are easier to search, it is easier to look up something, if the stuff is split up correctly. A nice feature of the Obsidian UI: display the list of note files in one part of the screen, while having the note in the other part of the screen.
 
-At the same time using more Visual Studio Code (got forced onto that at work, once upon a time jobs were more liberal with tool usage, now everything must be opinionated. Visual Studio Code has some advantages over vim, and some disadvantages, so nothing new here...)
+I am also doing more stuff in Visual Studio Code (got forced onto that at work, once upon a time jobs were more liberal with tool usage, now everything is must be opinionated. Visual Studio Code has some advantages over vim)
 
-Where vim still rules: if you need to encrypt the file at rest... (i have a vim plugin for that)
+Where vim still rules: if you need to encrypt the file at rest... (i have a vim plugin for that). 
+
+A lesson learned from all this: better not to be religious about any tool. VIM was the universal editor for me, for quite a long time, however it is only a tool. VIM has advantages in some areas and disadvantages in others.
 
 <!--
 ---14/06/23 04:16:45----------------------
