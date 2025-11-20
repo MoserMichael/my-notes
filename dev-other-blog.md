@@ -12,7 +12,7 @@ I used to do all of my notes in vim, now I am using [Obsidian](https://obsidian.
 - with vim: I tend to keep a big notes file, which then tends to get messed up, over time.
 - Obsidian is somehow, more visual. You can put in markdown tables, always see what other notes are present in the directory, etc.
 - got used to markdown.
-- smaller note files vs one big one are easier to search, it is easier to look up something, if the stuff is split up correctly. A nice feature of the Obsidian UI: display the list of note files in one part of the screen, while having the note in the other part of the screen.
+- smaller note files vs one big one are easier to search and categorize (as long as you don't have too many of them), it is easier to look up something, if the information is categorized/split up correctly. A nice feature of the Obsidian UI: display the list of note files in one part of the screen, while having the note in the other part of the screen.
 
 I am also doing more stuff in Visual Studio Code (got forced onto that at work, once upon a time jobs were more liberal with tool usage, now things are more mandated/opinionated. However Visual Studio Code may have some advantages over vim.)
 
