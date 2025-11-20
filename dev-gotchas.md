@@ -25,7 +25,7 @@ I was kind of less active around here, for quite along period. This absence had 
 
 So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room, it is now some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
 
-Still, thinking and talking about stuff is a kind of training. I am doing this stuff in order to keep up with the world, mostly. (Coming to think of it: the pace of change over the last couple of years is really amazing)  
+Still, thinking and talking about stuff is a kind of training. I am doing this stuff in order to keep up with the world, mostly. (Coming to think of it: the pace of change over the last couple of years is really amazing. Reminds me of [Future Shock](https://ia801209.us.archive.org/6/items/FutureShock-Toffler/Future-Shock_-_Toffler.pdf) - but this time it is for real)
 
 ---13/06/24 06:33:35----------------------
 
