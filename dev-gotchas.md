@@ -20,7 +20,7 @@ I was kind of less active around here, for quite along period. This absence had 
 
 - I have had too much to do at work, so not too much time left for my hobbies online
 - All of my stuff here can be used by language models as training data. I was kind of upset by the possibility of this (In some way most of my open source activity is contradicting itself now)
-- Everything is much more politicised, nowadays. I think that expressing any divergent opinions is now tolerated to a smaller degree now. (in unrelated news: I don't want to take part in any social networking activity - that's why I left social networks, like facebook, HN and reddit. Another reason is that the new-style antisemitism of these communities did upset me a lot)
+- Everything is much more politicised, nowadays. I think that expressing any divergent opinions is now tolerated to a smaller degree now. (in unrelated news: I don't want to take part in any social networking activity - that's why I left social networks, like facebook, HN and reddit. Another reason is that the new-style antisemitism of these communities did upset me a lot - going by the [IHRA definition of antismitism](https://holocaustremembrance.com/resources/working-definition-antisemitism) )
 - I was still reading the news on linked-in - but that doesn't make much sense now, as most of the content is now machine generated...
 
 So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room, it is now some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
