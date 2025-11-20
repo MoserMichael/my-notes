@@ -7,7 +7,7 @@
 
 ---19/11/25 18:51:35----------------------
 
-I used to do all of my notes in vim, now I am using Obsidian for my note-taking. Here I am trying to understand how that happened:
+I used to do all of my notes in vim, now I am using [Obsidian](https://obsidian.md/) for my note-taking. Here I am trying to understand how that happened:
 
 - with vim: I tend to keep a big notes file, which then tends to get messed up, over time.
 - Obsidian is somehow, more visual. You can put in markdown tables, always see what other notes are present in the directory, etc.
