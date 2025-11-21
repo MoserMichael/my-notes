@@ -20,7 +20,14 @@ Where vim still rules: if you need to encrypt the file at rest. (i have a vim pl
 
 A lesson learned from all this: better not to be religious about any tool. VIM was the universal editor for me, for quite a long time, however it is only a tool. VIM has advantages in some areas and disadvantages in others, just like everything.
 
-(The irony is that Obsidian is closed source, and you can't be absolutely sure of what it is doing. Theoretically it might even take your notes and backup them, somewhere...)
+The irony is that Obsidian is closed source, and you can't be absolutely sure of what it is doing. Theoretically it might even take your notes and backup them, somewhere...
+
+However, there is an open sourced alternative to the rescue [Trilium](https://github.com/TriliumNext/Trilium) and [here](https://triliumnotes.org/)
+
+(Now amazing, that such a turn of event would never occur to any user of vim, but everything could possibly happen, with all of this free-ish stuff out there)
+
+
+
 
 <!--
 ---14/06/23 04:16:45----------------------
