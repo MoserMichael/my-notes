@@ -23,7 +23,11 @@ I was kind of less active around here, for quite along period. This absence had 
 - Everything is much more politicised, nowadays. I think that expressing any divergent opinions is now tolerated to a smaller degree now. (in unrelated news: I don't want to take part in any social networking activity - that's why I left social networks, like facebook, HN and reddit. Another reason is that the new-style antisemitism of these communities did upset me a lot - going by the [IHRA definition of antisemitism](https://holocaustremembrance.com/resources/working-definition-antisemitism) )
 - I was still reading the news on linked-in - but that doesn't make much sense now, as most of the content is now machine generated...
 
-So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room, it is now some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
+So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room. Gists are very popular with heavy gamers, for sharing game plans and configurations (you learn something new every day)
+
+<!--
+this free room is now some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
+//-->
 
 Still, thinking and talking about stuff is a kind of training. I am doing this stuff in order to keep up with the world, mostly. (Coming to think of it: the pace of change over the last couple of years is really amazing. Reminds me of [Future Shock](https://ia801209.us.archive.org/6/items/FutureShock-Toffler/Future-Shock_-_Toffler.pdf) - but this time it is for real)
 
