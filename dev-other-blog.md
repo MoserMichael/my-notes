@@ -16,7 +16,7 @@ I used to do all of my notes in vim, now I am using [Obsidian](https://obsidian.
 
 I am also doing more stuff in Visual Studio Code (got forced onto that at work, once upon a time jobs were more liberal with tool usage, now things are more mandated/opinionated. However Visual Studio Code may have some advantages over vim.)
 
-Where vim still rules: if you need to encrypt the file at rest. (i have a vim plugin for that). Also: editing text in bulk is much more immediate with vim, and one character navigation is better, it is more like shaping the text with your hands ....
+Where vim still rules: if you need to encrypt the file at rest. (i have a [vim plugin for that](https://github.com/MoserMichael/vimcrypt2) ). Also: editing text in bulk is much more immediate with vim, and one character navigation is better, it is more like shaping the text with your hands ....
 
 A lesson learned from all this: better not to be religious about any tool. VIM was the universal editor for me, for quite a long time, however it is only a tool. VIM has advantages in some areas and disadvantages in others, just like everything.
 
