@@ -18,6 +18,7 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 
 I was kind of less active around here, for quite along period. This absence had multiple reasons:
 
+- A sad family event: my dear father and teacher Ilja Moser passed away, after a long illness.
 - I have had too much to do at work, so not too much time left for my hobbies online
 - All of my stuff here can be used by language models as training data. I was kind of upset by the possibility of this (In some way most of my open source activity is contradicting itself now)
 - Everything is much more politicised, nowadays. I think that expressing any divergent opinions is now tolerated to a smaller degree now. (in unrelated news: I don't want to take part in any social networking activity - that's why I left social networks, like facebook, HN and reddit. Another reason is that the new-style antisemitism of these communities did upset me a lot - going by the [IHRA definition of antisemitism](https://holocaustremembrance.com/resources/working-definition-antisemitism) )
