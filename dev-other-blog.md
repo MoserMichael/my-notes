@@ -24,7 +24,7 @@ The irony is that Obsidian is closed source, and you can't be absolutely sure of
 
 However, there is an open sourced alternative to the rescue [Trilium](https://github.com/TriliumNext/Trilium) and [here](https://triliumnotes.org/)
 
-(Now amazing, that such a turn of event would never occur to any user of vim, but everything could possibly happen, with all of this free-ish stuff out there)
+(Now amazing, that such a turn of event would never occur to any user of vim. However now everything could possibly happen, with all of this free-ish stuff out there)
 
 
 
