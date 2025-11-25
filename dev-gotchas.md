@@ -35,7 +35,9 @@ Some say that github gists were added as a minor concern, in order to keep up wi
 this free room is now some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
 //-->
 
-Why do I keep doing all this? I guess thinking and talking about stuff is a kind of training. I am doing this stuff in order to keep up with the world, mostly. (Coming to think of it: the pace of change over the last couple of years is really amazing. Reminds me of [Future Shock](https://ia801209.us.archive.org/6/items/FutureShock-Toffler/Future-Shock_-_Toffler.pdf) - but this time it is for real)
+Why do I keep doing all this? 
+- It is a source of inner strength: I am busy writing some code, scribbling these notes and digging things up, so it keeps me busy. Now it suddenly becomes harder to intimidate me, as I am busy - therefore I kind of care less about the other stuff.
+- I guess thinking and talking about stuff is a kind of training. I am doing this stuff in order to keep up with the world, mostly. (Coming to think of it: the pace of change over the last couple of years is really amazing. Reminds me of [Future Shock](https://ia801209.us.archive.org/6/items/FutureShock-Toffler/Future-Shock_-_Toffler.pdf) - but this time it is for real)
 
 ---13/06/24 06:33:35----------------------
 
