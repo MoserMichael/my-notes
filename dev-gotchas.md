@@ -259,6 +259,8 @@ I got it how to deal with hacker news and twitter - just never log in! Come on -
 Also i doubt that people really value a different opinion - they only seek confirmation of their own opinions and biases.
 Almost like in the real world ;-)
 
+Here is a smaller project for tracking [flagged/censored stuff on HN](https://github.com/MoserMichael/flagged-hn)
+
 (Obligatory xkcd link: https://m.xkcd.com/386/ ) 
 
 .. Now i got a problem: where do i get any news from?
