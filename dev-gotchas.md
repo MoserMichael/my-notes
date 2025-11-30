@@ -31,7 +31,7 @@ So, my current solution is to do more with [github gists](https://gist.github.co
 
 Some say that github gists were added as a minor concern, in order to keep up with [pastebin](https://pastebin.com/). Maybe that's why github stopped to improve this feature, for example there is no built-in spell checker, when editing a gist in the browser (a much requested [feature](https://github.com/orgs/community/discussions/138955) ). My solution: a shell script that checks out all of the gists into separate folders. [script-is-here](https://gist.github.com/MoserMichael/b4fec70c95a558ac7cd7bdcdcd2c911a). This way you can edit stuff locally, in your favorite editor, which sure has a spell checker!
 
-/still: gists have something of the Yiddish word Eizes, advice. Eitzes is billik - advice comes cheap.../
+/still: gists have something of the Yiddish word Eitzes, advice. 'Eitzes is billik' - advice comes cheap.../
 
 <!--
 this free room is now some kind of wooden spaceship... (actually they did launch a real satellite [made out of wood](https://www.usatoday.com/story/news/world/2024/11/05/satellite-wood-japan-science/76074183007/) )
