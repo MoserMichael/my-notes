@@ -27,7 +27,10 @@ Many things happened during this time.
 - Everything is much more politicised, nowadays. I think that expressing any divergent opinions is now tolerated to a smaller degree now. (in unrelated news: I don't want to take part in any social networking activity - that's why I left social networks, like facebook, HN and reddit. Another reason is that the new-style antisemitism of these communities did upset me a lot - going by the [IHRA definition of antisemitism](https://holocaustremembrance.com/resources/working-definition-antisemitism) )
 - I was still reading the news on linked-in - but that doesn't make much sense now, as most of the content is now machine generated...
 
-So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room. Gists are very popular with heavy gamers, for sharing game plans and configurations (you learn something new every day)
+So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room. Gists are very popular with heavy gamers, for sharing game plans and configurations (you learn something new every day). Also:
+- Gists have little relevance in terms of publicity or as 'social media', so no one would care to put their bots loose (but i might be wrong, again). Maybe these corners are a less likely prey for [deadnet](https://en.wikipedia.org/wiki/Dead_Internet_theory')
+- Doing something / anything is way better than falling into quiet despair...
+    
 
 Some say that github gists were added as a minor concern, in order to keep up with [pastebin](https://pastebin.com/). Maybe that's why github stopped to improve this feature, for example there is no built-in spell checker, when editing a gist in the browser (a much requested [feature](https://github.com/orgs/community/discussions/138955) ). My solution: a shell script that checks out all of the gists into separate folders. [script-is-here](https://gist.github.com/MoserMichael/b4fec70c95a558ac7cd7bdcdcd2c911a). This way you can edit stuff locally, in your favorite editor, which sure has a spell checker!
 
