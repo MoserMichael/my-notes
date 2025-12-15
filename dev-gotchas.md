@@ -28,7 +28,7 @@ Many things happened during this time.
 - I was still reading the news on linked-in - but that doesn't make much sense now, as most of the content is now machine generated...
 
 So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room. Gists are very popular with heavy gamers, for sharing game plans and configurations (you learn something new every day). Also:
-- Gists have little relevance in terms of publicity or as 'social media', so no one would care to put their bots loose (but i might be wrong, again). Maybe these corners are a less likely prey for [deadnet](https://en.wikipedia.org/wiki/Dead_Internet_theory')
+- Gists have little relevance in terms of publicity or as 'social media', so no one would care to put their bots loose (but i might be wrong, again). Maybe these corners are a less likely prey for [deadnet](https://en.wikipedia.org/wiki/Dead_Internet_theory)
 - Doing something / anything is way better than falling into quiet despair...
     
 
