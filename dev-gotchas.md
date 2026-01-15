@@ -24,7 +24,7 @@ Many things happened during this time.
 - A sad family event: my dear father and teacher Ilja Moser passed away, after a long illness.
 - I have had a lot to do at work, so not too much time left for my hobbies online
 - All of my stuff here can be used by language models as training data. I was kind of upset by the possibility of this (In some sense most of my open source activity is contradicting itself now)
-- Everything is much more politicised, nowadays. I think that expressing any divergent opinions is now tolerated to a smaller degree now. 
+- Everything is much more politicized, nowadays. I think that expressing any divergent opinions is now tolerated to a smaller degree now. 
     - I still can't get over the shock of witnessing the global resurgence of antisemitism since 7/10/2023. It's the 21st century! Even wikipedia is [full of the shit](https://en.wikipedia.org/wiki/Antisemitism_on_Wikipedia)
     - I don't want to take part in any social networking activity - that's why I left social networks, like facebook, HN and reddit. Again, the new-style antisemitism of these communities did upset me a lot - going by the [IHRA definition of antisemitism](https://holocaustremembrance.com/resources/working-definition-antisemitism) )
     - Still reading the news on linked-in - but that doesn't make much sense now, as most of the content is now machine generated...
@@ -32,7 +32,7 @@ Many things happened during this time.
 So, my current solution is to do more with [github gists](https://gist.github.com/MoserMichael/) I have the illusion that this is still a kind of free-room. Gists are very popular with heavy gamers, for sharing game plans and configurations (you learn something new every day). Also:
 - Gists have little relevance in terms of publicity or as 'social media', so no one would care to put their bots loose (but i might be wrong, again). Maybe these corners are a less likely prey for [deadnet](https://en.wikipedia.org/wiki/Dead_Internet_theory)
 - Yes! Someone keeps creating github accounts with his bot and is posting the same gist over and over again, so that this add appears on 'all gists'. And the landlord doesn't care, we are free :-) (for now)
-    
+- from now on: lots of technical stuff in my gists, but also quests of a non-technical nature. 
 
 Some say that github gists were added as a minor concern, in order to keep up with [pastebin](https://pastebin.com/). Maybe that's why github stopped to improve this feature, for example there is no built-in spell checker, when editing a gist in the browser (a much requested [feature](https://github.com/orgs/community/discussions/138955) ). My solution: a shell script that checks out all of the gists into separate folders. [script-is-here](https://gist.github.com/MoserMichael/b4fec70c95a558ac7cd7bdcdcd2c911a). This way you can edit stuff locally, in your favorite editor, which sure has a spell checker!
 
