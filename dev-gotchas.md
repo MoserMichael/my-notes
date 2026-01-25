@@ -33,6 +33,8 @@ So, my current solution is to do more with [github gists](https://gist.github.co
 - Gists have little relevance in terms of publicity or as 'social media', so no one would care to put their bots loose (but i might be wrong, again). Maybe these corners are a less likely prey for [deadnet](https://en.wikipedia.org/wiki/Dead_Internet_theory)
 - Yes! Someone keeps creating github accounts with his bot and is posting the same gist over and over again, so that this add appears on 'all gists'. And the landlord doesn't care, we are free :-) (for now)
 - from now on: lots of technical stuff in my gists, but also quests of a non-technical nature. 
+- In some way: digging deep into my world, in order to escape the hype & hubris of the AI industry.
+
 
 Some say that github gists were added as a minor concern, in order to keep up with [pastebin](https://pastebin.com/). Maybe that's why github stopped to improve this feature, for example there is no built-in spell checker, when editing a gist in the browser (a much requested [feature](https://github.com/orgs/community/discussions/138955) ). My solution: a shell script that checks out all of the gists into separate folders. [script-is-here](https://gist.github.com/MoserMichael/b4fec70c95a558ac7cd7bdcdcd2c911a). This way you can edit stuff locally, in your favorite editor, which sure has a spell checker!
 
@@ -46,6 +48,8 @@ Why do I keep doing all this?
 - It is a source of inner strength: I am busy writing some code, scribbling these notes and digging things up, so it keeps me busy. Now it suddenly becomes harder to intimidate me, as I am busy - therefore I kind of care less about the other stuff.
 - To sum up: doing something / anything is way better than falling into quiet despair...
 - I guess thinking and talking about stuff is a kind of training. I am doing this stuff in order to keep up with the world, mostly. (Coming to think of it: the pace of change over the last couple of years is really amazing. Reminds me of [Future Shock](https://ia801209.us.archive.org/6/items/FutureShock-Toffler/Future-Shock_-_Toffler.pdf) - but this time it is for real)
+- One funny observation: I got into a habit of writing stuff down, my reasoning starts to look more like what you get out of an language models (most language models are trained to 'think step by step', so they have to spell out all of their intermediate steps, so now I am also more likely to be 'thinking step by step') Just wondering about the degree of false positive, with tools for detecting LLM drivel... (nervous giggle)
+
 
 ---13/06/24 06:33:35----------------------
 
