@@ -50,6 +50,14 @@ Why do I keep doing all this?
 - I guess thinking and talking about stuff is a kind of training. I am doing this stuff in order to keep up with the world, mostly. (Coming to think of it: the pace of change over the last couple of years is really amazing. Reminds me of [Future Shock](https://ia801209.us.archive.org/6/items/FutureShock-Toffler/Future-Shock_-_Toffler.pdf) - but this time it is for real)
 - One funny observation: I got into a habit of writing stuff down, my reasoning starts to look more like what you get out of an language models (most language models are trained to 'think step by step', so they have to spell out all of their intermediate steps, so now I am also more likely to be 'thinking step by step') Just wondering about the degree of false positive, with tools for detecting LLM drivel... (nervous giggle)
 
+Maybe all this is just an exercise of 'running, for no particular reason'. As Forrest Gump's mother said: 'you got to put the past behind you, before you can move on'
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/187trX0mo1o?si=yBRYKyxinsC2CFcz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+And yes, this music is just wonderful...
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IKnnh8VDULs?si=ogumE8NRcWao8V2R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ---13/06/24 06:33:35----------------------
 
