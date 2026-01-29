@@ -52,11 +52,12 @@ Why do I keep doing all this?
 
 Maybe all this is just an exercise of 'running, for no particular reason'. As Forrest Gump's mother said: 'you got to put the past behind you, before you can move on'
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/187trX0mo1o?si=yBRYKyxinsC2CFcz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[Forrest Gump just keeps running](https://www.youtube.com/watch?v=187trX0mo1o)
 
 And yes, this music is just wonderful...
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IKnnh8VDULs?si=ogumE8NRcWao8V2R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[link to 'running on empty' by Jackson Browne](https://www.youtube.com/watch?v=IKnnh8VDULs)
+
 
 
 ---13/06/24 06:33:35----------------------
