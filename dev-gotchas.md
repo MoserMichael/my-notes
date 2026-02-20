@@ -14,6 +14,30 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 //-->
 
 
+---20/02/26 16:02:59----------------------
+
+Looking at the general state of affairs:
+
+I think the AI industrial complex is currently requiring massive forward investments, which it cannot sustain. They must therefore seek to socialize these expensive by becoming 'too big to fail'. I think we are therefore seeing a massive public relations battle, designed to turn the AI industrial complex into an indispensable part of modern industrial society. 
+
+The AI industrial complex has the following big challenges:
+
+- Needs to make enough money to pay for all the massive forward expenses, such as creation of city sized datacenters and power stations
+- Needs to create a lasting business case, that will keep people paying for tokens
+- Must become part of the military industrial complex, so as to be 'to big to fail'
+    - The Russo-Ukrainian war is a proving ground for AI centric military technologies. I think that this is one of the reasons for the seemingly perpetual nature of this war. I think that is a very sad thing.
+
+I think that this public relation battle is also very destructive, for the rest of us. All for the following reason:
+
+- There are high stakes involved, therefore it is waged in a very partisan 'us vs them' kind of discourse.
+- It is painting everyone who is slightly skeptical as being a retrograde anti-AI person.
+
+I am very skeptical of vibe coding. I don't understand how a software engineer can manage a significant code base without understanding it, all by means of meta-incantations in skills.md and instruction.md files. Still most of my peers do not have a problem with such an approach to software development.
+
+I hope that I can find my place in these new realities.
+
+I am a bit afraid, that this entry is talking about things in a very broad kind of manner. I am not comfortable with such an approach, as a software professional.
+
 ---19/11/25 05:53:11----------------------
 
 I was kind of less active around here, for quite along period. This absence had multiple reasons:
@@ -57,8 +81,6 @@ Maybe all this is just an exercise of 'running, for no particular reason'. As Fo
 And yes, this music is just wonderful...
 
 [link to 'running on empty' by Jackson Browne](https://www.youtube.com/watch?v=IKnnh8VDULs)
-
-
 
 ---13/06/24 06:33:35----------------------
 
