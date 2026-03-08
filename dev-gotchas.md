@@ -14,6 +14,7 @@ I also got another blog for [stuff that i used to post on twitter](dev-other-blo
 //-->
 
 
+
 ---20/02/26 16:02:59----------------------
 
 Looking at the general state of affairs:
@@ -26,13 +27,15 @@ The AI industrial complex has the following big challenges:
 - Needs to create a lasting business case, that will keep people paying for tokens
 - Must become part of the military industrial complex, so as to be 'to big to fail'
     - The Russo-Ukrainian war is a proving ground for AI centric military technologies. I think that this is one of the reasons for the seemingly perpetual nature of this war. I think that is a very sad thing.
+    - Heavy AI usage in SIGINT analysis and more effective target planning may turn into more protracted conflicts, that's called "The Transparency-Stability Paradox: When both sides have near-perfect, AI-driven surveillance, it becomes almost impossible to achieve a "surprise" victory. Because no one can hide their build-up, both sides can counter each other's moves in real-time, leading to a high-tech version of trench warfare where neither side can gain a decisive edge."
+    - Also threshold for entering a conflict may be lower due to AI advances, because logistics in planning and supply improved vastly, thereby making any new conflict appear to be 'a peace of cake'.
 
 I think that this public relation battle is also very destructive, for the rest of us. All for the following reason:
 
 - There are high stakes involved, therefore it is waged in a very partisan 'us vs them' kind of discourse.
 - It is painting everyone who is slightly skeptical as being a retrograde anti-AI person.
 
-I am very skeptical of vibe coding. I don't understand how a software engineer can manage a significant code base without understanding it, all by means of meta-incantations in skills.md and instruction.md files. Still most of my peers do not have a problem with such an approach to software development.
+I am very skeptical of vibe coding. I don't understand how a software engineer can manage a significant code base without understanding it, all by means of meta-incantations in `skills.md` and `instruction.md` files. Still most of my peers do not have a problem with such an approach to software development.
 
 I hope that I can find my place in these new realities.
 
